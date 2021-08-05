@@ -1,0 +1,20 @@
+{
+  "name": "web-00-team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/00-team/web-00-team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/00-team/web-00-team/issues"
+  },
+  "homepage": "https://github.com/00-team/web-00-team#readme"
+}
