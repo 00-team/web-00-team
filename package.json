@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ci": "echo GG",
     "build": "echo build"
   },
   "repository": {
@@ -17,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/00-team/web-00-team/issues"
   },
-  "homepage": "https://github.com/00-team/web-00-team#readme"
+  "homepage": "https://github.com/00-team/web-00-team#readme",
+  "dependencies": {
+    "react": "^17.0.2"
+  }
 }
