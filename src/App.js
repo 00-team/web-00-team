@@ -10,7 +10,7 @@ const App = () => {
     console.log(app.SDK_VERSION);
     return (
         <div className='main'>
-            <span>00 Team</span>
+            <span>00 Team solam</span>
         </div>
     )
 }
