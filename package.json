@@ -4,20 +4,34 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo build"
+    "dev": "webpack --mode development --watch ./src/App.js -o ./public/build/",
+    "build": "webpack --mode production ./src/App.js -o ./public/build/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/00-team/web-00-team.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "00 Team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/00-team/web-00-team/issues"
   },
-  "homepage": "https://github.com/00-team/web-00-team#readme",
+  "homepage": "https://web-00-team.web.app/",
   "dependencies": {
     "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2"
   }
 }
