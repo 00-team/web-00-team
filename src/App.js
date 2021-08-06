@@ -1,10 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// style
+import './app.scss'
+
+
 const App = () => {
     return (
-        <div>
-            React App
+        <div className='main'>
+            <span>00 Team</span>
         </div>
     )
 }
