@@ -24,17 +24,21 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ]
             },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '00 Team',
             filename: 'index.html',
             template: './src/template.html',
             inject: true,
             favicon: './src/img/favicon.ico',
+            publicPath: '/',
         }),
     ],
     devtool: 'source-map',
