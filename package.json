@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./src/App.js -o ./public/build/",
-    "build": "webpack --mode production ./src/App.js -o ./public/build/"
+    "dev": "webpack serve --open --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/00-team/web-00-team.git"
   },
-  "keywords": [],
   "author": "00 Team",
   "license": "ISC",
   "bugs": {
@@ -41,10 +40,12 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.48.0",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
