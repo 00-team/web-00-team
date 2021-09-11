@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import css 
+// import scss 
 import "./sass/herosection.scss"
 
 // icons
