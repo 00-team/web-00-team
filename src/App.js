@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 // components 
 import HeroSection from './components/HeroSection';
+import About from './components/About';
 
 // firebase
 import app from 'firebase/app';
@@ -16,6 +17,7 @@ const App = () => {
     return (
         <>
             <HeroSection />
+            <About />
         </>
     )
 }
