@@ -3,7 +3,12 @@
 @import url(https://fonts.googleapis.com/css2?family=Graduate&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
 
-
+$heading1: 100px;
+$heading2: 50px;
+$disc: 24px;
+$heading1_mobile: 50px;
+$heading2_mobile: 25px;
+$disc_mobile: 12px;
 
 * {
     margin: 0;
@@ -14,4 +19,22 @@
     &:focus {
         outline: none;
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    // display: none;
+    background: #040404;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #242424;
+    border-radius: 20px;
+}
+
+html,body{
+    scroll-behavior: smooth;
 }
