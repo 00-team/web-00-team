@@ -18,7 +18,7 @@
   },
   "homepage": "https://web-00-team.web.app/",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "firebase": "^8.9.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
