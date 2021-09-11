@@ -3,22 +3,38 @@
     height: $h;
 }
 
+$heading1: 100px;
+$heading2: 50px;
+$disc: 24px;
+$heading1_mobile: 50px;
+$heading2_mobile: 25px;
+$disc_mobile: 12px;
+
+
 .hero-section {
     @include box(100%, 100vh);
 
     .main {
         height: 100%;
         color: #fff;
-        background-color: #000;
+        background: linear-gradient(
+                    to bottom,
+                    #040404,
+                    #040404,
+                    #040404,
+                    #040404,
+                    #040404,
+                    #121212
+                );
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
         span {
-            font-size: 100px;
+            font-size: $heading1;
             @media (max-width: 500px) {
-                font-size: 50px;
+                font-size: $heading1_mobile;
             }
             font-family: 'Graduate', 'Roboto', sans-serif;
             text-transform: uppercase;
