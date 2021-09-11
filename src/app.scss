@@ -3,10 +3,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Graduate&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
 
-@mixin box($w, $h: $w) {
-    width: $w;
-    height: $h;
-}
+
 
 * {
     margin: 0;
@@ -16,29 +13,5 @@
 
     &:focus {
         outline: none;
-    }
-}
-
-.main {
-    @include box(100%, 100vh);
-    color: #FFF;
-    background-color: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    span {
-        font-size: 100px;
-        @media (max-width: 500px) {font-size: 50px;}
-        font-family: 'Graduate', 'Roboto', sans-serif;
-        text-transform: uppercase;
-    }
-
-    svg {
-        @include box(25px);
-        @media (max-width: 500px) {@include box(15px);}
-        margin: 0 10px;
-        cursor: pointer;
     }
 }
