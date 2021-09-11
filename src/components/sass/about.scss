@@ -1,0 +1,60 @@
+@mixin box($w, $h: $w) {
+    width: $w;
+    height: $h;
+}
+
+$heading1: 100px;
+$heading2: 50px;
+$disc: 24px;
+$heading1_mobile: 50px;
+$heading2_mobile: 25px;
+$disc_mobile: 12px;
+
+.about {
+    @include box(100%, 100vh);
+
+    .container {
+        height: 100%;
+        color: #fff;
+        background: linear-gradient(
+                    to bottom,
+                    #121212,
+                    #121212,
+                    #121212,
+                    #1A1A1A
+                );
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .header h1 {
+            font-size: $heading1;
+            @media (max-width: 500px) {
+                font-size: $heading1_mobile;
+            }
+            font-family: 'Graduate', 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .discription{
+
+            .about-us-text {
+            // padding: 0 3vh;
+            word-spacing: 3px;
+            // text-align: center;
+            line-height: 30px;
+            font-size: $disc;
+        }
+        }
+
+        svg {
+            @include box(25px);
+            @media (max-width: 500px) {
+                @include box(15px);
+            }
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    }
+}
