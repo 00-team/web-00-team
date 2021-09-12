@@ -1,0 +1,36 @@
+@mixin box($w, $h: $w) {
+    width: $w;
+    height: $h;
+}
+
+$heading1: 100px;
+$heading2: 50px;
+$disc: 24px;
+$heading1_mobile: 50px;
+$heading2_mobile: 25px;
+$disc_mobile: 12px;
+
+.creators {
+    @include box(100%, 100vh);
+
+    .container {
+        height: 100%;
+        color: #fff;
+        background: linear-gradient(to bottom, #1a1a1a, #1a1a1a, #272727);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .header h1 {
+            font-size: $heading1;
+            @media (max-width: 500px) {
+                font-size: $heading1_mobile;
+            }
+            font-family: 'Graduate', 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
+
+        
+    }
+}
