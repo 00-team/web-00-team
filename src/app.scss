@@ -25,10 +25,10 @@ $disc_mobile: 12px;
     width: 10px;
 }
 
-::-webkit-scrollbar-track {
-    // display: none;
-    background: #040404;
-}
+// ::-webkit-scrollbar-track {
+//     display: none;
+//     background: #040404;
+// }
 
 ::-webkit-scrollbar-thumb {
     background-color: #242424;
@@ -37,4 +37,8 @@ $disc_mobile: 12px;
 
 html,body{
     scroll-behavior: smooth;
+}
+
+body{
+    overflow: overlay;
 }
