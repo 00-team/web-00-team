@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 @mixin box($w, $h: $w) {
     width: $w;
     height: $h;
@@ -31,6 +33,97 @@ $disc_mobile: 12px;
             text-transform: uppercase;
         }
 
-        
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            height: 50%;
+            width: 50%;
+
+            .card {
+                border: 1px solid black;
+                border-radius: 5px;
+                // display: flex;
+                // flex-direction: column;
+                // align-items: center;
+                // justify-content: space-between;
+                width: 30%;
+                position: relative;
+                box-shadow: 3px 3px 0px 0px rgb(0 0 0 / 10%),
+                    20px 20px 0 1px rgb(0 0 0 / 10%);
+                overflow: hidden;
+
+                .creator-img {
+                    width: 100%;
+                    height: 25%;
+                    background-color: black;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        object-fit: cover;
+                        height: 65%;
+                        border-radius: 50%;
+                        position: absolute;
+                        bottom: -25%;
+                        border: 5px solid #1a1a1a;
+                        // padding: 0.2rem;
+                        z-index: 1;
+                    }
+                }
+                .text-container {
+                    text-align: center;
+                    margin: 5vh 1vh 0 1vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 60%;
+                    font-family: 'Graduate', sans-serif;
+
+                    .role{
+
+                        font-family: monospace;
+                        font-size: larger;
+                    }
+                    .discription{
+                        font-family: 'Major Mono Display', monospace;
+                    }
+                    .social{
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 5px;
+                        font-family: unset;
+                        padding: 16px 20px;
+                        border-radius: 100px;
+                        cursor: pointer;
+                    }
+                    .github{
+
+                        color: black;
+                        background-color: snow;
+                        transition: all 500ms ease-in-out;
+                        
+                        &:hover{
+                            color: snow;
+                            background-color: black;
+                            
+                        }
+                    }
+                    .discord{
+                        background-color: #23272a;
+                        color: snow;
+                        transition: all 500ms ease-in-out;
+                        &:hover{
+                            color: #23272a;
+                            background-color: snow;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }
