@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --open --mode development",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -18,12 +18,13 @@
   },
   "homepage": "https://web-00-team.web.app/",
   "dependencies": {
-    "axios": "^0.21.2",
-    "firebase": "^8.9.0",
+    "axios": "^0.21.4",
+    "firebase": "^9.0.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-spinners": "^0.11.0",
@@ -42,11 +43,11 @@
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
-    "sass": "^1.37.5",
+    "sass": "^1.41.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
-    "webpack": "^5.48.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
   }
 }
