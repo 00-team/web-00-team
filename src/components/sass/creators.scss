@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@use '../../sass/mixins.sass' as *;
 
-@mixin box($w, $h: $w) {
-    width: $w;
-    height: $h;
-}
 
 $heading1: 100px;
 $heading2: 50px;
