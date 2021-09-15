@@ -1,25 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// components 
-import HeroSection from './components/HeroSection';
-import About from './components/About';
-import Creators from './components/Creators';
+// components
+import Head from './components/Head'
+import HeroSection from './components/HeroSection'
+import About from './components/About'
+import Creators from './components/Creators'
+import Navbar from './components/Navbar'
 
 // firebase
-import app from 'firebase/app';
-
+import firebase from 'firebase/compat/app'
 
 // style
-import './app.scss'
+import './sass/base.scss'
+
 
 const App = () => {
-    console.log(app.SDK_VERSION);
+    console.log(firebase.SDK_VERSION)
+
     return (
         <>
+            {/* Head Tags */}
+            <Head />
+
+            <Navbar />
+
             <HeroSection />
-            <About       />
-            <Creators    />
+            <About />
+            <Creators />
         </>
     )
 }
