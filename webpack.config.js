@@ -1,5 +1,5 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/App.js',
@@ -7,7 +7,7 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        sourceMapFilename: 'SourceMaps/[file].map'
+        sourceMapFilename: 'SourceMaps/[file].map',
     },
     module: {
         rules: [
@@ -15,34 +15,46 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
-                }
+                    loader: 'babel-loader',
+                },
             },
             {
                 test: [/\.s[ac]ss$/i, /\.css$/i],
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(ico|mp4)$/i,
                 use: [
                     {
                         loader: 'file-loader',
+                        options: {
+                            name: path => {
+                                if (path.search('favicon.ico') !== -1)
+                                    return 'favicon.ico'
+                                else return 'static/[name].[ext]'
+                            },
+                        },
                     },
-                ]
+                ],
+                type: 'javascript/auto',
             },
-        ]
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/template.html',
             inject: true,
-            favicon: './src/img/favicon.ico',
             publicPath: '/',
         }),
     ],
     devtool: 'source-map',
     devServer: {
-        contentBase: './dist',
+        port: 8000,
+        hot: false,
     },
-};
+}
