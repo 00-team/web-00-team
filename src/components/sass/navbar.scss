@@ -1,0 +1,54 @@
+@use '../../sass/variables.sass' as *;
+@use '../../sass/mixins.sass' as *;
+
+.navbar-container {
+    @include box(100%, $NAVBAR_HEIGHT);
+    background-color: $NAVBAR_BG;
+    color: #fff;
+    @include PrimaryFont(17px);
+    white-space: nowrap;
+    // min-height: 70px;
+    // padding: 16px 32px;
+
+    .navbar {
+        display: flex;
+        @include box(100%, $NAVBAR_HEIGHT);
+        background-color: $NAVBAR_BG;
+        padding: 0 32px;
+        transform: translateY(0);
+        top: 0;
+        left: 0;
+
+        .section {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            &:last-child {
+                flex-direction: row-reverse;
+            }
+
+            .logo {
+                // background-image: url('../../img/00.png');
+                // background-size: cover;
+                // background-position: center;
+                width: 50px;
+                @include TeamFont(28px);
+                display: grid;
+                place-items: center;
+                user-select: none;
+            }
+
+            .link {
+                font-weight: 600;
+                cursor: pointer;
+                margin-right: 16px;
+                transition: opacity 100ms;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}
