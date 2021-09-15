@@ -1,0 +1,41 @@
+// Google fonts
+@import url(https://fonts.googleapis.com/css2?family=Roboto&family=Major+Mono+Display&family=Graduate&display=swap);
+
+$heading1: 100px;
+$heading2: 50px;
+$disc: 24px;
+$heading1_mobile: 50px;
+$heading2_mobile: 25px;
+$disc_mobile: 12px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+// scroll bar
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #242424;
+    border-radius: 20px;
+}
+
+// selection
+::selection {
+    color: #fff;
+    background-color: #555;
+}
+
+body {
+    overflow: overlay;
+    font-family: sans-serif;
+    background-color: #000;
+}
