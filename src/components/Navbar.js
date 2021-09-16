@@ -37,9 +37,9 @@ const Navbar = () => {
 
                 <div className='section'>
                     <span className='link'>What is 00 Team</span>
+                    <span className='link'>Creators</span>
                     <span className='link'>Projects</span>
-                    <span className='link'>Team</span>
-                    <span className='link'>Job Request</span>
+                    <span className='link'>Wana Join?</span>
                 </div>
                 <div className='section'>
                     <span className='link'>Login</span>
