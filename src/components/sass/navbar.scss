@@ -40,12 +40,15 @@
             }
 
             .link {
+                text-decoration: none;
+                color: #fff;
                 font-weight: 600;
                 cursor: pointer;
                 margin-right: 16px;
                 transition: opacity 100ms;
 
                 &:hover {
+                    color: snow;
                     opacity: 0.6;
                 }
             }
