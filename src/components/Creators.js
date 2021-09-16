@@ -35,7 +35,7 @@ function Creators() {
         <div className='creators'>
             <div className='container'>
                 <div className='header'>
-                    <h1>Creators</h1>
+                    <h1 id="creators">Creators</h1>
                 </div>
                 <div className='cards'>
                     {creators_status.map((obj, index) => {

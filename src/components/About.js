@@ -8,7 +8,7 @@ function About() {
         <div className='about'>
             <div className='container'>
                 <div className='header'>
-                    <h1>what is 00 team</h1>
+                    <h1 id="00team">what is 00 team</h1>
                 </div>
                 <div className='discription'>
                     <p className='about-us-text'>
