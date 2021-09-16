@@ -36,10 +36,18 @@ const Navbar = () => {
                 {/* <div className='logo'>00</div> */}
 
                 <div className='section'>
-                    <span className='link'>What is 00 Team</span>
-                    <span className='link'>Creators</span>
-                    <span className='link'>Projects</span>
-                    <span className='link'>Wana Join?</span>
+                    <a className='link' href='#00team'>
+                        What is 00 Team
+                    </a>
+                    <a className='link' href='#creators'>
+                        Creators
+                    </a>
+                    <a className='link' href='#projects'>
+                        Projects
+                    </a>
+                    <a className='link' href='#join'>
+                        Wana Join?
+                    </a>
                 </div>
                 <div className='section'>
                     <span className='link'>Login</span>
