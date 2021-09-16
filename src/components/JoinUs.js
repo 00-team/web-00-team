@@ -39,10 +39,12 @@ function JoinUs() {
                                 <SiDiscord className='fab' />
                             </button>
                         </li>
-                            <p>or</p>
+                        <p>or</p>
                         <li className='social__item'>
                             <button className='social-btn gmail'>
-                                <div className='tooltip'>00team@gmail.com</div>
+                                <div className='tooltip'>
+                                    00.team.mail@gmail.com
+                                </div>
                                 <a
                                     href='mailto:mahmodrizband@gmail.com'
                                     target='_blank'
