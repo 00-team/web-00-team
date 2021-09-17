@@ -42,7 +42,7 @@ const Navbar = () => {
                     <a className='link' href='#creators'>
                         Creators
                     </a>
-                    <a className='link nikki' href='#projects'>
+                    <a className='link' href='#projects'>
                         Projects
                     </a>
                     <a className='link' href='#join'>
