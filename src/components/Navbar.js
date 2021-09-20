@@ -33,7 +33,7 @@ const Navbar = () => {
     return (
         <div className='navbar-container'>
             <nav className='navbar' style={StyleState}>
-                {/* <div className='logo'>00</div> */}
+                {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
                     <a className='link' href='#00team'>
