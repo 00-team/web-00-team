@@ -21,6 +21,7 @@
         z-index: 3;
 
         .section {
+            
             display: flex;
             align-items: center;
             width: 100%;
@@ -45,13 +46,14 @@
                 color: #fff;
                 font-weight: 600;
                 cursor: pointer;
-                margin-right: 16px;
+                margin-right: 30px;
                 transition: opacity 100ms;
 
                 &:hover {
                     color: snow;
                     opacity: 0.6;
                 }
+                
             }
         }
     }
