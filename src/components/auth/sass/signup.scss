@@ -1,0 +1,57 @@
+.sign-up {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        to bottom,
+        #040404,
+        #040404,
+        #121212,
+        #1a1a1a,
+        #121212,
+        #040404,
+        #040404
+    );
+
+    .card {
+        position: relative;
+        background-color: #121212;
+        height: 60vh;
+        width: 45vh;
+        border: 1px solid snow;
+        border-radius: 10px;
+        transition: all 500ms linear;
+
+        .team {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+            .team-img {
+                position: absolute;
+                top: 1vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 15%;
+                overflow: hidden;
+                img {
+                    border-radius: 50%;
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+        }
+
+        .inps {
+            margin-top: 30%;
+            height: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+}
