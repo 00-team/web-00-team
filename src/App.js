@@ -13,18 +13,11 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import JoinUs from './components/JoinUs'
 
-// auth
-import Signup from './components/auth/Signup'
-
-// firebase
-import firebase from 'firebase/compat/app'
 
 // style
 import './sass/base.scss'
 
 const App = () => {
-    console.log(firebase.SDK_VERSION)
-
     return (
         <Router>
             <Navbar />
@@ -39,9 +32,6 @@ const App = () => {
                     <Creators />
                     <Projects />
                     <JoinUs />
-                </Route>
-                <Route path='/signup'>
-                    <Signup />
                 </Route>
             </Switch>
         </Router>

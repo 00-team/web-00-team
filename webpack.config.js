@@ -57,5 +57,12 @@ module.exports = {
         port: 8000,
         hot: false,
         historyApiFallback: true,
+        client: {
+            logging: 'verbose',
+        },
+        devMiddleware: {
+            serverSideRender: true,
+            writeToDisk: true,
+        },
     },
 }

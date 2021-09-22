@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-// link 
+// link
 import { Link } from 'react-router-dom'
 
 // style
@@ -52,15 +52,7 @@ const Navbar = () => {
                         Wana Join?
                     </a>
                 </div>
-                <div className='section auth'>
-                    <Link to='/login' className='link'>
-                        <span>Login</span>
-                    </Link>
-
-                    <Link to='/signup' className='link'>
-                        <span>Sign Up</span>
-                    </Link>
-                </div>
+                <div className='section auth'></div>
             </nav>
         </div>
     )
