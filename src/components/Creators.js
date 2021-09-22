@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+// graphQl
+import { request } from 'graphql-request'
 
 // icons
 import { FiGithub } from 'react-icons/fi'
@@ -7,55 +10,70 @@ import { SiDiscord } from 'react-icons/si'
 // import css
 import './sass/creators.scss'
 
-// imgs
-import img_007 from '../img/007.png'
-import sadra from '../img/sadra.png'
+const Creators = () => {
+    const [Creators, setCreators] = useState([])
 
-var creators_status = [
-    {
-        img: sadra,
-        title: 'Sadra',
-        background: 'grey',
-        role: '00 Team Developer',
-        discription: "perfect people don't exist, so don't pretend to be one",
-        github: 'https://github.com/SadraTghvi',
-    },
-    {
-        img: img_007,
-        title: '007',
-        background: 'black',
-        role: '00 Team Developer',
-        discription: 'time of Madness has come',
-        github: 'https://github.com/i007c',
-    },
-]
+    useEffect(() => {
+        const GetCreators = async () => {
+            const { creators } = await request(
+                'https://api-eu-central-1.graphcms.com/v2/cktv4n6f20x1g01xzbimo2rr7/master',
+                `{
+                    creators(locales: en) {
+                        name
+                        bio
+                        duty
+                        id
+                        githubUsername
+                        picture {
+                            url
+                        }
+                        bgColor {
+                            hex
+                        }
+                    }
+                }`
+            )
 
-function Creators() {
+            setCreators(creators)
+        }
+
+        GetCreators()
+    }, [])
+
     return (
         <div className='creators'>
             <div className='container'>
                 <div className='header'>
-                    <h1 id="creators">Creators</h1>
+                    <h1 id='creators'>Creators</h1>
                 </div>
                 <div className='cards'>
-                    {creators_status.map((obj, index) => {
+                    {Creators.map((item, index) => {
                         return (
                             <div className='card' key={index}>
                                 <div
                                     className='creator-img'
-                                    style={{ backgroundColor: obj.background }}
+                                    style={{
+                                        backgroundColor: item.bgColor.hex,
+                                    }}
                                 >
-                                    <img src={obj.img} />
+                                    <img src={item.picture.url} />
                                 </div>
                                 <div className='text-container'>
-                                    <h1 className='title'>{obj.title}</h1>
-                                    <h4 className='role'>{obj.role}</h4>
-                                    <p className='discription'>
-                                        {obj.discription}
-                                    </p>
+                                    <h1 className='title'>{item.name}</h1>
+                                    {item.duty.map((role, index) => (
+                                        <h4 key={index} className='role'>
+                                            {role}
+                                        </h4>
+                                    ))}
+
+                                    <p className='discription'>{item.bio}</p>
                                     <div
                                         className='social github'
-                                        onClick={e => window.open(obj.github)}
+                                        onClick={e =>
+                                            window.open(
+                                                `https://github.com/${item.githubUsername}`
+                                            )
+                                        }
                                     >
                                         Github <FiGithub />
                                     </div>
