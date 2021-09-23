@@ -13,18 +13,22 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import About from './components/About'
 import Creators from './components/Creators'
-import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import JoinUs from './components/JoinUs'
 
+// layouts
+import Navbar from './layouts/Navbar'
+import Background from './layouts/Background'
+
 // style
 import './sass/base.scss'
-import './sass/font-imports.scss'
+import './sass/fonts/imports.scss'
 
 const App = () => {
     return (
         <Router>
             <Navbar />
+            <Background />
             <Switch>
                 <Route path='/' exact>
                     {/* Head Tags */}
@@ -32,8 +36,8 @@ const App = () => {
                     <HeroSection />
 
                     <About />
-                    <Creators />
                     <Projects />
+                    <Creators />
                     <JoinUs />
                 </Route>
             </Switch>
