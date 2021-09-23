@@ -10,7 +10,6 @@ import store from './redux/store'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 // components
-import Head from './components/Head'
 import HeroSection from './components/HeroSection'
 import About from './components/About'
 import Creators from './components/Creators'
@@ -26,7 +25,6 @@ const App = () => {
     return (
         <Router>
             <Navbar />
-            <Head />
             <Switch>
                 <Route path='/' exact>
                     {/* Head Tags */}

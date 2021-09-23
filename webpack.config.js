@@ -50,6 +50,7 @@ module.exports = {
             template: './src/template.html',
             inject: true,
             publicPath: '/',
+            favicon: './src/img/favicon.ico',
         }),
     ],
     devtool: 'source-map',
