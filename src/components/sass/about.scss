@@ -16,13 +16,13 @@ $disc_mobile: 12px;
     .container {
         height: 100%;
         color: #fff;
-        background: linear-gradient(
-                    to bottom,
-                    #121212,
-                    #121212,
-                    #121212,
-                    #1A1A1A
-                );
+        // background: linear-gradient(
+        //             to bottom,
+        //             #121212,
+        //             #121212,
+        //             #121212,
+        //             #1A1A1A
+        //         );
         display: flex;
         flex-direction: column;
         justify-content: space-around;

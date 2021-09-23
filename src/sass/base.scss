@@ -1,4 +1,4 @@
-@use './font-configs.scss' as *;
+@use './fonts/config.scss' as *;
 
 $heading1: 100px;
 $heading2: 50px;
@@ -36,6 +36,7 @@ $disc_mobile: 12px;
 body {
     overflow: overlay;
     background-color: #000;
+    position: relative;
 }
 
 // font setups
