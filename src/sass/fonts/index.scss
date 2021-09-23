@@ -1,4 +1,4 @@
-@use './font-configs.scss' as *;
+@use './config.scss' as *;
 
 @mixin MainFont($s: 18px) {
     font-size: $s;
