@@ -1,11 +1,12 @@
 @use '../../sass/variables.sass' as *;
 @use '../../sass/mixins.sass' as *;
+@use '../../sass/fonts.scss' as *;
 
 .navbar-container {
     @include box(100%, $NAVBAR_HEIGHT);
     background-color: $NAVBAR_BG;
     color: #fff;
-    @include PrimaryFont(17px);
+    @include MainFont(17px);
     white-space: nowrap;
     // min-height: 70px;
     // padding: 16px 32px;
@@ -15,13 +16,13 @@
         @include box(100%, $NAVBAR_HEIGHT);
         background-color: $NAVBAR_BG;
         padding: 0 32px;
-        transform: translateY(0);
         top: 0;
         left: 0;
-        z-index: 3;
+        right: 0;
+        z-index: 20;
+        position: fixed;
 
         .section {
-            
             display: flex;
             align-items: center;
             width: 100%;
@@ -35,7 +36,7 @@
                 // background-size: cover;
                 // background-position: center;
                 width: 50px;
-                @include TeamFont(28px);
+                @include DisplayFont(28px);
                 display: grid;
                 place-items: center;
                 user-select: none;
@@ -53,7 +54,6 @@
                     color: snow;
                     opacity: 0.6;
                 }
-                
             }
         }
     }
