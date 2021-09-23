@@ -1,0 +1,12 @@
+@use './font-configs.scss' as *;
+
+@mixin MainFont($s: 18px) {
+    font-size: $s;
+    font-family: $MAIN, $BACKUP;
+}
+
+@mixin DisplayFont($s: 18px) {
+    font-size: $s;
+    font-family: $DISPLAY, $BACKUP;
+    text-transform: uppercase;
+}

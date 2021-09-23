@@ -1,6 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// redux stuff
+import { Provider as ReduxProvider } from 'react-redux'
+import store from './redux/store'
+
+
 // router
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
@@ -13,9 +18,9 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import JoinUs from './components/JoinUs'
 
-
 // style
 import './sass/base.scss'
+import './sass/font-imports.scss'
 
 const App = () => {
     return (
@@ -38,6 +43,14 @@ const App = () => {
     )
 }
 
-export default App
+const Root = () => {
+    return (
+        <ReduxProvider store={store}>
+            <App />
+        </ReduxProvider>
+    )
+}
 
-ReactDOM.render(<App />, document.getElementById('root'))
+// export default App
+
+ReactDOM.render(<Root />, document.getElementById('root'))
