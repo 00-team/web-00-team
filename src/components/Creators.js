@@ -1,44 +1,30 @@
 import React, { useEffect, useState } from 'react'
 
-// graphQl
-import { request } from 'graphql-request'
+// redux stuff
+import { useDispatch, useSelector } from 'react-redux'
+import loadCreators from '../redux/actions/data/loadCreators'
 
 // icons
 import { FiGithub } from 'react-icons/fi'
-import { SiDiscord } from 'react-icons/si'
 
 // import css
 import './sass/creators.scss'
 
 const Creators = () => {
-    const [Creators, setCreators] = useState([])
+    const CreatorsState = useSelector(state => state.Creators)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        const GetCreators = async () => {
-            const { creators } = await request(
-                'https://api-eu-central-1.graphcms.com/v2/cktv4n6f20x1g01xzbimo2rr7/master',
-                `{
-                    creators(locales: en) {
-                        name
-                        bio
-                        duty
-                        id
-                        githubUsername
-                        picture {
-                            url
-                        }
-                        bgColor {
-                            hex
-                        }
-                    }
-                }`
-            )
+        dispatch(loadCreators())
+    }, [dispatch])
 
-            setCreators(creators)
-        }
+    if (CreatorsState.error) {
+        return <span>Error</span>
+    }
 
-        GetCreators()
-    }, [])
+    if (CreatorsState.loading) {
+        return <span>Loading...</span>
+    }
 
     return (
         <div className='creators'>
@@ -47,7 +33,7 @@ const Creators = () => {
                     <h1 id='creators'>Creators</h1>
                 </div>
                 <div className='cards'>
-                    {Creators.map((item, index) => {
+                    {CreatorsState.creators.map((item, index) => {
                         return (
                             <div className='card' key={index}>
                                 <div

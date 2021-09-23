@@ -1,5 +1,4 @@
-// Google fonts
-@import url(https://fonts.googleapis.com/css2?family=Roboto&family=Major+Mono+Display&family=Graduate&display=swap);
+@use './font-configs.scss' as *;
 
 $heading1: 100px;
 $heading2: 50px;
@@ -36,6 +35,18 @@ $disc_mobile: 12px;
 
 body {
     overflow: overlay;
-    font-family: sans-serif;
     background-color: #000;
+}
+
+// font setups
+body {
+    font-family: $MAIN, $BACKUP;
+}
+
+em {
+    font-family: $ITALIC, $BACKUP;
+}
+
+strong {
+    font-family: $BOLD, $BACKUP;
 }
