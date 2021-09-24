@@ -24,10 +24,9 @@ import './sass/fonts/imports.scss'
 
 const App = () => {
     return (
-        <Router>
+        <>
             <Navbar />
 
-            {/* <div className='main-content'> */}
             <Switch>
                 <Route path='/' exact>
                     <HeroSection />
@@ -37,15 +36,16 @@ const App = () => {
                     <JoinUs />
                 </Route>
             </Switch>
-            {/* </div> */}
-        </Router>
+        </>
     )
 }
 
 const Root = () => {
     return (
         <ReduxProvider store={store}>
-            <App />
+            <Router>
+                <App />
+            </Router>
         </ReduxProvider>
     )
 }
