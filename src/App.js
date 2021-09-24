@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import store from './redux/store'
 
-
 // router
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
@@ -18,7 +17,6 @@ import JoinUs from './components/JoinUs'
 
 // layouts
 import Navbar from './layouts/Navbar'
-import Background from './layouts/Background'
 
 // style
 import './sass/base.scss'
@@ -28,19 +26,18 @@ const App = () => {
     return (
         <Router>
             <Navbar />
-            <Background />
+
+            {/* <div className='main-content'> */}
             <Switch>
                 <Route path='/' exact>
-                    {/* Head Tags */}
-
                     <HeroSection />
-
                     <About />
                     <Projects />
                     <Creators />
                     <JoinUs />
                 </Route>
             </Switch>
+            {/* </div> */}
         </Router>
     )
 }
