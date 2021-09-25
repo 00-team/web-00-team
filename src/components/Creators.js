@@ -27,10 +27,10 @@ const Creators = () => {
     }
 
     return (
-        <div className='creators'>
+        <div className='creators' id='creators'>
             <div className='container'>
                 <div className='header'>
-                    <h1 id='creators'>Creators</h1>
+                    <h1>Creators</h1>
                 </div>
                 <div className='cards'>
                     {CreatorsState.creators.map((item, index) => {

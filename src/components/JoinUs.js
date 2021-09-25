@@ -12,10 +12,10 @@ import { CgMail } from 'react-icons/cg'
 
 function JoinUs() {
     return (
-        <div className='join-us'>
+        <div className='join-us' id='join'>
             <div className='container'>
                 <div className='header'>
-                    <h1 id="join">Wana Join?</h1>
+                    <h1>Wana Join?</h1>
                 </div>
                 <h2>contact us through:</h2>
                 <div className='join'>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 // markdowm
-import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx'
 // reudx
 import { useSelector, useDispatch } from 'react-redux'
 import loadBase from '../redux/actions/data/loadBase'
@@ -17,17 +17,18 @@ function About() {
         dispatch(loadBase())
     }, [dispatch])
 
-    if (!BaseState || !BaseState.about || !BaseState.about.markdown) return <></>
+    if (!BaseState || !BaseState.about || !BaseState.about.markdown)
+        return <></>
 
     return (
-        <div className='about'>
+        <div className='about' id='00team'>
             <div className='container'>
                 <div className='header'>
-                    <h1 id='00team'>what is 00 team</h1>
+                    <h1>what is 00 team</h1>
                 </div>
                 <div className='discription'>
                     <div className='about-us-text'>
-                        <Markdown >{BaseState.about.markdown}</Markdown>
+                        <Markdown>{BaseState.about.markdown}</Markdown>
                     </div>
                 </div>
             </div>
