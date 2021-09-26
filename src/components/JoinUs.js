@@ -39,7 +39,6 @@ function JoinUs() {
                                 <SiDiscord className='fab' />
                             </button>
                         </li>
-                        <p>or</p>
                         <li className='social__item'>
                             <button className='social-btn gmail'>
                                 <div className='tooltip'>
