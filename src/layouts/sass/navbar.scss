@@ -25,6 +25,7 @@
         .section {
             display: flex;
             align-items: center;
+            justify-content: space-around;
             width: 100%;
 
             &:last-child {
@@ -43,6 +44,10 @@
             }
 
             .link {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
                 text-decoration: none;
                 color: #fff;
                 font-weight: 600;
@@ -53,6 +58,11 @@
                 &:hover {
                     color: snow;
                     opacity: 0.6;
+                }
+
+                .icon{
+                    margin-left: 0.5rem;
+                    margin-top: 0.4rem;
                 }
             }
         }
