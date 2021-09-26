@@ -88,7 +88,7 @@ $disc_mobile: 12px;
             .discord:hover span,
             .discord:hover .tooltip,
             .discord:hover .tooltip:before {
-                background: #3b5999;
+                background: #2C2F33;
             }
 
             .gmail:hover span,
@@ -116,9 +116,9 @@ $disc_mobile: 12px;
                     z-index: 1;
                     background: transparent;
                     border: none;
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 50%;
+                    width: 90px;
+                    height: 90px;
+                    // border-radius: 50%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -137,7 +137,7 @@ $disc_mobile: 12px;
 
                     &::before {
                         content: '';
-                        border-radius: 50%;
+                        border-radius: 8px;
                         width: 100%;
                         height: 100%;
                         position: absolute;
@@ -180,34 +180,29 @@ $disc_mobile: 12px;
                                 ),
                                 #bd081c;
                         }
-                        &::after {
-                            filter: blur(9px);
-                            background: radial-gradient(#fff 20%, #bd081c 50%);
-                            box-shadow: 0 0 10px rgba(#bd081c, 0.5);
-                        }
+                        // &::after {
+                        //     filter: blur(9px);
+                        //     background: radial-gradient(#fff 20%, #bd081c 50%);
+                        //     box-shadow: 0 0 10px rgba(#bd081c, 0.5);
+                        // }
                     }
 
                     &.discord {
                         &::before {
                             background: linear-gradient(
                                     to bottom,
-                                    rgba(255, 255, 255, 0.2),
-                                    rgba(#000, 0.2)
-                                ),
-                                linear-gradient(
-                                    -35deg,
-                                    #2d343a 30%,
-                                    #0e0f0f 75%
-                                );
+                                    #404EED,
+                                    #5865F2
+                                )      
                         }
                         &::after {
                             filter: blur(7px);
-                            background: radial-gradient(
-                                #fff 20%,
-                                #23272a 50%,
-                                #23272a 70%
-                            );
-                            box-shadow: 0 0 10px rgba(#000000, 0.5);
+                            // background: radial-gradient(
+                            //     #fff 20%,
+                            //     #23272a 50%,
+                            //     #23272a 70%
+                            // );
+                            // box-shadow: 0 0 10px rgba(#000000, 0.5);
                         }
                     }
                 }
