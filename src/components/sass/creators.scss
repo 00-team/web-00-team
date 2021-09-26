@@ -56,10 +56,11 @@ $disc_mobile: 12px;
                     img {
                         object-fit: cover;
                         height: 65%;
+                        width: 25%;
                         border-radius: 50%;
                         position: absolute;
                         bottom: -25%;
-                        border: 5px solid #1a1a1a;
+                        border: 5px solid #121212;
                         // padding: 0.2rem;
                         z-index: 1;
                     }
