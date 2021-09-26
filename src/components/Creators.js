@@ -52,7 +52,7 @@ const Creators = () => {
                                         </h4>
                                     ))}
 
-                                    <p className='discription'>{item.bio}</p>
+                                    <p className='description'>{item.bio}</p>
                                     <div
                                         className='social github'
                                         onClick={e =>
