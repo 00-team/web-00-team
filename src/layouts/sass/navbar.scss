@@ -44,6 +44,7 @@
             }
 
             .link {
+                position: relative;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -55,9 +56,27 @@
                 margin-right: 30px;
                 transition: opacity 100ms;
 
-                &:hover {
+                &:hover::after {
                     color: snow;
                     opacity: 0.6;
+                    transition-duration: .4s;
+                    transform: scaleX(1);
+                    transform-origin: left center;
+                }
+
+                
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #fff;
+                    transform-origin: right center;
+                    transform: scaleX(0);
+                    transition: transform .6s cubic-bezier(.19,1,.22,1),-webkit-transform .6s cubic-bezier(.19,1,.22,1);
                 }
 
                 .icon{
