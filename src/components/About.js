@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 // markdowm
 import Markdown from 'markdown-to-jsx'
@@ -9,13 +9,22 @@ import loadBase from '../redux/actions/data/loadBase'
 // import scss
 import './sass/about.scss'
 
+// type 
+import { SCROLLTOP_ABOUT } from '../redux/reducers/data/types'
+
 function About() {
     const dispatch = useDispatch()
     const BaseState = useSelector(state => state.Base.base)
 
+    const title = useRef()
+
+    const print = () =>{
+        console.log(title)
+    }
+
     useEffect(() => {
-        dispatch(loadBase())
-    }, [dispatch])
+        print()
+    }, [title])
 
     if (!BaseState || !BaseState.about || !BaseState.about.markdown)
         return <></>
@@ -24,7 +33,7 @@ function About() {
         <div className='about' id='00team'>
             <div className='container'>
                 <div className='header'>
-                    <h1>what is 00 team</h1>
+                    <h1 ref={title}>what is 00 team</h1>
                 </div>
                 <div className='description'>
                     <div className='about-us-text'>
