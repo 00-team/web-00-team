@@ -34,6 +34,7 @@ const LoadingStatus = () => {
 }
 
 const App = () => {
+    
     let loadings = LoadingStatus()
 
     const scrollTop = useSelector(state => state.scrollTop)
