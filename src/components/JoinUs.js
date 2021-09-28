@@ -1,4 +1,7 @@
-import React from 'react'
+import React,{useEffect, useRef} from 'react'
+
+// types 
+import { SCROLLTOP_JOIN } from '../redux/reducers/data/types'
 
 // import css
 import './sass/joinus.scss'
@@ -10,12 +13,33 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { BiPhoneCall } from 'react-icons/bi'
 import { CgMail } from 'react-icons/cg'
 
+// redux 
+import { useDispatch, useSelector } from 'react-redux'
+
 function JoinUs() {
+    const scrollTopState = useSelector(state => state.scrollTop)
+
+    const dispatch = useDispatch()
+
+    const title = useRef()
+
+    const getScrollTop = () => {
+        const scrollTop = title.current.scrollTop
+        const offSet = title.current.offsetTop
+        const result = offSet - scrollTop
+
+        dispatch({ type: SCROLLTOP_JOIN, payload: result })
+    }
+
+    useEffect(() => {
+        getScrollTop()
+    }, [])
+
     return (
         <div className='join-us' id='join'>
             <div className='container'>
                 <div className='header'>
-                    <h1>Wana Join?</h1>
+                    <h1 ref={title}>Wana Join?</h1>
                 </div>
                 <h2>contact us through:</h2>
                 <div className='join'>
