@@ -1,0 +1,173 @@
+.slider {
+    margin: 3rem;
+
+    transition: translateX ease-in-out 0.4s;
+    position: relative;
+    top: 50%;
+    &.center {
+        width: 80%;
+        z-index: 1;
+        // left: 50%;
+    }
+    &.prev {
+        left: 0;
+        margin-top: 10vh;
+        width: 40%;
+        // transform: translateX(65px);
+    }
+    &.next {
+        right: 0;
+        margin-top: 10vh;
+        width: 40%;
+        // transform: translateX(-65px);
+    }
+
+    .btns {
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        z-index: 10;
+        &.prev {
+            left: 0;
+        }
+        &.next {
+            right: 0;
+        }
+        @media only screen and (max-width: 960px) {
+            & {
+                top: 30%;
+            }
+            &.prev {
+                left: -15%;
+            }
+            &.next {
+                right: -15%;
+            }
+        }
+        @media only screen and (max-width: 1024px) {
+            & {
+                top: 30%;
+            }
+            &.prev {
+                left: -15%;
+            }
+            &.next {
+                right: -15%;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        & {
+            margin: 0;
+            padding: 3rem 0;
+        }
+    }
+
+    .container {
+        // min-width: 800px;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        height: 51.5vh;
+        margin: 0 auto;
+
+        .card-slide {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            flex-shrink: 0;
+            border-radius: 30px 30px;
+            overflow: hidden;
+            transition: all 450ms ease 0s;
+            visibility: hidden;
+
+            .overlay {
+                position: absolute;
+                opacity: 0.7;
+                background-color: #000;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                transition: opacity 300ms ease;
+
+                &:hover {
+                    opacity: 0;
+                }
+            }
+
+            &.previous {
+                z-index: 1;
+                // transform: translateX(-450px) translateX(25%) scale(0.85);
+                transform: translateX(-20%) scale(0.85);
+                visibility: visible;
+                cursor: pointer;
+            }
+
+            &.next {
+                z-index: 1;
+                // transform: translateX(450px) translateX(-25%) scale(0.85);
+                transform: translateX(20%) scale(0.85);
+                visibility: visible;
+                cursor: pointer;
+            }
+
+            &.current {
+                z-index: 2;
+                visibility: visible;
+
+                &:hover {
+                    .discription {
+                        opacity: 1;
+                    }
+                }
+
+                .overlay {
+                    opacity: 0;
+                }
+            }
+
+            @media only screen and (max-width: 1024px) {
+                & {
+                    width: 70vw;
+                    height: 50%;
+                }
+            }
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            .img {
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+            .discription {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                color: #fff;
+                background: linear-gradient(
+                    to right,
+                    #3c3b3f,
+                    rgb(60, 59, 63, 0.3),
+                    #3c3b3f
+                );
+                transition: opacity 0.4s ease-in-out;
+                padding: 10px 15px 15px;
+            }
+        }
+        @media only screen and (max-width: 1200px) {
+            .card-slide.current .discription {
+                opacity: 1;
+            }
+        }
+    }
+}

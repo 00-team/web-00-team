@@ -1,19 +1,65 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+
+// redux stuff
+import { useDispatch, useSelector } from 'react-redux'
+import loadProjects from '../redux/actions/data/loadProjects'
+import ProjectsSlider from './elements/ProjectsSlider'
+
+// types 
+import { SCROLLTOP_PROJECTS } from '../redux/reducers/data/types'
 
 // import css
 import './sass/projects.scss'
 
 function Projects() {
-    return (
-        <div className='projects' id='projects'>
-            <div className='container'>
-                <div className='header'>
-                    <h1>Projects</h1>
+    const ProjectsState = useSelector(state => state.projects)
+    const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     console.log(ProjectsState)
+    // }, [ProjectsState])
+
+
+    const title = useRef()
+
+    const getScrollTop = () => {
+        const scrollTop = title.current.scrollTop
+        const offSet = title.current.offsetTop
+        const result = offSet - scrollTop
+
+        dispatch({ type: SCROLLTOP_PROJECTS, payload: result })
+    }
+
+    useEffect(() => {
+        getScrollTop()
+    }, [])
+
+    if (ProjectsState.error){
+        return <span>Error Acquired</span>
+    }
+
+    if (ProjectsState.loading){
+        return <span>Loading ... </span>
+    }
+        return (
+            <div className='projects' id='projects'>
+                <div className='container'>
+                    <div className='header'>
+                        <h1 ref={title}>Projects</h1>
+                    </div>
+                    <ProjectsSlider images={ProjectsState} />
+                    {/* {ProjectsState.projects.map((item,index) =>{
+                        return(
+                            <div key={index} className="project">
+                                <div className="title">{item.title}</div>
+                                <div className="descript"> {item.descript} </div>
+                                <div className="preview"><img src={item.picture.url} /> </div>
+                            </div>
+                        )
+                    })} */}
                 </div>
-                <div className='project'>projects gonna be here</div>
             </div>
-        </div>
-    )
+        )
 }
 
 export default Projects
