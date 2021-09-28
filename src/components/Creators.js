@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,10 +9,27 @@ import { FiGithub } from 'react-icons/fi'
 
 // import css
 import './sass/creators.scss'
+import { SCROLLTOP_CREATORS } from '../redux/reducers/data/types'
 
 const Creators = () => {
     const CreatorsState = useSelector(state => state.Creators)
     const dispatch = useDispatch()
+
+   const scrollTopState = useSelector(state => state.scrollTop)
+
+   const title = useRef()
+
+   const getScrollTop = () => {
+       const scrollTop = title.current.scrollTop
+       const offSet = title.current.offsetTop
+       const result = offSet - scrollTop
+
+       dispatch({ type: SCROLLTOP_CREATORS, payload: result })
+   }
+
+   useEffect(() => {
+       getScrollTop()
+   }, [])
 
     useEffect(() => {
         dispatch(loadCreators())
@@ -30,7 +47,7 @@ const Creators = () => {
         <div className='creators' id='creators'>
             <div className='container'>
                 <div className='header'>
-                    <h1>Creators</h1>
+                    <h1 ref={title}>Creators</h1>
                 </div>
                 <div className='cards'>
                     {CreatorsState.creators.map((item, index) => {
