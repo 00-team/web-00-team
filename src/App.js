@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 // redux stuff
@@ -35,6 +35,12 @@ const LoadingStatus = () => {
 
 const App = () => {
     let loadings = LoadingStatus()
+
+    const scrollTop = useSelector(state => state.scrollTop)
+
+    useEffect(() => {
+        console.log(scrollTop)
+    }, [scrollTop])
 
     return (
         <>
