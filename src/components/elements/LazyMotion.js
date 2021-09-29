@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-
-// css 
-import "./scss/lazymotion.scss"
-
-// frame motion 
 import { motion, useAnimation } from 'framer-motion'
 
 function useOnScreen(ref, rootMargin = '0px') {
     const [isIntersecting, setIntersecting] = useState(false)
 
     useEffect(() => {
+        let currentRef = null
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIntersecting(entry.isIntersecting)
@@ -19,12 +15,13 @@ function useOnScreen(ref, rootMargin = '0px') {
             }
         )
         if (ref.current) {
-            observer.observe(ref.current)
+            currentRef = ref.current
+            observer.observe(currentRef)
         }
         return () => {
-            observer.unobserve(ref.current)
+            observer.unobserve(currentRef)
         }
-    }, [])
+    }, [ref, rootMargin])
 
     return isIntersecting
 }
