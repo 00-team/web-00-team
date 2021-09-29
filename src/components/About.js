@@ -12,22 +12,36 @@ import './sass/about.scss'
 // type 
 import { SCROLLTOP_ABOUT } from '../redux/reducers/data/types'
 
-function About() {
-    const dispatch = useDispatch()
-    const BaseState = useSelector(state => state.Base.base)
+const About = () => {
+    // load about text
 
+    // const BaseState = useSelector(state => state.Base.base)
+
+    
+    // useEffect(() => {
+    //     dispatch(loadBase())
+    // }, [])
+    
+    
+    // if (!BaseState || !BaseState.about || !BaseState.about.markdown)
+    //     return <></>
+    
+    // ref for scroll redux
+    
     const title = useRef()
+    const dispatch = useDispatch()
 
-    const print = () =>{
-        console.log(title)
+    const getScrollTop = () => {
+        const scrollTop = title.current.scrollTop
+        const offSet = title.current.offsetTop
+        const result = offSet - scrollTop
+
+        dispatch({ type: SCROLLTOP_ABOUT, payload: result })
     }
 
     useEffect(() => {
-        print()
-    }, [title])
-
-    if (!BaseState || !BaseState.about || !BaseState.about.markdown)
-        return <></>
+        getScrollTop()
+    }, [])
 
     return (
         <div className='about' id='00team'>
@@ -37,7 +51,24 @@ function About() {
                 </div>
                 <div className='description'>
                     <div className='about-us-text'>
-                        <Markdown>{BaseState.about.markdown}</Markdown>
+                        {/* <Markdown>{BaseState.about.markdown}</Markdown> */}
+                        <p>
+                            00 Team is an Iranian, organized company that
+                            started its work in 2019. <br />
+                            We have several achievements on Fivem Scripts
+                            development and has worked mostly on Web
+                            Development.
+                            <br />
+                            Some of our works are for example writing HUDs,
+                            Score Board Menus, and so on.
+                            <br />
+                            our customers were many popular Fivem Iranian
+                            servers like: "Phonixe rp","moonlight rp", "justice
+                            city",...
+                            <br />
+                            Nevertheless, You Can Check Out Our Website, We Have
+                            All Of Our Projects Organized There For You. <br />
+                        </p>
                     </div>
                 </div>
             </div>
