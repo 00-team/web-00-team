@@ -4,6 +4,9 @@ import React, { useEffect, useState,useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import loadCreators from '../redux/actions/data/loadCreators'
 
+// lazy motion 
+import LazyMotion from './elements/LazyMotion'
+
 // icons
 import { FiGithub } from 'react-icons/fi'
 
@@ -46,9 +49,11 @@ const Creators = () => {
     return (
         <div className='creators' id='creators'>
             <div className='container'>
+            <LazyMotion>
                 <div className='header'>
                     <h1 ref={title}>Creators</h1>
                 </div>
+                </LazyMotion>
                 <div className='cards'>
                     {CreatorsState.creators.map((item, index) => {
                         return (
