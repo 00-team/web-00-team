@@ -59,16 +59,17 @@ const Navbar = () => {
                             <BsQuestionSquareFill size={28} />
                         </div>
                     </a>
-                    <a className='link' onClick={scrollToCreators}>
-                        Creators{' '}
-                        <div className='icon'>
-                            <GiTeamIdea size={28} />
-                        </div>
-                    </a>
+
                     <a className='link' onClick={scrollToProjects}>
                         Projects{' '}
                         <div className='icon'>
                             <GiFilmProjector size={28} />
+                        </div>
+                    </a>
+                    <a className='link' onClick={scrollToCreators}>
+                        Creators{' '}
+                        <div className='icon'>
+                            <GiTeamIdea size={28} />
                         </div>
                     </a>
                     <a className='link' onClick={scrollToJoin}>
