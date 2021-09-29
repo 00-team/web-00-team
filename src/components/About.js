@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 
+// lazy motion 
+import LazyMotion from './elements/LazyMotion'
+
 // markdowm
 import Markdown from 'markdown-to-jsx'
 // reudx
@@ -46,9 +49,12 @@ const About = () => {
     return (
         <div className='about' id='00team'>
             <div className='container'>
-                <div className='header'>
-                    <h1 ref={title}>what is 00 team</h1>
-                </div>
+                <LazyMotion>
+                    <div className='header'>
+                        <h1 ref={title}>what is 00 team</h1>
+                    </div>
+                </LazyMotion>
+
                 <div className='description'>
                     <div className='about-us-text'>
                         {/* <Markdown>{BaseState.about.markdown}</Markdown> */}
