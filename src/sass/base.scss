@@ -33,6 +33,10 @@ $disc_mobile: 12px;
     background-color: #555;
 }
 
+html,body{
+    scroll-behavior: smooth;
+}
+
 body {
     overflow: overlay;
     background-color: #000;
