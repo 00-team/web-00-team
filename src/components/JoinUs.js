@@ -1,6 +1,9 @@
-import React,{useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 
-// types 
+// lazy motion
+import LazyMotion from './elements/LazyMotion'
+
+// types
 import { SCROLLTOP_JOIN } from '../redux/reducers/data/types'
 
 // import css
@@ -13,7 +16,7 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { BiPhoneCall } from 'react-icons/bi'
 import { CgMail } from 'react-icons/cg'
 
-// redux 
+// redux
 import { useDispatch, useSelector } from 'react-redux'
 
 function JoinUs() {
@@ -38,9 +41,11 @@ function JoinUs() {
     return (
         <div className='join-us' id='join'>
             <div className='container'>
-                <div className='header'>
-                    <h1 ref={title}>Wana Join?</h1>
-                </div>
+                <LazyMotion>
+                    <div className='header'>
+                        <h1 ref={title}>Wana Join?</h1>
+                    </div>
+                </LazyMotion>
                 <h2>contact us through:</h2>
                 <div className='join'>
                     {/*<div className='gmail'>

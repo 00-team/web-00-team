@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 
+// lazy motion 
+import LazyMotion from './elements/LazyMotion'
+
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
 import loadProjects from '../redux/actions/data/loadProjects'
@@ -44,9 +47,11 @@ function Projects() {
         return (
             <div className='projects' id='projects'>
                 <div className='container'>
-                    <div className='header'>
-                        <h1 ref={title}>Projects</h1>
-                    </div>
+                    <LazyMotion>
+                        <div className='header'>
+                            <h1 ref={title}>Projects</h1>
+                        </div>
+                    </LazyMotion>
                     <ProjectsSlider images={ProjectsState} />
                     {/* {ProjectsState.projects.map((item,index) =>{
                         return(
