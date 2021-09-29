@@ -21,20 +21,27 @@ const Navbar = () => {
 
     const scrollToProjects = () =>{
         window.scrollTo({
-            top: elementsScrollTop.projects - 70,
+            top: elementsScrollTop.projects - 100,
             behavior: 'smooth',
         })
     }
     const scrollToCreators= () =>{
         window.scrollTo({
-            top: elementsScrollTop.creators - 70,
+            top: elementsScrollTop.creators - 100,
             behavior: 'smooth',
         })
     }
     
     const scrollToJoin = () => {
         window.scrollTo({
-            top: elementsScrollTop.join - 70,
+            top: elementsScrollTop.join - 100,
+            behavior: 'smooth',
+        })
+    }
+
+    const scrollToAbout = () => {
+        window.scrollTo({
+            top: elementsScrollTop.about - 100,
             behavior: 'smooth',
         })
     }
@@ -45,7 +52,7 @@ const Navbar = () => {
                 {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
-                    <a className='link' >
+                    <a className='link' onClick={scrollToAbout}>
                         What is 00 Team{' '}
                         <div className='icon'>
                             {' '}
