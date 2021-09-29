@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
+// redux 
+import { useSelector } from 'react-redux';
+
 // link
 import { Link } from 'react-router-dom'
 
@@ -13,32 +16,55 @@ import { FaHandshake } from 'react-icons/fa'
 import './sass/navbar.scss'
 
 const Navbar = () => {
+
+    const elementsScrollTop = useSelector(state => state.scrollTop)
+
+    const scrollToProjects = () =>{
+        window.scrollTo({
+            top: elementsScrollTop.projects - 70,
+            behavior: 'smooth',
+        })
+    }
+    const scrollToCreators= () =>{
+        window.scrollTo({
+            top: elementsScrollTop.creators - 70,
+            behavior: 'smooth',
+        })
+    }
+    
+    const scrollToJoin = () => {
+        window.scrollTo({
+            top: elementsScrollTop.join - 70,
+            behavior: 'smooth',
+        })
+    }
+
     return (
         <div className='navbar-container'>
             <nav className='navbar'>
                 {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
-                    <a className='link' href='#00team'>
+                    <a className='link' >
                         What is 00 Team{' '}
                         <div className='icon'>
                             {' '}
                             <BsQuestionSquareFill size={28} />
                         </div>
                     </a>
-                    <a className='link' href='#creators'>
+                    <a className='link' onClick={scrollToCreators}>
                         Creators{' '}
                         <div className='icon'>
                             <GiTeamIdea size={28} />
                         </div>
                     </a>
-                    <a className='link' href='#projects'>
+                    <a className='link' onClick={scrollToProjects}>
                         Projects{' '}
                         <div className='icon'>
                             <GiFilmProjector size={28} />
                         </div>
                     </a>
-                    <a className='link' href='#join'>
+                    <a className='link' onClick={scrollToJoin}>
                         Wana Join?{' '}
                         <div className='icon'>
                             <FaHandshake size={28} />
