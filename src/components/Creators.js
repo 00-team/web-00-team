@@ -48,11 +48,11 @@ const Creators = () => {
 
     return (
         <div className='creators' id='creators'>
-            <div className='container'>
-            <LazyMotion>
-                <div className='header'>
-                    <h1 ref={title}>Creators</h1>
-                </div>
+            <div className='container' ref={title}>
+                <LazyMotion>
+                    <div className='header'>
+                        <h1>Creators</h1>
+                    </div>
                 </LazyMotion>
                 <div className='cards'>
                     {CreatorsState.creators.map((item, index) => {

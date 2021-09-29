@@ -48,10 +48,10 @@ const About = () => {
 
     return (
         <div className='about' id='00team'>
-            <div className='container'>
+            <div className='container' ref={title}>
                 <LazyMotion>
                     <div className='header'>
-                        <h1 ref={title}>what is 00 team</h1>
+                        <h1>what is 00 team</h1>
                     </div>
                 </LazyMotion>
 

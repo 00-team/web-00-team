@@ -40,10 +40,10 @@ function JoinUs() {
 
     return (
         <div className='join-us' id='join'>
-            <div className='container'>
+            <div className='container' ref={title}>
                 <LazyMotion>
                     <div className='header'>
-                        <h1 ref={title}>Wana Join?</h1>
+                        <h1>Wana Join?</h1>
                     </div>
                 </LazyMotion>
                 <h2>contact us through:</h2>

@@ -18,11 +18,6 @@ function Projects() {
     const ProjectsState = useSelector(state => state.projects)
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     console.log(ProjectsState)
-    // }, [ProjectsState])
-
-
     const title = useRef()
 
     const getScrollTop = () => {
@@ -46,10 +41,10 @@ function Projects() {
     }
         return (
             <div className='projects' id='projects'>
-                <div className='container'>
+                <div className='container' ref={title}>
                     <LazyMotion>
                         <div className='header'>
-                            <h1 ref={title}>Projects</h1>
+                            <h1>Projects</h1>
                         </div>
                     </LazyMotion>
                     <ProjectsSlider images={ProjectsState} />
