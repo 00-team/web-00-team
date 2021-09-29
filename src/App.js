@@ -37,11 +37,6 @@ const App = () => {
     
     let loadings = LoadingStatus()
 
-    const scrollTop = useSelector(state => state.scrollTop)
-
-    useEffect(() => {
-        console.log(scrollTop)
-    }, [scrollTop])
 
     return (
         <>
