@@ -1,15 +1,5 @@
-@mixin box($w, $h: $w) {
-    width: $w;
-    height: $h;
-}
-
-$heading1: 100px;
-$heading2: 50px;
-$disc: 24px;
-$heading1_mobile: 50px;
-$heading2_mobile: 25px;
-$disc_mobile: 12px;
-
+@use '../../sass/mixins.sass' as *;
+@use '../../sass/variables.sass' as *;
 
 .hero-section {
     @include box(100%, 100vh);

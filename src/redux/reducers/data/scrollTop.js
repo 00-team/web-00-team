@@ -1,4 +1,9 @@
-import { SCROLLTOP_ABOUT,SCROLLTOP_CREATORS,SCROLLTOP_JOIN,SCROLLTOP_PROJECTS } from "./types"
+import {
+    SCROLLTOP_ABOUT,
+    SCROLLTOP_CREATORS,
+    SCROLLTOP_JOIN,
+    SCROLLTOP_PROJECTS,
+} from './types'
 
 const initState = {
     about: 0,
@@ -7,30 +12,29 @@ const initState = {
     join: 0,
 }
 
-export default function(state= initState , { type, payload }) {
-    switch(type){
+export default function (state = initState, { type, payload }) {
+    switch (type) {
         case SCROLLTOP_ABOUT:
-            return{
+            return {
                 ...state,
                 about: payload,
             }
         case SCROLLTOP_PROJECTS:
-            return{
+            return {
                 ...state,
                 projects: payload,
             }
         case SCROLLTOP_CREATORS:
-            return{
+            return {
                 ...state,
                 creators: payload,
             }
         case SCROLLTOP_JOIN:
-            return{
+            return {
                 ...state,
                 join: payload,
             }
         default:
             return state
     }
-
 }

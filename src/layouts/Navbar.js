@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // icons
-import { GrProjects } from 'react-icons/gr'
 import { BsQuestionSquareFill } from 'react-icons/bs'
 import { GiTeamIdea, GiFilmProjector } from 'react-icons/gi'
 import { FaHandshake } from 'react-icons/fa'
@@ -16,64 +15,34 @@ import { FaHandshake } from 'react-icons/fa'
 import './sass/navbar.scss'
 
 const Navbar = () => {
-    const elementsScrollTop = useSelector(state => state.scrollTop)
-
-    const scrollToProjects = () => {
-        window.scrollTo({
-            top: elementsScrollTop.projects,
-            behavior: 'smooth',
-        })
-    }
-    const scrollToCreators = () => {
-        window.scrollTo({
-            top: elementsScrollTop.creators,
-            behavior: 'smooth',
-        })
-    }
-
-    const scrollToJoin = () => {
-        window.scrollTo({
-            top: elementsScrollTop.join,
-            behavior: 'smooth',
-        })
-    }
-
-    const scrollToAbout = () => {
-        window.scrollTo({
-            top: elementsScrollTop.about,
-            behavior: 'smooth',
-        })
-    }
-
     return (
         <div className='navbar-container'>
             <nav className='navbar'>
                 {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
-                    <a className='link' onClick={scrollToAbout}>
-                        What is 00 Team{' '}
-                        <div className='icon'>
-                            {' '}
-                            <BsQuestionSquareFill size={28} />
+                    <a className='link'>
+                        What is 00 Team
+                        <div>
+                            <BsQuestionSquareFill size={22} />
                         </div>
                     </a>
 
-                    <a className='link' onClick={scrollToProjects}>
-                        Projects{' '}
-                        <div className='icon'>
+                    <a className='link'>
+                        Projects
+                        <div>
                             <GiFilmProjector size={28} />
                         </div>
                     </a>
-                    <a className='link' onClick={scrollToCreators}>
-                        Creators{' '}
-                        <div className='icon'>
+                    <a className='link'>
+                        Creators
+                        <div>
                             <GiTeamIdea size={28} />
                         </div>
                     </a>
-                    <a className='link' onClick={scrollToJoin}>
-                        Wana Join?{' '}
-                        <div className='icon'>
+                    <a className='link'>
+                        Wana Join?
+                        <div>
                             <FaHandshake size={28} />
                         </div>
                     </a>
