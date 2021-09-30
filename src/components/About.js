@@ -2,23 +2,26 @@ import React, { useEffect, useRef } from 'react'
 
 // markdowm
 import Markdown from 'markdown-to-jsx'
+
 // reudx
 import { useSelector, useDispatch } from 'react-redux'
 import loadBase from '../redux/actions/data/loadBase'
 
+// elements
+import Loading from './elements/Loading'
+
 // import scss
 import './sass/about.scss'
 
-const About = () => {
+const About = ({ loadingRender }) => {
     const dispatch = useDispatch()
-    const BaseState = useSelector(state => state.Base.base)
+    const BaseState = useSelector(state => state.Base)
 
     useEffect(() => {
         dispatch(loadBase())
     }, [])
 
-    if (!BaseState || !BaseState.about || !BaseState.about.markdown)
-        return <></>
+    if (BaseState.loading && loadingRender) return <Loading />
 
     return (
         <div className='about' id='00team'>
@@ -29,12 +32,18 @@ const About = () => {
 
                 <div className='description'>
                     <div className='about-us-text'>
-                        <Markdown>{BaseState.about.markdown}</Markdown>
+                        {BaseState.base && (
+                            <Markdown>{BaseState.base.about.markdown}</Markdown>
+                        )}
                     </div>
                 </div>
             </div>
         </div>
     )
+}
+
+About.defaultProps = {
+    loadingRender: true,
 }
 
 export default About

@@ -14,6 +14,8 @@ import About from './components/About'
 import Creators from './components/Creators'
 import Projects from './components/Projects'
 import JoinUs from './components/JoinUs'
+// elements
+import Loading from './components/elements/Loading'
 
 // layouts
 import Navbar from './layouts/Navbar'
@@ -34,55 +36,18 @@ const LoadingStatus = () => {
 }
 
 const App = () => {
-    
     let loadings = LoadingStatus()
-
 
     return (
         <>
             <Navbar />
 
             {/* loading ... */}
-            {loadings.some(i => i) && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        zIndex: 100,
-                        inset: '0 0 0 0',
-                        background: 'black',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        gap: '20px',
-                        color: '#fff',
-                    }}
-                >
-                    <span>Loading ...</span>
-                    <span
-                        style={{
-                            width: '40%',
-                            height: '10px',
-                            background: '#FFF1',
-                            overflow: 'hidden',
-                            borderRadius: 10,
-                        }}
-                    >
-                        <span
-                            style={{
-                                background: '#FFF9',
-                                width: `${Math.floor(
-                                    (loadings.filter(i => !i).length /
-                                        loadings.length) *
-                                        100
-                                )}%`,
-                                height: '100%',
-                                display: 'block',
-                            }}
-                        ></span>
-                    </span>
-                </div>
-            )}
+            {/* <Loading
+                loading={loadings.some(i => i)}
+                total={loadings.length}
+                loaded={loadings.filter(i => !i).length}
+            /> */}
 
             <Switch>
                 <Route path='/' exact>
