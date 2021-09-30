@@ -43,18 +43,19 @@ const App = () => {
             <Navbar />
 
             {/* loading ... */}
-            {/* <Loading
+            <Loading
                 loading={loadings.some(i => i)}
                 total={loadings.length}
                 loaded={loadings.filter(i => !i).length}
-            /> */}
+                fixed={true}
+            />
 
             <Switch>
                 <Route path='/' exact>
                     <HeroSection />
-                    <About />
-                    <Projects />
-                    <Creators />
+                    <About loadingRender={false} />
+                    <Projects loadingRender={false} />
+                    <Creators loadingRender={false} />
                     <JoinUs />
                 </Route>
             </Switch>
