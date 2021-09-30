@@ -3,11 +3,11 @@ import React from 'react'
 // style
 import './scss/loading.scss'
 
-const Loading = ({ loading, total, loaded }) => {
+const Loading = ({ loading, total, loaded, fixed }) => {
     if (!loading) return <></>
 
     return (
-        <div className='loading'>
+        <div className={'loading' + (fixed ? ' fixed' : '')}>
             <span>Loading ...</span>
             <span className='progress-bar'>
                 <span
