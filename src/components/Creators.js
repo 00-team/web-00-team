@@ -1,10 +1,10 @@
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
 import loadCreators from '../redux/actions/data/loadCreators'
 
-// lazy motion 
+// lazy motion
 import LazyMotion from './elements/LazyMotion'
 
 // icons
@@ -18,21 +18,21 @@ const Creators = () => {
     const CreatorsState = useSelector(state => state.Creators)
     const dispatch = useDispatch()
 
-   const scrollTopState = useSelector(state => state.scrollTop)
+    const scrollTopState = useSelector(state => state.scrollTop)
 
-   const title = useRef()
+    const title = useRef()
 
-   const getScrollTop = () => {
-       const scrollTop = title.current.scrollTop
-       const offSet = title.current.offsetTop
-       const result = offSet - scrollTop
+    const getScrollTop = () => {
+        const scrollTop = title.current.scrollTop
+        const offSet = title.current.offsetTop
+        const result = offSet - scrollTop
 
-       dispatch({ type: SCROLLTOP_CREATORS, payload: result })
-   }
+        dispatch({ type: SCROLLTOP_CREATORS, payload: result })
+    }
 
-   useEffect(() => {
-       getScrollTop()
-   }, [])
+    useEffect(() => {
+        getScrollTop()
+    }, [])
 
     useEffect(() => {
         dispatch(loadCreators())
