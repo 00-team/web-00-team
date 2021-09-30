@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect } from 'react'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,27 +12,10 @@ import { FiGithub } from 'react-icons/fi'
 
 // import css
 import './sass/creators.scss'
-import { SCROLLTOP_CREATORS } from '../redux/reducers/data/types'
 
 const Creators = () => {
     const CreatorsState = useSelector(state => state.Creators)
     const dispatch = useDispatch()
-
-    const scrollTopState = useSelector(state => state.scrollTop)
-
-    const title = useRef()
-
-    const getScrollTop = () => {
-        const scrollTop = title.current.scrollTop
-        const offSet = title.current.offsetTop
-        const result = offSet - scrollTop
-
-        dispatch({ type: SCROLLTOP_CREATORS, payload: result })
-    }
-
-    useEffect(() => {
-        getScrollTop()
-    }, [])
 
     useEffect(() => {
         dispatch(loadCreators())
@@ -48,7 +31,7 @@ const Creators = () => {
 
     return (
         <div className='creators' id='creators'>
-            <div className='container' ref={title}>
+            <div className='container'>
                 <LazyMotion>
                     <div className='header'>
                         <h1>Creators</h1>
