@@ -4,8 +4,13 @@
 
 ## Todos
 
-1. [x] Clean UP files and directorys
-2. [ ] Work on Projects
-3. [ ] Code Spliting
-4. [ ] Make Site Responsive
-5. [ ] Make more Todos
+### technical stuff
+
+1. [ ] Code Spliting
+2. [ ] make a **TypeScript Branch**
+3. [ ] make link and routers
+
+### design stuff
+
+1. [ ] make a **Footer**
+2. [ ] make site **Responsive**
