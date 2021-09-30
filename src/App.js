@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import About from './components/About'
 import Creators from './components/Creators'
-import Projects from './components/Projects'
+import Projects from './components/ProjectsInMain'
 import JoinUs from './components/JoinUs'
 // elements
 import Loading from './components/elements/Loading'
