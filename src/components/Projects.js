@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // lazy motion
 import LazyMotion from './elements/LazyMotion'
@@ -12,7 +12,12 @@ import ProjectsSlider from './elements/ProjectsSlider'
 import './sass/projects.scss'
 
 function Projects() {
+    const dispatch = useDispatch()
     const ProjectsState = useSelector(state => state.projects)
+
+    useEffect(() => {
+        dispatch(loadProjects())
+    }, [dispatch])
 
     if (ProjectsState.error) {
         return <span>Error Acquired</span>
@@ -23,7 +28,7 @@ function Projects() {
     }
     return (
         <div className='projects' id='projects'>
-            <div className='container' ref={title}>
+            <div className='container'>
                 <LazyMotion>
                     <div className='header'>
                         <h1>Projects</h1>
