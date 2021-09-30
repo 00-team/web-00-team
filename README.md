@@ -4,7 +4,7 @@
 
 ## Todos
 
-1. [ ] Clean UP files and directorys
+1. [x] Clean UP files and directorys
 2. [ ] Work on Projects
 3. [ ] Code Spliting
 4. [ ] Make Site Responsive
