@@ -1,7 +1,7 @@
 import { CREATORS_LOADING, CREATORS_ERROR, CREATORS_LOADED } from './types'
 
 const initState = {
-    loading: false,
+    loading: true,
     creators: [],
     error: null,
 }

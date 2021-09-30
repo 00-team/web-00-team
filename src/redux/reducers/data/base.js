@@ -1,7 +1,7 @@
 import { BASE_LOADING, BASE_ERROR, BASE_LOADED } from './types'
 
 const initState = {
-    loading: false,
+    loading: true,
     base: null,
     error: null,
 }
