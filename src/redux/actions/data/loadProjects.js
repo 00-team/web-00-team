@@ -1,4 +1,5 @@
 import { request } from 'graphql-request'
+import gql from 'graphql-tag'
 
 import {
     PROJECTS_ERROR,
@@ -14,15 +15,23 @@ export default () => async dispatch => {
     try {
         const { projects } = await request(
             API_URL,
-            `{
-                 projects(locales:en) {
-                    title
-                    description
-                    picture {
-                        url
+            gql`
+                {
+                    projects {
+                        title
+                        thumbnail {
+                            url(transformation: { image: {} })
+                        }
+                        startDate
+                        projectSlug
+                        projectUrl
+                        git
+                        demos {
+                            url
+                        }
                     }
                 }
-            }`
+            `
         )
 
         dispatch({ type: PROJECTS_LOADED, payload: projects })
