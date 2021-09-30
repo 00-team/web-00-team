@@ -9,7 +9,7 @@ import {
 
 import { API_URL } from './config'
 
-export default (slug) => async dispatch => {
+export default slug => async dispatch => {
     dispatch({ type: PROJECT_LOADING, payload: true })
 
     try {
@@ -29,6 +29,9 @@ export default (slug) => async dispatch => {
                         demos {
                             url
                         }
+                        description {
+                            markdown
+                        }
                     }
                 }
             `
@@ -36,7 +39,10 @@ export default (slug) => async dispatch => {
 
         dispatch({ type: PROJECT_LOADED, payload: project })
     } catch (error) {
-        dispatch({ type: PROJECT_ERROR, payload: `Error to load Project with slug: ${slug}` })
+        dispatch({
+            type: PROJECT_ERROR,
+            payload: `Error to load Project with slug: ${slug}`,
+        })
     }
 
     dispatch({ type: PROJECT_LOADING, payload: false })

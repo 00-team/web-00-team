@@ -29,6 +29,9 @@ export default () => async dispatch => {
                         demos {
                             url
                         }
+                        description {
+                            markdown
+                        }
                     }
                 }
             `
