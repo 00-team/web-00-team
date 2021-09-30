@@ -1,7 +1,7 @@
 import { PROJECTS_LOADING, PROJECTS_ERROR, PROJECTS_LOADED } from './types'
 
 const initState = {
-    loading: true,
+    loading: false,
     projects: [],
     error: null,
 }
