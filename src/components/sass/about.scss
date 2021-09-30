@@ -1,14 +1,5 @@
-@mixin box($w, $h: $w) {
-    width: $w;
-    height: $h;
-}
-
-$heading1: 100px;
-$heading2: 50px;
-$disc: 24px;
-$heading1_mobile: 50px;
-$heading2_mobile: 25px;
-$disc_mobile: 12px;
+@use '../../sass/mixins.sass' as *;
+@use '../../sass/variables.sass' as *;
 
 .about {
     @include box(100%, 100vh);
@@ -16,13 +7,6 @@ $disc_mobile: 12px;
     .container {
         height: 100%;
         color: #fff;
-        // background: linear-gradient(
-        //             to bottom,
-        //             #121212,
-        //             #121212,
-        //             #121212,
-        //             #1A1A1A
-        //         );
         display: flex;
         flex-direction: column;
         justify-content: space-around;

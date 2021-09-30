@@ -47,7 +47,7 @@ function Projects() {
                             <h1>Projects</h1>
                         </div>
                     </LazyMotion>
-                    <ProjectsSlider images={ProjectsState} />
+                    {/* <ProjectsSlider images={ProjectsState} /> */}
                     {/* {ProjectsState.projects.map((item,index) =>{
                         return(
                             <div key={index} className="project">

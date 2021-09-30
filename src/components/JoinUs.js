@@ -48,36 +48,26 @@ function JoinUs() {
                 </LazyMotion>
                 <h2>contact us through:</h2>
                 <div className='join'>
-                    {/*<div className='gmail'>
-                        <SiGmail size={70}/>
-                    </div>
-                    <div className='discord'>
-                        <SiDiscord />
-                    </div> */}
                     <ul className='social__list'>
-                        <li className='social__item'>
+                        <li>
                             <button
-                                className='social-btn discord'
-                                onClick={e =>
-                                    window.open('https://discord.gg/nux2MBcjPD')
+                                {...{ 'data-title': 'discord.gg/Z6vgXHU2xQ' }}
+                                className='social__btn'
+                                onClick={() =>
+                                    window.open('https://discord.gg/Z6vgXHU2xQ')
                                 }
                             >
-                                <div className='tooltip'>
-                                    discord.gg/nux2MBcjPD
-                                </div>
                                 <SiDiscord className='fab' />
                             </button>
                         </li>
-                        <li className='social__item'>
-                            <button className='social-btn gmail'>
-                                <div className='tooltip'>
-                                    00.team.mail@gmail.com
-                                </div>
-                                <a
-                                    href='mailto:mahmodrizband@gmail.com'
-                                    target='_blank'
-                                ></a>
-                                <SiGmail className='fab' />
+                        <li>
+                            <button
+                                className='social__btn'
+                                {...{ 'data-title': '00.team.mail@gmail.com' }}
+                            >
+                                <a href='mailto:00.team.mail@gmail.com'>
+                                    <SiGmail className='fab' />
+                                </a>
                             </button>
                         </li>
                     </ul>
