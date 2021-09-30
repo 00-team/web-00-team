@@ -32,9 +32,10 @@ const Projects = () => {
         >
             Projects
             {ProjectsState.projects.map((item, index) => (
-                <span key={index}>
+                <span key={index} style={{borderBottom: '10px solid red'}}>
                     title: {item.title}<br />
-                    thumbnail: {item.thumbnail.url}<br />
+                    thumbnail: {item.thumbnail ? item.thumbnail.url : 'None'}<br />
+                    description: {item.description ? item.description.markdown : 'None'}<br />
                     startDate: {item.startDate}<br />
                     Slug: {item.projectSlug}<br />
                     projectUrl: {item.projectUrl}<br />
