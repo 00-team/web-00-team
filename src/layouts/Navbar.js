@@ -28,12 +28,12 @@ const Navbar = () => {
                         </div>
                     </a>
 
-                    <a className='link'>
+                    <Link className='link' to='/projects'>
                         Projects
                         <div>
                             <GiFilmProjector size={28} />
                         </div>
-                    </a>
+                    </Link>
                     <a className='link'>
                         Creators
                         <div>
