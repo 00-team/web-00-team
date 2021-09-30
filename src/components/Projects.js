@@ -8,10 +8,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import loadProjects from '../redux/actions/data/loadProjects'
 import ProjectsSlider from './elements/ProjectsSlider'
 
+// elements
+import Loading from './elements/Loading'
+
 // import css
 import './sass/projects.scss'
 
-function Projects() {
+function Projects({ loadingRender }) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector(state => state.projects)
 
@@ -23,9 +26,10 @@ function Projects() {
         return <span>Error Acquired</span>
     }
 
-    if (ProjectsState.loading) {
-        return <span>Loading ... </span>
+    if (ProjectsState.loading && loadingRender) {
+        return <Loading />
     }
+    
     return (
         <div className='projects' id='projects'>
             <div className='container'>
@@ -47,6 +51,10 @@ function Projects() {
             </div>
         </div>
     )
+}
+
+Projects.defaultProps = {
+    loadingRender: true,
 }
 
 export default Projects

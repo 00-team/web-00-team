@@ -7,13 +7,16 @@ import loadCreators from '../redux/actions/data/loadCreators'
 // lazy motion
 import LazyMotion from './elements/LazyMotion'
 
+// elements
+import Loading from './elements/Loading'
+
 // icons
 import { FiGithub } from 'react-icons/fi'
 
 // import css
 import './sass/creators.scss'
 
-const Creators = () => {
+const Creators = ({ loadingRender }) => {
     const CreatorsState = useSelector(state => state.Creators)
     const dispatch = useDispatch()
 
@@ -25,8 +28,8 @@ const Creators = () => {
         return <span>Error</span>
     }
 
-    if (CreatorsState.loading) {
-        return <span>Loading...</span>
+    if (CreatorsState.loading && loadingRender) {
+        return <Loading />
     }
 
     return (
@@ -76,6 +79,10 @@ const Creators = () => {
             </div>
         </div>
     )
+}
+
+Creators.defaultProps = {
+    loadingRender: true,
 }
 
 export default Creators
