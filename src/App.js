@@ -12,10 +12,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import About from './components/About'
 import Creators from './components/Creators'
-import Projects from './components/ProjectsInMain'
+import ProjectsInMain from './components/ProjectsInMain'
 import JoinUs from './components/JoinUs'
+
 // elements
 import Loading from './components/elements/Loading'
+
+// projects
+import Projects from './components/Projects'
+import Project from './components/Projects/Project'
 
 // layouts
 import Navbar from './layouts/Navbar'
@@ -42,21 +47,31 @@ const App = () => {
         <>
             <Navbar />
 
-            {/* loading ... */}
-            <Loading
-                loading={loadings.some(i => i)}
-                total={loadings.length}
-                loaded={loadings.filter(i => !i).length}
-                fixed={true}
-            />
-
             <Switch>
                 <Route path='/' exact>
+                    <Loading
+                        loading={loadings.some(i => i)}
+                        total={loadings.length}
+                        loaded={loadings.filter(i => !i).length}
+                        fixed={true}
+                    />
                     <HeroSection />
                     <About loadingRender={false} />
-                    <Projects loadingRender={false} />
+                    <ProjectsInMain loadingRender={false} />
                     <Creators loadingRender={false} />
                     <JoinUs />
+                </Route>
+
+                <Route path='/projects'>
+                    <Projects />
+                </Route>
+
+                <Route path='/project/:slug'>
+                    <Project />
+                </Route>
+
+                <Route path='*'>
+                    <span style={{ color: '#fff' }}>Error 404</span>
                 </Route>
             </Switch>
         </>
