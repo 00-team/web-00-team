@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
 // redux stuff
@@ -6,7 +6,7 @@ import { Provider as ReduxProvider, useSelector } from 'react-redux'
 import store from './redux/store'
 
 // router
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
@@ -29,7 +29,7 @@ import Navbar from './layouts/Navbar'
 import './sass/base.scss'
 import './sass/fonts/imports.scss'
 
-const LoadingStatus = () => {
+const LoadingStatus = (): boolean[] | null => {
     const state = useSelector(state => state)
     if (typeof state === 'object') {
         return Object.values(state)
@@ -49,12 +49,14 @@ const App = () => {
 
             <Switch>
                 <Route path='/' exact>
-                    <Loading
-                        loading={loadings.some(i => i)}
-                        total={loadings.length}
-                        loaded={loadings.filter(i => !i).length}
-                        fixed={true}
-                    />
+                    {loadings && (
+                        <Loading
+                            loading={loadings.some(i => i)}
+                            total={loadings.length}
+                            loaded={loadings.filter(i => !i).length}
+                            fixed={true}
+                        />
+                    )}
                     <HeroSection />
                     <About loadingRender={false} />
                     <ProjectsInMain loadingRender={false} />
@@ -88,6 +90,6 @@ const Root = () => {
     )
 }
 
-// export default App
-
 ReactDOM.render(<Root />, document.getElementById('root'))
+
+export default App

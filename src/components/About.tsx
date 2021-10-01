@@ -13,7 +13,11 @@ import Loading from './elements/Loading'
 // import scss
 import './sass/about.scss'
 
-const About = ({ loadingRender }) => {
+interface AboutProps {
+    loadingRender: boolean
+}
+
+const About = ({ loadingRender }: AboutProps) => {
     const dispatch = useDispatch()
     const BaseState = useSelector(state => state.Base)
 
