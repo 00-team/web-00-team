@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 
 // reudx
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from '../redux/hooks'
 import loadBase from '../redux/actions/data/loadBase'
 
 // elements

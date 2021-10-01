@@ -3,7 +3,21 @@ import React from 'react'
 // style
 import './scss/loading.scss'
 
-const Loading = ({ loading, total, loaded, fixed }) => {
+interface LoadingProps {
+    loading?: boolean
+    total?: number
+    loaded?: number
+    fixed?: boolean
+}
+
+const defaultProps: LoadingProps = {
+    loading: true,
+    total: 1,
+    loaded: 1,
+    fixed: false,
+}
+
+const Loading = ({ loading, total, loaded, fixed }: LoadingProps) => {
     if (!loading) return <></>
 
     return (
@@ -12,19 +26,21 @@ const Loading = ({ loading, total, loaded, fixed }) => {
             <span className='progress-bar'>
                 <span
                     className='progress'
-                    style={{
-                        width: `${Math.floor((loaded / total) * 100)}%`,
-                    }}
+                    style={
+                        typeof loaded === 'number' && typeof total === 'number'
+                            ? {
+                                  width: `${Math.floor(
+                                      (loaded / total) * 100
+                                  )}%`,
+                              }
+                            : { width: '100%' }
+                    }
                 ></span>
             </span>
         </div>
     )
 }
 
-Loading.defaultProps = {
-    loading: true,
-    total: 1,
-    loaded: 0,
-}
+Loading.defaultProps = defaultProps
 
 export default Loading
