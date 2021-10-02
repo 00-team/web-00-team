@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 // redux stuff
 import { Provider as ReduxProvider, useSelector } from 'react-redux'
-import store from './redux/store'
+import { store } from './redux'
 
 // router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'

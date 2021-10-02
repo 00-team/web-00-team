@@ -4,9 +4,9 @@ import React, { useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 
 // reudx
-import { useSelector, useDispatch } from '../redux/hooks'
-import { BaseModel } from 'src/redux/models/Base'
-import loadBase from '../redux/actions/data/loadBase'
+import { useSelector, useDispatch } from 'react-redux'
+import loadBase from '../redux/actions/loadBase'
+import { RootState } from '../redux'
 
 // elements
 import Loading from './elements/Loading'
@@ -20,7 +20,7 @@ interface AboutProps {
 
 const About = ({ loadingRender }: AboutProps) => {
     const dispatch = useDispatch()
-    const BaseState = useSelector<BaseModel>(state => state.Base)
+    const BaseState = useSelector((state: RootState) => state.Base)
 
     useEffect(() => {
         dispatch(loadBase())

@@ -1,22 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // css
-import "./scss/projectsslider.scss"
+import './scss/projectsslider.scss'
 
 // icons
 import { FcPrevious, FcNext } from 'react-icons/fc'
 
+import { ProjectModel } from '../../redux/models/Projects'
 
-const ProjectsSlider = (projects) => {
+interface ProjectsSliderProps {
+    images: ProjectModel[]
+}
 
-    // useEffect(() => {
-        // console.log(images.images.projects)
-    //     projects.images.projects.map((item, index) => {
-    //         console.log(item, index)
-    //     })
-    // }, [])
-
-    const images = projects.images.projects
+const ProjectsSlider = ({ images }: ProjectsSliderProps) => {
     const [slideIndex, setSlideIndex] = useState(1)
 
     const nextSlide = () => {
@@ -35,7 +31,7 @@ const ProjectsSlider = (projects) => {
         }
     }
 
-    const getYourClass = index => {
+    const getYourClass = (index: number) => {
         if (index === slideIndex) return ' current'
         else if (
             index === slideIndex + 1 ||
@@ -54,7 +50,6 @@ const ProjectsSlider = (projects) => {
     //     nextSlide();
     // }, 2000);
 
-
     return (
         <div className='slider'>
             <div className='btns prev'>
@@ -65,7 +60,7 @@ const ProjectsSlider = (projects) => {
             </div>
             <div className='container'>
                 {images.map((obj, index) => {
-                    console.log(obj,index)
+                    console.log(obj, index)
                     return (
                         <div
                             className={'card-slide' + getYourClass(index)}
@@ -75,9 +70,9 @@ const ProjectsSlider = (projects) => {
                             <div className='overlay'></div>
                             <div className={'card'}>
                                 <div className='title'>{obj.title}</div>
-                                <img className='img' src={obj.picture.url} />
+                                <img className='img' src={obj.thumbnail.url} />
                                 <div className='discription fa'>
-                                    <h5>{obj.discription}</h5>
+                                    <h5>{obj.description.markdown}</h5>
                                 </div>
                             </div>
                         </div>

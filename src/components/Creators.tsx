@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 
 // redux stuff
-import { useDispatch, useSelector } from '../redux/hooks'
-import loadCreators from '../redux/actions/data/loadCreators'
-import { CreatorsModel } from '../redux/models/Creators'
+// import { useDispatch, useSelector } from '../redux/hooks'
+import { useDispatch, useSelector } from 'react-redux'
+import loadCreators from '../redux/actions/loadCreators'
+import { RootState } from '../redux'
 
 // lazy motion
 import LazyMotion from './elements/LazyMotion'
@@ -26,7 +27,7 @@ const defaultProps: CreatorsProps = {
 }
 
 const Creators = ({ loadingRender }: CreatorsProps) => {
-    const CreatorsState = useSelector<CreatorsModel>(state => state.Creators)
+    const CreatorsState = useSelector((state: RootState) => state.Creators)
     const dispatch = useDispatch()
 
     useEffect(() => {
