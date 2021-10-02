@@ -13,18 +13,20 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
-import Creators from './components/Creators'
 import ProjectsInMain from './components/ProjectsInMain'
-import JoinUs from './components/JoinUs'
-
-// const HeroSection = lazy(() => import('./components/HeroSection'))
-// const About = lazy(() => import('./components/About'))
-// const Creators = lazy(() => import('./components/Creators'))
-// const ProjectsInMain = lazy(() => import('./components/ProjectsInMain'))
-// const JoinUs = lazy(() => import('./components/JoinUs'))
 
 const About = Loadable({
     loader: () => import('./components/About'),
+    loading: () => <span>Loading Projcts</span>,
+})
+
+const JoinUs = Loadable({
+    loader: () => import('./components/JoinUs'),
+    loading: () => <span>Loading Projcts</span>,
+})
+
+const Creators = Loadable({
+    loader: () => import('./components/Creators'),
     loading: () => <span>Loading Projcts</span>,
 })
 
@@ -93,6 +95,15 @@ const App = () => {
 
                 <Route path='/project/:slug'>
                     <Project />
+                </Route>
+
+                <Route path='/about'>
+                    <About />
+                </Route>
+
+                <Route path='/creators'>
+                    <Creators />
+                    <JoinUs />
                 </Route>
 
                 <Route path='*'>

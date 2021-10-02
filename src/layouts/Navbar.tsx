@@ -22,12 +22,12 @@ const Navbar = () => {
                 {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
-                    <a className='link'>
+                    <Link className='link' to='/about' >
                         What is 00 Team
                         <div>
                             <BsQuestionSquareFill size={22} />
                         </div>
-                    </a>
+                    </Link>
 
                     <Link className='link' to='/projects'>
                         Projects
@@ -35,12 +35,12 @@ const Navbar = () => {
                             <GiFilmProjector size={28} />
                         </div>
                     </Link>
-                    <a className='link'>
+                    <Link className='link' to='/creators'>
                         Creators
                         <div>
                             <GiTeamIdea size={28} />
                         </div>
-                    </a>
+                    </Link>
                     <a className='link'>
                         Wana Join?
                         <div>

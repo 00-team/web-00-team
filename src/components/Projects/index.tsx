@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 
+// router
+import { Link } from 'react-router-dom'
+
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
 import loadProjects from '../../redux/actions/loadProjects'
@@ -44,6 +47,7 @@ const Projects = () => {
                     startDate: {item.startDate}
                     <br />
                     Slug: {item.projectSlug}
+                    <Link to={`/project/${item.projectSlug}`}> Slug </Link>
                     <br />
                     projectUrl: {item.projectUrl}
                     <br />
