@@ -34,6 +34,14 @@ const BaseConfig: Configs = {
             import: './src/components/About.tsx',
             dependOn: ['react', 'redux'],
         },
+        creators: {
+            import: './src/components/Creators.tsx',
+            dependOn: ['react', 'redux', 'LazyMotion'],
+        },
+        joinus: {
+            import: './src/components/JoinUs.tsx',
+            dependOn: ['react'],
+        },
         react: ['react', 'react-dom'],
         redux: ['react-redux', 'redux'],
     },
