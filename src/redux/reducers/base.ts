@@ -1,4 +1,5 @@
-import { BaseModel, BaseTypes } from '../../models/Base'
+import { BaseModel, BaseTypes } from '../models/Base'
+import { Action } from '../action-types/base'
 
 const initState: BaseModel = {
     loading: false,
@@ -6,10 +7,7 @@ const initState: BaseModel = {
     error: null,
 }
 
-export default function (
-    state = initState,
-    action: { type: BaseTypes; payload: unknown }
-) {
+export default function (state = initState, action: Action): BaseModel {
     switch (action.type) {
         case BaseTypes.BASE_LOADING:
             return {
@@ -30,5 +28,3 @@ export default function (
             return state
     }
 }
-
-// import { createSlice, PayloadAction } from ''

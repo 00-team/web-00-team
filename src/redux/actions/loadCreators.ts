@@ -1,13 +1,16 @@
 import { request } from 'graphql-request'
 import gql from 'graphql-tag'
 
-import { CreatorsTypes } from 'src/redux/models/Creators'
+// dispatch
+import { Dispatch } from 'redux'
+import { Action } from '../action-types/creators'
 
-import type { AppDispatch } from '../../store'
+// types
+import { CreatorsTypes } from '../models/Creators'
 
 import { API_URL } from './config'
 
-export default () => async (dispatch: AppDispatch) => {
+export default () => async (dispatch: Dispatch<Action>) => {
     dispatch({ type: CreatorsTypes.CREATORS_LOADING, payload: true })
 
     try {

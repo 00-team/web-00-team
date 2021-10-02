@@ -1,14 +1,15 @@
 import { request } from 'graphql-request'
 
 // diaptch type
-import type { AppDispatch } from '../../store'
+import { Dispatch } from 'redux'
+import { Action } from '../action-types/base'
 
 // base enums
-import { BaseTypes } from '../../models/Base'
+import { BaseTypes } from '../models/Base'
 
 import { API_URL } from './config'
 
-export default () => async (dispatch: AppDispatch) => {
+export default () => async (dispatch: Dispatch<Action>) => {
     dispatch({ type: BaseTypes.BASE_LOADING, payload: true })
 
     try {

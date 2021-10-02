@@ -2,10 +2,11 @@ import { request } from 'graphql-request'
 import gql from 'graphql-tag'
 
 // dispatch type
-import type { AppDispatch } from '../../store'
+import { Dispatch } from 'redux'
+import { Action } from '../action-types/projects'
 
 // project enums
-import { ProjectsTypes } from '../../models/Projects'
+import { ProjectsTypes } from '../models/Projects'
 
 import { API_URL } from './config'
 
@@ -17,14 +18,8 @@ interface GetProjectsProps {
     where?: {}
 }
 
-export default ({
-        order,
-        stage = 'PUBLISHED',
-        first,
-        last,
-        where,
-    }: GetProjectsProps) =>
-    async (dispatch: AppDispatch) => {
+export default ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
+    async (dispatch: Dispatch<Action>) => {
         dispatch({ type: ProjectsTypes.PROJECTS_LOADING, payload: true })
 
         try {
@@ -37,7 +32,7 @@ export default ({
                             where: ${where ? where : null}
                             first: ${first ? first : null}
                             last: ${last ? last : null}
-                            stage: ${stage}
+                            stage: ${stage ? stage : 'PUBLISHED'}
                         ) {
                             title
                             thumbnail {

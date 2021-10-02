@@ -1,4 +1,5 @@
-import { CreatorsTypes, CreatorsModel } from '../../models/Creators'
+import { CreatorsTypes, CreatorsModel } from '../models/Creators'
+import { Action } from '../action-types/creators'
 
 const initState: CreatorsModel = {
     loading: false,
@@ -6,10 +7,7 @@ const initState: CreatorsModel = {
     error: null,
 }
 
-export default function (
-    state = initState,
-    action: { type: CreatorsTypes; payload: unknown }
-) {
+export default function (state = initState, action: Action): CreatorsModel {
     switch (action.type) {
         case CreatorsTypes.CREATORS_LOADING:
             return {

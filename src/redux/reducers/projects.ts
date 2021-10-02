@@ -1,4 +1,5 @@
-import { ProjectsModel, ProjectsTypes } from '../../models/Projects'
+import { ProjectsModel, ProjectsTypes } from '../models/Projects'
+import { Action } from '../action-types/projects'
 
 const initState: ProjectsModel = {
     loading: false,
@@ -6,10 +7,7 @@ const initState: ProjectsModel = {
     error: null,
 }
 
-export default function (
-    state = initState,
-    action: { type: ProjectsTypes; payload: unknown }
-) {
+export default function (state = initState, action: Action): ProjectsModel {
     switch (action.type) {
         case ProjectsTypes.PROJECTS_LOADING:
             return {
