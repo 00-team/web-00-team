@@ -25,7 +25,7 @@ import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import './sass/creators.scss'
 
 interface CreatorsProps {
-    loadingRender: boolean
+    loadingRender?: boolean
 }
 
 const defaultProps: CreatorsProps = {

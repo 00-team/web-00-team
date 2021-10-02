@@ -15,7 +15,7 @@ import Loading from './common/Loading'
 import './sass/about.scss'
 
 interface AboutProps {
-    loadingRender: boolean
+    loadingRender?: boolean
 }
 
 const About = ({ loadingRender }: AboutProps) => {
