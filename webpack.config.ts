@@ -89,7 +89,7 @@ const BaseConfig: Configs = {
     ],
     optimization: {
         emitOnErrors: false,
-        chunkIds: 'deterministic',
+        chunkIds: 'named',
         splitChunks: {
             chunks: 'all',
             maxSize: 240000,
@@ -115,6 +115,7 @@ const BuildConfig: Configs = {
     optimization: {
         ...BaseConfig.optimization,
         minimize: true,
+        chunkIds: 'deterministic',
     },
 }
 
