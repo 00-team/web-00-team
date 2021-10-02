@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {  } from 'react'
 import ReactDOM from 'react-dom'
+
+// loadable
+import Loadable from 'react-loadable'
 
 // redux stuff
 import { Provider as ReduxProvider, useSelector } from 'react-redux'
@@ -15,15 +18,46 @@ import Creators from './components/Creators'
 import ProjectsInMain from './components/ProjectsInMain'
 import JoinUs from './components/JoinUs'
 
+// const HeroSection = lazy(() => import('./components/HeroSection'))
+// const About = lazy(() => import('./components/About'))
+// const Creators = lazy(() => import('./components/Creators'))
+// const ProjectsInMain = lazy(() => import('./components/ProjectsInMain'))
+// const JoinUs = lazy(() => import('./components/JoinUs'))
+
 // elements
 import Loading from './components/common/Loading'
 
 // projects
-import Projects from './components/Projects'
-import Project from './components/Projects/Project'
+// import Projects from './components/Projects'
+// const Projects = lazy(() => import('./components/Projects'))
+// const Project = lazy(() => import('./components/Projects/Project'))
+
+const Projects = Loadable({
+    loader: () => import('./components/Projects'),
+    loading: () => <span>Loading Projcts</span>,
+})
+
+const Project = Loadable({
+    loader: () =>
+        import(
+            /* webpackMode: "lazy" */
+            /* webpackChunkName: "Project"  */
+            './components/Projects/Project'
+        ),
+    loading: () => <span>Loading Projct ...</span>,
+})
 
 // layouts
-import Navbar from './layouts/Navbar'
+// import Navbar from './layouts/Navbar'
+const Navbar = Loadable({
+    loader: () =>
+        import(
+            /* webpackMode: "lazy" */
+            /* webpackChunkName: "Navbar"  */
+            './layouts/Navbar'
+        ),
+    loading: () => <span>loading navbar ...</span>,
+})
 
 // style
 import './sass/base.scss'

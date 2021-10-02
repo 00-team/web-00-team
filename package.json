@@ -18,6 +18,7 @@
     },
     "homepage": "https://web-00-team.web.app/",
     "dependencies": {
+        "@types/react-loadable": "^5.5.6",
         "axios": "^0.21.4",
         "framer-motion": "^4.1.17",
         "graphql": "^15.6.0",
@@ -28,7 +29,7 @@
         "react": "^17.0.2",
         "react-alert": "^7.0.3",
         "react-dom": "^17.0.2",
-        "react-icons": "^4.2.0",
+        "react-loadable": "^5.5.0",
         "react-redux": "^7.2.4",
         "react-router-dom": "^5.3.0",
         "react-scroll": "^1.8.4",

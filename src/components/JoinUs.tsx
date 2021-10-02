@@ -7,7 +7,8 @@ import LazyMotion from './common/LazyMotion'
 import './sass/joinus.scss'
 
 // icons
-import { SiDiscord, SiGmail } from 'react-icons/si'
+// import { IconContext } from 'react-icons'
+// import { SiDiscord, SiGmail } from 'react-icons/si'
 
 function JoinUs() {
     return (
@@ -23,22 +24,26 @@ function JoinUs() {
                     <ul className='social__list'>
                         <li>
                             <button
-                                {...{ 'data-title': 'discord.gg/Z6vgXHU2xQ' }}
+                                {...{
+                                    'data-title': 'discord.gg/Z6vgXHU2xQ',
+                                }}
                                 className='social__btn'
                                 onClick={() =>
                                     window.open('https://discord.gg/Z6vgXHU2xQ')
                                 }
                             >
-                                <SiDiscord className='fab' />
+                                {/* <SiDiscord className='fab' /> */}
                             </button>
                         </li>
                         <li>
                             <button
                                 className='social__btn'
-                                {...{ 'data-title': '00.team.mail@gmail.com' }}
+                                {...{
+                                    'data-title': '00.team.mail@gmail.com',
+                                }}
                             >
                                 <a href='mailto:00.team.mail@gmail.com'>
-                                    <SiGmail className='fab' />
+                                    {/* <SiGmail className='fab' /> */}
                                 </a>
                             </button>
                         </li>
