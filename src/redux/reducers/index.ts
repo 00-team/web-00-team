@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux'
 
-import app from './app/app'
-import Creators from './data/creators'
-import Base from './data/base'
-import projects from './data/projects'
-import project from './data/project'
+import Creators from './creators'
+import Base from './base'
+import Projects from './projects'
 
-export default combineReducers({
-    app,
+const reducers = combineReducers({
     Creators,
     Base,
-    projects,
-    project,
+    Projects,
 })
+
+export type RootState = ReturnType<typeof reducers>
+
+export default reducers
