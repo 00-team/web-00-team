@@ -4,6 +4,8 @@
 
 ## Todos
 
+1. [ ] Making More Todos
+
 ### technical stuff
 
 1. [x] Code Spliting
