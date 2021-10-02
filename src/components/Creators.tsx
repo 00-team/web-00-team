@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 
 // redux stuff
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from '../redux/hooks'
 import loadCreators from '../redux/actions/data/loadCreators'
+import { CreatorsModel } from '../redux/models/Creators'
 
 // lazy motion
 import LazyMotion from './elements/LazyMotion'
@@ -16,8 +17,16 @@ import { FiGithub } from 'react-icons/fi'
 // import css
 import './sass/creators.scss'
 
-const Creators = ({ loadingRender }) => {
-    const CreatorsState = useSelector(state => state.Creators)
+interface CreatorsProps {
+    loadingRender: boolean
+}
+
+const defaultProps: CreatorsProps = {
+    loadingRender: true,
+}
+
+const Creators = ({ loadingRender }: CreatorsProps) => {
+    const CreatorsState = useSelector<CreatorsModel>(state => state.Creators)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -46,11 +55,22 @@ const Creators = ({ loadingRender }) => {
                             <div className='card' key={index}>
                                 <div
                                     className='creator-img'
-                                    style={{
-                                        backgroundColor: item.bgColor.hex,
-                                    }}
+                                    style={
+                                        item.bgColor
+                                            ? {
+                                                  backgroundColor:
+                                                      item.bgColor.hex,
+                                              }
+                                            : { backgroundColor: 'red' }
+                                    }
                                 >
-                                    <img src={item.picture.url} />
+                                    <img
+                                        src={
+                                            item.picture
+                                                ? item.picture.url
+                                                : 'none'
+                                        }
+                                    />
                                 </div>
                                 <div className='text-container'>
                                     <h1 className='title'>{item.name}</h1>
@@ -63,7 +83,7 @@ const Creators = ({ loadingRender }) => {
                                     <p className='description'>{item.bio}</p>
                                     <div
                                         className='social github'
-                                        onClick={e =>
+                                        onClick={() =>
                                             window.open(
                                                 `https://github.com/${item.githubUsername}`
                                             )
@@ -81,8 +101,6 @@ const Creators = ({ loadingRender }) => {
     )
 }
 
-Creators.defaultProps = {
-    loadingRender: true,
-}
+Creators.defaultProps = defaultProps
 
 export default Creators
