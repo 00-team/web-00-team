@@ -1,24 +1,27 @@
-import { BASE_LOADING, BASE_ERROR, BASE_LOADED } from './types'
+import { BaseModel, BaseTypes } from '../../models/Base'
 
-const initState = {
+const initState: BaseModel = {
     loading: false,
     base: null,
     error: null,
 }
 
-export default function (state = initState, action) {
+export default function (
+    state = initState,
+    action: { type: BaseTypes; payload: unknown }
+) {
     switch (action.type) {
-        case BASE_LOADING:
+        case BaseTypes.BASE_LOADING:
             return {
                 ...state,
                 loading: action.payload,
             }
-        case BASE_ERROR:
+        case BaseTypes.BASE_ERROR:
             return {
                 ...state,
                 error: action.payload,
             }
-        case BASE_LOADED:
+        case BaseTypes.BASE_LOADED:
             return {
                 ...state,
                 base: action.payload,
@@ -27,3 +30,5 @@ export default function (state = initState, action) {
             return state
     }
 }
+
+// import { createSlice, PayloadAction } from ''

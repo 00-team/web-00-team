@@ -1,27 +1,30 @@
-import { PROJECTS_LOADING, PROJECTS_ERROR, PROJECTS_LOADED } from './types'
+import { ProjectsModel, ProjectsTypes } from '../../models/Projects'
 
-const initState = {
+const initState: ProjectsModel = {
     loading: false,
     projects: [],
     error: null,
 }
 
-export default function (state = initState, { type, payload }) {
-    switch (type) {
-        case PROJECTS_LOADING:
+export default function (
+    state = initState,
+    action: { type: ProjectsTypes; payload: unknown }
+) {
+    switch (action.type) {
+        case ProjectsTypes.PROJECTS_LOADING:
             return {
                 ...state,
-                loading: payload,
+                loading: action.payload,
             }
-        case PROJECTS_ERROR:
+        case ProjectsTypes.PROJECTS_ERROR:
             return {
                 ...state,
-                error: payload,
+                error: action.payload,
             }
-        case PROJECTS_LOADED:
+        case ProjectsTypes.PROJECTS_LOADED:
             return {
                 ...state,
-                projects: payload,
+                projects: action.payload,
             }
         default:
             return state

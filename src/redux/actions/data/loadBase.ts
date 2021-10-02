@@ -1,15 +1,15 @@
 import { request } from 'graphql-request'
 
-import {
-    BASE_ERROR,
-    BASE_LOADED,
-    BASE_LOADING,
-} from '../../reducers/data/types'
+// diaptch type
+import type { AppDispatch } from '../../store'
+
+// base enums
+import { BaseTypes } from '../../models/Base'
 
 import { API_URL } from './config'
 
-export default () => async dispatch => {
-    dispatch({ type: BASE_LOADING, payload: true })
+export default () => async (dispatch: AppDispatch) => {
+    dispatch({ type: BaseTypes.BASE_LOADING, payload: true })
 
     try {
         const { base } = await request(
@@ -23,10 +23,13 @@ export default () => async dispatch => {
             }`
         )
 
-        dispatch({ type: BASE_LOADED, payload: base })
+        dispatch({ type: BaseTypes.BASE_LOADED, payload: base })
     } catch (error) {
-        dispatch({ type: BASE_ERROR, payload: 'Error to load Creators' })
+        dispatch({
+            type: BaseTypes.BASE_ERROR,
+            payload: 'Error to load Creators',
+        })
     }
 
-    dispatch({ type: BASE_LOADING, payload: false })
+    dispatch({ type: BaseTypes.BASE_LOADING, payload: false })
 }

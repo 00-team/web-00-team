@@ -1,24 +1,27 @@
-import { CREATORS_LOADING, CREATORS_ERROR, CREATORS_LOADED } from './types'
+import { CreatorsTypes, CreatorsModel } from '../../models/Creators'
 
-const initState = {
+const initState: CreatorsModel = {
     loading: false,
     creators: [],
     error: null,
 }
 
-export default function (state = initState, action) {
+export default function (
+    state = initState,
+    action: { type: CreatorsTypes; payload: unknown }
+) {
     switch (action.type) {
-        case CREATORS_LOADING:
+        case CreatorsTypes.CREATORS_LOADING:
             return {
                 ...state,
                 loading: action.payload,
             }
-        case CREATORS_ERROR:
+        case CreatorsTypes.CREATORS_ERROR:
             return {
                 ...state,
                 error: action.payload,
             }
-        case CREATORS_LOADED:
+        case CreatorsTypes.CREATORS_LOADED:
             return {
                 ...state,
                 creators: action.payload,
