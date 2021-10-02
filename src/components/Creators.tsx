@@ -13,7 +13,6 @@ import LazyMotion from './common/LazyMotion'
 import Loading from './common/Loading'
 
 // icons
-// import { IconContext } from 'react-icons'
 // import { FiGithub } from 'react-icons/fi'
 
 // import css
