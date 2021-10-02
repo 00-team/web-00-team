@@ -24,7 +24,7 @@ const Project = () => {
     )
 
     useEffect(() => {
-        dispatch(getProject({ first: 1, where: { projectSlug: slug } }))
+        dispatch(getProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
     }, [dispatch, slug])
 
     if (ProjectState.loading) {

@@ -14,7 +14,7 @@ interface GetProjectsProps {
     stage?: 'PUBLISHED' | 'DRAFT'
     first?: number
     last?: number
-    where?: {}
+    where?: string
 }
 
 export default ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
@@ -25,30 +25,30 @@ export default ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
             const { projects } = await request(
                 API_URL,
                 `
-                    {
-                        projects(
-                            orderBy: ${order ? order : null}
-                            where: ${where ? where : null}
-                            first: ${first ? first : null}
-                            last: ${last ? last : null}
-                            stage: ${stage ? stage : 'PUBLISHED'}
-                        ) {
-                            title
-                            thumbnail {
-                                url(transformation: { image: {} })
-                            }
-                            startDate
-                            projectSlug
-                            projectUrl
-                            git
-                            demos {
-                                url
-                            }
-                            description {
-                                markdown
-                            }
+                {
+                    projects(
+                        orderBy: ${order ? order : null}
+                        where: ${where ? where : null}
+                        first: ${first ? first : null}
+                        last: ${last ? last : null}
+                        stage: ${stage ? stage : 'PUBLISHED'}
+                    ) {
+                        title
+                        thumbnail {
+                            url(transformation: { image: {} })
+                        }
+                        startDate
+                        projectSlug
+                        projectUrl
+                        git
+                        demos {
+                            url
+                        }
+                        description {
+                            markdown
                         }
                     }
+                }
                 `
             )
 
