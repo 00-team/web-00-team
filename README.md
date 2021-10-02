@@ -6,10 +6,10 @@
 
 ### technical stuff
 
-1. [ ] Code Spliting
-2. [ ] make a **TypeScript Branch**
+1. [x] Code Spliting
+2. [x] make a **TypeScript Branch**
 3. [ ] make link and routers
-4. [ ] clean directorys and codes
+4. [x] clean directorys and codes
 5. [ ] add eslist and config it
 
 ### design stuff
