@@ -12,21 +12,22 @@ const BaseConfig: Configs = {
     entry: {
         main: {
             import: './src/App.tsx',
-            dependOn: ['main-shared'],
+            dependOn: ['react', 'redux'],
         },
         projects: {
             import: './src/components/Projects',
-            dependOn: ['main-shared'],
+            dependOn: ['react', 'redux'],
         },
         project: {
             import: './src/components/Projects/Project.tsx',
-            dependOn: ['main-shared'],
+            dependOn: ['react', 'redux'],
         },
         navbar: {
             import: './src/layouts/Navbar.tsx',
-            dependOn: ['main-shared'],
+            dependOn: ['react'],
         },
-        'main-shared': ['react', 'react-redux', 'react-dom'],
+        react: ['react', 'react-dom'],
+        redux: ['react-redux', 'redux'],
     },
     output: {
         filename: '[name].bundle.js',
