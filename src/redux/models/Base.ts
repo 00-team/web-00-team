@@ -1,10 +1,12 @@
+export interface BaseDataModel {
+    about: {
+        markdown: string
+    }
+}
+
 export interface BaseModel {
     loading: boolean
-    base: {
-        about: {
-            markdown: string
-        }
-    } | null
+    base: BaseDataModel | null
     error: string | null
 }
 

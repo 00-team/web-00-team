@@ -9,7 +9,7 @@ export interface ProjectModel {
     git: string
     demos: {
         url: string
-    }
+    }[]
     description: {
         markdown: string
     }
