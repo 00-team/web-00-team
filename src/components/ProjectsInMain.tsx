@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 // lazy motion
-import LazyMotion from './elements/LazyMotion'
+import LazyMotion from './common/LazyMotion'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ import loadProjects from '../redux/actions/loadProjects'
 import { RootState } from '../redux'
 
 // elements
-import Loading from './elements/Loading'
+import Loading from './common/Loading'
 // import ProjectsSlider from './elements/ProjectsSlider'
 
 // import css

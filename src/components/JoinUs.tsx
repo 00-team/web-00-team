@@ -1,7 +1,7 @@
 import React from 'react'
 
 // lazy motion
-import LazyMotion from './elements/LazyMotion'
+import LazyMotion from './common/LazyMotion'
 
 // import css
 import './sass/joinus.scss'

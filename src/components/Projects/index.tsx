@@ -6,7 +6,7 @@ import loadProjects from '../../redux/actions/loadProjects'
 import { RootState } from '../../redux'
 
 // elements
-import Loading from '../elements/Loading'
+import Loading from '../common/Loading'
 
 const Projects = () => {
     const dispatch = useDispatch()

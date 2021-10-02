@@ -16,7 +16,7 @@ import ProjectsInMain from './components/ProjectsInMain'
 import JoinUs from './components/JoinUs'
 
 // elements
-import Loading from './components/elements/Loading'
+import Loading from './components/common/Loading'
 
 // projects
 import Projects from './components/Projects'

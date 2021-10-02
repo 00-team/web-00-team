@@ -7,10 +7,10 @@ import loadCreators from '../redux/actions/loadCreators'
 import { RootState } from '../redux'
 
 // lazy motion
-import LazyMotion from './elements/LazyMotion'
+import LazyMotion from './common/LazyMotion'
 
 // elements
-import Loading from './elements/Loading'
+import Loading from './common/Loading'
 
 // icons
 import { FiGithub } from 'react-icons/fi'

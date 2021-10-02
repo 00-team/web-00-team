@@ -9,7 +9,7 @@ import loadBase from '../redux/actions/loadBase'
 import { RootState } from '../redux'
 
 // elements
-import Loading from './elements/Loading'
+import Loading from './common/Loading'
 
 // import scss
 import './sass/about.scss'
