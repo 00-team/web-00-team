@@ -1,6 +1,10 @@
 export interface BaseModel {
     loading: boolean
-    base: {} | null
+    base: {
+        about: {
+            markdown: string
+        }
+    } | null
     error: string | null
 }
 
