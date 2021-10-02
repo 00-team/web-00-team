@@ -9,9 +9,28 @@ interface Configs extends webpack {
 }
 
 const BaseConfig: Configs = {
-    entry: './src',
+    entry: {
+        main: {
+            import: './src/App.tsx',
+            dependOn: ['main-shared'],
+        },
+        projects: {
+            import: './src/components/Projects',
+            dependOn: ['main-shared'],
+        },
+        project: {
+            import: './src/components/Projects/Project.tsx',
+            dependOn: ['main-shared'],
+        },
+        navbar: {
+            import: './src/layouts/Navbar.tsx',
+            dependOn: ['main-shared'],
+        },
+        'main-shared': ['react', 'react-redux', 'react-dom'],
+    },
     output: {
-        filename: '[name].js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].[id].chunk.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         sourceMapFilename: 'SourceMaps/[file].map',
@@ -57,7 +76,7 @@ const BaseConfig: Configs = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.mjs', '.tsx', '.ts', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -68,6 +87,14 @@ const BaseConfig: Configs = {
             favicon: './static/img/favicon.ico',
         }),
     ],
+    optimization: {
+        emitOnErrors: false,
+        chunkIds: 'deterministic',
+        splitChunks: {
+            chunks: 'all',
+            maxSize: 240000,
+        },
+    },
 }
 
 const DevConfig: Configs = {
@@ -86,6 +113,7 @@ const DevConfig: Configs = {
 const BuildConfig: Configs = {
     ...BaseConfig,
     optimization: {
+        ...BaseConfig.optimization,
         minimize: true,
     },
 }
