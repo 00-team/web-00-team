@@ -2,12 +2,15 @@ import React from 'react'
 
 // link
 import { Link } from 'react-router-dom'
-import {
-    FilmProjector,
-    HandShake,
-    QuestionMark,
-    TeamIdea,
-} from '../components/common/Icons'
+
+// icons
+// import { GiTeamIdea, GiFilmProjector } from 'react-icons/gi'
+import { GiTeamIdea } from '@react-icons/all-files/gi/GiTeamIdea'
+import { GiFilmProjector } from '@react-icons/all-files/gi/GiFilmProjector'
+
+import { BsQuestionSquareFill } from '@react-icons/all-files/bs/BsQuestionSquareFill'
+
+import { FaHandshake } from '@react-icons/all-files/fa/FaHandshake'
 
 // style
 import './sass/navbar.scss'
@@ -22,26 +25,26 @@ const Navbar = () => {
                     <a className='link'>
                         What is 00 Team
                         <div>
-                            <QuestionMark size={22} />
+                            <BsQuestionSquareFill size={22} />
                         </div>
                     </a>
 
                     <Link className='link' to='/projects'>
                         Projects
                         <div>
-                            <FilmProjector />
+                            <GiFilmProjector size={28} />
                         </div>
                     </Link>
                     <a className='link'>
                         Creators
                         <div>
-                            <TeamIdea />
+                            <GiTeamIdea size={28} />
                         </div>
                     </a>
                     <a className='link'>
                         Wana Join?
                         <div>
-                            <HandShake size={28} />
+                            <FaHandshake size={28} />
                         </div>
                     </a>
                 </div>

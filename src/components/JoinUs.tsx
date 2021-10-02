@@ -7,8 +7,8 @@ import LazyMotion from './common/LazyMotion'
 import './sass/joinus.scss'
 
 // icons
-// import { IconContext } from 'react-icons'
-// import { SiDiscord, SiGmail } from 'react-icons/si'
+import { SiDiscord } from '@react-icons/all-files/si/SiDiscord'
+import { SiGmail } from '@react-icons/all-files/si/SiGmail'
 
 function JoinUs() {
     return (
@@ -32,7 +32,7 @@ function JoinUs() {
                                     window.open('https://discord.gg/Z6vgXHU2xQ')
                                 }
                             >
-                                {/* <SiDiscord className='fab' /> */}
+                                <SiDiscord className='fab' />
                             </button>
                         </li>
                         <li>
@@ -43,7 +43,7 @@ function JoinUs() {
                                 }}
                             >
                                 <a href='mailto:00.team.mail@gmail.com'>
-                                    {/* <SiGmail className='fab' /> */}
+                                    <SiGmail className='fab' />
                                 </a>
                             </button>
                         </li>

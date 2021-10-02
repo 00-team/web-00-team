@@ -4,9 +4,8 @@ import React from 'react'
 import './sass/herosection.scss'
 
 // icons
-// import { IconContext } from 'react-icons'
-// import { FiGithub } from 'react-icons/fi'
-// import { SiDiscord } from 'react-icons/si'
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+import { SiDiscord } from '@react-icons/all-files/si/SiDiscord'
 
 function HeroSection() {
     return (
@@ -14,16 +13,16 @@ function HeroSection() {
             <div className='main'>
                 <span>00 Team</span>
                 <div className='social'>
-                    {/* <SiDiscord
-                            onClick={() =>
-                                window.open('https://discord.gg/Z6vgXHU2xQ')
-                            }
-                        />
-                        <FiGithub
-                            onClick={() =>
-                                window.open('https://github.com/00-team')
-                            }
-                        /> */}
+                    <SiDiscord
+                        onClick={() =>
+                            window.open('https://discord.gg/Z6vgXHU2xQ')
+                        }
+                    />
+                    <FiGithub
+                        onClick={() =>
+                            window.open('https://github.com/00-team')
+                        }
+                    />
                 </div>
             </div>
         </div>

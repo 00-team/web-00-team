@@ -13,7 +13,7 @@ import LazyMotion from './common/LazyMotion'
 import Loading from './common/Loading'
 
 // icons
-// import { FiGithub } from 'react-icons/fi'
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 
 // import css
 import './sass/creators.scss'
@@ -90,7 +90,7 @@ const Creators = ({ loadingRender }: CreatorsProps) => {
                                             )
                                         }
                                     >
-                                         Github {/* <FiGithub /> */}
+                                         Github <FiGithub />
                                     </div>
                                 </div>
                             </div>
