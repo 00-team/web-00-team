@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react'
 
+import Loadable from 'react-loadable'
+
 // redux stuff
-// import { useDispatch, useSelector } from '../redux/hooks'
 import { useDispatch, useSelector } from 'react-redux'
 import loadCreators from '../redux/actions/loadCreators'
 import { RootState } from '../redux'
 
 // lazy motion
-import LazyMotion from './common/LazyMotion'
+// import LazyMotion from
+
+const LazyMotion = Loadable({
+    loader: () => import('./common/LazyMotion'),
+    loading: () => <span>loading lazymotion</span>,
+})
 
 // elements
 import Loading from './common/Loading'
@@ -90,7 +96,7 @@ const Creators = ({ loadingRender }: CreatorsProps) => {
                                             )
                                         }
                                     >
-                                         Github <FiGithub />
+                                        Github <FiGithub />
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,4 @@
 import { request } from 'graphql-request'
-import gql from 'graphql-tag'
 
 // dispatch
 import { Dispatch } from 'redux'
@@ -16,7 +15,7 @@ export default () => async (dispatch: Dispatch<Action>) => {
     try {
         const { creators } = await request(
             API_URL,
-            gql`
+            `
                 {
                     creators(locales: en) {
                         name

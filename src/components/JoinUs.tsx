@@ -1,7 +1,12 @@
 import React from 'react'
 
+import Loadable from 'react-loadable'
+
 // lazy motion
-import LazyMotion from './common/LazyMotion'
+const LazyMotion = Loadable({
+    loader: () => import('./common/LazyMotion'),
+    loading: () => <span>loading lazymotion</span>,
+})
 
 // import css
 import './sass/joinus.scss'

@@ -26,6 +26,14 @@ const BaseConfig: Configs = {
             import: './src/layouts/Navbar.tsx',
             dependOn: ['react'],
         },
+        LazyMotion: {
+            import: './src/components/common/LazyMotion.tsx',
+            dependOn: ['react'],
+        },
+        about: {
+            import: './src/components/About.tsx',
+            dependOn: ['react', 'redux'],
+        },
         react: ['react', 'react-dom'],
         redux: ['react-redux', 'redux'],
     },

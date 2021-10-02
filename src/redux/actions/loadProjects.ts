@@ -1,5 +1,4 @@
 import { request } from 'graphql-request'
-import gql from 'graphql-tag'
 
 // dispatch type
 import { Dispatch } from 'redux'
@@ -25,7 +24,7 @@ export default ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
         try {
             const { projects } = await request(
                 API_URL,
-                gql`
+                `
                     {
                         projects(
                             orderBy: ${order ? order : null}

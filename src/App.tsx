@@ -13,7 +13,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
-import About from './components/About'
 import Creators from './components/Creators'
 import ProjectsInMain from './components/ProjectsInMain'
 import JoinUs from './components/JoinUs'
@@ -24,14 +23,15 @@ import JoinUs from './components/JoinUs'
 // const ProjectsInMain = lazy(() => import('./components/ProjectsInMain'))
 // const JoinUs = lazy(() => import('./components/JoinUs'))
 
+const About = Loadable({
+    loader: () => import('./components/About'),
+    loading: () => <span>Loading Projcts</span>,
+})
+
 // elements
 import Loading from './components/common/Loading'
 
 // projects
-// import Projects from './components/Projects'
-// const Projects = lazy(() => import('./components/Projects'))
-// const Project = lazy(() => import('./components/Projects/Project'))
-
 const Projects = Loadable({
     loader: () => import('./components/Projects'),
     loading: () => <span>Loading Projcts</span>,
