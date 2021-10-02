@@ -1,4 +1,4 @@
-import React, {  } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
 // loadable
@@ -38,24 +38,13 @@ const Projects = Loadable({
 })
 
 const Project = Loadable({
-    loader: () =>
-        import(
-            /* webpackMode: "lazy" */
-            /* webpackChunkName: "Project"  */
-            './components/Projects/Project'
-        ),
+    loader: () => import('./components/Projects/Project'),
     loading: () => <span>Loading Projct ...</span>,
 })
 
 // layouts
-// import Navbar from './layouts/Navbar'
 const Navbar = Loadable({
-    loader: () =>
-        import(
-            /* webpackMode: "lazy" */
-            /* webpackChunkName: "Navbar"  */
-            './layouts/Navbar'
-        ),
+    loader: () => import('./layouts/Navbar'),
     loading: () => <span>loading navbar ...</span>,
 })
 
