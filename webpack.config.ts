@@ -1,50 +1,19 @@
 import * as path from 'path'
 import { Configuration as webpack } from 'webpack'
 import { Configuration as devServer } from 'webpack-dev-server'
+
 // plugins
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+
+// entry
+import EntryConfig from './webpack.entry'
 
 interface Configs extends webpack {
     devServer?: devServer
 }
 
 const BaseConfig: Configs = {
-    entry: {
-        main: {
-            import: './src/App.tsx',
-            dependOn: ['react', 'redux'],
-        },
-        projects: {
-            import: './src/components/Projects',
-            dependOn: ['react', 'redux'],
-        },
-        project: {
-            import: './src/components/Projects/Project.tsx',
-            dependOn: ['react', 'redux'],
-        },
-        navbar: {
-            import: './src/layouts/Navbar.tsx',
-            dependOn: ['react'],
-        },
-        LazyMotion: {
-            import: './src/components/common/LazyMotion.tsx',
-            dependOn: ['react'],
-        },
-        about: {
-            import: './src/components/About.tsx',
-            dependOn: ['react', 'redux'],
-        },
-        creators: {
-            import: './src/components/Creators.tsx',
-            dependOn: ['react', 'redux', 'LazyMotion'],
-        },
-        joinus: {
-            import: './src/components/JoinUs.tsx',
-            dependOn: ['react'],
-        },
-        react: ['react', 'react-dom'],
-        redux: ['react-redux', 'redux'],
-    },
+    entry: EntryConfig,
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].[id].chunk.js',
