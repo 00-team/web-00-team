@@ -7,6 +7,7 @@ import Loadable from 'react-loadable'
 // redux stuff
 import { Provider as ReduxProvider, useSelector } from 'react-redux'
 import { store } from './redux'
+import { RootState } from './redux'
 
 // router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -59,19 +60,15 @@ const Navbar = Loadable({
 import './sass/base.scss'
 import './sass/fonts/imports.scss'
 
-const LoadingStatus = (): boolean[] | null => {
-    const state = useSelector(state => state)
-    if (typeof state === 'object') {
-        return Object.values(state)
-            .filter(i => i.loading !== undefined)
-            .map(i => i.loading)
-    } else {
-        return null
-    }
+const LoadingStatus = (): boolean[] => {
+    const state = useSelector((state: RootState) => state)
+    return Object.values(state)
+        .filter(i => i.loading !== undefined)
+        .map(i => i.loading)
 }
 
 const App = () => {
-    let loadings = LoadingStatus()
+    const loadings = LoadingStatus()
 
     return (
         <>
