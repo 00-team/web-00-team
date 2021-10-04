@@ -22,6 +22,7 @@ const Loading = ({ loading, total, loaded, fixed }: LoadingProps) => {
 
     return (
         <div className={'loading' + (fixed ? ' fixed' : '')}>
+            <span className='clock-loader'></span>
             <span>Loading ...</span>
             <span className='progress-bar'>
                 <span

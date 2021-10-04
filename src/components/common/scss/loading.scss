@@ -26,6 +26,52 @@
             background: #fff9;
             @include box(0%, 100%);
             display: block;
+            transition: width 500ms;
+        }
+    }
+
+    .clock-loader {
+        $color: #fff;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        box-shadow: $color 0px 0px 0px 2px inset;
+        display: grid;
+        place-items: center;
+
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            background-color: $color;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        &::before {
+            width: 16.6667px;
+            height: 2px;
+            top: 24px;
+            left: 24px;
+            transform-origin: 1px 1px 0px;
+            animation: 8s linear 0s infinite normal none running clock-animation;
+        }
+
+        &::after {
+            width: 20.8333px;
+            height: 2px;
+            top: 24px;
+            left: 24px;
+            transform-origin: 1px 1px 0px;
+            animation: 2s linear 0s infinite normal none running clock-animation;
+        }
+
+        @keyframes clock-animation {
+            100% {
+                transform: rotate(360deg);
+            }
         }
     }
 }

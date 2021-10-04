@@ -84,6 +84,7 @@ const App = () => {
                             fixed={true}
                         />
                     )}
+
                     <HeroSection />
                     <About loadingRender={false} />
                     <ProjectsInMain loadingRender={false} />
