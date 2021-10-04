@@ -3,8 +3,8 @@ import { Configuration as webpack } from 'webpack'
 import { Configuration as devServer } from 'webpack-dev-server'
 
 // plugins
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-
+import HtmlWP from 'html-webpack-plugin'
+import CopyWP from 'copy-webpack-plugin'
 // entry
 import EntryConfig from './webpack.entry'
 
@@ -65,12 +65,15 @@ const BaseConfig: Configs = {
         extensions: ['.mjs', '.tsx', '.ts', '.js'],
     },
     plugins: [
-        new HtmlWebpackPlugin({
+        new HtmlWP({
             filename: 'index.html',
-            template: './src/template.html',
+            template: './public/template.html',
             inject: true,
             publicPath: '/',
             favicon: './static/img/favicon.ico',
+        }),
+        new CopyWP({
+            patterns: [{ from: './public/robots.txt' }],
         }),
     ],
     optimization: {
