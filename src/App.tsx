@@ -17,17 +17,22 @@ import ProjectsInMain from './components/ProjectsInMain'
 
 const About = Loadable({
     loader: () => import('./components/About'),
-    loading: () => <span>Loading Projcts</span>,
+    loading: () => <span>Loading About</span>,
 })
 
 const JoinUs = Loadable({
     loader: () => import('./components/JoinUs'),
-    loading: () => <span>Loading Projcts</span>,
+    loading: () => <span>Loading JoinUS</span>,
 })
 
 const Creators = Loadable({
     loader: () => import('./components/Creators'),
-    loading: () => <span>Loading Projcts</span>,
+    loading: () => <span>Loading Creators</span>,
+})
+
+const Business = Loadable({
+    loader: () => import('./components/Business'),
+    loading: () => <span>Loading Business</span>,
 })
 
 // elements
@@ -41,13 +46,13 @@ const Projects = Loadable({
 
 const Project = Loadable({
     loader: () => import('./components/Projects/Project'),
-    loading: () => <span>Loading Projct ...</span>,
+    loading: () => <span>Loading Projct</span>,
 })
 
 // layouts
 const Navbar = Loadable({
     loader: () => import('./layouts/Navbar'),
-    loading: () => <span>loading navbar ...</span>,
+    loading: () => <span>loading Navbar</span>,
 })
 
 // style
@@ -104,6 +109,10 @@ const App = () => {
                 <Route path='/creators'>
                     <Creators />
                     <JoinUs />
+                </Route>
+
+                <Route path='/business'>
+                    <Business />
                 </Route>
 
                 <Route path='*'>
