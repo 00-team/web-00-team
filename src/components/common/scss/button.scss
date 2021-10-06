@@ -1,0 +1,17 @@
+.button {
+    $bg: #272727;
+    $fg: #fff;
+    padding: 3px 30px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: $fg;
+    background-color: $bg;
+    border-radius: 5px;
+    font-size: 22px;
+    transition: letter-spacing 300ms;
+
+    &:hover {
+        letter-spacing: 3px;
+    }
+}

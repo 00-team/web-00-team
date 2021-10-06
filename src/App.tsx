@@ -59,6 +59,7 @@ const Navbar = Loadable({
 // style
 import './sass/base.scss'
 import './sass/fonts/imports.scss'
+import Button from './components/common/Button'
 
 const LoadingStatus = (): boolean[] => {
     const state = useSelector((state: RootState) => state)
@@ -111,6 +112,23 @@ const App = () => {
 
                 <Route path='/business'>
                     <Business />
+                </Route>
+
+                <Route path='/btn'>
+                    <div
+                        style={{
+                            padding: 50,
+                            display: 'flex',
+                            gap: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        {/* <Button>Pog</Button>
+                        <Button>Pog</Button>
+                        <Button>Pog</Button> */}
+                        <Button>Pog</Button>
+                    </div>
                 </Route>
 
                 <Route path='*'>
