@@ -31,15 +31,6 @@ const BaseConfig: Configs = {
                 },
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
-                ],
-            },
-            {
                 test: /\.(ico|mp4)$/i,
                 use: [
                     {
@@ -88,6 +79,15 @@ const BaseConfig: Configs = {
 
 const DevConfig: Configs = {
     ...BaseConfig,
+    module: {
+        rules: [
+            ...BaseConfig.module?.rules || [],
+            {
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+        ],
+    },
     devtool: 'source-map',
     devServer: {
         port: 8000,
@@ -101,6 +101,20 @@ const DevConfig: Configs = {
 
 const BuildConfig: Configs = {
     ...BaseConfig,
+    module: {
+        rules: [
+            ...BaseConfig.module?.rules || [],
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
+            },
+        ],
+    },
     optimization: {
         ...BaseConfig.optimization,
         minimize: true,
