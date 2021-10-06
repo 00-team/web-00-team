@@ -28,7 +28,7 @@ function JoinUs() {
                 <div className='join'>
                     <ul className='social__list'>
                         <li>
-                            <button
+                            <a
                                 {...{
                                     'data-title': 'discord.gg/Z6vgXHU2xQ',
                                 }}
@@ -38,19 +38,18 @@ function JoinUs() {
                                 }
                             >
                                 <SiDiscord className='fab' />
-                            </button>
+                            </a>
                         </li>
                         <li>
-                            <button
+                            <a
                                 className='social__btn'
                                 {...{
                                     'data-title': '00.team.mail@gmail.com',
                                 }}
+                                href='mailto:00.team.mail@gmail.com'
                             >
-                                <a href='mailto:00.team.mail@gmail.com'>
-                                    <SiGmail className='fab' />
-                                </a>
-                            </button>
+                                <SiGmail className='fab' />
+                            </a>
                         </li>
                     </ul>
                 </div>
