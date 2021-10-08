@@ -1,7 +1,6 @@
 @use '../../sass/mixins.sass' as *;
 @use '../../sass/variables.sass' as *;
 
-
 .creators {
     @include box(100%, 100vh);
 
@@ -55,7 +54,7 @@
                         border-radius: 50%;
                         position: absolute;
                         bottom: -25%;
-                        border: 5px solid #121212;
+                        border: 5px solid #040404;
                         // padding: 0.2rem;
                         z-index: 1;
                     }
