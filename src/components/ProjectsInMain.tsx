@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Loadable from 'react-loadable'
+
+import Markdown from 'markdown-to-jsx'
 
 // lazy motion
 const LazyMotion = Loadable({
@@ -12,16 +14,26 @@ const LazyMotion = Loadable({
 import { useDispatch, useSelector } from 'react-redux'
 import loadProjects from '../redux/actions/loadProjects'
 import { RootState } from '../redux'
+import { ProjectModel } from 'src/redux/models/Projects'
 
-// elements
+// commons
 import Loading from './common/Loading'
-// import ProjectsSlider from './elements/ProjectsSlider'
+import Button from './common/Button'
 
-// import css
+// slider
+import { CardSlider } from './common/slider'
+
+// import style
 import './sass/projects.scss'
 
+// icons
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+
+// local functions
+const go = (url?: string | URL | undefined) => window.open(url)
+
 interface ProjectsProps {
-    loadingRender: boolean
+    loadingRender?: boolean
 }
 
 const defaultProps: ProjectsProps = {
@@ -31,10 +43,17 @@ const defaultProps: ProjectsProps = {
 function Projects({ loadingRender }: ProjectsProps) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
+    const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
 
     useEffect(() => {
         dispatch(loadProjects())
     }, [dispatch])
+
+    useEffect(() => {
+        if (ProjectsState.projects.length > 0) {
+            setProjectsItem(ProjectsState.projects)
+        }
+    }, [ProjectsState])
 
     if (ProjectsState.error) {
         return <span>Error Acquired {ProjectsState.error}</span>
@@ -44,15 +63,81 @@ function Projects({ loadingRender }: ProjectsProps) {
         return <Loading />
     }
 
+    if (ProjectsItem.length === 0) return <></>
+
     return (
-        <div className='projects' id='projects'>
+        <div className='projects-in-main'>
             <div className='container'>
                 <LazyMotion>
                     <div className='header'>
                         <h1>Projects</h1>
                     </div>
                 </LazyMotion>
-                {/* <ProjectsSlider images={ProjectsState} /> */}
+                <div className='project-slider'>
+                    <CardSlider>
+                        {ProjectsItem.map((item, index) => (
+                            <div key={index} className='card-project'>
+                                <div
+                                    style={
+                                        item.thumbnail
+                                            ? {
+                                                  backgroundImage: `url(${item.thumbnail.url})`,
+                                              }
+                                            : {}
+                                    }
+                                    className='thumbnail'
+                                ></div>
+                                <div className='details'>
+                                    <span className='title'>{item.title}</span>
+
+                                    <div className='description'>
+                                        {item.description && (
+                                            <Markdown>
+                                                {item.description.markdown}
+                                            </Markdown>
+                                        )}
+                                    </div>
+
+                                    <div className='date-git'>
+                                        {item.startDate && (
+                                            <span
+                                                className='date'
+                                                title={
+                                                    'Start at ' + item.startDate
+                                                }
+                                            >
+                                                {item.startDate}
+                                            </span>
+                                        )}
+
+                                        {item.git && (
+                                            <span
+                                                className='git'
+                                                title={`Project Github`}
+                                                onClick={() => go(item.git)}
+                                            >
+                                                GitHub <FiGithub />
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <Button
+                                        onClick={() =>
+                                            go(`/project/${item.projectSlug}`)
+                                        }
+                                    >
+                                        Project
+                                    </Button>
+
+                                    {/* {item.projectSlug} */}
+                                    {/* {item.startDate} */}
+                                    {/* {item.git} */}
+                                    {/* {item.projectUrl} */}
+                                </div>
+                            </div>
+                        ))}
+                    </CardSlider>
+                </div>
             </div>
         </div>
     )
