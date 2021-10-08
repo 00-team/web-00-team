@@ -50,11 +50,30 @@
             transition: all 450ms ease 0s;
             @include box(840px, 335px);
             visibility: hidden;
+            overflow: hidden;
 
             &.c {
                 z-index: 3;
                 transform: scale(1);
                 visibility: visible;
+            }
+
+            &.n1,
+            &.n2,
+            &.p1,
+            &.p2 {
+                cursor: pointer;
+                &:hover::after {
+                    opacity: 0;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    opacity: 0.4;
+                    background-color: #000;
+                    z-index: 2;
+                    inset: 0;
+                }
             }
 
             &.n1 {

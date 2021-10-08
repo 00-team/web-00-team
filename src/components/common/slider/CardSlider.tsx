@@ -29,7 +29,7 @@ const CardSlider = ({ children }: CardSliderProps) => {
         }
     }, [children])
 
-    const ChangeCardIndex = (index: 1 | -1): void => {
+    const ChangeCardIndex = (index: number): void => {
         let tmp_index = CardIndex + index
 
         if (tmp_index > Elements.length - 1) {
@@ -42,19 +42,19 @@ const CardSlider = ({ children }: CardSliderProps) => {
         setCardIndex(tmp_index)
     }
 
-    const GetPos = (index: number): string => {
+    const GetPos = (index: number): number => {
         const maxIndex = Elements.length - 1
 
         // current
-        if (index === CardIndex) return 'c'
+        if (index === CardIndex) return 0
 
         // previous level 1
         if (CardIndex - 1 === index || (index === maxIndex && CardIndex === 0))
-            return 'p1'
+            return -1
 
         // next level 1
         if (CardIndex + 1 === index || (index === 0 && CardIndex === maxIndex))
-            return 'n1'
+            return 1
 
         if (Elements.length >= 7) {
             // previous level 2
@@ -63,7 +63,7 @@ const CardSlider = ({ children }: CardSliderProps) => {
                 (CardIndex === 0 && index === maxIndex - 1) ||
                 (CardIndex === 1 && index === maxIndex)
             )
-                return 'p2'
+                return -2
 
             // next level 2
             if (
@@ -71,10 +71,19 @@ const CardSlider = ({ children }: CardSliderProps) => {
                 (CardIndex === maxIndex && index === 1) ||
                 (CardIndex === maxIndex - 1 && index === 0)
             )
-                return 'n2'
+                return 2
         }
 
-        return ''
+        return NaN
+    }
+
+    const GetClassByPos = (pos: number): string => {
+        if (pos === 0) return ' c'
+        else if (pos === 1) return ' n1'
+        else if (pos === 2) return ' n2'
+        else if (pos === -1) return ' p1'
+        else if (pos === -2) return ' p2'
+        else return ''
     }
 
     if (Elements.length < 1) return <></>
@@ -96,7 +105,14 @@ const CardSlider = ({ children }: CardSliderProps) => {
 
             <div className='card-slider'>
                 {Elements.map((item, index) => (
-                    <div key={index} className={'card ' + GetPos(index)}>
+                    <div
+                        key={index}
+                        className={'card ' + GetClassByPos(GetPos(index))}
+                        onClick={() => {
+                            let pos = GetPos(index)
+                            if (pos) ChangeCardIndex(pos)
+                        }}
+                    >
                         {item}
                     </div>
                 ))}
