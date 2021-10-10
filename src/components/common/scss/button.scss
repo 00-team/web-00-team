@@ -1,0 +1,41 @@
+@use '../../../sass/mixins.sass' as *;
+@use '../../../sass/fonts' as *;
+
+$fg: #fff;
+$bg: #121212;
+$border: #272727;
+$active: #696969;
+
+.button {
+    padding: 10px 30px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: $fg;
+    border: 2px solid;
+    background: none;
+    contain: layout;
+    border-color: $border;
+    border-radius: 1px;
+    @include MainFont(22px);
+    position: relative;
+
+    &:hover::before {
+        width: 100%;
+    }
+
+    &:focus,
+    &:active {
+        border-color: $active;
+    }
+
+    &::before {
+        content: '';
+        @include box(0%, 100%);
+        transition: all 300ms;
+        z-index: -1;
+        position: absolute;
+        background-color: $bg;
+        inset: 0;
+    }
+}

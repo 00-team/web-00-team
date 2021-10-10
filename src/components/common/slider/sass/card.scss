@@ -1,0 +1,102 @@
+@use '../../../../sass/mixins.sass' as *;
+
+.card-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .btn {
+        border-radius: 3px;
+
+        button {
+            display: grid;
+            place-items: center;
+            user-select: none;
+            @include box(40px);
+            border-radius: 0.4rem;
+            background-color: transparent;
+            transition: background-color 250ms;
+            &:hover {
+                background-color: #272727;
+            }
+            color: snow;
+
+            .icon {
+                @include box(27px);
+                display: grid;
+                place-items: center;
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.next {
+            right: 0;
+        }
+
+        &.previous {
+            left: 0;
+        }
+    }
+
+    .card-slider {
+        @include box(840px, 335px);
+        .card {
+            position: absolute;
+            transition: all 450ms ease 0s;
+            @include box(840px, 335px);
+            visibility: hidden;
+            overflow: hidden;
+
+            &.c {
+                z-index: 3;
+                transform: scale(1);
+                visibility: visible;
+            }
+
+            &.n1,
+            &.n2,
+            &.p1,
+            &.p2 {
+                cursor: pointer;
+                &:hover::after {
+                    opacity: 0;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    opacity: 0.4;
+                    background-color: #000;
+                    z-index: 2;
+                    inset: 0;
+                }
+            }
+
+            &.n1 {
+                z-index: 2;
+                transform: translateX(13%) scale(0.85);
+                visibility: visible;
+            }
+            &.n2 {
+                z-index: 1;
+                transform: translateX(24%) scale(0.7);
+                visibility: visible;
+            }
+
+            &.p1 {
+                z-index: 2;
+                transform: translateX(-13%) scale(0.85);
+                visibility: visible;
+            }
+            &.p2 {
+                z-index: 1;
+                transform: translateX(-24%) scale(0.7);
+                visibility: visible;
+            }
+        }
+    }
+}

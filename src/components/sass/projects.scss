@@ -1,7 +1,8 @@
 @use '../../sass/mixins.sass' as *;
 @use '../../sass/variables.sass' as *;
+@use '../../sass/fonts' as *;
 
-.projects {
+.projects-in-main {
     @include box(100%, 100vh);
 
     .container {
@@ -9,7 +10,6 @@
         color: #fff;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         align-items: center;
 
         .header h1 {
@@ -20,6 +20,68 @@
             font-family: 'Graduate', 'Roboto', sans-serif;
             text-transform: uppercase;
         }
-        
+
+        .project-slider {
+            padding: 2rem 3rem 0;
+            width: 100%;
+
+            .card-project {
+                @include box(100%);
+                display: flex;
+                border: 3px solid #454545;
+                border-radius: 7px;
+                overflow: hidden;
+
+                .thumbnail {
+                    @include box(70%, 100%);
+                    background-color: #000;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    flex-shrink: 0;
+                }
+
+                .details {
+                    @include box(100%);
+                    background-color: #1a1a1a;
+                    color: #fff;
+                    overflow: hidden;
+                    padding: 10px 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .title {
+                        display: block;
+                        @include MainFont(28px);
+                        text-transform: capitalize;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        flex-shrink: 0;
+                    }
+
+                    .description {
+                        @include box(100%);
+                        overflow-y: auto;
+                        overflow-x: hidden;
+                        word-break: break-word;
+                        scrollbar-width: thin;
+                    }
+
+                    .date-git {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .git {
+                            cursor: pointer;
+                            display: flex;
+                            gap: 5px;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

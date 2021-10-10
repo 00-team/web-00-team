@@ -206,4 +206,4 @@ Procfile    text
 *.wwaproj   merge=binary
 
 ## Language
-* linguist-language=JavaScript
+* linguist-language=TypeScript
