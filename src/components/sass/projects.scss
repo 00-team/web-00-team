@@ -37,7 +37,6 @@
                 border: 3px solid #454545;
                 border-radius: 7px;
                 overflow: hidden;
-                cursor: pointer;
 
                 position: relative;
 
@@ -51,6 +50,7 @@
                 }
 
                 .details {
+                    cursor: pointer;
                     @include box(calc(100% + 4px), 95%);
                     position: absolute;
                     // margin: 0.5rem 0.5rem 0 0.5rem;

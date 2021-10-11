@@ -82,9 +82,9 @@ function Projects({ loadingRender }: ProjectsProps) {
                             <div
                                 key={index}
                                 className='card-project'
-                                onClick={() =>
-                                    setisActive(isActive ? '' : `${index}`)
-                                }
+                                // onMouseDown={() =>
+                                //     setisActive(isActive ? '' : `${index}`)
+                                // }
                             >
                                 <div
                                     style={
@@ -97,6 +97,9 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     className='thumbnail'
                                 ></div>
                                 <div
+                                    onClick={() =>
+                                        setisActive(isActive ? '' : `${index}`)
+                                    }
                                     className={`details ${
                                         isActive === `${index}` ? 'focus' : ''
                                     }`}
