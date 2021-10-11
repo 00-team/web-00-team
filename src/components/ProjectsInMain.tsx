@@ -45,8 +45,8 @@ function Projects({ loadingRender }: ProjectsProps) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
-    
-    const [isActive, setisActive] = useState("")
+
+    const [isActive, setisActive] = useState('')
 
     useEffect(() => {
         dispatch(loadProjects())
@@ -77,12 +77,14 @@ function Projects({ loadingRender }: ProjectsProps) {
                     </div>
                 </LazyMotion>
                 <div className='project-slider'>
-                    <CardSlider>
+                    <CardSlider onChange={() => setisActive('')}>
                         {ProjectsItem.map((item, index) => (
                             <div
                                 key={index}
                                 className='card-project'
-                                onClick={() => setisActive(isActive ? "" : `${index}`)}
+                                // onMouseDown={() =>
+                                //     setisActive(isActive ? '' : `${index}`)
+                                // }
                             >
                                 <div
                                     style={
@@ -94,7 +96,14 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     }
                                     className='thumbnail'
                                 ></div>
-                                <div className={`details ${isActive === `${index}` ? "focus" : ""}`}>
+                                <div
+                                    onClick={() =>
+                                        setisActive(isActive ? '' : `${index}`)
+                                    }
+                                    className={`details ${
+                                        isActive === `${index}` ? 'focus' : ''
+                                    }`}
+                                >
                                     <div
                                         className={`arrow-up ${
                                             isActive ? 'active' : ''

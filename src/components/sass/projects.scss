@@ -50,6 +50,7 @@
                 }
 
                 .details {
+                    cursor: pointer;
                     @include box(calc(100% + 4px), 95%);
                     position: absolute;
                     // margin: 0.5rem 0.5rem 0 0.5rem;
@@ -76,10 +77,29 @@
                     }
 
                     .arrow-up {
+                        overflow: hidden;
                         position: absolute;
-                        top: -11%;
+                        top: -13.5%;
+                        @include box(30px);
+                        display: grid;
+                        place-items: center;
 
                         transition: all 0.2s ease-in;
+
+                        .arrow-up-icon {
+                            $bezier: cubic-bezier(0, 0.6, 1, 0.4);
+                            animation: arrowMove 2s $bezier forwards infinite;
+
+                            @keyframes arrowMove {
+                                from {
+                                    transform: translateY(34px);
+                                }
+
+                                to {
+                                    transform: translateY(-25px);
+                                }
+                            }
+                        }
 
                         &.active {
                             transform: scaleY(-1);
