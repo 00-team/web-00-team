@@ -32,8 +32,10 @@
                 border-radius: 7px;
                 overflow: hidden;
 
+                position: relative;
+
                 .thumbnail {
-                    @include box(70%, 100%);
+                    @include box(100%, 100%);
                     background-color: #000;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -42,44 +44,46 @@
                 }
 
                 .details {
-                    @include box(100%);
-                    background-color: #1a1a1a;
-                    color: #fff;
-                    overflow: hidden;
-                    padding: 10px 15px;
+                    @include box(100%, 95%);
+                    position: absolute;
+                    // margin: 0.5rem 0.5rem 0 0.5rem;
+                    padding: 0.5rem 0.5rem 0 0.5rem;
+                    border: 2px solid grey;
+                    border-radius: 20px;
+
+                    transform: translateY(100%);
+                    transition: 0.3s all ease-in-out;
+
                     display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     flex-direction: column;
-                    gap: 20px;
 
-                    .title {
-                        display: block;
-                        @include MainFont(28px);
-                        text-transform: capitalize;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        flex-shrink: 0;
-                    }
+                    .arrow-up{
+                        position: absolute;
+                        top: -11%;
 
-                    .description {
-                        @include box(100%);
-                        overflow-y: auto;
-                        overflow-x: hidden;
-                        word-break: break-word;
-                        scrollbar-width: thin;
-                    }
 
-                    .date-git {
-                        display: flex;
-                        justify-content: space-between;
+                        transition: all 0.2s ease-in;
 
-                        .git {
-                            cursor: pointer;
-                            display: flex;
-                            gap: 5px;
-                            align-items: center;
+                        &.active{
+                            transform: scaleY(-1);
                         }
                     }
+                    
+
+                    .see-more{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                    }
+                }
+
+                &:hover .details {
+                    background-color: rgb(26, 26, 26, 0.5);
+
+                    transform: translateY(10%);
                 }
             }
         }
