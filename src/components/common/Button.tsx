@@ -6,15 +6,19 @@ import './scss/button.scss'
 interface ButtonProps {
     children?: ReactNode
     onClick?: (e: React.MouseEvent) => void
+    classname? : String
 }
 
 const defaultProps: ButtonProps = {
     onClick: () => {},
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
+const Button = ({ children, onClick,classname }: ButtonProps) => {
     return (
-        <button className='button' onClick={e => (onClick ? onClick(e) : {})}>
+        <button
+            className={`button ${classname}`}
+            onClick={e => (onClick ? onClick(e) : {})}
+        >
             {children}
         </button>
     )

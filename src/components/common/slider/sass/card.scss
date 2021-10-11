@@ -6,6 +6,9 @@
     // align-items: center;
     // justify-content: space-between;
     position: relative;
+    
+    margin-top: 10%;
+    
     padding: 0 10px;
 
     display: grid;
@@ -61,6 +64,7 @@
     }
 
     .card-slider {
+        // @include box(50%, 35vh);
         // grid
         grid-area: cards;
         position: relative;
@@ -70,8 +74,14 @@
         @include war(100%, #{2.7 / 1});
         // @include box(840px, 335px);
         .card {
+            
             position: absolute;
             transition: all 450ms ease 0s;
+
+            // @include box(840px, 335px);
+            min-width: 50%;
+            height: 35vh;
+
             @include box(82%);
             visibility: hidden;
             overflow: hidden;
