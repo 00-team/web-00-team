@@ -53,7 +53,10 @@
                 color: #fff;
                 font-weight: 600;
                 cursor: pointer;
+                font-family: 'Pacifico', cursive;
+                
                 transition: opacity 100ms;
+
 
                 &:hover::after {
                     color: snow;

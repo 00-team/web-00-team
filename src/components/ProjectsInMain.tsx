@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Loadable from 'react-loadable'
 
@@ -46,12 +46,7 @@ function Projects({ loadingRender }: ProjectsProps) {
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
     
-    ///////// toggle projects arrow class
-
-    const [isActive, setisActive] = useState<boolean>(false)
-    const arrow = useRef<HTMLDivElement>(null)
-
-    //////////
+    const [isActive, setisActive] = useState("")
 
     useEffect(() => {
         dispatch(loadProjects())
@@ -87,8 +82,7 @@ function Projects({ loadingRender }: ProjectsProps) {
                             <div
                                 key={index}
                                 className='card-project'
-                                onMouseEnter={() => setisActive(true)}
-                                onMouseLeave={() => setisActive(false)}
+                                onClick={() => setisActive(isActive ? "" : `${index}`)}
                             >
                                 <div
                                     style={
@@ -100,12 +94,11 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     }
                                     className='thumbnail'
                                 ></div>
-                                <div className='details'>
+                                <div className={`details ${isActive === `${index}` ? "focus" : ""}`}>
                                     <div
                                         className={`arrow-up ${
                                             isActive ? 'active' : ''
                                         }`}
-                                        ref={arrow}
                                     >
                                         <ImArrowUp2
                                             size={24}

@@ -27,11 +27,13 @@
             @include media('<=1080px') {
                 padding: 2rem 0;
             }
-            width: 100%;
+            width: 80%;
 
             .card-project {
                 @include box(100%);
                 display: flex;
+                align-items: center;
+                justify-content: center;
                 border: 3px solid #454545;
                 border-radius: 7px;
                 overflow: hidden;
@@ -48,7 +50,7 @@
                 }
 
                 .details {
-                    @include box(100%, 95%);
+                    @include box(calc(100% + 4px), 95%);
                     position: absolute;
                     // margin: 0.5rem 0.5rem 0 0.5rem;
                     padding: 0.5rem 0.5rem 0 0.5rem;
@@ -73,20 +75,18 @@
                         flex-shrink: 0;
                     }
 
-                    .arrow-up{
+                    .arrow-up {
                         position: absolute;
                         top: -11%;
 
-
                         transition: all 0.2s ease-in;
 
-                        &.active{
+                        &.active {
                             transform: scaleY(-1);
                         }
                     }
-                    
 
-                    .see-more{
+                    .see-more {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
@@ -100,7 +100,12 @@
                             gap: 5px;
                             height: 100%;
                         }
+                    }
 
+                    &.focus {
+                        background-color: rgb(26, 26, 26, 0.5);
+
+                        transform: translateY(10%);
                     }
 
                     @include media('<=850px') {
@@ -121,12 +126,6 @@
                             display: none;
                         }
                     }
-                }
-
-                &:hover .details {
-                    background-color: rgb(26, 26, 26, 0.5);
-
-                    transform: translateY(10%);
                 }
             }
         }
