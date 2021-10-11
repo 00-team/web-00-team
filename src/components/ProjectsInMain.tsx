@@ -46,7 +46,7 @@ function Projects({ loadingRender }: ProjectsProps) {
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
     
-    const [isActive, setisActive] = useState<boolean>(false)
+    const [isActive, setisActive] = useState("")
 
     useEffect(() => {
         dispatch(loadProjects())
@@ -82,8 +82,7 @@ function Projects({ loadingRender }: ProjectsProps) {
                             <div
                                 key={index}
                                 className='card-project'
-                                onClick={() => setisActive(!isActive)}
-                                // onMouseLeave={() => setisActive(false)}
+                                onClick={() => setisActive(isActive ? "" : `${index}`)}
                             >
                                 <div
                                     style={
@@ -95,7 +94,7 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     }
                                     className='thumbnail'
                                 ></div>
-                                <div className='details'>
+                                <div className={`details ${isActive === `${index}` ? "focus" : ""}`}>
                                     <div
                                         className={`arrow-up ${
                                             isActive ? 'active' : ''
