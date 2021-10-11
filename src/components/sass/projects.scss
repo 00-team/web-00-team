@@ -1,6 +1,7 @@
-@use '../../sass/mixins.sass' as *;
-@use '../../sass/variables.sass' as *;
-@use '../../sass/fonts' as *;
+@use '/src/sass/mixins.sass' as *;
+@use '/src/sass/media.scss' as *;
+@use '/src/sass/variables.sass' as *;
+@use '/src/sass/fonts' as *;
 
 .projects-in-main {
     @include box(100%, 100vh);
@@ -23,6 +24,9 @@
 
         .project-slider {
             padding: 2rem 3rem 0;
+            @include media('<=1080px') {
+                padding: 2rem 0;
+            }
             width: 100%;
 
             .card-project {
@@ -51,12 +55,19 @@
                     flex-direction: column;
                     gap: 20px;
 
+                    @include media('<=850px') {
+                        gap: 5px;
+                        align-items: center;
+                        .description {
+                            display: none;
+                        }
+                    }
+
                     .title {
                         display: block;
-                        @include MainFont(28px);
+                        @include MainFont(clamp(18px, -0.45rem + 4vw, 2.4rem));
                         text-transform: capitalize;
                         white-space: nowrap;
-                        text-overflow: ellipsis;
                         overflow: hidden;
                         flex-shrink: 0;
                     }
@@ -72,6 +83,15 @@
                     .date-git {
                         display: flex;
                         justify-content: space-between;
+                        font-size: clamp(16px, -1.75rem + 4vw, 20px);
+
+                        @include media('<=850px') {
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-evenly;
+                            gap: 5px;
+                            height: 100%;
+                        }
 
                         .git {
                             cursor: pointer;
