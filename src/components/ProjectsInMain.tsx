@@ -84,7 +84,12 @@ function Projects({ loadingRender }: ProjectsProps) {
                 <div className='project-slider'>
                     <CardSlider>
                         {ProjectsItem.map((item, index) => (
-                            <div key={index} className='card-project'>
+                            <div
+                                key={index}
+                                className='card-project'
+                                onMouseEnter={() => setisActive(true)}
+                                onMouseLeave={() => setisActive(false)}
+                            >
                                 <div
                                     style={
                                         item.thumbnail
@@ -95,12 +100,13 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     }
                                     className='thumbnail'
                                 ></div>
-                                <div
-                                    className='details'
-                                    onMouseEnter={() => setisActive(true)}
-                                    onMouseLeave={() => setisActive(false)}
-                                >
-                                    <div className={`arrow-up ${isActive ? "active" : ""}`} ref={arrow}>
+                                <div className='details'>
+                                    <div
+                                        className={`arrow-up ${
+                                            isActive ? 'active' : ''
+                                        }`}
+                                        ref={arrow}
+                                    >
                                         <ImArrowUp2
                                             size={24}
                                             className='arrow-up-icon'
