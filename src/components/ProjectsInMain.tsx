@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Loadable from 'react-loadable'
 
@@ -28,6 +28,7 @@ import './sass/projects.scss'
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+import { ImArrowUp2 } from '@react-icons/all-files/im/ImArrowUp2'
 
 // local functions
 const go = (url?: string | URL | undefined) => window.open(url)
@@ -44,6 +45,13 @@ function Projects({ loadingRender }: ProjectsProps) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
+    
+    ///////// toggle projects arrow class
+
+    const [isActive, setisActive] = useState<boolean>(false)
+    const arrow = useRef<HTMLDivElement>(null)
+
+    //////////
 
     useEffect(() => {
         dispatch(loadProjects())
@@ -87,18 +95,31 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     }
                                     className='thumbnail'
                                 ></div>
-                                <div className='details'>
-                                    <span className='title'>{item.title}</span>
-
-                                    <div className='description'>
-                                        {item.description && (
-                                            <Markdown>
-                                                {item.description.markdown}
-                                            </Markdown>
-                                        )}
+                                <div
+                                    className='details'
+                                    onMouseEnter={() => setisActive(true)}
+                                    onMouseLeave={() => setisActive(false)}
+                                >
+                                    <div className={`arrow-up ${isActive ? "active" : ""}`} ref={arrow}>
+                                        <ImArrowUp2
+                                            size={24}
+                                            className='arrow-up-icon'
+                                        />
                                     </div>
+                                    <h2 className='title'>{item.title}</h2>
 
-                                    <div className='date-git'>
+                                    {/* description  */}
+                                    {(item.description && (
+                                        <Markdown className='description'>
+                                            {item.description.markdown}
+                                        </Markdown>
+                                    )) || (
+                                        <div className='description'>
+                                            No Desc
+                                        </div>
+                                    )}
+                                    {/* ////////////// */}
+                                    {/* <div className='date-git'>
                                         {item.startDate && (
                                             <span
                                                 className='date'
@@ -119,15 +140,30 @@ function Projects({ loadingRender }: ProjectsProps) {
                                                 GitHub <FiGithub />
                                             </span>
                                         )}
-                                    </div>
+                                    </div> */}
+                                    <div className='see-more'>
+                                        <div className='github'>
+                                            {item.git && (
+                                                <Button
+                                                    classname='giticon'
+                                                    onClick={() => go(item.git)}
+                                                >
+                                                    GitHub <FiGithub />
+                                                </Button>
+                                            )}
+                                        </div>
 
-                                    <Button
-                                        onClick={() =>
-                                            go(`/project/${item.projectSlug}`)
-                                        }
-                                    >
-                                        Project
-                                    </Button>
+                                        <Button
+                                            classname='project'
+                                            onClick={() =>
+                                                go(
+                                                    `/project/${item.projectSlug}`
+                                                )
+                                            }
+                                        >
+                                            See More
+                                        </Button>
+                                    </div>
 
                                     {/* {item.projectSlug} */}
                                     {/* {item.startDate} */}
