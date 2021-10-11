@@ -1,13 +1,29 @@
 @use '../../../../sass/mixins.sass' as *;
+@use '/src/sass/media.scss' as *;
 
 .card-slider-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
     position: relative;
     
     margin-top: 10%;
     
+    padding: 0 10px;
+
+    display: grid;
+    place-items: center;
+    grid-template-areas: 'previous cards next';
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+
+    @include media('<=600px') {
+        grid-template-areas:
+            'cards cards'
+            'previous next';
+        grid-template-columns: auto;
+    }
+
     .btn {
         border-radius: 3px;
 
@@ -38,15 +54,25 @@
 
         &.next {
             right: 0;
+            grid-area: next;
         }
 
         &.previous {
             left: 0;
+            grid-area: previous;
         }
     }
 
     .card-slider {
-        @include box(50%, 35vh);
+        // @include box(50%, 35vh);
+        // grid
+        grid-area: cards;
+        position: relative;
+        display: grid;
+        place-items: center;
+
+        @include war(100%, #{2.7 / 1});
+        // @include box(840px, 335px);
         .card {
             
             position: absolute;
@@ -56,6 +82,7 @@
             min-width: 50%;
             height: 35vh;
 
+            @include box(82%);
             visibility: hidden;
             overflow: hidden;
 
@@ -103,6 +130,30 @@
                 z-index: 1;
                 transform: translateX(-24%) scale(0.7);
                 visibility: visible;
+            }
+
+            @include media('<=1200px') {
+                @include box(90%);
+                &.p1 {
+                    transform: translateX(-10%) scale(0.85);
+                }
+                &.p2 {
+                    transform: translateX(-20%) scale(0.7);
+                }
+                &.n1 {
+                    transform: translateX(10%) scale(0.85);
+                }
+                &.n2 {
+                    transform: translateX(20%) scale(0.7);
+                }
+            }
+
+            @include media('<=500px') {
+                @include box(95%);
+                &.p2,
+                &.n2 {
+                    transform: translateX(0%) scale(0.7);
+                }
             }
         }
     }
