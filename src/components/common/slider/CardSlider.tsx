@@ -10,11 +10,12 @@ import { MdNavigateBefore } from '@react-icons/all-files/md/MdNavigateBefore'
 
 interface CardSliderProps {
     children?: ReactNode
+    onChange?: (direction: -2 | -1 | 1 | 2) => void
 }
 
 const defaultProps: CardSliderProps = {}
 
-const CardSlider = ({ children }: CardSliderProps) => {
+const CardSlider = ({ children, onChange }: CardSliderProps) => {
     const [Elements, setElements] = useState<ReactNode[]>([])
     const [CardIndex, setCardIndex] = useState(0)
 
@@ -30,6 +31,10 @@ const CardSlider = ({ children }: CardSliderProps) => {
     }, [children])
 
     const ChangeCardIndex = (index: number): void => {
+        if (index === -2 || index === -1 || index === 1 || index === 2) {
+            if (onChange) onChange(index)
+        }
+
         let tmp_index = CardIndex + index
 
         if (tmp_index > Elements.length - 1) {
