@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 // loadable
 import Loadable from 'react-loadable'
 
 // redux stuff
-import { Provider as ReduxProvider, useSelector } from 'react-redux'
+import {
+    Provider as ReduxProvider,
+    useSelector,
+    useDispatch,
+} from 'react-redux'
 import { store } from './redux'
 import { RootState } from './redux'
+import { AppTypes } from './redux/models/App'
 
 // router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -69,6 +74,14 @@ const LoadingStatus = (): boolean[] => {
 
 const App = () => {
     const loadings = LoadingStatus()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
+        window.onresize = () => {
+            dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
+        }
+    }, [dispatch])
 
     return (
         <>
