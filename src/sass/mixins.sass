@@ -1,3 +1,8 @@
 @mixin box($w, $h: $w)
     width: $w
     height: $h
+
+// width, aspect-ratio
+@mixin war($w: 100%, $ar: 1 / 1)
+    width: $w
+    aspect-ratio: $ar
