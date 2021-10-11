@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-
+    
+    margin-top: 10%;
+    
     .btn {
         border-radius: 3px;
 
@@ -44,11 +46,16 @@
     }
 
     .card-slider {
-        @include box(840px, 335px);
+        @include box(50%, 35vh);
         .card {
+            
             position: absolute;
             transition: all 450ms ease 0s;
-            @include box(840px, 335px);
+
+            // @include box(840px, 335px);
+            min-width: 50%;
+            height: 35vh;
+
             visibility: hidden;
             overflow: hidden;
 
