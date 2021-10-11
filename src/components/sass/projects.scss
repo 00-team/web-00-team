@@ -55,17 +55,9 @@
                     flex-direction: column;
                     gap: 20px;
 
-                    @include media('<=850px') {
-                        gap: 5px;
-                        align-items: center;
-                        .description {
-                            display: none;
-                        }
-                    }
-
                     .title {
                         display: block;
-                        @include MainFont(clamp(18px, -0.45rem + 4vw, 2.4rem));
+                        @include MainFont(clamp(16px, -0.45rem + 4vw, 2.4rem));
                         text-transform: capitalize;
                         white-space: nowrap;
                         overflow: hidden;
@@ -83,7 +75,7 @@
                     .date-git {
                         display: flex;
                         justify-content: space-between;
-                        font-size: clamp(16px, -1.75rem + 4vw, 20px);
+                        font-size: clamp(16px, -1.2rem + 4vw, 20px);
 
                         @include media('<=850px') {
                             flex-direction: column;
@@ -98,6 +90,25 @@
                             display: flex;
                             gap: 5px;
                             align-items: center;
+                        }
+                    }
+
+                    @include media('<=850px') {
+                        gap: 5px;
+                        align-items: center;
+                        .description {
+                            display: none;
+                        }
+                        .button {
+                            padding: 5px 15px;
+                            font-size: clamp(12px, -1.75rem + 4vw, 20px);
+                        }
+                    }
+
+                    @include media('<=450px') {
+                        justify-content: space-between;
+                        .date-git {
+                            display: none;
                         }
                     }
                 }
