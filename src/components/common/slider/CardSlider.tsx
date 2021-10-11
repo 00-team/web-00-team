@@ -3,21 +3,37 @@ import React, { ReactNode, useState, useEffect } from 'react'
 // style
 import './sass/card.scss'
 
+// functions
+import { GetClassByPos, GetTouchPos, GetCardPos } from './Card.functions'
+
 // icons
-// MdNavigateNext
 import { MdNavigateNext } from '@react-icons/all-files/md/MdNavigateNext'
 import { MdNavigateBefore } from '@react-icons/all-files/md/MdNavigateBefore'
 
+// types
 interface CardSliderProps {
     children?: ReactNode
     onChange?: (direction: -2 | -1 | 1 | 2) => void
 }
 
-const defaultProps: CardSliderProps = {}
+interface TouchStateType {
+    isDragging: boolean
+    startPos: number
+    currentPos: number
+}
 
+// default valuse
+const DTS: TouchStateType = {
+    isDragging: false,
+    startPos: 0,
+    currentPos: 0,
+}
+
+// main component
 const CardSlider = ({ children, onChange }: CardSliderProps) => {
     const [Elements, setElements] = useState<ReactNode[]>([])
     const [CardIndex, setCardIndex] = useState(0)
+    const [TouchState, setTouchState] = useState<TouchStateType>(DTS)
 
     useEffect(() => {
         if (!children) return
@@ -47,48 +63,17 @@ const CardSlider = ({ children, onChange }: CardSliderProps) => {
         setCardIndex(tmp_index)
     }
 
-    const GetPos = (index: number): number => {
-        const maxIndex = Elements.length - 1
+    const DragEnd = () => {
+        if (!TouchState.isDragging) return
 
-        // current
-        if (index === CardIndex) return 0
-
-        // previous level 1
-        if (CardIndex - 1 === index || (index === maxIndex && CardIndex === 0))
-            return -1
-
-        // next level 1
-        if (CardIndex + 1 === index || (index === 0 && CardIndex === maxIndex))
-            return 1
-
-        if (Elements.length >= 7) {
-            // previous level 2
-            if (
-                CardIndex - 2 === index ||
-                (CardIndex === 0 && index === maxIndex - 1) ||
-                (CardIndex === 1 && index === maxIndex)
-            )
-                return -2
-
-            // next level 2
-            if (
-                CardIndex + 2 === index ||
-                (CardIndex === maxIndex && index === 1) ||
-                (CardIndex === maxIndex - 1 && index === 0)
-            )
-                return 2
+        const movement = TouchState.startPos - TouchState.currentPos
+        if (movement > 100) {
+            ChangeCardIndex(1)
+        } else if (movement < -100) {
+            ChangeCardIndex(-1)
         }
 
-        return NaN
-    }
-
-    const GetClassByPos = (pos: number): string => {
-        if (pos === 0) return ' c'
-        else if (pos === 1) return ' n1'
-        else if (pos === 2) return ' n2'
-        else if (pos === -1) return ' p1'
-        else if (pos === -2) return ' p2'
-        else return ''
+        setTouchState(DTS)
     }
 
     if (Elements.length < 1) return <></>
@@ -108,13 +93,54 @@ const CardSlider = ({ children, onChange }: CardSliderProps) => {
                 </div>
             )}
 
-            <div className='card-slider'>
+            <div
+                className='card-slider'
+                onContextMenu={e => e.preventDefault()}
+                // mouse
+                onMouseDown={e =>
+                    setTouchState({
+                        isDragging: true,
+                        startPos: e.pageX,
+                        currentPos: e.pageX,
+                    })
+                }
+                onMouseMove={e =>
+                    TouchState.isDragging &&
+                    setTouchState({ ...TouchState, currentPos: e.pageX })
+                }
+                onMouseLeave={() => setTouchState(DTS)}
+                onMouseUp={() => DragEnd()}
+                // touch
+                onTouchStart={e => {
+                    const pos = GetTouchPos(e)
+                    setTouchState({
+                        isDragging: true,
+                        startPos: pos,
+                        currentPos: pos,
+                    })
+                }}
+                onTouchMove={e => {
+                    if (!TouchState.isDragging) return
+                    const pos = GetTouchPos(e)
+                    setTouchState({ ...TouchState, currentPos: pos })
+                }}
+                onTouchEnd={() => DragEnd()}
+            >
                 {Elements.map((item, index) => (
                     <div
                         key={index}
-                        className={'card ' + GetClassByPos(GetPos(index))}
-                        onClick={() => {
-                            let pos = GetPos(index)
+                        className={
+                            'card ' +
+                            GetClassByPos(
+                                GetCardPos(index, CardIndex, Elements.length)
+                            )
+                        }
+                        onMouseUp={() => {
+                            let pos = GetCardPos(
+                                index,
+                                CardIndex,
+                                Elements.length
+                            )
                             if (pos) ChangeCardIndex(pos)
                         }}
                     >
@@ -135,7 +161,5 @@ const CardSlider = ({ children, onChange }: CardSliderProps) => {
         </div>
     )
 }
-
-CardSlider.defaultProps = defaultProps
 
 export { CardSlider }
