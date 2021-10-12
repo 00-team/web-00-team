@@ -29,6 +29,7 @@ import './sass/projects.scss'
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import { ImArrowUp2 } from '@react-icons/all-files/im/ImArrowUp2'
+import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 
 // local functions
 const go = (url?: string | URL | undefined) => window.open(url)
@@ -45,8 +46,8 @@ function Projects({ loadingRender }: ProjectsProps) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
-
-    const [isActive, setisActive] = useState('')
+    
+    const [isActive, setisActive] = useState("")
 
     useEffect(() => {
         dispatch(loadProjects())
@@ -97,7 +98,7 @@ function Projects({ loadingRender }: ProjectsProps) {
                                     className='thumbnail'
                                 ></div>
                                 <div
-                                    onClick={() =>
+                                    onMouseUp={() =>
                                         setisActive(isActive ? '' : `${index}`)
                                     }
                                     className={`details ${
@@ -126,40 +127,15 @@ function Projects({ loadingRender }: ProjectsProps) {
                                             No Desc
                                         </div>
                                     )}
-                                    {/* ////////////// */}
-                                    {/* <div className='date-git'>
-                                        {item.startDate && (
-                                            <span
-                                                className='date'
-                                                title={
-                                                    'Start at ' + item.startDate
-                                                }
-                                            >
-                                                {item.startDate}
-                                            </span>
-                                        )}
-
+                                    <div className='see-more'>
                                         {item.git && (
-                                            <span
-                                                className='git'
-                                                title={`Project Github`}
+                                            <Button
+                                                classname='giticon'
                                                 onClick={() => go(item.git)}
                                             >
                                                 GitHub <FiGithub />
-                                            </span>
+                                            </Button>
                                         )}
-                                    </div> */}
-                                    <div className='see-more'>
-                                        <div className='github'>
-                                            {item.git && (
-                                                <Button
-                                                    classname='giticon'
-                                                    onClick={() => go(item.git)}
-                                                >
-                                                    GitHub <FiGithub />
-                                                </Button>
-                                            )}
-                                        </div>
 
                                         <Button
                                             classname='project'
@@ -169,14 +145,19 @@ function Projects({ loadingRender }: ProjectsProps) {
                                                 )
                                             }
                                         >
-                                            See More
+                                            <div className='icon-arrow before'>
+                                                {' '}
+                                                <HiOutlineArrowNarrowRight />{' '}
+                                            </div>
+                                            <div className='label'>
+                                                See More
+                                            </div>
+                                            <div className='icon-arrow after'>
+                                                {' '}
+                                                <HiOutlineArrowNarrowRight />
+                                            </div>
                                         </Button>
                                     </div>
-
-                                    {/* {item.projectSlug} */}
-                                    {/* {item.startDate} */}
-                                    {/* {item.git} */}
-                                    {/* {item.projectUrl} */}
                                 </div>
                             </div>
                         ))}
