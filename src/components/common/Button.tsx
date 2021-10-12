@@ -3,6 +3,9 @@ import React, { ReactNode, useState } from 'react'
 // style
 import './scss/button.scss'
 
+// icons 
+import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
+
 interface ButtonProps {
     children?: ReactNode
     onClick?: (e: React.MouseEvent) => void
@@ -20,6 +23,25 @@ const Button = ({ children, onClick, classname }: ButtonProps) => {
             onClick={e => (onClick ? onClick(e) : {})}
         >
             {children}
+        </button>
+    )
+}
+
+export const ButtonWithArrow = ({ children, onClick, classname }: ButtonProps) => {
+    return (
+        <button
+            className={`basic-button-arrow button ${classname}`}
+            onClick={e => (onClick ? onClick(e) : {})}
+        >
+            <div className='icon-arrow before'>
+                {' '}
+                <HiOutlineArrowNarrowRight />{' '}
+            </div>
+            <div className='label'>{children}</div>
+            <div className='icon-arrow after'>
+                {' '}
+                <HiOutlineArrowNarrowRight />
+            </div>
         </button>
     )
 }

@@ -18,7 +18,7 @@ import { ProjectModel } from 'src/redux/models/Projects'
 
 // commons
 import Loading from './common/Loading'
-import Button from './common/Button'
+import Button, { ButtonWithArrow } from './common/Button'
 
 // slider
 import { CardSlider } from './common/slider'
@@ -29,7 +29,7 @@ import './sass/projects.scss'
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import { ImArrowUp2 } from '@react-icons/all-files/im/ImArrowUp2'
-import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
+// import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 
 // local functions
 const go = (url?: string | URL | undefined) => window.open(url)
@@ -137,7 +137,7 @@ function Projects({ loadingRender }: ProjectsProps) {
                                             </Button>
                                         )}
 
-                                        <Button
+                                        {/* <Button
                                             classname='project'
                                             onClick={() =>
                                                 go(
@@ -156,7 +156,17 @@ function Projects({ loadingRender }: ProjectsProps) {
                                                 {' '}
                                                 <HiOutlineArrowNarrowRight />
                                             </div>
-                                        </Button>
+                                        </Button> */}
+                                        <ButtonWithArrow
+                                            classname='project'
+                                            onClick={() =>
+                                                go(
+                                                    `/project/${item.projectSlug}`
+                                                )
+                                            }
+                                        >
+                                            See More
+                                        </ButtonWithArrow>
                                     </div>
                                 </div>
                             </div>
