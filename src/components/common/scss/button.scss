@@ -27,6 +27,7 @@ $active: #696969;
     position: relative;
 
     &:hover::before {
+        height: 100%;
         width: 100%;
     }
 
