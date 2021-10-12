@@ -6,11 +6,15 @@ $bg: #121212;
 $border: #272727;
 $active: #696969;
 
-.button {
-    padding: 10px 30px;
+.basic-button {
     cursor: pointer;
     outline: none;
     border: none;
+    background: none;
+}
+
+.button {
+    padding: 10px 30px;
     color: $fg;
     border: 2px solid;
     background: none;
@@ -37,5 +41,42 @@ $active: #696969;
         position: absolute;
         background-color: $bg;
         inset: 0;
+    }
+}
+
+.little-dream-container {
+    position: relative;
+    display: inline-block;
+    .little-dream {
+        color: $fg;
+        border: $fg solid 2px;
+        padding: 1rem;
+        @include MainFont(22px);
+        position: relative;
+        background-color: #040404;
+    }
+    .dream {
+        position: absolute;
+        // background
+        background-image: url('/static/img/Dream.png');
+        background-size: cover;
+        background-position: bottom;
+
+
+        @include box(20px, 30px);
+        cursor: default;
+        top: 0;
+        opacity: 0;
+        transition: top 300ms cubic-bezier(0.7, 0.5, 0.5, 2);
+
+        &.right {
+            right: 0;
+            transform: rotate(10deg);
+        }
+
+        &.left {
+            left: 0;
+            transform: rotate(-10deg);
+        }
     }
 }
