@@ -41,8 +41,9 @@ const Business = Loadable({
     loading: () => <span>Loading Business</span>,
 })
 
-// elements
+// commons
 import Loading from './components/common/Loading'
+import { LittleDream } from './components/common/Button'
 
 // projects
 const Projects = Loadable({
@@ -124,6 +125,12 @@ const App = () => {
 
                 <Route path='/business'>
                     <Business />
+                </Route>
+
+                <Route path='/fun'>
+                    <div style={{ padding: 50, color: 'snow' }}>
+                        <LittleDream>a Little Dream</LittleDream>
+                    </div>
                 </Route>
 
                 <Route path='*'>
