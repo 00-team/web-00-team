@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 // icons
 // import { GiTeamIdea, GiFilmProjector } from 'react-icons/gi'
+import { IoHome } from '@react-icons/all-files/io5/IoHome'
+
 import { GiTeamIdea } from '@react-icons/all-files/gi/GiTeamIdea'
 import { GiFilmProjector } from '@react-icons/all-files/gi/GiFilmProjector'
 
@@ -22,7 +24,14 @@ const Navbar = () => {
                 {/* <div className='logo'>00</div>*/}
 
                 <div className='section'>
-                    <Link className='link' to='/about' >
+                    <Link className='link' to='/'>
+                        Home
+                        <div className="navbar-icon">
+                            <IoHome size={22} />
+                        </div>
+                    </Link>
+
+                    <Link className='link' to='/about'>
                         What is 00 Team
                         <div>
                             <BsQuestionSquareFill size={22} />
