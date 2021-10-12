@@ -26,33 +26,33 @@ const Navbar = () => {
                 <div className='section'>
                     <Link className='link' to='/'>
                         Home
-                        <div className="navbar-icon">
+                        <div className='navbar-icon'>
                             <IoHome size={22} />
                         </div>
                     </Link>
 
                     <Link className='link' to='/about'>
                         What is 00 Team
-                        <div>
+                        <div className='navbar-icon'>
                             <BsQuestionSquareFill size={22} />
                         </div>
                     </Link>
 
                     <Link className='link' to='/projects'>
                         Projects
-                        <div>
+                        <div className='navbar-icon'>
                             <GiFilmProjector size={28} />
                         </div>
                     </Link>
                     <Link className='link' to='/creators'>
                         Creators
-                        <div>
+                        <div className='navbar-icon'>
                             <GiTeamIdea size={28} />
                         </div>
                     </Link>
                     <a className='link'>
                         Wana Join?
-                        <div>
+                        <div className='navbar-icon'>
                             <FaHandshake size={28} />
                         </div>
                     </a>
