@@ -1,6 +1,7 @@
-@use '../../sass/variables.sass' as *;
-@use '../../sass/mixins.sass' as *;
-@use '../../sass/fonts/' as *;
+@use '/src/sass/mixins.sass' as *;
+@use '/src/sass/media.scss' as *;
+@use '/src/sass/variables.sass' as *;
+@use '/src/sass/fonts' as *;
 
 .navbar-container {
     @include box(100%, $NAVBAR_HEIGHT);

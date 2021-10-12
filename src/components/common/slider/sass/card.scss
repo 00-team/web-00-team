@@ -71,7 +71,7 @@
         display: grid;
         place-items: center;
 
-        @include war(100%, #{2.7 / 1});
+        @include war(100%, #{16 / 9});
         // @include box(840px, 335px);
         .card {
             
