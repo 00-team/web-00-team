@@ -137,26 +137,6 @@ function Projects({ loadingRender }: ProjectsProps) {
                                             </Button>
                                         )}
 
-                                        {/* <Button
-                                            classname='project'
-                                            onClick={() =>
-                                                go(
-                                                    `/project/${item.projectSlug}`
-                                                )
-                                            }
-                                        >
-                                            <div className='icon-arrow before'>
-                                                {' '}
-                                                <HiOutlineArrowNarrowRight />{' '}
-                                            </div>
-                                            <div className='label'>
-                                                See More
-                                            </div>
-                                            <div className='icon-arrow after'>
-                                                {' '}
-                                                <HiOutlineArrowNarrowRight />
-                                            </div>
-                                        </Button> */}
                                         <ButtonWithArrow
                                             classname='project'
                                             onClick={() =>
