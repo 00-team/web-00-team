@@ -52,14 +52,16 @@ import './sass/base.scss'
 import './sass/fonts/imports.scss'
 
 const LoadingStatus = (): boolean[] => {
-    const state = useSelector((state: RootState) => state)
-    return Object.values(state)
-        .filter(i => i.loading !== undefined)
-        .map(i => i.loading)
+    const BaseState = useSelector((state: RootState) => state.Base)
+    const CreatorsState = useSelector((state: RootState) => state.Creators)
+    const ProjectsState = useSelector((state: RootState) => state.Projects)
+
+    return [ProjectsState, BaseState, CreatorsState].map(state => state.loading)
 }
 
 const App = () => {
     const loadings = LoadingStatus()
+
     const dispatch = useDispatch()
 
     useEffect(() => {

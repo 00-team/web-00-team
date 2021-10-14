@@ -4,7 +4,7 @@ import { GetTouchPosY, GetTouchPosX } from '../utils'
 
 interface ToucherProps extends React.HTMLAttributes<HTMLDivElement> {
     onToucher: (movement: number) => void
-    ToucherDir: 'X' | 'Y'
+    ToucherDir?: 'X' | 'Y'
 }
 
 const defaultProps: ToucherProps = {

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 
+// redux
+import { RootState } from 'src/redux'
+import { useSelector } from 'react-redux'
+
 // link
 import { Link } from 'react-router-dom'
 
 // icons
-// import { GiTeamIdea, GiFilmProjector } from 'react-icons/gi'
 import { IoHome } from '@react-icons/all-files/io5/IoHome'
 
 import { GiTeamIdea } from '@react-icons/all-files/gi/GiTeamIdea'
@@ -21,7 +24,10 @@ import { FaTimes } from '@react-icons/all-files/fa/FaTimes'
 // style
 import './sass/navbar.scss'
 
+// const DesktopNavbar = () => {}
+
 const Navbar = () => {
+    const WindowsWidth = useSelector((state: RootState) => state.App.winwid)
 
     const [click, setClick] = useState<boolean>(false)
 
@@ -42,7 +48,7 @@ const Navbar = () => {
 
                 <div className={`section ${click ? 'active' : ''}`}>
                     <Link className='link' to='/' onClick={closeMoblieMenu}>
-                        Home
+                        Home - {WindowsWidth}
                         <div className='navbar-icon'>
                             <IoHome size={22} />
                         </div>

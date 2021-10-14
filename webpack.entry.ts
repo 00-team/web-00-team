@@ -8,11 +8,11 @@ const EntryConfig: Entry = {
         dependOn: [
             'react',
             'redux',
+            'navbar',
             'about',
             'demos',
             'creators',
             'joinus',
-            'navbar',
         ],
     },
     // projects
@@ -27,7 +27,7 @@ const EntryConfig: Entry = {
     // layouts
     navbar: {
         import: './src/layouts/Navbar.tsx',
-        dependOn: ['react'],
+        dependOn: ['react', 'redux'],
     },
     // commons
     LazyMotion: {
