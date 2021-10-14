@@ -1,6 +1,3 @@
-export const GetTouchPos = (event: React.TouchEvent) =>
-    event.touches[0] ? event.touches[0].clientX : 0
-
 export const GetClassByPos = (pos: number): string => {
     switch (pos) {
         case 0:
