@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 // loadable
-import Loadable from 'react-loadable'
+import Loadable from '@loadable/component'
 
 // redux stuff
 import {
@@ -20,51 +20,32 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // components
 import HeroSection from './components/HeroSection'
 
-const About = Loadable({
-    loader: () => import('./components/About'),
-    loading: () => <span>Loading About</span>,
-})
+// const About = Loadable({
+//     loader: () => import('./components/About'),
+//     loading: () => <span>Loading About</span>,
+// })
 
-const Demos = Loadable({
-    loader: () => import('./components/Demos'),
-    loading: () => <span>Loading Demos</span>,
-})
+const About = Loadable(() => import('./components/About'))
 
-const JoinUs = Loadable({
-    loader: () => import('./components/JoinUs'),
-    loading: () => <span>Loading JoinUS</span>,
-})
+const Demos = Loadable(() => import('./components/Demos/Demos'))
 
-const Creators = Loadable({
-    loader: () => import('./components/Creators'),
-    loading: () => <span>Loading Creators</span>,
-})
+const JoinUs = Loadable(() => import('./components/JoinUs'))
 
-const Business = Loadable({
-    loader: () => import('./components/Business'),
-    loading: () => <span>Loading Business</span>,
-})
+const Creators = Loadable(() => import('./components/Creators'))
+
+const Business = Loadable(() => import('./components/Business'))
 
 // commons
 import Loading from './components/common/Loading'
 import { LittleDream } from './components/common/Button'
 
 // projects
-const Projects = Loadable({
-    loader: () => import('./components/Projects'),
-    loading: () => <span>Loading Projcts</span>,
-})
+const Projects = Loadable(() => import('./components/Projects'))
 
-const Project = Loadable({
-    loader: () => import('./components/Projects/Project'),
-    loading: () => <span>Loading Projct</span>,
-})
+const Project = Loadable(() => import('./components/Projects/Project'))
 
 // layouts
-const Navbar = Loadable({
-    loader: () => import('./layouts/Navbar'),
-    loading: () => <span>loading Navbar</span>,
-})
+const Navbar = Loadable(() => import('./layouts/Navbar'))
 
 // style
 import './sass/base.scss'
@@ -105,7 +86,7 @@ const App = () => {
 
                     <HeroSection />
                     <About loadingRender={false} />
-                    <Demos loadingRender={false} />
+                    <Demos LoadingRender={false} />
                     <Creators loadingRender={false} />
                     <JoinUs />
                 </Route>

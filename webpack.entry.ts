@@ -44,7 +44,7 @@ const EntryConfig: Entry = {
         dependOn: ['react', 'redux'],
     },
     demos: {
-        import: './src/components/Demos.tsx',
+        import: './src/components/Demos/Demos.tsx',
         dependOn: ['react', 'redux', 'CardSlider', 'LazyMotion'],
     },
     creators: {

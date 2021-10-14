@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import Loadable from 'react-loadable'
+import Loadable from '@loadable/component'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,10 +10,7 @@ import { RootState } from '../redux'
 // lazy motion
 // import LazyMotion from
 
-const LazyMotion = Loadable({
-    loader: () => import('./common/LazyMotion'),
-    loading: () => <span>loading lazymotion</span>,
-})
+const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
 // elements
 import Loading from './common/Loading'

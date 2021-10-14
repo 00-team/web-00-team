@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-import Loadable from 'react-loadable'
+import Loadable from '@loadable/component'
 
 import Markdown from 'markdown-to-jsx'
 
 // lazy motion
-const LazyMotion = Loadable({
-    loader: () => import('./common/LazyMotion'),
-    loading: () => <span>loading lazymotion</span>,
-})
+const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,10 +18,7 @@ import Loading from './common/Loading'
 import Button, { ButtonWithArrow } from './common/Button'
 
 // slider
-const CardSlider = Loadable({
-    loader: () => import('./common/slider/CardSlider'),
-    loading: () => <span>loading Card Slider</span>,
-})
+const CardSlider = Loadable(() => import('./common/slider/CardSlider'))
 
 // import style
 import './sass/demos.scss'
