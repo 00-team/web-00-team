@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from 'react'
 // style
 import './scss/button.scss'
 
-// icons 
+// icons
 import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight'
 
 interface ButtonProps {
@@ -27,19 +27,21 @@ const Button = ({ children, onClick, classname }: ButtonProps) => {
     )
 }
 
-export const ButtonWithArrow = ({ children, onClick, classname }: ButtonProps) => {
+export const ButtonWithArrow = ({
+    children,
+    onClick,
+    classname,
+}: ButtonProps) => {
     return (
         <button
-            className={`basic-button-arrow button ${classname}`}
+            className={`arrow-button basic-button ${classname}`}
             onClick={e => (onClick ? onClick(e) : {})}
         >
             <div className='icon-arrow before'>
-                {' '}
-                <HiOutlineArrowNarrowRight />{' '}
+                <HiOutlineArrowNarrowRight />
             </div>
             <div className='label'>{children}</div>
             <div className='icon-arrow after'>
-                {' '}
                 <HiOutlineArrowNarrowRight />
             </div>
         </button>
