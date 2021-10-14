@@ -21,10 +21,13 @@ import Loading from './common/Loading'
 import Button, { ButtonWithArrow } from './common/Button'
 
 // slider
-import { CardSlider } from './common/slider'
+const CardSlider = Loadable({
+    loader: () => import('./common/slider/CardSlider'),
+    loading: () => <span>loading Card Slider</span>,
+})
 
 // import style
-import './sass/projects.scss'
+import './sass/demos.scss'
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
@@ -46,8 +49,8 @@ function Projects({ loadingRender }: ProjectsProps) {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const [ProjectsItem, setProjectsItem] = useState<ProjectModel[]>([])
-    
-    const [isActive, setisActive] = useState("")
+
+    const [isActive, setisActive] = useState('')
 
     useEffect(() => {
         dispatch(loadProjects())
