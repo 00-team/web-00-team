@@ -163,3 +163,4 @@ const CardSlider = ({ children, onChange }: CardSliderProps) => {
 }
 
 export { CardSlider }
+export default CardSlider

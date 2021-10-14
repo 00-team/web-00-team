@@ -81,7 +81,7 @@ const DevConfig: Configs = {
     ...BaseConfig,
     module: {
         rules: [
-            ...BaseConfig.module?.rules || [],
+            ...(BaseConfig.module?.rules || []),
             {
                 test: /\.s[ac]ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -103,7 +103,7 @@ const BuildConfig: Configs = {
     ...BaseConfig,
     module: {
         rules: [
-            ...BaseConfig.module?.rules || [],
+            ...(BaseConfig.module?.rules || []),
             {
                 test: /\.s[ac]ss$/i,
                 use: [

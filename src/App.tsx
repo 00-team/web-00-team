@@ -19,11 +19,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
-import ProjectsInMain from './components/ProjectsInMain'
 
 const About = Loadable({
     loader: () => import('./components/About'),
     loading: () => <span>Loading About</span>,
+})
+
+const Demos = Loadable({
+    loader: () => import('./components/Demos'),
+    loading: () => <span>Loading Demos</span>,
 })
 
 const JoinUs = Loadable({
@@ -101,7 +105,7 @@ const App = () => {
 
                     <HeroSection />
                     <About loadingRender={false} />
-                    <ProjectsInMain loadingRender={false} />
+                    <Demos loadingRender={false} />
                     <Creators loadingRender={false} />
                     <JoinUs />
                 </Route>

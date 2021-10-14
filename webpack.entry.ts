@@ -5,7 +5,15 @@ const EntryConfig: Entry = {
     // main module
     main: {
         import: './src/App.tsx',
-        dependOn: ['react', 'redux'],
+        dependOn: [
+            'react',
+            'redux',
+            'about',
+            'demos',
+            'creators',
+            'joinus',
+            'navbar',
+        ],
     },
     // projects
     projects: {
@@ -26,10 +34,18 @@ const EntryConfig: Entry = {
         import: './src/components/common/LazyMotion.tsx',
         dependOn: ['react'],
     },
+    CardSlider: {
+        import: './src/components/common/slider/CardSlider.tsx',
+        dependOn: ['react'],
+    },
     // other components
     about: {
         import: './src/components/About.tsx',
         dependOn: ['react', 'redux'],
+    },
+    demos: {
+        import: './src/components/Demos.tsx',
+        dependOn: ['react', 'redux', 'CardSlider', 'LazyMotion'],
     },
     creators: {
         import: './src/components/Creators.tsx',
@@ -37,11 +53,11 @@ const EntryConfig: Entry = {
     },
     joinus: {
         import: './src/components/JoinUs.tsx',
-        dependOn: ['react'],
+        dependOn: ['react', 'LazyMotion'],
     },
     business: {
         import: './src/components/Business.tsx',
-        dependOn: ['react']
+        dependOn: ['react'],
     },
 
     // dependencies
