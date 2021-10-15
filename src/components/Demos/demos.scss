@@ -4,7 +4,7 @@
 @use '/src/sass/fonts' as *;
 
 .demos {
-    @include box(100%, 100vh);
+    // @include box(100%, 100vh);
 
     .container {
         height: 100%;
