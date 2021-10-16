@@ -3,8 +3,6 @@
 
 .hero-section {
     @include box(100%, 100vh);
-    margin-top: -70px;
-
     .main {
         height: 100%;
         color: #fff;
