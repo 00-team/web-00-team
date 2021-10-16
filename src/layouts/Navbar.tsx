@@ -18,6 +18,19 @@ import { VscProject } from '@react-icons/all-files/vsc/VscProject'
 // style
 import './sass/navbar.scss'
 
+const HexIcon: FC<React.SVGProps<SVGSVGElement>> = ({ className, ...attr }) => {
+    return (
+        <svg
+            {...attr}
+            viewBox='0 0 5.2 6'
+            xmlns='http://www.w3.org/2000/svg'
+            className={`hex-icon ${className ? className : ''}`}
+        >
+            <path d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z' />
+        </svg>
+    )
+}
+
 const Hex: FC = ({ children }) => {
     return (
         <div className='hex'>
@@ -26,13 +39,8 @@ const Hex: FC = ({ children }) => {
                 <div></div>
                 <div></div>
             </div>
-            <svg
-                viewBox='0 0 5.2 6'
-                xmlns='http://www.w3.org/2000/svg'
-                className='bg'
-            >
-                <path d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z' />
-            </svg>
+
+            <HexIcon />
 
             {children}
         </div>
@@ -52,40 +60,52 @@ const DesktopNavbar: FC = () => {
             <div
                 className={`btn ${Active ? 'active' : ''}`}
                 onClick={() => setActive(true)}
-                style={Active ? {} : { transitionDelay: '500ms' }}
+                style={Active ? {} : { /* closing */ transitionDelay: '600ms' }}
             >
-                <svg
-                    viewBox='0 0 5.2 6'
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='icon'
-                    style={!Active ? {} : { transitionDelay: '500ms' }}
-                >
-                    <path
-                        className='hex'
-                        d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z'
-                    />
-                </svg>
+                <HexIcon
+                    style={
+                        Active
+                            ? { /* opening */ transitionDelay: '500ms' }
+                            : { /* closing */ transitionDelay: '200ms' }
+                    }
+                />
             </div>
 
             <div
                 className={`menu ${Active ? 'active' : ''}`}
-                style={!Active ? {} : { transitionDelay: '700ms' }}
+                style={
+                    Active
+                        ? { /* opening */ transitionDelay: '700ms' }
+                        : { /* closing */ transitionDelay: '700ms' }
+                }
             >
-                <div className={`close-btn`} onClick={() => setActive(false)}>
-                    <svg
-                        viewBox='0 0 5.2 6'
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='icon'
-                    >
-                        <path
-                            className='hex'
-                            d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z'
-                        />
-                    </svg>
+                <div
+                    className={`close-btn`}
+                    onClick={() => setActive(false)}
+                    style={
+                        Active
+                            ? { /* opening */ transitionDelay: '700ms' }
+                            : { /* closing */ transitionDelay: '200ms' }
+                    }
+                >
+                    <HexIcon />
                 </div>
 
-                <h1>00 Team</h1>
-                <div className='links'>
+                <h1
+                    style={
+                        Active
+                            ? { /* opening */ transitionDelay: '700ms' }
+                            : { /* closing */ transitionDelay: '200ms' }
+                    }
+                >
+                    00 Team
+                </h1>
+                <div
+                    className='links'
+                    style={
+                        Active ? { /* opening */ transitionDelay: '500ms' } : {}
+                    }
+                >
                     <IconContext.Provider value={{ className: 'icon' }}>
                         <div className='section'>
                             <Link to='/'>
@@ -127,7 +147,9 @@ const DesktopNavbar: FC = () => {
 
             <div
                 className={`overlay ${Active ? 'active' : ''}`}
-                style={Active ? {} : { transitionDelay: '1000ms' }}
+                style={
+                    Active ? {} : { transitionDelay: '1000ms' } // closing
+                }
             ></div>
         </div>
     )

@@ -19,22 +19,19 @@
             &.active {
                 inset: 50% 50% auto auto;
 
-                .icon {
+                .hex-icon {
                     @include box(5000%);
                 }
             }
 
-            .icon {
+            .hex-icon {
                 @include box(100%);
                 transition: 700ms;
                 transition-property: width, height;
 
-                .hex {
+                path {
                     fill: #272727;
                     cursor: pointer;
-                }
-                .line {
-                    fill: #fff;
                 }
             }
         }
@@ -53,9 +50,16 @@
 
             &.active {
                 z-index: $DNAVBAR_ZINDEX + 1;
+
+                .close-btn,
+                h1,
+                .links {
+                    transform: translate(0, 0);
+                }
             }
 
             .close-btn {
+                cursor: pointer;
                 position: absolute;
                 inset: 25px 30px auto auto;
                 z-index: $DNAVBAR_ZINDEX - 1;
@@ -63,12 +67,22 @@
                 display: grid;
                 place-items: center;
                 transition: 500ms;
-                transition-property: inset;
+                transition-property: transform;
+
+                transform: translate(1000px, -1000px);
+
+                path {
+                    fill: #121212;
+                }
             }
 
             h1 {
                 color: #fff;
                 @include DisplayFont(clamp(1rem, 3rem + 3vw, 10rem));
+                transition: 500ms;
+                transition-property: transform;
+
+                transform: translate(-1000px, 0);
             }
 
             .links {
@@ -76,6 +90,10 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                transition: 500ms;
+                transition-property: transform;
+
+                transform: translate(0, 1000px);
                 .section {
                     display: flex;
                     &:last-child {
@@ -101,7 +119,7 @@
                 }
 
                 &:hover {
-                    .bg {
+                    .hex-icon {
                         transform: scale(1);
                     }
                     .borders {
@@ -110,7 +128,7 @@
                     }
                 }
 
-                .bg {
+                .hex-icon {
                     @include box(100%);
                     position: absolute;
                     z-index: -1;
