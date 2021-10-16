@@ -49,6 +49,7 @@ const Navbar = Loadable(() => import('./layouts/Navbar'))
 
 // style
 import './sass/base.scss'
+import './sass/app.scss'
 import './sass/fonts/imports.scss'
 
 const LoadingStatus = (): boolean[] => {
@@ -75,55 +76,57 @@ const App = () => {
         <>
             <Navbar />
 
-            <Switch>
-                <Route path='/' exact>
-                    {loadings && (
-                        <Loading
-                            loading={loadings.some(i => i)}
-                            total={loadings.length}
-                            loaded={loadings.filter(i => !i).length}
-                            fixed={true}
-                        />
-                    )}
+            <div className='master'>
+                <Switch>
+                    <Route path='/' exact>
+                        {loadings && (
+                            <Loading
+                                loading={loadings.some(i => i)}
+                                total={loadings.length}
+                                loaded={loadings.filter(i => !i).length}
+                                fixed={true}
+                            />
+                        )}
 
-                    <HeroSection />
-                    <About loadingRender={false} />
-                    <Demos LoadingRender={false} />
-                    <Creators loadingRender={false} />
-                    <JoinUs />
-                </Route>
+                        <HeroSection />
+                        <About loadingRender={false} />
+                        <Demos LoadingRender={false} />
+                        <Creators loadingRender={false} />
+                        <JoinUs />
+                    </Route>
 
-                <Route path='/projects'>
-                    <Projects />
-                </Route>
+                    <Route path='/projects'>
+                        <Projects />
+                    </Route>
 
-                <Route path='/project/:slug'>
-                    <Project />
-                </Route>
+                    <Route path='/project/:slug'>
+                        <Project />
+                    </Route>
 
-                <Route path='/about'>
-                    <About />
-                </Route>
+                    <Route path='/about'>
+                        <About />
+                    </Route>
 
-                <Route path='/creators'>
-                    <Creators />
-                    <JoinUs />
-                </Route>
+                    <Route path='/creators'>
+                        <Creators />
+                        <JoinUs />
+                    </Route>
 
-                <Route path='/business'>
-                    <Business />
-                </Route>
+                    <Route path='/business'>
+                        <Business />
+                    </Route>
 
-                <Route path='/fun'>
-                    <div style={{ padding: 50, color: 'snow' }}>
-                        <LittleDream>a Little Dream</LittleDream>
-                    </div>
-                </Route>
+                    <Route path='/fun'>
+                        <div style={{ padding: 50, color: 'snow' }}>
+                            <LittleDream>a Little Dream</LittleDream>
+                        </div>
+                    </Route>
 
-                <Route path='*'>
-                    <span style={{ color: '#fff' }}>Error 404</span>
-                </Route>
-            </Switch>
+                    <Route path='*'>
+                        <span style={{ color: '#fff' }}>Error 404</span>
+                    </Route>
+                </Switch>
+            </div>
         </>
     )
 }

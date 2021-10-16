@@ -1,0 +1,16 @@
+@use './mixins.sass' as *;
+
+.root {
+    @include box(100vw, 100vh);
+    display: flex;
+    background: #040404;
+    overflow: hidden;
+
+    .master {
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        overflow-x: overlay;
+        overflow-y: auto;
+        @include box(100%);
+    }
+}
