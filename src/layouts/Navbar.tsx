@@ -83,42 +83,46 @@ const DesktopNavbar: FC = () => {
                         />
                     </svg>
                 </div>
-                <IconContext.Provider value={{ className: 'icon' }}>
-                    <div className='section'>
-                        <Link to='/'>
-                            <Hex>
-                                <IoHome />
-                                <span>Home</span>
-                            </Hex>
-                        </Link>
-                        <Link to='/projects'>
-                            <Hex>
-                                <VscProject />
-                                <span>Projects</span>
-                            </Hex>
-                        </Link>
-                        <Link to='/business'>
-                            <Hex>
-                                <RiMoneyPoundBoxLine />
-                                <span>Business</span>
-                            </Hex>
-                        </Link>
-                    </div>
-                    <div className='section'>
-                        <Link to='/team'>
-                            <Hex>
-                                <AiOutlineTeam />
-                                <span>Team</span>
-                            </Hex>
-                        </Link>
-                        <Link to='/fun'>
-                            <Hex>
-                                <GiClown />
-                                <span>Fun</span>
-                            </Hex>
-                        </Link>
-                    </div>
-                </IconContext.Provider>
+
+                <h1>00 Team</h1>
+                <div className='links'>
+                    <IconContext.Provider value={{ className: 'icon' }}>
+                        <div className='section'>
+                            <Link to='/'>
+                                <Hex>
+                                    <IoHome />
+                                    <span>Home</span>
+                                </Hex>
+                            </Link>
+                            <Link to='/projects'>
+                                <Hex>
+                                    <VscProject />
+                                    <span>Projects</span>
+                                </Hex>
+                            </Link>
+                            <Link to='/business'>
+                                <Hex>
+                                    <RiMoneyPoundBoxLine />
+                                    <span>Business</span>
+                                </Hex>
+                            </Link>
+                        </div>
+                        <div className='section'>
+                            <Link to='/team'>
+                                <Hex>
+                                    <AiOutlineTeam />
+                                    <span>Team</span>
+                                </Hex>
+                            </Link>
+                            <Link to='/fun'>
+                                <Hex>
+                                    <GiClown />
+                                    <span>Fun</span>
+                                </Hex>
+                            </Link>
+                        </div>
+                    </IconContext.Provider>
+                </div>
             </div>
 
             <div

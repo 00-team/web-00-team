@@ -45,8 +45,9 @@
             z-index: -10;
             transition: z-index;
 
-            justify-content: center;
             display: flex;
+            justify-content: center;
+            gap: 50px;
             align-items: center;
             flex-direction: column;
 
@@ -65,10 +66,21 @@
                 transition-property: inset;
             }
 
-            .section {
+            h1 {
+                color: #fff;
+                @include DisplayFont(clamp(1rem, 3rem + 3vw, 10rem));
+            }
+
+            .links {
                 display: flex;
-                &:last-child {
-                    margin-top: -50px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .section {
+                    display: flex;
+                    &:last-child {
+                        margin-top: -50px;
+                    }
                 }
             }
 
