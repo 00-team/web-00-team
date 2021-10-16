@@ -1,102 +1,140 @@
-import React, { useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 
 // redux
 import { RootState } from 'src/redux'
 import { useSelector } from 'react-redux'
 
 // link
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // icons
+import { IconContext } from '@react-icons/all-files'
 import { IoHome } from '@react-icons/all-files/io5/IoHome'
-
-import { GiTeamIdea } from '@react-icons/all-files/gi/GiTeamIdea'
-import { GiFilmProjector } from '@react-icons/all-files/gi/GiFilmProjector'
-
-import { BsQuestionSquareFill } from '@react-icons/all-files/bs/BsQuestionSquareFill'
-
-import { FaHandshake } from '@react-icons/all-files/fa/FaHandshake'
-
-//mobile icons
-import { FaBars } from '@react-icons/all-files/fa/FaBars'
-import { FaTimes } from '@react-icons/all-files/fa/FaTimes'
+import { GiClown } from '@react-icons/all-files/gi/GiClown'
+import { AiOutlineTeam } from '@react-icons/all-files/ai/AiOutlineTeam'
+import { RiMoneyPoundBoxLine } from '@react-icons/all-files/ri/RiMoneyPoundBoxLine'
+import { VscProject } from '@react-icons/all-files/vsc/VscProject'
 
 // style
 import './sass/navbar.scss'
 
-// const DesktopNavbar = () => {}
+const Hex: FC = ({ children }) => {
+    return (
+        <div className='hex'>
+            <div className='borders'>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <svg
+                viewBox='0 0 5.2 6'
+                xmlns='http://www.w3.org/2000/svg'
+                className='bg'
+            >
+                <path d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z' />
+            </svg>
+
+            {children}
+        </div>
+    )
+}
+
+const DesktopNavbar: FC = () => {
+    const [Active, setActive] = useState(false)
+    const location = useLocation()
+
+    useEffect(() => {
+        setActive(false)
+    }, [location])
+
+    return (
+        <div className='navbar__desktop'>
+            <div
+                className={`btn ${Active ? 'active' : ''}`}
+                onClick={() => setActive(true)}
+                style={Active ? {} : { transitionDelay: '500ms' }}
+            >
+                <svg
+                    viewBox='0 0 5.2 6'
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='icon'
+                    style={!Active ? {} : { transitionDelay: '500ms' }}
+                >
+                    <path
+                        className='hex'
+                        d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z'
+                    />
+                </svg>
+            </div>
+
+            <div
+                className={`menu ${Active ? 'active' : ''}`}
+                style={!Active ? {} : { transitionDelay: '700ms' }}
+            >
+                <div className={`close-btn`} onClick={() => setActive(false)}>
+                    <svg
+                        viewBox='0 0 5.2 6'
+                        xmlns='http://www.w3.org/2000/svg'
+                        className='icon'
+                    >
+                        <path
+                            className='hex'
+                            d='M 2.6 0 L 5.2 1.5 L 5.2 4.5 L 2.6 6 L 0 4.5 L 0 1.5 Z'
+                        />
+                    </svg>
+                </div>
+                <IconContext.Provider value={{ className: 'icon' }}>
+                    <div className='section'>
+                        <Link to='/'>
+                            <Hex>
+                                <IoHome />
+                                <span>Home</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/projects'>
+                            <Hex>
+                                <VscProject />
+                                <span>Projects</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/business'>
+                            <Hex>
+                                <RiMoneyPoundBoxLine />
+                                <span>Business</span>
+                            </Hex>
+                        </Link>
+                    </div>
+                    <div className='section'>
+                        <Link to='/team'>
+                            <Hex>
+                                <AiOutlineTeam />
+                                <span>Team</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/fun'>
+                            <Hex>
+                                <GiClown />
+                                <span>Fun</span>
+                            </Hex>
+                        </Link>
+                    </div>
+                </IconContext.Provider>
+            </div>
+
+            <div
+                className={`overlay ${Active ? 'active' : ''}`}
+                style={Active ? {} : { transitionDelay: '1000ms' }}
+            ></div>
+        </div>
+    )
+}
 
 const Navbar = () => {
     const WindowsWidth = useSelector((state: RootState) => state.App.winwid)
 
-    const [click, setClick] = useState<boolean>(false)
-
-    //mobile functions
-    const toggleNavbar = () => setClick(!click)
-    const closeMoblieMenu = () => setClick(false)
-
-    //
-
     return (
-        <div className='navbar-container'>
-            <nav className='navbar'>
-                {/* <div className='logo'>00</div>*/}
-
-                <div className='menu-icon' onClick={toggleNavbar}>
-                    {click ? <FaTimes /> : <FaBars />}
-                </div>
-
-                <div className={`section ${click ? 'active' : ''}`}>
-                    <Link className='link' to='/' onClick={closeMoblieMenu}>
-                        Home - {WindowsWidth}
-                        <div className='navbar-icon'>
-                            <IoHome size={22} />
-                        </div>
-                    </Link>
-
-                    <Link
-                        className='link'
-                        to='/about'
-                        onClick={closeMoblieMenu}
-                    >
-                        What is 00 Team
-                        <div className='navbar-icon'>
-                            <BsQuestionSquareFill size={22} />
-                        </div>
-                    </Link>
-
-                    <Link
-                        className='link'
-                        to='/projects'
-                        onClick={closeMoblieMenu}
-                    >
-                        Projects
-                        <div className='navbar-icon'>
-                            <GiFilmProjector size={28} />
-                        </div>
-                    </Link>
-                    <Link
-                        className='link'
-                        to='/creators'
-                        onClick={closeMoblieMenu}
-                    >
-                        Creators
-                        <div className='navbar-icon'>
-                            <GiTeamIdea size={28} />
-                        </div>
-                    </Link>
-                    <Link
-                        className='link'
-                        to='/wanajoin'
-                        onClick={closeMoblieMenu}
-                    >
-                        Wana Join?
-                        <div className='navbar-icon'>
-                            <FaHandshake size={28} />
-                        </div>
-                    </Link>
-                </div>
-            </nav>
+        <div className='navbar'>
+            {WindowsWidth > 500 ? <DesktopNavbar /> : <></>}
         </div>
     )
 }

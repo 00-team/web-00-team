@@ -3,127 +3,165 @@
 @use '/src/sass/variables.sass' as *;
 @use '/src/sass/fonts' as *;
 
-.navbar-container {
-    @include box(100%, $NAVBAR_HEIGHT);
-    background-color: $NAVBAR_BG;
-    color: #fff;
-    @include MainFont(17px);
-    white-space: nowrap;
-    // min-height: 70px;
-    // padding: 16px 32px;
+.navbar {
+    &__desktop {
+        .btn {
+            position: absolute;
+            inset: 25px 30px auto auto;
+            z-index: $DNAVBAR_ZINDEX - 1;
+            @include box(50px);
+            display: grid;
+            place-items: center;
 
-    .navbar {
-        display: flex;
-        @include box(100%, $NAVBAR_HEIGHT);
-        background-color: $NAVBAR_BG;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 20;
-        position: fixed;
-
-        @media screen and (max-width: 960px) {
-            height: calc($NAVBAR_HEIGHT + 10px);
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            width: 100%;
+            transition: 500ms;
+            transition-property: inset;
 
             &.active {
-                background: #242222;
-                left: 0;
-                opacity: 1;
-                transition: all 0.5s ease;
-                z-index: 1;
-            }
+                inset: 50% 50% auto auto;
 
-            @media screen and (max-width: 960px) {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 90vh;
-                position: absolute;
-                top: 80px;
-                left: -100%;
-                opacity: 1;
-                transition: all 0.5s ease;
-
-                .link {
-                    text-align: center;
-                    padding: 2rem;
-                    // width: 100%;
+                .icon {
+                    @include box(5000%);
                 }
             }
 
-            .logo {
-                // background-image: url('../../img/00.png');
-                // background-size: cover;
-                // background-position: center;
-                width: 50px;
-                @include DisplayFont(28px);
-                display: grid;
-                place-items: center;
-                user-select: none;
-            }
+            .icon {
+                @include box(100%);
+                transition: 700ms;
+                transition-property: width, height;
 
-            .link {
-                position: relative;
-
-                // flex
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                gap: 7px;
-                align-items: center;
-
-                text-decoration: none;
-                color: #fff;
-                font-weight: 600;
-                cursor: pointer;
-                font-family: 'Pacifico', cursive;
-
-                transition: opacity 100ms;
-
-                &:hover::after {
-                    color: snow;
-                    opacity: 0.6;
-                    transition-duration: 0.4s;
-                    transform: scaleX(1);
-                    transform-origin: left center;
+                .hex {
+                    fill: #272727;
+                    cursor: pointer;
                 }
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: #fff;
-                    transform-origin: right center;
-                    transform: scaleX(0);
-                    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
-                        -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-                }
-
-                .navbar-icon {
-                    transform: translateY(10%);
+                .line {
+                    fill: #fff;
                 }
             }
         }
-        .menu-icon {
-            display: none;
-            @media screen and (max-width: 960px) {
-                display: block;
+
+        .menu {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            transition: z-index;
+
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            &.active {
+                z-index: $DNAVBAR_ZINDEX + 1;
+            }
+
+            .close-btn {
                 position: absolute;
-                top: 0;
-                right: 0;
-                transform: translate(-100%, 60%);
-                font-size: 1.8rem;
+                inset: 25px 30px auto auto;
+                z-index: $DNAVBAR_ZINDEX - 1;
+                @include box(50px);
+                display: grid;
+                place-items: center;
+                transition: 500ms;
+                transition-property: inset;
+            }
+
+            .section {
+                display: flex;
+                &:last-child {
+                    margin-top: -50px;
+                }
+            }
+
+            .hex {
+                @include box(160px, 185px);
+                position: relative;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 cursor: pointer;
+                gap: 10px;
+                margin-left: -3px;
+
+                .icon {
+                    @include box(40px);
+                }
+
+                &:hover {
+                    .bg {
+                        transform: scale(1);
+                    }
+                    .borders {
+                        --color: #696969;
+                        z-index: 20;
+                    }
+                }
+
+                .bg {
+                    @include box(100%);
+                    position: absolute;
+                    z-index: -1;
+                    transform: scale(0.8);
+                    transition: transform 0.3s
+                        cubic-bezier(0.165, 0.84, 0.44, 1);
+                    transform-origin: center;
+
+                    path {
+                        stroke-width: 0;
+                        fill: #121212;
+                    }
+                }
+
+                .borders {
+                    --color: #121212;
+                    position: absolute;
+                    @include box(92px, 160px);
+
+                    div {
+                        box-sizing: border-box;
+                        position: absolute;
+                        @include box(100%);
+
+                        transform-origin: center center;
+
+                        &:nth-child(1) {
+                            transform: rotate(30deg);
+                        }
+                        &:nth-child(2) {
+                            transform: rotate(90deg);
+                        }
+                        &:nth-child(3) {
+                            transform: rotate(-30deg);
+                        }
+
+                        &::before,
+                        &::after {
+                            background-color: var(--color);
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            height: 3px;
+                        }
+
+                        &::before {
+                            top: 0;
+                        }
+                        &::after {
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            transition: z-index;
+            &.active {
+                z-index: $DNAVBAR_ZINDEX;
             }
         }
     }
