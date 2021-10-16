@@ -201,12 +201,34 @@ const DesktopNavbar: FC = () => {
     )
 }
 
+const MobileNavbar: FC = () => {
+    return (
+        <div className='navbar__mobile'>
+            <Link to='/team'>
+                <AiOutlineTeam />
+            </Link>
+            <Link to='/projects'>
+                <VscProject />
+            </Link>
+            <Link to='/'>
+                <IoHome />
+            </Link>
+            <Link to='/business'>
+                <RiMoneyPoundBoxLine />
+            </Link>
+            <Link to='/fun'>
+                <GiClown />
+            </Link>
+        </div>
+    )
+}
+
 const Navbar = () => {
     const WindowsWidth = useSelector((state: RootState) => state.App.winwid)
 
     return (
         <div className='navbar'>
-            {WindowsWidth > 500 ? <DesktopNavbar /> : <></>}
+            {WindowsWidth > 500 ? <DesktopNavbar /> : <MobileNavbar />}
         </div>
     )
 }
