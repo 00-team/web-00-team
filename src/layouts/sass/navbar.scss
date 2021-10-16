@@ -6,10 +6,14 @@
 .navbar {
     &__desktop {
         .btn {
+            @mixin btn-size {
+                @include box(43.3px, 50px);
+            }
+            cursor: pointer;
             position: absolute;
             inset: 25px 30px auto auto;
             z-index: $DNAVBAR_ZINDEX - 1;
-            @include box(50px);
+            @include btn-size;
             display: grid;
             place-items: center;
 
@@ -22,6 +26,10 @@
                 .hex-icon {
                     @include box(5000%);
                 }
+
+                .overflow-protection .lines .line {
+                    transform: translate(700px, -30px);
+                }
             }
 
             .hex-icon {
@@ -30,8 +38,59 @@
                 transition-property: width, height;
 
                 path {
-                    fill: #272727;
                     cursor: pointer;
+                    fill: #272727;
+                }
+            }
+
+            .overflow-protection {
+                overflow: hidden;
+                position: absolute;
+                @include btn-size;
+                display: grid;
+                place-items: center;
+                &:hover {
+                    .lines .line .line__inner {
+                        // transform: translate(700px, -30px);
+                        width: 100%;
+                    }
+                }
+                .lines {
+                    transform: rotate(-30deg);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 40px;
+                    height: 30px;
+                    align-items: center;
+
+                    .line {
+                        width: 100%;
+                        height: 3px;
+                        background-color: #696969;
+                        transition: 500ms;
+                        transition-property: transform;
+                        transform: translate(0, 0);
+                        position: relative;
+
+                        &:last-child,
+                        &:first-child {
+                            width: 50%;
+                        }
+
+                        @for $index from 1 to 4 {
+                            &:nth-child(#{$index}) {
+                                transition-delay: ($index - 1) * 100ms;
+                            }
+                        }
+
+                        &__inner {
+                            transition: 300ms;
+                            transition-property: width;
+                            @include box(0%, 100%);
+                            background-color: #999;
+                        }
+                    }
                 }
             }
         }

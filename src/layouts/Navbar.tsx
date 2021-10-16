@@ -50,6 +50,7 @@ const Hex: FC = ({ children }) => {
 const DesktopNavbar: FC = () => {
     const [Active, setActive] = useState(false)
     const location = useLocation()
+    const MenuDelay = 300
 
     useEffect(() => {
         setActive(false)
@@ -60,22 +61,53 @@ const DesktopNavbar: FC = () => {
             <div
                 className={`btn ${Active ? 'active' : ''}`}
                 onClick={() => setActive(true)}
-                style={Active ? {} : { /* closing */ transitionDelay: '600ms' }}
+                style={
+                    Active
+                        ? { /* opening */ transitionDelay: `${MenuDelay}ms` }
+                        : { /* closing */ transitionDelay: '600ms' }
+                }
             >
                 <HexIcon
                     style={
                         Active
-                            ? { /* opening */ transitionDelay: '500ms' }
+                            ? {
+                                  /* opening */ transitionDelay: `${
+                                      MenuDelay + 500
+                                  }ms`,
+                              }
                             : { /* closing */ transitionDelay: '200ms' }
                     }
                 />
+                <div className='overflow-protection'>
+                    <div className='lines'>
+                        <div className='line'>
+                            <div className='line__inner' />
+                        </div>
+                        <div className='line'>
+                            <div
+                                className='line__inner'
+                                style={{ transitionDelay: '100ms' }}
+                            />
+                        </div>
+                        <div className='line'>
+                            <div
+                                className='line__inner'
+                                style={{ transitionDelay: '200ms' }}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div
                 className={`menu ${Active ? 'active' : ''}`}
                 style={
                     Active
-                        ? { /* opening */ transitionDelay: '700ms' }
+                        ? {
+                              /* opening */ transitionDelay: `${
+                                  MenuDelay + 700
+                              }ms`,
+                          }
                         : { /* closing */ transitionDelay: '700ms' }
                 }
             >
@@ -84,7 +116,11 @@ const DesktopNavbar: FC = () => {
                     onClick={() => setActive(false)}
                     style={
                         Active
-                            ? { /* opening */ transitionDelay: '700ms' }
+                            ? {
+                                  /* opening */ transitionDelay: `${
+                                      MenuDelay + 700
+                                  }ms`,
+                              }
                             : { /* closing */ transitionDelay: '200ms' }
                     }
                 >
@@ -94,7 +130,11 @@ const DesktopNavbar: FC = () => {
                 <h1
                     style={
                         Active
-                            ? { /* opening */ transitionDelay: '700ms' }
+                            ? {
+                                  /* opening */ transitionDelay: `${
+                                      MenuDelay + 700
+                                  }ms`,
+                              }
                             : { /* closing */ transitionDelay: '200ms' }
                     }
                 >
@@ -103,7 +143,13 @@ const DesktopNavbar: FC = () => {
                 <div
                     className='links'
                     style={
-                        Active ? { /* opening */ transitionDelay: '500ms' } : {}
+                        Active
+                            ? {
+                                  /* opening */ transitionDelay: `${
+                                      MenuDelay + 500
+                                  }ms`,
+                              }
+                            : {}
                     }
                 >
                     <IconContext.Provider value={{ className: 'icon' }}>
