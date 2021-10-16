@@ -1,17 +1,10 @@
 @use './fonts/config.scss' as *;
 
-$heading1: 100px;
-$heading2: 50px;
-$disc: 24px;
-$heading1_mobile: 50px;
-$heading2_mobile: 25px;
-$disc_mobile: 12px;
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
     // user select for phones
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -26,6 +19,15 @@ $disc_mobile: 12px;
     }
 }
 
+body {
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+}
+// links
+a {
+    text-decoration: none;
+}
 // buttons
 button {
     outline: 0;
@@ -47,23 +49,6 @@ button {
 ::selection {
     color: #fff;
     background-color: #555;
-}
-
-html,
-body {
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-}
-
-body {
-    overflow: overlay;
-    overflow-x: hidden;
-    background-color: #000;
-    position: relative;
-
-    #root {
-        background: #040404;
-    }
 }
 
 // font setups
