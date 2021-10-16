@@ -4,8 +4,11 @@
 @use '/src/sass/fonts' as *;
 
 .navbar {
-    flex-shrink: 0;
-    @include box(100%, 70px);
+    @include media('<501px') {
+        flex-shrink: 0;
+        @include box(100%, 70px);
+    }
+
     &__desktop {
         .btn {
             @mixin btn-size {
