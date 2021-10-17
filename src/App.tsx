@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // components
 import HeroSection from './components/HeroSection'
 import Team from './components/Team'
+import Error from './layouts/Error'
 
 const About = Loadable(() => import('./components/About'))
 
@@ -123,7 +124,7 @@ const App = () => {
                     </Route>
 
                     <Route path='*'>
-                        <span style={{ color: '#fff' }}>Error 404</span>
+                        <Error code='404' />
                     </Route>
                 </Switch>
             </div>

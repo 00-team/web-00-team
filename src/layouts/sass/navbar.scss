@@ -4,6 +4,7 @@
 @use '/src/sass/fonts' as *;
 
 .navbar {
+    @include no-user-select;
     @include media('<501px') {
         flex-shrink: 0;
         @include box(100%, 70px);

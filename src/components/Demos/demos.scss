@@ -5,6 +5,7 @@
 
 .demos {
     // @include box(100%, 100vh);
+    @include no-user-select;
 
     .container {
         height: 100%;
