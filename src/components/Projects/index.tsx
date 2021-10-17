@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
-import loadProjects from '../../redux/actions/loadProjects'
+import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
 
 // elements
@@ -16,7 +16,7 @@ const Projects = () => {
     const ProjectsState = useSelector((state: RootState) => state.Projects)
 
     useEffect(() => {
-        dispatch(loadProjects())
+        dispatch(GetProject())
     }, [dispatch])
 
     if (ProjectsState.loading) {

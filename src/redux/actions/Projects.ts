@@ -17,7 +17,8 @@ interface GetProjectsProps {
     where?: string
 }
 
-export default ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
+export const GetProject =
+    ({ order, stage, first, last, where }: GetProjectsProps = {}) =>
     async (dispatch: Dispatch<Action>) => {
         dispatch({ type: ProjectsTypes.PROJECTS_LOADING, payload: true })
 

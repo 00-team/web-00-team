@@ -4,7 +4,7 @@ import Loadable from '@loadable/component'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
-import loadProjects from '../../redux/actions/loadProjects'
+import { GetProject } from '../../redux/actions'
 import { RootState } from '../../redux'
 // import { ProjectModel } from 'src/redux/models/Projects'
 
@@ -34,7 +34,7 @@ export const Demos: FC<DemosProps> = ({ LoadingRender }) => {
     const [showDetail, setshowDetail] = useState('')
 
     useEffect(() => {
-        dispatch(loadProjects())
+        dispatch(GetProject())
     }, [dispatch])
 
     if (Projects.error) {

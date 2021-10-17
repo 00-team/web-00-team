@@ -1,54 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { FC } from 'react'
 
 // markdowm
-import Markdown from 'markdown-to-jsx'
+// import Markdown from 'markdown-to-jsx'
 
 // reudx
-import { useSelector, useDispatch } from 'react-redux'
-import loadBase from '../redux/actions/loadBase'
+import { useSelector } from 'react-redux'
 import { RootState } from '../redux'
-
-// elements
-import Loading from './common/Loading'
 
 // import scss
 import './sass/about.scss'
 
-interface AboutProps {
-    loadingRender?: boolean
-}
+const About: FC = () => {
+    const BaseState = useSelector((state: RootState) => state.Base.base)
 
-const About = ({ loadingRender }: AboutProps) => {
-    const dispatch = useDispatch()
-    const BaseState = useSelector((state: RootState) => state.Base)
+    if (!BaseState || !BaseState.about) return <></>
 
-    useEffect(() => {
-        dispatch(loadBase())
-    }, [])
-
-    if (BaseState.loading && loadingRender) return <Loading />
-
-    return (
-        <div className='about' id='00team'>
-            <div className='container'>
-                <div className='header'>
-                    <h1>what is 00 team</h1>
-                </div>
-
-                <div className='description'>
-                    <div className='about-us-text'>
-                        {BaseState.base && (
-                            <Markdown>{BaseState.base.about.markdown}</Markdown>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-About.defaultProps = {
-    loadingRender: true,
+    return <div style={{ color: 'red' }}>{BaseState.about.markdown}</div>
 }
 
 export default About

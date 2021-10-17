@@ -9,7 +9,7 @@ import { CreatorsTypes } from '../models/Creators'
 
 import { API_URL } from './config'
 
-export default () => async (dispatch: Dispatch<Action>) => {
+export const LoadCreators = () => async (dispatch: Dispatch<Action>) => {
     dispatch({ type: CreatorsTypes.CREATORS_LOADING, payload: true })
 
     try {

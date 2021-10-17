@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import getProject from '../../redux/actions/loadProjects'
+import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
 
 // elements
@@ -24,7 +24,7 @@ const Project = () => {
     )
 
     useEffect(() => {
-        dispatch(getProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
+        dispatch(GetProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
     }, [dispatch, slug])
 
     if (ProjectState.loading) {

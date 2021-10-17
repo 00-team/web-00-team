@@ -6,3 +6,12 @@
 @mixin war($w: 100%, $ar: 1 / 1)
     width: $w
     aspect-ratio: $ar
+
+@mixin no-user-select()
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)

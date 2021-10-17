@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { FC } from 'react'
 
 import Loadable from '@loadable/component'
 
 // redux stuff
-import { useDispatch, useSelector } from 'react-redux'
-import loadCreators from '../redux/actions/loadCreators'
+import { useSelector } from 'react-redux'
 import { RootState } from '../redux'
 
 // lazy motion
-// import LazyMotion from
-
 const LazyMotion = Loadable(() => import('./common/LazyMotion'))
-
-// elements
-import Loading from './common/Loading'
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
@@ -21,29 +15,10 @@ import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 // import css
 import './sass/creators.scss'
 
-interface CreatorsProps {
-    loadingRender?: boolean
-}
-
-const defaultProps: CreatorsProps = {
-    loadingRender: true,
-}
-
-const Creators = ({ loadingRender }: CreatorsProps) => {
+const Creators: FC = () => {
     const CreatorsState = useSelector((state: RootState) => state.Creators)
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(loadCreators())
-    }, [dispatch])
-
-    if (CreatorsState.error) {
-        return <span>Error</span>
-    }
-
-    if (CreatorsState.loading && loadingRender) {
-        return <Loading />
-    }
+    if (CreatorsState.creators.length < 1) return <></>
 
     return (
         <div className='creators' id='creators'>
@@ -104,7 +79,5 @@ const Creators = ({ loadingRender }: CreatorsProps) => {
         </div>
     )
 }
-
-Creators.defaultProps = defaultProps
 
 export default Creators

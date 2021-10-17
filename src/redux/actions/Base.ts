@@ -9,7 +9,7 @@ import { BaseTypes } from '../models/Base'
 
 import { API_URL } from './config'
 
-export default () => async (dispatch: Dispatch<Action>) => {
+export const LoadBase = () => async (dispatch: Dispatch<Action>) => {
     dispatch({ type: BaseTypes.BASE_LOADING, payload: true })
 
     try {
