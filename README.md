@@ -10,14 +10,11 @@
 
 1. [x] Code Spliting
 2. [x] make a **TypeScript Branch**
-3. [ ] make link and routers
+3. [x] make link and routers
 4. [x] clean directorys and codes
 
 ### design stuff
 
 1. [ ] make a **Footer**
-2. [ ] make site **Responsive**
-3. [ ] make a nice design for project
-4. [x] make a nice design for projects
-5. [ ] make a nice design for projects in index page
-6. [ ] add 00 team into navbar for / url
+2. [ ] make a nice design for /project
+3. [ ] make a nice design for /projects
