@@ -1,5 +1,5 @@
 @use '../../sass/mixins.sass' as *;
-@use '../../sass/variables.sass' as *;
+@use '../../sass/variables' as *;
 
 .hero-section {
     @include box(100%, 100vh);

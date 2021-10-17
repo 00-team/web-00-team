@@ -1,5 +1,5 @@
 @use '../../sass/mixins.sass' as *;
-@use '../../sass/variables.sass' as *;
+@use '../../sass/variables' as *;
 
 .creators {
     @include box(100%, 100vh);

@@ -1,6 +1,6 @@
 @use '/src/sass/mixins.sass' as *;
 @use '/src/sass/media.scss' as *;
-@use '/src/sass/variables.sass' as *;
+@use '/src/sass/variables/navbar.sass' as *;
 @use '/src/sass/fonts' as *;
 
 .navbar {

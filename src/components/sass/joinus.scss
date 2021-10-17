@@ -1,5 +1,5 @@
 @use '../../sass/mixins.sass' as *;
-@use '../../sass/variables.sass' as *;
+@use '../../sass/variables' as *;
 
 .join-us {
     @include box(100%, 90vh);
@@ -32,9 +32,12 @@
                 }
 
                 &__btn {
-                    $bg: #1A1A1A;
+                    $bg: #1a1a1a;
                     $fg: #696969;
-                    $shadow: lighten($color: $fg, $amount: 20%);
+                    $shadow: lighten(
+                        $color: $fg,
+                        $amount: 20%,
+                    );
                     cursor: pointer;
                     position: relative;
                     display: grid;
