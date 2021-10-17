@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
+import Team from './components/Team'
 
 // const About = Loadable({
 //     loader: () => import('./components/About'),
@@ -107,6 +108,7 @@ const App = () => {
                     </Route>
 
                     <Route path='/team'>
+                        <Team />
                         <About />
                         <Creators />
                         <JoinUs />

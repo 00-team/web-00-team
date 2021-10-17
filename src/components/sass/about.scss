@@ -1,19 +1,40 @@
 @use '../../sass/fonts/' as *;
 @use '../../sass/mixins.sass' as *;
+@use '../../sass/variables/' as g;
 
 .about-container {
-    .team {
-        @include box(100%, 50vh);
+    $fg: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20vh;
+
+    .about {
+        @include box(100%, auto);
+        min-height: 50vh;
+        padding: 3vw;
 
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
 
-        .name {
-            // @include DisplayFont(calc(0.7rem + 2vw));
-            @include DisplayFont(clamp(2rem, 1.5rem + 5vw, 6rem));
-            color: #fff;
+        .title {
+            @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+            color: $fg;
+            text-align: center;
+        }
+
+        .text {
+            color: darken($fg, $amount: 25%);
+            @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+            text-transform: capitalize;
+            overflow-y: auto;
+            word-break: keep-all;
+            margin-top: 50px;
+            line-height: 2;
+            background-color: #121212;
+            padding: 3vw;
+            border-radius: 2.5vw;
         }
     }
 }
