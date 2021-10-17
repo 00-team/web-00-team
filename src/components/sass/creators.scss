@@ -1,115 +1,176 @@
 @use '../../sass/mixins.sass' as *;
-@use '../../sass/variables' as *;
+@use '../../sass/variables' as g;
+@use '../../sass/fonts/' as *;
 
-.creators {
-    @include box(100%, 100vh);
+.creators-container {
+    padding: 10vh 3vw;
+    $fg: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    @include box(100%);
 
-    .container {
-        height: 100%;
-        color: #fff;
-        // background: linear-gradient(to bottom, #1a1a1a, #1a1a1a, #1A1A1A);
+    .title {
+        color: $fg;
+        @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+        text-align: center;
+    }
+
+    .creators {
+        @include box(100%);
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: space-around;
 
-        .header h1 {
-            font-size: $heading1;
-            @media (max-width: 500px) {
-                font-size: $heading1_mobile;
-            }
-            font-family: 'Graduate', 'Roboto', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .cards {
+        .creator {
+            @include box(400px, max-content);
+            background-color: #040404;
+            border-radius: 5px;
             display: flex;
-            justify-content: space-between;
-            height: 50%;
-            width: 50%;
+            flex-direction: column;
+            // overflow: hidden;
 
-            .card {
-                border: 1px solid #121212;
-                border-radius: 5px;
-                min-width: 250px;
-                width: 30%;
-                position: relative;
-                box-shadow: 3px 3px 0px 0px rgb(0 0 0 / 10%),
-                    20px 20px 0 1px rgb(0 0 0 / 10%);
+            &:hover {
+                .info {
+                    // margin-top: -50px;
+                    transform: translateY(-50px);
+                }
+            }
+
+            .banner {
+                @include war(100%, #{16 / 9});
+
+                background-color: #272727;
+                background-image: url('https://wallpaperset.com/w/full/8/4/6/175045.jpg');
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                transition: height 500ms;
+                flex-shrink: 0;
+
+                border: 2px solid #272727;
+                border-bottom: none;
+            }
+
+            .social {
+                @include box(100%, 0);
+                display: flex;
+                justify-content: flex-end;
+                padding: 0 1rem;
+                gap: 1rem;
+
+                .item {
+                    @include box(50px);
+                    background-color: lightgreen;
+                }
+            }
+
+            .info {
+                background-color: lighten($color: #040404, $amount: 5%);
+                // box-shadow: 0 0 20px #121212;
+                border: 2px solid #272727;
+                border-top: none;
+                @include box(100%, 100%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: $fg;
                 overflow: hidden;
+                border-top-left-radius: 50px;
+                @include MainFont(g.$SMALL_TEXT_FONTSIZE);
 
-                .creator-img {
-                    width: 100%;
-                    height: 25%;
-                    background-color: black;
-                    position: relative;
+                transition: all 500ms;
+                transform-origin: bottom;
+
+                .top {
+                    @include box(100%, auto);
                     display: flex;
-                    justify-content: center;
                     align-items: center;
+                    padding: 1rem 1.5rem;
+                    gap: 2rem;
 
-                    img {
-                        object-fit: cover;
-                        height: 65%;
-                        width: 25%;
+                    .profile {
+                        background-image: url('https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png');
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        @include box(60px);
                         border-radius: 50%;
-                        position: absolute;
-                        bottom: -25%;
-                        border: 5px solid #040404;
-                        // padding: 0.2rem;
-                        z-index: 1;
+                        flex-shrink: 0;
+                    }
+
+                    .meta {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        @include box(100%, auto);
+
+                        .name {
+                            @include DisplayFont(g.$TEXT_FONTSIZE);
+                        }
+
+                        // .join-date {
+                        // }
+                    }
+
+                    svg {
+                        @include box(30px);
+                        flex-shrink: 0;
+                        cursor: pointer;
+                        transition: all 300ms;
                     }
                 }
-                .text-container {
-                    text-align: center;
-                    margin: 5vh 1vh 0 1vh;
+
+                .roles {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    height: 60%;
-                    font-family: 'Graduate', sans-serif;
+                    gap: 10px;
+                    padding: 0.4rem;
 
                     .role {
-                        font-family: monospace;
-                        font-size: larger;
-                    }
-
-                    .description {
-                        font-family: 'Major Mono Display', monospace;
-                    }
-
-                    .social {
-                        display: flex;
-                        justify-content: space-evenly;
-                        align-items: center;
-                        border-radius: 5px;
-                        font-family: unset;
-                        padding: 16px 20px;
-                        border-radius: 100px;
-                        cursor: pointer;
-                    }
-
-                    .github {
-                        color: black;
-                        background-color: snow;
-                        transition: all 300ms ease-in-out;
-
-                        &:hover {
-                            color: snow;
-                            background-color: black;
-                        }
-                    }
-
-                    .discord {
-                        background-color: #23272a;
-                        color: snow;
-                        transition: all 500ms ease-in-out;
-                        &:hover {
-                            color: #23272a;
-                            background-color: snow;
-                        }
+                        background-color: purple;
+                        background: linear-gradient(to right, #353535, #040404);
+                        padding: 0.2rem 0.4rem;
+                        font-size: 16px;
+                        border-radius: 2px 13px;
                     }
                 }
+                .quote {
+                    @include box(100%);
+                    padding: 1rem;
+                    // word-wrap: break-word;
+                    // word-break: keep-all;
+                }
             }
+
+            // .bottom {
+            //     flex-shrink: 0;
+            //     @include box(100%, 10%);
+            //     color: $fg;
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: space-between;
+            //     gap: 20px;
+            //     padding: 0 1vw;
+
+            //     span {
+            //         @include box(90%, auto);
+            //         overflow: hidden;
+            //         text-overflow: ellipsis;
+            //         text-transform: capitalize;
+            //         white-space: nowrap;
+
+            //         transform: translateX(-150%);
+            //         transition: transform 500ms;
+            //     }
+
+            //     svg {
+            //         @include box(10%, 100%);
+            //         flex-shrink: 0;
+            //         cursor: pointer;
+            //     }
+            // }
         }
     }
 }
