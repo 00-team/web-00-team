@@ -22,11 +22,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import Team from './components/Team'
 
-// const About = Loadable({
-//     loader: () => import('./components/About'),
-//     loading: () => <span>Loading About</span>,
-// })
-
 const About = Loadable(() => import('./components/About'))
 
 const Demos = Loadable(() => import('./components/Demos/Demos'))

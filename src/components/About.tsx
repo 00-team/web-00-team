@@ -16,10 +16,6 @@ const About: FC = () => {
     // return <div style={{ color: 'red' }}>{BaseState.about.markdown}</div>
     return (
         <div className='about-container'>
-            {/* <div className='part team'>
-                <h1 className='title'>00 Team</h1>
-                <span className='text'>believe your dreams</span>
-            </div> */}
             <div className='part about'>
                 <h2 className='title'>What is 00 Team?</h2>
                 <div className='text'>
