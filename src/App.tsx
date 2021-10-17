@@ -10,6 +10,7 @@ import {
     useSelector,
     useDispatch,
 } from 'react-redux'
+import { LoadBase, LoadCreators } from './redux/actions/'
 import { store } from './redux'
 import { RootState } from './redux'
 import { AppTypes } from './redux/models/App'
@@ -66,6 +67,8 @@ const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(LoadBase())
+        dispatch(LoadCreators())
         dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
         window.onresize = () => {
             dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
@@ -89,9 +92,9 @@ const App = () => {
                         )}
 
                         <HeroSection />
-                        <About loadingRender={false} />
+                        <About />
                         <Demos LoadingRender={false} />
-                        <Creators loadingRender={false} />
+                        <Creators />
                         <JoinUs />
                     </Route>
 
@@ -103,11 +106,8 @@ const App = () => {
                         <Project />
                     </Route>
 
-                    <Route path='/about'>
+                    <Route path='/team'>
                         <About />
-                    </Route>
-
-                    <Route path='/creators'>
                         <Creators />
                         <JoinUs />
                     </Route>
