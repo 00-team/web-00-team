@@ -1,0 +1,28 @@
+@use '../../sass/fonts/' as *;
+@use '../../sass/mixins.sass' as *;
+@use '../../sass/variables/' as g;
+
+.team {
+    $fg: #fff;
+    @include box(100%, auto);
+    min-height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        @include DisplayFont(g.$TITLE_FONTSIZE);
+        color: $fg;
+        text-align: center;
+    }
+
+    .text {
+        color: darken($fg, $amount: 25%);
+        @include MainFont(g.$TEXT_FONTSIZE);
+        text-transform: capitalize;
+        overflow-y: auto;
+        word-break: keep-all;
+    }
+}
