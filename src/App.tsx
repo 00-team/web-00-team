@@ -44,6 +44,8 @@ const Project = Loadable(() => import('./components/Projects/Project'))
 
 // layouts
 const Navbar = Loadable(() => import('./layouts/Navbar'))
+const Footer = Loadable(() => import('./layouts/Footer'))
+
 
 // style
 import './sass/base.scss'
@@ -92,7 +94,8 @@ const App = () => {
                         <About />
                         <Demos LoadingRender={false} />
                         <Creators />
-                        <JoinUs />
+                        {/* <JoinUs /> */}
+                        <Footer />
                     </Route>
 
                     <Route path='/projects'>
