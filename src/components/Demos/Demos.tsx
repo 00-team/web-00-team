@@ -11,8 +11,12 @@ import { RootState } from '../../redux'
 // commons
 import Loading from '../common/Loading'
 
+// lazy motion
 const LazyMotion = Loadable(() => import('../common/LazyMotion'))
+
 const CardSlider = Loadable(() => import('../common/slider/CardSlider'))
+
+
 
 // import style
 import './demos.scss'

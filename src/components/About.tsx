@@ -5,6 +5,10 @@ import Markdown from 'markdown-to-jsx'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux'
 
+import Loadable from '@loadable/component'
+// lazy motion
+const LazyMotion = Loadable(() => import('./common/LazyMotion'))
+
 // import scss
 import './sass/about.scss'
 
@@ -17,7 +21,9 @@ const About: FC = () => {
     return (
         <div className='about-container'>
             <div className='part about'>
-                <h2 className='title'>What is 00 Team?</h2>
+                <LazyMotion>
+                    <h2 className='title'>What is 00 Team?</h2>
+                </LazyMotion>
                 <div className='text'>
                     <Markdown>{BaseState.about.markdown}</Markdown>
                 </div>

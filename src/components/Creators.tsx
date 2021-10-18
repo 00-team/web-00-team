@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 
-// import Loadable from '@loadable/component'
+import Loadable from '@loadable/component'
 
 // redux stuff
 import { useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import { RootState } from '../redux'
 import { CreatorModel } from '../redux/models/Creators'
 
 // lazy motion
-// const LazyMotion = Loadable(() => import('./common/LazyMotion'))
+const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
@@ -105,7 +105,9 @@ const Creators: FC = () => {
 
     return (
         <div className='creators-container'>
-            <h2 className='title'>Creators</h2>
+            <LazyMotion>
+                <h2 className='title'>Creators</h2>
+            </LazyMotion>
             <div className='creators'>
                 {CreatorsState.creators.map((item, index) => (
                     <Creator C={item} key={index} />
