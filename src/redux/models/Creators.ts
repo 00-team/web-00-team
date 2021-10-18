@@ -1,15 +1,17 @@
 export interface CreatorModel {
-    name: string
-    bio: string
-    duty: string[]
     id: string
-    githubUsername: string
-    picture: {
+    name: string
+    roles: string[]
+    quote?: string
+    joinDate: string
+    twitterUsername?: string
+    githubUsername?: string
+    profile: {
         url: string
-    } | null
-    bgColor: {
-        hex: string
-    } | null
+    }
+    banner: {
+        url: string
+    }
 }
 
 export interface CreatorsModel {

@@ -10,7 +10,7 @@ import {
     useSelector,
     useDispatch,
 } from 'react-redux'
-import { LoadBase } from './redux/actions/'
+import { LoadBase, LoadCreators } from './redux/actions/'
 import { store } from './redux'
 import { RootState } from './redux'
 import { AppTypes } from './redux/models/App'
@@ -65,7 +65,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(LoadBase())
-        // dispatch(LoadCreators())
+        dispatch(LoadCreators())
         dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
         window.onresize = () => {
             dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })

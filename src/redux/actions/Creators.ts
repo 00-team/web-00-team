@@ -16,21 +16,24 @@ export const LoadCreators = () => async (dispatch: Dispatch<Action>) => {
         const { creators } = await request(
             API_URL,
             `
-                {
-                    creators(locales: en) {
-                        name
-                        bio
-                        duty
-                        id
-                        githubUsername
-                        picture {
-                            url
-                        }
-                        bgColor {
-                            hex
-                        }
-                    }
+            {
+                creators {
+                  banner {
+                    url
+                  }
+                  githubUsername
+                  id
+                  joinDate
+                  name
+                  profile {
+                    url
+                  }
+                  quote
+                  roles
+                  twitterUsername
                 }
+              }
+              
             `
         )
 

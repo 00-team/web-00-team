@@ -21,7 +21,9 @@
     .creators {
         @include box(100%);
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 5vw;
 
         .creator {
             cursor: pointer;
@@ -37,9 +39,9 @@
             .banner {
                 @include box(100%);
                 @include bg(
-                    'https://cdn.discordapp.com/attachments/731174051170746500/899610698240368671/Hela_f8d8c0_6625678.jpg',
+                    'https://media.graphcms.com/UjmjWRNcTpC65k1cR9Zb',
                     cover,
-                    bottom
+                    top center
                 );
             }
 
@@ -58,7 +60,7 @@
                     aspect-ratio: 1;
                     border-radius: 15%;
                     @include bg(
-                        'https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png'
+                        'https://media.graphcms.com/UjmjWRNcTpC65k1cR9Zb'
                     );
                     box-shadow: -1px 1px 7px 1px #121212;
                 }
