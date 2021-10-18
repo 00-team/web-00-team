@@ -10,49 +10,76 @@ import { RootState } from '../redux'
 // const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
 // icons
-// import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
-import { HiOutlineArrowNarrowDown as Arrow } from '@react-icons/all-files/hi/HiOutlineArrowNarrowDown'
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter'
 
 // import css
 import './sass/creators.scss'
 
 const Creator: FC = () => {
-    const [ShowSocial, setShowSocial] = useState(false)
+    const [ProfileZoom, setProfileZoom] = useState(false)
+    const [showDetails, setshowDetails] = useState(true)
     return (
-        <div className='creator'>
-            <div className='banner'></div>
-            <div className='social'>
-                <div className='item'></div>
-                <div className='item'></div>
-            </div>
+        <div className='creator' onClick={() => setshowDetails(!showDetails)}>
             <div
-                className='info'
+                className='banner'
                 style={
-                    ShowSocial
-                        ? { marginTop: 0, transform: 'translateY(50px)' }
+                    ProfileZoom
+                        ? {
+                              backgroundImage:
+                                  'url(https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png)',
+                          }
                         : {}
                 }
-            >
-                <div className='top'>
-                    <div className='profile'></div>
-                    <div className='meta'>
-                        <span className='name'>007</span>
-                        <span className='join-date'>2019</span>
+            ></div>
+            <div className='details-container'>
+                <div
+                    className='details'
+                    style={
+                        showDetails ? { transform: 'translateY(-100%)' } : {}
+                    }
+                >
+                    <ul className='roles'>
+                        <li className='role'>Master</li>
+                        <li className='role'>Master</li>
+                        <li className='role'>Master Master Master Master </li>
+                    </ul>
+                    <div className='quote'>
+                        <em>time of madness has come</em>
                     </div>
-                    <Arrow
-                        onClick={() => setShowSocial(!ShowSocial)}
-                        style={
-                            ShowSocial ? { transform: 'rotate(180deg)' } : {}
-                        }
-                    />
                 </div>
-                <ul className='roles'>
-                    <li className='role'>Team Master</li>
-                    <li className='role'>Team Master</li>
-                    <li className='role'>Team Master</li>
-                </ul>
-
-                <span className='quote'>time of Madness has come</span>
+            </div>
+            <div className='info'>
+                <div
+                    className='profile'
+                    onMouseOver={() => {
+                        setProfileZoom(true)
+                        setshowDetails(false)
+                    }}
+                    onMouseLeave={() => setProfileZoom(false)}
+                ></div>
+                <div className='meta'>
+                    <span className='name'>007</span>
+                    <span className='date'>2019</span>
+                </div>
+            </div>
+            <div className='socials'>
+                <a
+                    href=''
+                    className='social'
+                    style={{ '--hover-color': '#333' } as React.CSSProperties}
+                >
+                    <FiGithub />
+                </a>
+                <a
+                    href=''
+                    className='social'
+                    style={
+                        { '--hover-color': '#1da1f2' } as React.CSSProperties
+                    }
+                >
+                    <FiTwitter />
+                </a>
             </div>
         </div>
     )

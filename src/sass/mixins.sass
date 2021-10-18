@@ -15,3 +15,9 @@
     -ms-user-select: none
     user-select: none
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+@mixin bg($url, $size: cover, $pos: center, $repeat: no-repeat)
+    background-image: url($url)
+    background-size: $size
+    background-position: $pos
+    background-repeat: $repeat

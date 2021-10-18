@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    @include box(100%);
+    @include box(100%, auto);
 
     .title {
         color: $fg;
@@ -24,153 +24,145 @@
         justify-content: space-around;
 
         .creator {
-            @include box(400px, max-content);
-            background-color: #040404;
-            border-radius: 5px;
+            cursor: pointer;
+            $fg: #fff;
+            @include war(clamp(200px, 20vw + 100px, 400px), #{3.5 / 5});
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            // overflow: hidden;
-
-            &:hover {
-                .info {
-                    // margin-top: -50px;
-                    transform: translateY(-50px);
-                }
-            }
+            box-shadow: -2px 2px 10px 1px #121212;
+            border-radius: 5px;
+            position: relative;
 
             .banner {
-                @include war(100%, #{16 / 9});
-
-                background-color: #272727;
-                background-image: url('https://wallpaperset.com/w/full/8/4/6/175045.jpg');
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-
-                transition: height 500ms;
-                flex-shrink: 0;
-
-                border: 2px solid #272727;
-                border-bottom: none;
-            }
-
-            .social {
-                @include box(100%, 0);
-                display: flex;
-                justify-content: flex-end;
-                padding: 0 1rem;
-                gap: 1rem;
-
-                .item {
-                    @include box(50px);
-                    background-color: lightgreen;
-                }
+                @include box(100%);
+                @include bg(
+                    'https://cdn.discordapp.com/attachments/731174051170746500/899610698240368671/Hela_f8d8c0_6625678.jpg',
+                    cover,
+                    bottom
+                );
             }
 
             .info {
-                background-color: lighten($color: #040404, $amount: 5%);
-                // box-shadow: 0 0 20px #121212;
-                border: 2px solid #272727;
-                border-top: none;
-                @include box(100%, 100%);
+                @include box(100%, 15%);
+                flex-shrink: 0;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                color: $fg;
-                overflow: hidden;
-                border-top-left-radius: 50px;
-                @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+                padding: 0.5rem;
+                gap: 1rem;
+                background: g.$MAIN_BG;
+                position: relative;
 
-                transition: all 500ms;
-                transform-origin: bottom;
-
-                .top {
-                    @include box(100%, auto);
-                    display: flex;
-                    align-items: center;
-                    padding: 1rem 1.5rem;
-                    gap: 2rem;
-
-                    .profile {
-                        background-image: url('https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png');
-                        background-position: center;
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        @include box(60px);
-                        border-radius: 50%;
-                        flex-shrink: 0;
-                    }
-
-                    .meta {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        @include box(100%, auto);
-
-                        .name {
-                            @include DisplayFont(g.$TEXT_FONTSIZE);
-                        }
-
-                        // .join-date {
-                        // }
-                    }
-
-                    svg {
-                        @include box(30px);
-                        flex-shrink: 0;
-                        cursor: pointer;
-                        transition: all 300ms;
-                    }
+                .profile {
+                    height: 100%;
+                    aspect-ratio: 1;
+                    border-radius: 15%;
+                    @include bg(
+                        'https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png'
+                    );
+                    box-shadow: -1px 1px 7px 1px #121212;
                 }
 
-                .roles {
-                    display: flex;
-                    gap: 10px;
-                    padding: 0.4rem;
-
-                    .role {
-                        background-color: purple;
-                        background: linear-gradient(to right, #353535, #040404);
-                        padding: 0.2rem 0.4rem;
-                        font-size: 16px;
-                        border-radius: 2px 13px;
-                    }
-                }
-                .quote {
+                .meta {
                     @include box(100%);
-                    padding: 1rem;
-                    // word-wrap: break-word;
-                    // word-break: keep-all;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    color: $fg;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    .name {
+                        @include DisplayFont(g.$TEXT_FONTSIZE);
+                    }
+                    .date {
+                        @include MainFont(clamp(0.6rem, 0.2rem + 1vw, 1.8rem));
+                        color: darken($fg, 40%);
+                    }
                 }
             }
 
-            // .bottom {
-            //     flex-shrink: 0;
-            //     @include box(100%, 10%);
-            //     color: $fg;
-            //     display: flex;
-            //     align-items: center;
-            //     justify-content: space-between;
-            //     gap: 20px;
-            //     padding: 0 1vw;
+            .details-container {
+                @include box(100%, 0);
+                position: relative;
+                .details {
+                    position: absolute;
+                    background-color: g.$MAIN_BG;
+                    color: g.$MAIN_FG;
 
-            //     span {
-            //         @include box(90%, auto);
-            //         overflow: hidden;
-            //         text-overflow: ellipsis;
-            //         text-transform: capitalize;
-            //         white-space: nowrap;
+                    width: 100%;
+                    transform: translateY(-2px);
+                    transition: all 500ms ease;
 
-            //         transform: translateX(-150%);
-            //         transition: transform 500ms;
-            //     }
+                    border: 2px #272727 solid;
+                    border-left: 0;
+                    border-right: 0;
 
-            //     svg {
-            //         @include box(10%, 100%);
-            //         flex-shrink: 0;
-            //         cursor: pointer;
-            //     }
-            // }
+                    .roles {
+                        display: flex;
+                        gap: 1vw;
+                        align-items: center;
+                        padding: 1vw;
+                        flex-wrap: wrap;
+
+                        .role {
+                            background-color: darken(#272727, 5%);
+                            border-radius: 7px 8px 0px 9px;
+                            padding: 0.2rem 0.55rem;
+                            white-space: nowrap;
+                            @include MainFont(
+                                clamp(0.5rem, 0.42rem + 1vw, 1.8rem)
+                            );
+                        }
+                    }
+
+                    .quote {
+                        font-size: clamp(0.5rem, 0.42rem + 1vw, 1.8rem);
+                        display: grid;
+                        place-items: center;
+                        text-transform: capitalize;
+                        padding: 0.5vw;
+                    }
+                }
+            }
+
+            &:hover {
+                .socials .social {
+                    transform: translateX(0);
+                }
+            }
+
+            .socials {
+                position: absolute;
+                color: #fff;
+                inset: 10px 10px auto auto;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                .social {
+                    --hover-color: #{g.$MAIN_FG};
+                    transform: translateX(200%);
+                    @include war(calc(1vw + 1rem));
+                    transition: all 200ms ease;
+                    filter: drop-shadow(2px 4px 5px black);
+
+                    svg {
+                        @include box(100%);
+                    }
+
+                    @for $i from 1 to 3 {
+                        &:nth-child(#{$i}) {
+                            transition-delay: ($i - 1) * 100ms;
+                        }
+                    }
+
+                    &:hover {
+                        color: var(--hover-color);
+                    }
+                }
+            }
+            // https://cdn.discordapp.com/attachments/731174051170746500/836798695139573840/007_logo_f27.png
         }
     }
 }

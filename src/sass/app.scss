@@ -8,7 +8,19 @@
     overflow: hidden;
 
     @include media('<=501px') {
+        justify-content: flex-end;
         flex-direction: column-reverse;
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .master {
+            padding-bottom: 70px;
+        }
     }
 
     .master {
@@ -16,6 +28,6 @@
         scrollbar-width: thin;
         overflow-x: hidden;
         overflow-y: auto;
-        @include box(100%);
+        @include box(100%, 100%);
     }
 }
