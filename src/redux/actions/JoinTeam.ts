@@ -18,11 +18,12 @@ export const LoadJoinTeam = () => async (dispatch: Dispatch<Action>) => {
             `
             {
                 joinTeams(last: 1) {
-                  id
-                  title
-                  description
-                  skills
-                  behaviors
+                    id
+                    title
+                    description
+                    skills
+                    goodToHave
+                    needlessToSay
                 }
               }
               

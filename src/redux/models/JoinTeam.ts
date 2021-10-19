@@ -3,7 +3,8 @@ export interface JoinTeamModel {
     title: string
     description: string
     skills: string[]
-    behaviors: string[]
+    goodToHave: string[]
+    needlessToSay: string[]
 }
 
 export interface JoinTeam {
