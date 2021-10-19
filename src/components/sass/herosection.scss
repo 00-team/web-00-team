@@ -4,9 +4,6 @@
 
 .hero-section {
     @include box(100%, 100vh);
-    @include media('<=500px') {
-        height: 100%;
-    }
     .main {
         height: 100%;
         color: #fff;

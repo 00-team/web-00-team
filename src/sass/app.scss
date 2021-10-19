@@ -1,33 +1,33 @@
 @use './mixins.sass' as *;
 @use './media.scss' as *;
 
-.root {
-    @include box(100vw, 100vh);
-    display: flex;
-    background: #040404;
-    overflow: hidden;
+// .root {
+//     // @include box(100vw, 100vh);
+//     // display: flex;
+//     // background: #040404;
+//     // overflow: hidden;
 
-    @include media('<=501px') {
-        justify-content: flex-end;
-        flex-direction: column-reverse;
+//     @include media('<=501px') {
+//         justify-content: flex-end;
+//         flex-direction: column-reverse;
 
-        .navbar {
-            position: fixed;
-            bottom: 0;
-            z-index: 100;
-            overflow: hidden;
-        }
+//         .navbar {
+//             position: fixed;
+//             bottom: 0;
+//             z-index: 100;
+//             overflow: hidden;
+//         }
 
-        .master {
-            padding-bottom: 140px;
-        }
-    }
+//         .master {
+//             padding-bottom: 140px;
+//         }
+//     }
 
-    .master {
-        scroll-behavior: smooth;
-        scrollbar-width: thin;
-        overflow-x: hidden;
-        overflow-y: auto;
-        @include box(100%, 100%);
-    }
-}
+//     .master {
+//         scroll-behavior: smooth;
+//         scrollbar-width: thin;
+//         overflow-x: hidden;
+//         overflow-y: auto;
+//         @include box(100%, 100%);
+//     }
+// }
