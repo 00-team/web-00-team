@@ -255,6 +255,7 @@
 }
 
 .navbar__mobile-container {
+    @include no-user-select;
     @include box(100%, 70px);
     overflow: hidden;
 

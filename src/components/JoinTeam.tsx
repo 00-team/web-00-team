@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-// import Loadable from '@loadable/component'
+import Loadable from '@loadable/component'
 
 import Markdown from 'markdown-to-jsx'
 
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../redux'
 
 // lazy motion
-// const LazyMotion = Loadable(() => import('./common/LazyMotion'))
+const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
 import './sass/join-team.scss'
 
@@ -20,7 +20,9 @@ const JoinTeam: FC = () => {
 
     return (
         <div className='join-team'>
-            <h2 className='title'>{state.title}</h2>
+            <LazyMotion>
+                <h2 className='title'>{state.title}</h2>
+            </LazyMotion>
             <div className='body'>
                 <div className='description'>
                     <Markdown children={state.description} />
@@ -45,6 +47,10 @@ const JoinTeam: FC = () => {
                         ))}
                     </ul>
                 </div>
+            </div>
+            <div className='contact'>
+                <h3 className='title'>if you have ...</h3>
+                <span>contact us</span>
             </div>
         </div>
     )
