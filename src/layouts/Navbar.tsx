@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 // icons
-import { IconContext } from '@react-icons/all-files'
+// import { IconContext } from '@react-icons/all-files'
 import { IoHome } from '@react-icons/all-files/io5/IoHome'
 import { GiClown } from '@react-icons/all-files/gi/GiClown'
 import { AiOutlineTeam } from '@react-icons/all-files/ai/AiOutlineTeam'
@@ -152,42 +152,54 @@ const DesktopNavbar: FC = () => {
                             : {}
                     }
                 >
-                    <IconContext.Provider value={{ className: 'icon' }}>
-                        <div className='section'>
-                            <Link to='/'>
-                                <Hex>
+                    <div className='section'>
+                        <Link to='/'>
+                            <Hex>
+                                <div className='icon'>
                                     <IoHome />
-                                    <span>Home</span>
-                                </Hex>
-                            </Link>
-                            <Link to='/projects'>
-                                <Hex>
+                                </div>
+
+                                <span>Home</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/projects'>
+                            <Hex>
+                                <div className='icon'>
                                     <VscProject />
-                                    <span>Projects</span>
-                                </Hex>
-                            </Link>
-                            <Link to='/business'>
-                                <Hex>
+                                </div>
+                                <span>Projects</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/business'>
+                            <Hex>
+                                <div className='icon'>
                                     <RiMoneyPoundBoxLine />
-                                    <span>Business</span>
-                                </Hex>
-                            </Link>
-                        </div>
-                        <div className='section'>
-                            <Link to='/team'>
-                                <Hex>
+                                </div>
+
+                                <span>Business</span>
+                            </Hex>
+                        </Link>
+                    </div>
+                    <div className='section'>
+                        <Link to='/team'>
+                            <Hex>
+                                <div className='icon'>
                                     <AiOutlineTeam />
-                                    <span>Team</span>
-                                </Hex>
-                            </Link>
-                            <Link to='/fun'>
-                                <Hex>
+                                </div>
+
+                                <span>Team</span>
+                            </Hex>
+                        </Link>
+                        <Link to='/fun'>
+                            <Hex>
+                                <div className='icon'>
                                     <GiClown />
-                                    <span>Fun</span>
-                                </Hex>
-                            </Link>
-                        </div>
-                    </IconContext.Provider>
+                                </div>
+
+                                <span>Fun</span>
+                            </Hex>
+                        </Link>
+                    </div>
                 </div>
             </div>
 

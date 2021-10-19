@@ -96,6 +96,13 @@
     }
 
     .menu {
+        --hex_width: 160px;
+        @include media('<=800px') {
+            --hex_width: 120px;
+        }
+        @media (max-height: 500px) {
+            --hex_width: 120px;
+        }
         position: fixed;
         inset: 0;
         z-index: -100;
@@ -103,7 +110,7 @@
 
         display: flex;
         justify-content: center;
-        gap: 50px;
+        gap: calc(5vh + 1rem);
         align-items: center;
         flex-direction: column;
 
@@ -155,13 +162,15 @@
             .section {
                 display: flex;
                 &:last-child {
-                    margin-top: -50px;
+                    margin-top: calc(
+                        ((49 / 185) * (185 / 160)) * var(--hex_width) * -1
+                    );
                 }
             }
         }
 
         .hex {
-            @include box(160px, 185px);
+            @include war(var(--hex_width), #{160 / 185});
             position: relative;
             color: #fff;
             display: flex;
@@ -173,7 +182,11 @@
             margin-left: -3px;
 
             .icon {
-                @include box(40px);
+                @include war(25%);
+
+                svg {
+                    @include box(100%);
+                }
             }
 
             &:hover {
@@ -203,7 +216,7 @@
             .borders {
                 --color: #121212;
                 position: absolute;
-                @include box(92px, 160px);
+                @include war(calc((92 / 160) * 100%), #{92 / 160});
 
                 div {
                     box-sizing: border-box;
