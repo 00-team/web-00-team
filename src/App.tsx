@@ -48,7 +48,6 @@ const Footer = Loadable(() => import('./layouts/Footer'))
 
 // style
 import './sass/base.scss'
-import './sass/app.scss'
 import './sass/fonts/imports.scss'
 
 const LoadingStatus = (): boolean[] => {
