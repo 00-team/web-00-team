@@ -8,6 +8,9 @@ import Markdown from 'markdown-to-jsx'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux'
 
+// icons
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+
 // lazy motion
 const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
@@ -51,6 +54,11 @@ const JoinTeam: FC = () => {
             <div className='contact'>
                 <h3 className='title'>if you have ...</h3>
                 <span>contact us</span>
+                <div className='socials'>
+                    <a href=''>
+                        <FaTwitter />
+                    </a>
+                </div>
             </div>
         </div>
     )
