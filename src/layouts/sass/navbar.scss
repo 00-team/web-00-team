@@ -1,6 +1,6 @@
 @use '/src/sass/mixins.sass' as *;
 @use '/src/sass/media.scss' as *;
-@use '/src/sass/variables/navbar.sass' as *;
+@use '/src/sass/variables' as *;
 @use '/src/sass/fonts' as *;
 
 .navbar__desktop {
@@ -12,7 +12,7 @@
         cursor: pointer;
         position: fixed;
         inset: 25px 30px auto auto;
-        z-index: $DNAVBAR_ZINDEX - 1;
+        z-index: $ZINDEX__NAVBAR__BUTTON; // 99
         @include btn-size;
         display: grid;
         place-items: center;
@@ -98,7 +98,7 @@
     .menu {
         position: fixed;
         inset: 0;
-        z-index: -10;
+        z-index: -100;
         transition: z-index;
 
         display: flex;
@@ -108,7 +108,7 @@
         flex-direction: column;
 
         &.active {
-            z-index: $DNAVBAR_ZINDEX + 1;
+            z-index: $ZINDEX__NAVBAR__MENU;
 
             .close-btn,
             h1,
@@ -121,7 +121,6 @@
             cursor: pointer;
             position: absolute;
             inset: 25px 30px auto auto;
-            z-index: $DNAVBAR_ZINDEX - 1;
             @include box(50px);
             display: grid;
             place-items: center;
@@ -183,7 +182,7 @@
                 }
                 .borders {
                     --color: #696969;
-                    z-index: 20;
+                    z-index: 1;
                 }
             }
 
@@ -246,10 +245,10 @@
     .overlay {
         position: fixed;
         inset: 0;
-        z-index: -10;
+        z-index: -100;
         transition: z-index;
         &.active {
-            z-index: $DNAVBAR_ZINDEX;
+            z-index: $ZINDEX__NAVBAR; // 100
         }
     }
 }
@@ -270,7 +269,7 @@
         flex-shrink: 0;
         position: fixed;
         bottom: 0;
-        z-index: 100;
+        z-index: $ZINDEX__NAVBAR; // 100
         overflow: hidden;
 
         a {

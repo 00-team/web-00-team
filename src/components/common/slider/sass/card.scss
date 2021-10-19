@@ -1,14 +1,15 @@
-@use '../../../../sass/mixins.sass' as *;
+@use '/src/sass/mixins.sass' as *;
 @use '/src/sass/media.scss' as *;
+@use '/src/sass/variables/' as *;
 
 .card-slider-container {
     // display: flex;
     // align-items: center;
     // justify-content: space-between;
     position: relative;
-    
+
     margin-top: 10%;
-    
+
     padding: 0 10px;
 
     display: grid;
@@ -74,7 +75,6 @@
         @include war(100%, #{16 / 9});
         // @include box(840px, 335px);
         .card {
-            
             position: absolute;
             transition: all 450ms ease 0s;
 
@@ -87,7 +87,7 @@
             overflow: hidden;
 
             &.c {
-                z-index: 3;
+                z-index: $ZINDEX__CARDSLIDER_CURRENT;
                 transform: scale(1);
                 visibility: visible;
             }
@@ -105,29 +105,29 @@
                     position: absolute;
                     opacity: 0.4;
                     background-color: #000;
-                    z-index: 2;
+                    z-index: 1;
                     inset: 0;
                 }
             }
 
             &.n1 {
-                z-index: 2;
+                z-index: $ZINDEX__CARDSLIDER_LEVEL1;
                 transform: translateX(13%) scale(0.85);
                 visibility: visible;
             }
             &.n2 {
-                z-index: 1;
+                z-index: $ZINDEX__CARDSLIDER_LEVEL2;
                 transform: translateX(24%) scale(0.7);
                 visibility: visible;
             }
 
             &.p1 {
-                z-index: 2;
+                z-index: $ZINDEX__CARDSLIDER_LEVEL1;
                 transform: translateX(-13%) scale(0.85);
                 visibility: visible;
             }
             &.p2 {
-                z-index: 1;
+                z-index: $ZINDEX__CARDSLIDER_LEVEL2;
                 transform: translateX(-24%) scale(0.7);
                 visibility: visible;
             }
