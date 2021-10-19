@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import Button from '../components/common/Button';
+
 
 // styling
 import './sass/footer.scss';
@@ -11,16 +13,16 @@ const Footer = () => {
         <div className='footer-container'>
             <section className='footer-subscription'>
                 <p className='footer-subscription-heading'>
-                    Join the Adventure newsletter to receive our best vacation
-                    deals
+                    Wana Work With Us?
                 </p>
                 <p className='footer-subscription-text'>
-                    You can unsubscribe at any time.
+                    Provided You Think You Are Good Enough To Work With 00 Team, You Can Apply From The Button Below.
                 </p>
                 <div className='footer-input'>
-                    <button>test</button>
+                    <Button> Join 00 Team </Button>
                 </div>
             </section>
+            <div className="line"></div>
             <div className='footer-links'>
                 <div className='footer-link-wrapper'>
                     <div className='footer-link-items'>
@@ -66,55 +68,7 @@ const Footer = () => {
             </div>
             <section className='social-media'>
                 <div className='social-media-wrap'>
-                    <div className='footer-logo'>
-                        <Link to='/' className='social-logo'>
-                            00 Team
-                            {/* <i className='fab fa-typo3' /> */}
-                        </Link>
-                    </div>
-                    <small className='website-rights'>© 2020</small>
-                    <div className='social-icons'>
-                        <Link
-                            className='social-icon-link facebook'
-                            to='/'
-                            target='_blank'
-                            aria-label='Facebook'
-                        >
-                            {/* <i className='fab fa-facebook-f' /> */}
-                        </Link>
-                        <Link
-                            className='social-icon-link instagram'
-                            to='/'
-                            target='_blank'
-                            aria-label='Instagram'
-                        >
-                            {/* <i className='fab fa-instagram' /> */}
-                        </Link>
-                        <Link
-                            className='social-icon-link youtube'
-                            to='/'
-                            target='_blank'
-                            aria-label='Youtube'
-                        >
-                            {/* <i className='fab fa-youtube' /> */}
-                        </Link>
-                        <Link
-                            className='social-icon-link twitter'
-                            to='/'
-                            target='_blank'
-                            aria-label='Twitter'
-                        >
-                            {/* <i className='fab fa-twitter' /> */}
-                        </Link>
-                        <Link
-                            className='social-icon-link twitter'
-                            to='/'
-                            target='_blank'
-                            aria-label='LinkedIn'
-                        >
-                            {/* <i className='fab fa-linkedin' /> */}
-                        </Link>
-                    </div>
+                    <small className='website-rights'>00 Team © 2020</small>
                 </div>
             </section>
         </div>
