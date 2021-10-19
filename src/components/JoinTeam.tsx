@@ -31,7 +31,7 @@ const JoinTeam: FC = () => {
                     <Markdown children={state.description} />
                 </div>
                 <div className='condition'>
-                    <span className='name'>Skills:</span>
+                    <span className='name'>Skills :</span>
                     <ul className='list'>
                         {state.skills.map((item, index) => (
                             <li key={index} className='item'>
@@ -41,9 +41,19 @@ const JoinTeam: FC = () => {
                     </ul>
                 </div>
                 <div className='condition'>
-                    <span className='name'>behaviors:</span>
+                    <span className='name'>Good To Have :</span>
                     <ul className='list'>
-                        {state.behaviors.map((item, index) => (
+                        {state.needlessToSay.map((item, index) => (
+                            <li key={index} className='item'>
+                                <b>{index + 1}.</b> {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className='condition'>
+                    <span className='name'>Needless To Say, You Should Be Familiar With :</span>
+                    <ul className='list'>
+                        {state.goodToHave.map((item, index) => (
                             <li key={index} className='item'>
                                 <b>{index + 1}.</b> {item}
                             </li>
