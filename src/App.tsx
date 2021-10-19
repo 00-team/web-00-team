@@ -10,7 +10,7 @@ import {
     useSelector,
     useDispatch,
 } from 'react-redux'
-import { LoadBase, LoadCreators } from './redux/actions/'
+import { LoadBase, LoadCreators, LoadJoinTeam } from './redux/actions/'
 import { store } from './redux'
 import { RootState } from './redux'
 import { AppTypes } from './redux/models/App'
@@ -27,7 +27,7 @@ const About = Loadable(() => import('./components/About'))
 
 const Demos = Loadable(() => import('./components/Demos/Demos'))
 
-const JoinUs = Loadable(() => import('./components/JoinUs'))
+const JoinTeam = Loadable(() => import('./components/JoinTeam'))
 
 const Creators = Loadable(() => import('./components/Creators'))
 
@@ -45,7 +45,6 @@ const Project = Loadable(() => import('./components/Projects/Project'))
 // layouts
 const Navbar = Loadable(() => import('./layouts/Navbar'))
 const Footer = Loadable(() => import('./layouts/Footer'))
-
 
 // style
 import './sass/base.scss'
@@ -68,6 +67,7 @@ const App = () => {
     useEffect(() => {
         dispatch(LoadBase())
         dispatch(LoadCreators())
+        dispatch(LoadJoinTeam())
         dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
         window.onresize = () => {
             dispatch({ type: AppTypes.SET_WINWID, payload: window.innerWidth })
@@ -94,7 +94,7 @@ const App = () => {
                         <About />
                         <Demos LoadingRender={false} />
                         <Creators />
-                        {/* <JoinUs /> */}
+                        {/* <JoinTeam /> */}
                         <Footer />
                     </Route>
 
@@ -110,7 +110,7 @@ const App = () => {
                         <Team />
                         <About />
                         <Creators />
-                        <JoinUs />
+                        <JoinTeam />
                     </Route>
 
                     <Route path='/business'>

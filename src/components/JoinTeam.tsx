@@ -2,10 +2,14 @@ import React from 'react'
 
 import Loadable from '@loadable/component'
 
+// redux
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux'
+
 // lazy motion
 const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
-// import css
+// style
 import './sass/joinus.scss'
 
 // icons
@@ -13,6 +17,9 @@ import { SiDiscord } from '@react-icons/all-files/si/SiDiscord'
 import { SiGmail } from '@react-icons/all-files/si/SiGmail'
 
 function JoinUs() {
+    const state = useSelector((state: RootState) => state.JoinTeam)
+    console.log(state)
+
     return (
         <div className='join-us' id='join'>
             <div className='container'>

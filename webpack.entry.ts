@@ -12,7 +12,7 @@ const EntryConfig: Entry = {
             'about',
             'demos',
             'creators',
-            'joinus',
+            'joinTeam',
         ],
     },
     // projects
@@ -51,8 +51,8 @@ const EntryConfig: Entry = {
         import: './src/components/Creators.tsx',
         dependOn: ['react', 'redux', 'LazyMotion'],
     },
-    joinus: {
-        import: './src/components/JoinUs.tsx',
+    joinTeam: {
+        import: './src/components/JoinTeam.tsx',
         dependOn: ['react', 'LazyMotion'],
     },
     business: {
