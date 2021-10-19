@@ -117,7 +117,7 @@ const App = () => {
                         <Business />
                     </Route>
                     <Route path='/test'>
-                        <Creators />
+                        <JoinTeam />
                     </Route>
 
                     <Route path='/fun'>

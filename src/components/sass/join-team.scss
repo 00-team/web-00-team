@@ -1,0 +1,67 @@
+@use '../../sass/mixins.sass' as *;
+@use '../../sass/fonts/' as *;
+@use '../../sass/variables' as g;
+@use '../../sass/media.scss' as *;
+
+.join-team {
+    color: g.$MAIN_FG;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+    padding: 4vh 4vw;
+    @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+    .title {
+        @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: ;
+        gap: 4vh;
+        width: 70vw;
+        @include media('<=500px') {
+            width: 90vw;
+        }
+        @include media('<=300px') {
+            width: 98vw;
+        }
+    }
+
+    .description {
+        line-height: 2;
+        color: darken(g.$MAIN_FG, 10%);
+        background-color: #121212;
+        padding: 2vw;
+        border-radius: 10px;
+        font-size: g.$MEDIUM_TEXT_FONTSIZE;
+    }
+
+    .condition {
+        .name {
+            @include DisplayFont(g.$TEXT_FONTSIZE);
+            margin-bottom: 1vh;
+            display: block;
+        }
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            overflow: hidden;
+            word-break: break-all;
+            .item {
+                b {
+                    color: darken(g.$MAIN_FG, 30%);
+                    @include DisplayFont(g.$SMALL_TEXT_FONTSIZE);
+                }
+
+                // text-overflow: ellipsis;
+                // white-space: nowrap;
+                // overflow: hidden;
+            }
+        }
+    }
+}

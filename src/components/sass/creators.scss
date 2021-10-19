@@ -112,14 +112,12 @@
                             border-radius: 7px 8px 0px 9px;
                             padding: 0.2rem 0.55rem;
                             white-space: nowrap;
-                            @include MainFont(
-                                clamp(0.5rem, 0.42rem + 1vw, 1.8rem)
-                            );
+                            @include MainFont(g.$MEDIUM_TEXT_FONTSIZE);
                         }
                     }
 
                     .quote {
-                        font-size: clamp(0.5rem, 0.42rem + 1vw, 1.8rem);
+                        font-size: g.$MEDIUM_TEXT_FONTSIZE;
                         display: grid;
                         place-items: center;
                         text-transform: capitalize;
