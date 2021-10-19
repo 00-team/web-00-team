@@ -90,12 +90,15 @@ const App = () => {
                     <About />
                     <Demos LoadingRender={false} />
                     <Creators />
-                    {/* <JoinTeam /> */}
                     <Footer />
                 </Route>
 
                 <Route path='/projects'>
                     <Projects />
+                </Route>
+
+                <Route path='/wanajoin'>
+                    <JoinTeam />
                 </Route>
 
                 <Route path='/project/:slug'>
