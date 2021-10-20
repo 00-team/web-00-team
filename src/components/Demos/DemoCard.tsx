@@ -88,7 +88,6 @@ const DemoCard: FC<DemoCardProps> = ({
                     )}
 
                     <ButtonWithArrow
-                        classname='project'
                         onClick={() => go(`/project/${demo.projectSlug}`)}
                     >
                         See More
