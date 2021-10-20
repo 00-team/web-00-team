@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+// btn comp 
 import Button from '../components/common/Button';
 
 
@@ -19,7 +20,7 @@ const Footer = () => {
                     Provided You Think You Are Good Enough To Work With 00 Team, You Can Apply From The Button Below.
                 </p>
                 <div className='footer-input'>
-                    <Button> Join 00 Team </Button>
+                    <Button> <a href="/wanajoin">Join 00 Team</a>  </Button>
                 </div>
             </section>
             <div className="line"></div>
