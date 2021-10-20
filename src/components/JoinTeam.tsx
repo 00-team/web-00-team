@@ -10,10 +10,13 @@ import { RootState } from '../redux'
 
 // icons
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+import { SiDiscord } from '@react-icons/all-files/si/SiDiscord'
+import { SiGmail } from '@react-icons/all-files/si/SiGmail'
 
 // lazy motion
 const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
+// styling 
 import './sass/join-team.scss'
 
 const JoinTeam: FC = () => {
@@ -51,7 +54,9 @@ const JoinTeam: FC = () => {
                     </ul>
                 </div>
                 <div className='condition'>
-                    <span className='name'>Needless To Say, You Should Be Familiar With :</span>
+                    <span className='name'>
+                        Needless To Say, You Should Be Familiar With :
+                    </span>
                     <ul className='list'>
                         {state.goodToHave.map((item, index) => (
                             <li key={index} className='item'>
@@ -62,11 +67,19 @@ const JoinTeam: FC = () => {
                 </div>
             </div>
             <div className='contact'>
-                <h3 className='title'>if you have ...</h3>
-                <span>contact us</span>
+                <h3 className='title'>
+                    Assuming You Have The Requirments Above, You Can Contact Us
+                    Through :
+                </h3>
                 <div className='socials'>
-                    <a href=''>
+                    <a href='' className='twitter'>
                         <FaTwitter />
+                    </a>
+                    <a href='' className='gmail'>
+                        <SiGmail />
+                    </a>
+                    <a href='' className='discord'>
+                        <SiDiscord />
                     </a>
                 </div>
             </div>
