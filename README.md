@@ -15,6 +15,7 @@
 
 ### design stuff
 
-1. [ ] make a **Footer**
+1. [x] make a **Footer**
 2. [ ] make a nice design for /project
 3. [ ] make a nice design for /projects
+4. [ ] make site fully responsive
