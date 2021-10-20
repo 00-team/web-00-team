@@ -272,7 +272,7 @@
     overflow: hidden;
 
     .navbar__mobile {
-        @include box(100%, auto);
+        @include box(100%, 100%);
         max-height: 70px;
         min-height: 40px;
         background-color: #272727;
