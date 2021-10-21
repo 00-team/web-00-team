@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import { useLocation } from 'react-router-dom'
+
 import Loadable from '@loadable/component'
 
 import Markdown from 'markdown-to-jsx'
@@ -16,16 +18,24 @@ import { SiGmail } from '@react-icons/all-files/si/SiGmail'
 // lazy motion
 const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 
-// styling 
+// styling
 import './sass/join-team.scss'
 
 const JoinTeam: FC = () => {
+    const location = useLocation()
     const state = useSelector((state: RootState) => state.JoinTeam.joinTeam)
 
     if (!state) return <></>
 
+    if (location.hash === '#join-team') {
+        const element = document.getElementById('join-team')
+        if (element) {
+            element.scrollIntoView()
+        }
+    }
+
     return (
-        <div className='join-team'>
+        <div className='join-team' id='join-team'>
             <LazyMotion>
                 <h2 className='title'>{state.title}</h2>
             </LazyMotion>

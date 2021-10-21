@@ -90,15 +90,10 @@ const App = () => {
                     <About />
                     <Demos LoadingRender={false} />
                     <Creators />
-                    <Footer />
                 </Route>
 
                 <Route path='/projects'>
                     <Projects />
-                </Route>
-
-                <Route path='/wanajoin'>
-                    <JoinTeam />
                 </Route>
 
                 <Route path='/project/:slug'>
@@ -109,6 +104,10 @@ const App = () => {
                     <Team />
                     <About />
                     <Creators />
+                    <JoinTeam />
+                </Route>
+
+                <Route path='/team#join-team'>
                     <JoinTeam />
                 </Route>
 
@@ -130,6 +129,7 @@ const App = () => {
                 </Route>
             </Switch>
 
+            <Footer />
             <Navbar />
         </>
     )

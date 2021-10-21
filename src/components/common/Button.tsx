@@ -19,7 +19,7 @@ const defaultProps: ButtonProps = {
 const Button = ({ children, onClick, classname }: ButtonProps) => {
     return (
         <button
-            className={`basic-button button ${classname}`}
+            className={`basic-button button ${classname ? classname : ''}`}
             onClick={e => (onClick ? onClick(e) : {})}
         >
             {children}
@@ -34,7 +34,9 @@ export const ButtonWithArrow = ({
 }: ButtonProps) => {
     return (
         <button
-            className={`arrow-button basic-button ${classname}`}
+            className={`arrow-button basic-button ${
+                classname ? classname : ''
+            }`}
             onClick={e => (onClick ? onClick(e) : {})}
         >
             <div className='icon-arrow before'>
