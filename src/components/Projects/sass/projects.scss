@@ -1,0 +1,135 @@
+@use '../../../sass/mixins.sass' as *;
+@use '../../../sass/media.scss' as *;
+@use '../../../sass/variables/' as g;
+@use '../../../sass/fonts/' as *;
+
+.projects-container {
+    color: g.$MAIN_FG;
+    @include box(100vw, 100vh);
+    padding: 2vh 2vw;
+
+    .projects {
+        .top {
+            display: grid;
+            grid-template-areas: 'title search filter_btn';
+            // grid-template-columns: max-content;
+            gap: 5vw;
+            align-items: center;
+
+            .title {
+                grid-area: title;
+                @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+            }
+
+            .search {
+                grid-area: search;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .input {
+                    display: flex;
+                    align-items: center;
+                    border: 2px solid #272727;
+                    justify-content: space-between;
+                    @include box(100%, 3rem);
+
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    input {
+                        border: 0;
+                        outline: 0;
+                        color: g.$MAIN_FG;
+                        @include box(100%, 100%);
+                        background-color: transparent;
+                        @include MainFont(g.$TEXT_FONTSIZE);
+                        padding: 0 0.5rem;
+                    }
+
+                    .icon {
+                        cursor: pointer;
+                        @include har(100%, #{1.3 / 1});
+                        display: grid;
+                        place-items: center;
+                        background-color: #272727;
+
+                        svg {
+                            @include box(60%);
+                        }
+                    }
+                }
+            }
+
+            .filter {
+                // @include box(100%, 70px);
+                display: grid;
+                place-items: center;
+                padding-right: 70px;
+
+                // background-color: red;
+                grid-area: filter_btn;
+
+                button {
+                    color: g.$MAIN_FG;
+                    @include MainFont(g.$MEDIUM_TEXT_FONTSIZE);
+                    padding: 0.5vh 1vw;
+                    border-radius: 5px;
+                    background-color: transparent;
+                    border: 3px solid #272727;
+
+                    display: flex;
+                    align-items: center;
+                    gap: 1vw;
+                    svg {
+                        @include box(2.2rem);
+                    }
+                }
+            }
+
+            @include media('<=1000px') {
+                grid-template-areas:
+                    'title'
+                    'search'
+                    'filter_btn';
+                gap: 1vh;
+
+                .title {
+                    font-size: g.$MEDIUM_TITLE_FONTSIZE;
+                }
+
+                .filter {
+                    padding-right: 0;
+
+                    button {
+                        padding: 0.5vh 2vw;
+                    }
+                }
+            }
+        }
+
+        .filters-container {
+            @include box(30vw, 100vh);
+            position: fixed;
+            inset: 0 0 0 auto;
+            background-color: g.$MAIN_BG;
+            z-index: g.$ZINDEX__PROJECTS__FILTERS;
+
+            transform: translateX(150%);
+            transition: transform 500ms ease-in-out;
+
+            .close-btn {
+                cursor: pointer;
+                position: absolute;
+                inset: 25px 30px auto auto;
+                @include box(50px);
+                display: grid;
+                place-items: center;
+
+                path {
+                    fill: #121212;
+                }
+            }
+        }
+    }
+}
