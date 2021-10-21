@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 
+// helmet
+import { Helmet } from 'react-helmet'
+
 // router
 import { Link } from 'react-router-dom'
 
@@ -34,6 +37,10 @@ const Projects = () => {
                 padding: '50px',
             }}
         >
+            <Helmet>
+                <title>00 Team Projects</title>
+                <meta property='og:title' content='00 Team Projects' />
+            </Helmet>
             Projects
             {ProjectsState.projects.map((item, index) => (
                 <span key={index} style={{ borderBottom: '10px solid red' }}>
