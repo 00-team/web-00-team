@@ -40,8 +40,23 @@ const Projects: FC = () => {
     return (
         <div className='projects-container'>
             <Helmet>
-                <title>00 Team Projects</title>
                 <meta property='og:title' content='00 Team Projects' />
+
+                <meta
+                    property='og:url'
+                    content='https://web-00-team.web.app/projects/'
+                />
+                <meta
+                    property='og:description '
+                    content='00 Team Awesome Projects'
+                />
+
+                <meta
+                    name='keywords'
+                    content='00 Team Projects,github 00 Team,00 Team Projects Page,00 Team'
+                />
+
+                <title>00 Team Projects</title>
             </Helmet>
             <div className='projects'>
                 <div className='top'>

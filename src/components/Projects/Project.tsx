@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 
+// helmet
+import { Helmet } from 'react-helmet'
+
 // router
 import { useParams } from 'react-router-dom'
 
@@ -11,12 +14,12 @@ import { RootState } from '../../redux'
 // elements
 import Loading from '../common/Loading'
 
-// icons 
+// icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
-// styling 
-import "./sass/project.scss"
+// styling
+import './sass/project.scss'
 
 interface ProjectParams {
     slug: string
@@ -72,6 +75,36 @@ const Project = () => {
         //     <br />
         // </div>
         <div className='project'>
+            <Helmet>
+                <meta property='og:title' content={Project.title} />
+
+                <meta
+                    property='og:url'
+                    content={`https://web-00-team.web.app/project/${Project.projectSlug}`}
+                />
+                <meta
+                    property='og:description '
+                    content={Project.description.text}
+                />
+
+                <meta
+                    name='keywords'
+                    content={`00 Team Project,${Project.title}`}
+                />
+
+                {/* image */}
+                <meta property='og:image' content={Project.thumbnail.url} />
+                <meta property='og:image:type' content='image/png' />
+                <meta property='og:image:width' content='1920' />
+                <meta property='og:image:height' content='1080' />
+                <meta
+                    property='og:image:alt'
+                    content={`${Project.title} thumbnail`}
+                />
+
+                <title>{Project.title}</title>
+            </Helmet>
+
             <div className='card'>
                 <div className='side left'>
                     <div

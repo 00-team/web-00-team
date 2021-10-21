@@ -12,6 +12,7 @@ export interface ProjectModel {
     }[]
     description: {
         markdown: string
+        text: string
     }
 }
 

@@ -47,6 +47,7 @@ export const GetProject =
                         }
                         description {
                             markdown
+                            text
                         }
                     }
                 }
