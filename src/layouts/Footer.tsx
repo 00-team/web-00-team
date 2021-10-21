@@ -30,7 +30,7 @@ const Footer = () => {
                 <div className='footer-link-wrapper'>
                     <div className='footer-link-items'>
                         <h2>About Us</h2>
-                        <Link className='links' to='/sign-up'>
+                        <Link className='links' to='/'>
                             How it works
                         </Link>
                         <Link className='links' to='/'>
