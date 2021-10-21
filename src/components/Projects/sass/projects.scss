@@ -112,7 +112,8 @@
             @include box(30vw, 100vh);
             position: fixed;
             inset: 0 0 0 auto;
-            background-color: g.$MAIN_BG;
+            background-color: #272727;
+            // background-color: g.$MAIN_BG;
             z-index: g.$ZINDEX__PROJECTS__FILTERS;
 
             transform: translateX(150%);
