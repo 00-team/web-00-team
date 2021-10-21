@@ -1,22 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 // helmet
 import { Helmet } from 'react-helmet'
 
+// icons
+import { FiSearch } from '@react-icons/all-files/fi/FiSearch'
+import { BsFilter } from '@react-icons/all-files/bs/BsFilter'
+
+import { HexCloseIcon } from '../common/HexIcon'
 // router
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
 import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
 
-// elements
+// commons
 import Loading from '../common/Loading'
 
-const Projects = () => {
+// style
+import './sass/projects.scss'
+
+const Projects: FC = () => {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
+    const [showFilters, setshowFilters] = useState(true)
 
     useEffect(() => {
         dispatch(GetProject())
@@ -29,47 +38,52 @@ const Projects = () => {
     if (!ProjectsState.projects) return <></>
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                color: '#FFF',
-                padding: '50px',
-            }}
-        >
+        <div className='projects-container'>
             <Helmet>
                 <title>00 Team Projects</title>
                 <meta property='og:title' content='00 Team Projects' />
             </Helmet>
-            Projects
-            {ProjectsState.projects.map((item, index) => (
-                <span key={index} style={{ borderBottom: '10px solid red' }}>
-                    title: {item.title}
-                    <br />
-                    thumbnail: {item.thumbnail ? item.thumbnail.url : 'None'}
-                    <br />
-                    description:{' '}
-                    {item.description ? item.description.markdown : 'None'}
-                    <br />
-                    startDate: {item.startDate}
-                    <br />
-                    Slug: {item.projectSlug}
-                    <Link to={`/project/${item.projectSlug}`}> Slug </Link>
-                    <br />
-                    projectUrl: {item.projectUrl}
-                    <br />
-                    git: {item.git}
-                    <br />
-                    demos:
-                    {item.demos.map((i, ndx) => (
-                        <div key={ndx}>
-                            <span>{i.url}</span>
-                            <br />
+            <div className='projects'>
+                <div className='top'>
+                    <h1 className='title'>00 Team Projects</h1>
+                    <div className='search'>
+                        <div className='input'>
+                            <input type='text' defaultValue='test' />
+                            <div className='icon'>
+                                <FiSearch />
+                            </div>
                         </div>
-                    ))}
-                    <br />
-                </span>
-            ))}
+                    </div>
+                    <div className='filter'>
+                        <button onClick={() => setshowFilters(true)}>
+                            <BsFilter /> Filter
+                        </button>
+                    </div>
+                </div>
+
+                <Filters
+                    close={() => setshowFilters(false)}
+                    isActive={showFilters}
+                />
+            </div>
+        </div>
+    )
+}
+
+interface FiltersProps {
+    close: () => void
+    isActive: boolean
+}
+
+const Filters: FC<FiltersProps> = ({ close, isActive }) => {
+    return (
+        <div
+            className='filters-container'
+            style={isActive ? { transform: 'translateX(0%)' } : {}}
+        >
+            <div className={`close-btn`} onClick={() => close()}>
+                <HexCloseIcon></HexCloseIcon>
+            </div>
         </div>
     )
 }
