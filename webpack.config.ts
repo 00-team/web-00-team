@@ -64,7 +64,10 @@ const BaseConfig: Configs = {
             favicon: './static/img/favicon.ico',
         }),
         new CopyWP({
-            patterns: [{ from: './public/robots.txt' }],
+            patterns: [
+                { from: './public/robots.txt' },
+                { from: './public/sitemap.txt' },
+            ],
         }),
     ],
     optimization: {
