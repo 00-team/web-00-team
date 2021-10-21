@@ -81,7 +81,7 @@ const DemoCard: FC<DemoCardProps> = ({
                     {demo.git && (
                         <Button
                             classname='giticon'
-                            onClick={() => go(demo.git)}
+                            onClick={() => go(demo.git ? demo.git : '')}
                         >
                             GitHub <FiGithub />
                         </Button>

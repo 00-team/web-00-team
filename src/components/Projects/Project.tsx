@@ -84,7 +84,11 @@ const Project = () => {
                 />
                 <meta
                     property='og:description '
-                    content={Project.description.text}
+                    content={
+                        Project.description
+                            ? Project.description.text
+                            : 'Project of 00 Team'
+                    }
                 />
 
                 <meta
@@ -93,14 +97,21 @@ const Project = () => {
                 />
 
                 {/* image */}
-                <meta property='og:image' content={Project.thumbnail.url} />
-                <meta property='og:image:type' content='image/png' />
-                <meta property='og:image:width' content='1920' />
-                <meta property='og:image:height' content='1080' />
-                <meta
-                    property='og:image:alt'
-                    content={`${Project.title} thumbnail`}
-                />
+                {Project.thumbnail && (
+                    <>
+                        <meta
+                            property='og:image'
+                            content={Project.thumbnail.url}
+                        />
+                        <meta property='og:image:type' content='image/png' />
+                        <meta property='og:image:width' content='1920' />
+                        <meta property='og:image:height' content='1080' />
+                        <meta
+                            property='og:image:alt'
+                            content={`${Project.title} thumbnail`}
+                        />
+                    </>
+                )}
 
                 <title>{Project.title}</title>
             </Helmet>
