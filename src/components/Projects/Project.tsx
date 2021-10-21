@@ -102,9 +102,8 @@ const Project = () => {
             {Project.thumbnail && (
                 <Helmet>
                     <meta property='og:image' content={Project.thumbnail.url} />
-                    <meta property='og:image:type' content='image/png' />
-                    <meta property='og:image:width' content='1920' />
-                    <meta property='og:image:height' content='1080' />
+                    <meta property='og:image:width' content='1280' />
+                    <meta property='og:image:height' content='720' />
                     <meta
                         property='og:image:alt'
                         content={`${Project.title} thumbnail`}
