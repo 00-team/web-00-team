@@ -80,6 +80,16 @@ const Projects: FC = () => {
                     close={() => setshowFilters(false)}
                     isActive={showFilters}
                 />
+
+                {ProjectsState.projects.map((item, index) => (
+                    <a
+                        key={index}
+                        href={`/project/${item.projectSlug}`}
+                        style={{ display: 'block' }}
+                    >
+                        {item.title}
+                    </a>
+                ))}
             </div>
         </div>
     )
