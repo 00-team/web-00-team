@@ -29,84 +29,163 @@
         @include media('<=300px') {
             width: 98vw;
         }
-    }
 
-    .description {
-        line-height: 2;
-        color: darken(g.$MAIN_FG, 10%);
-        background-color: #121212;
-        padding: 2vw;
-        border-radius: 10px;
-        font-size: g.$MEDIUM_TEXT_FONTSIZE;
-    }
-
-    .condition {
-        .name {
-            @include DisplayFont(g.$TEXT_FONTSIZE);
-            margin-bottom: 1vh;
-            display: block;
+        .description {
+            line-height: 2;
+            color: darken(g.$MAIN_FG, 10%);
+            background-color: #121212;
+            padding: 2vw;
+            border-radius: 10px;
+            font-size: g.$MEDIUM_TEXT_FONTSIZE;
         }
-        .list {
-            display: flex;
-            flex-direction: column;
-            gap: 1vh;
-            margin-left: 4vh;
-            overflow: hidden;
-            word-break: break-all;
-            .item {
-                b {
-                    color: darken(g.$MAIN_FG, 30%);
-                    @include DisplayFont(g.$SMALL_TEXT_FONTSIZE);
-                }
 
-                // text-overflow: ellipsis;
-                // white-space: nowrap;
-                // overflow: hidden;
+        .condition {
+            .name {
+                @include DisplayFont(g.$TEXT_FONTSIZE);
+                margin-bottom: 1vh;
+                display: block;
+            }
+            .list {
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+                margin-left: 4vh;
+                overflow: hidden;
+                word-break: break-all;
+                .item {
+                    b {
+                        color: darken(g.$MAIN_FG, 30%);
+                        @include DisplayFont(g.$SMALL_TEXT_FONTSIZE);
+                    }
+                }
             }
         }
     }
 
     .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
         width: 70vw;
+
+        .title {
+            @include MainFont(clamp(1rem, 0.4rem + 5vw, 2rem));
+            text-transform: capitalize;
+        }
         .socials {
-            margin: 3rem;
             display: flex;
             justify-content: center;
-            a {
-                @include box(60px);
-                margin: 0 2rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                
-                text-decoration: none;
-                
-                transform: rotate(45deg);
-                
-                border-radius: 50%;
-                border: 2px solid;
-                transition: transform 1s cubic-bezier(0.03, 0.01, 0.15, 0.99);
-                
-                &.twitter{
-                    color: cyan;
-                    border-color: cyan;
-                }
-                &.discord{
-                    color: #5865F2;
-                    border-color: #5865F2;
-                }
-                &.gmail{
-                    color: red;
-                    border-color: red;
-                }
+            gap: 8vw;
 
-                svg {
-                    transform: rotate(-45deg);
-                }
+            .hex {
+                --hex-width: clamp(3.5rem, 7vw + 1rem, 5.5rem);
+                @include war(var(--hex-width), #{160 / 185});
+                position: relative;
+                color: #fff;
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
 
                 &:hover {
-                    transform: rotate(405deg);
+                    .borders.animation {
+                        div {
+                            &::before {
+                                right: initial;
+                                left: 0;
+                            }
+                            &::after {
+                                right: 0;
+                                left: initial;
+                            }
+
+                            &::after,
+                            &::before {
+                                transition: width 200ms;
+                                width: 100%;
+                            }
+
+                            @for $index from 1 to 4 {
+                                // 1,2,3
+                                &:nth-child(#{$index}) {
+                                    &::before {
+                                        transition-delay: ($index - 1) * 200ms;
+                                    }
+
+                                    &::after {
+                                        transition-delay: ($index + 2) * 200ms;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+                .borders {
+                    --color: #121212;
+                    position: absolute;
+                    @include war(calc((92 / 160) * 100%), #{92 / 160});
+
+                    div {
+                        box-sizing: border-box;
+                        position: absolute;
+                        @include box(100%);
+
+                        transform-origin: center center;
+
+                        @for $index from 1 to 4 {
+                            // 1,2,3
+                            &:nth-child(#{$index}) {
+                                @if $index == 1 {
+                                    transform: rotate(30deg);
+                                } @else if $index == 2 {
+                                    transform: rotate(90deg);
+                                } @else {
+                                    transform: rotate(150deg);
+                                }
+                            }
+                        }
+
+                        &::before,
+                        &::after {
+                            background-color: var(--color);
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            height: 3px;
+                        }
+
+                        &::before {
+                            top: 0;
+                        }
+                        &::after {
+                            bottom: 0;
+                        }
+                    }
+                }
+
+                .borders.animation {
+                    --color: #fff;
+
+                    div {
+                        &::before,
+                        &::after {
+                            width: 0%;
+                            transition: width 500ms cubic-bezier(1, 0.8, 1, 1);
+                        }
+
+                        &::before {
+                            right: 0;
+                        }
+                        &::after {
+                            left: 0;
+                        }
+                    }
+                }
+            }
+
+            svg {
+                @include box(40%);
             }
         }
     }

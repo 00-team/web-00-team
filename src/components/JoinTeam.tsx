@@ -21,6 +21,25 @@ const LazyMotion = Loadable(() => import('./common/LazyMotion'))
 // styling
 import './sass/join-team.scss'
 
+const Hex: FC = ({ children }) => {
+    return (
+        <div className='hex'>
+            <div className='borders'>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div className='borders animation'>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            {children}
+        </div>
+    )
+}
+
 const JoinTeam: FC = () => {
     const location = useLocation()
     const state = useSelector((state: RootState) => state.JoinTeam.joinTeam)
@@ -44,7 +63,7 @@ const JoinTeam: FC = () => {
                     <Markdown children={state.description} />
                 </div>
                 <div className='condition'>
-                    <span className='name'>Skills :</span>
+                    <span className='name'>Skills:</span>
                     <ul className='list'>
                         {state.skills.map((item, index) => (
                             <li key={index} className='item'>
@@ -54,7 +73,7 @@ const JoinTeam: FC = () => {
                     </ul>
                 </div>
                 <div className='condition'>
-                    <span className='name'>Good To Have :</span>
+                    <span className='name'>Good To Have:</span>
                     <ul className='list'>
                         {state.needlessToSay.map((item, index) => (
                             <li key={index} className='item'>
@@ -65,7 +84,7 @@ const JoinTeam: FC = () => {
                 </div>
                 <div className='condition'>
                     <span className='name'>
-                        Needless To Say, You Should Be Familiar With :
+                        Needless To Say, You Should Be Familiar With:
                     </span>
                     <ul className='list'>
                         {state.goodToHave.map((item, index) => (
@@ -79,17 +98,25 @@ const JoinTeam: FC = () => {
             <div className='contact'>
                 <h3 className='title'>
                     Assuming You Have The Requirments Above, You Can Contact Us
-                    Through :
+                    Through:
                 </h3>
                 <div className='socials'>
-                    <a href='' className='twitter'>
-                        <FaTwitter />
+                    <a href='https://twitter.com/00team_official'>
+                        <Hex>
+                            <FaTwitter />
+                        </Hex>
                     </a>
-                    <a href='' className='gmail'>
-                        <SiGmail />
+
+                    <a href='mailto:00.team.mail@gmail.com'>
+                        <Hex>
+                            <SiGmail />
+                        </Hex>
                     </a>
-                    <a href='' className='discord'>
-                        <SiDiscord />
+
+                    <a href='https://discord.com/invite/Z6vgXHU2xQ'>
+                        <Hex>
+                            <SiDiscord />
+                        </Hex>
                     </a>
                 </div>
             </div>
