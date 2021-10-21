@@ -15,7 +15,7 @@ import { AiOutlineTeam } from '@react-icons/all-files/ai/AiOutlineTeam'
 import { RiMoneyPoundBoxLine } from '@react-icons/all-files/ri/RiMoneyPoundBoxLine'
 import { VscProject } from '@react-icons/all-files/vsc/VscProject'
 
-import HexIcon from '../components/common/HexIcon'
+import { HexIcon, HexCloseIcon } from '../components/common/HexIcon'
 
 // style
 import './sass/navbar.scss'
@@ -101,7 +101,7 @@ const DesktopNavbar: FC = () => {
                 }
             >
                 <div
-                    className={`close-btn`}
+                    className='close-btn'
                     onClick={() => setActive(false)}
                     style={
                         Active
@@ -113,7 +113,7 @@ const DesktopNavbar: FC = () => {
                             : { /* closing */ transitionDelay: '200ms' }
                     }
                 >
-                    <HexIcon />
+                    <HexCloseIcon />
                 </div>
 
                 <h1
