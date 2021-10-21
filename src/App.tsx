@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
+// helmet
+import { Helmet } from 'react-helmet'
+
 // loadable
 import Loadable from '@loadable/component'
 
@@ -75,6 +78,44 @@ const App = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet='utf-8' />
+                <meta
+                    name='viewport'
+                    content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+                />
+                <meta name='theme-color' content='#FFFFFF' />
+                <meta name='og:locale' content='en_US' />
+                <meta name='og:image:height' content='640' />
+                <meta property='og:image:width' content='640' />
+                <meta
+                    property='og:image'
+                    content='https://media.graphcms.com/output=format:jpg/resize=,width:500,height:500/UjmjWRNcTpC65k1cR9Zb'
+                />
+                <meta property='og:title' content='00 Team Page' />
+                <meta property='og:site_name' content='00 Team' />
+                <meta
+                    property='og:description'
+                    content='a Team of Creators ...'
+                />
+                <meta
+                    name='keywords'
+                    content='00 Team,github 00 Team,00 Team Page'
+                />
+                <meta
+                    property='og:url'
+                    content='https://web-00-team.web.app/'
+                />
+                <meta property='og:type' content='website' />
+                <meta name='copyright' content='00 Team' />
+
+                <meta
+                    name='google-site-verification'
+                    content='K7RyLbYQ05aoqzSC3oaMMJuWtb0n6S-t4WKDZOtlAdU'
+                />
+
+                <title>00 Team</title>
+            </Helmet>
             <Switch>
                 <Route path='/' exact>
                     {loadings && (
