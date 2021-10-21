@@ -71,7 +71,9 @@ const Footer = () => {
             </div>
             <section className='social-media'>
                 <div className='social-media-wrap'>
-                    <small className='website-rights'>00 Team © 2020</small>
+                    <small className='website-rights'>
+                        00 Team © {new Date().getFullYear()}
+                    </small>
                 </div>
             </section>
         </div>
