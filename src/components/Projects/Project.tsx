@@ -11,12 +11,12 @@ import { RootState } from '../../redux'
 // elements
 import Loading from '../common/Loading'
 
-// icons 
+// icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
-// styling 
-import "./sass/project.scss"
+// styling
+import './sass/project.scss'
 
 interface ProjectParams {
     slug: string
@@ -72,40 +72,42 @@ const Project = () => {
         //     <br />
         // </div>
         <div className='project'>
-            <div className='card'>
-                <div className='side left'>
-                    <div
-                        className='img'
-                        style={{
-                            backgroundImage: `url(${
-                                Project.thumbnail
-                                    ? Project.thumbnail.url
-                                    : 'None'
-                            })`,
-                        }}
-                    ></div>
-                </div>
-                <div className='side right'>
-                    <h2 className='title'>{Project.title}</h2>
-                    <div className='description'>
-                        {Project.description
-                            ? Project.description.markdown
-                            : 'None'}
+            <div className='card-container'>
+                <div className='card'>
+                    <div className='side left'>
+                        <div
+                            className='img'
+                            style={{
+                                backgroundImage: `url(${
+                                    Project.thumbnail
+                                        ? Project.thumbnail.url
+                                        : 'None'
+                                })`,
+                            }}
+                        ></div>
                     </div>
-                    <div className='data'>
-                        <div className='start-date'>
-                            <AiOutlineClockCircle />
-                            <div className='start-date-url'>
-                                {Project.startDate}
+                    <div className='side right'>
+                        <h2 className='title'>{Project.title}</h2>
+                        <div className='description'>
+                            {Project.description
+                                ? Project.description.markdown
+                                : 'None'}
+                        </div>
+                        <div className='data'>
+                            <div className='start-date'>
+                                <AiOutlineClockCircle />
+                                <div className='start-date-url'>
+                                    {Project.startDate}
+                                </div>
+                            </div>
+                            <div className='github'>
+                                <FiGithub />
+                                <div className='github-url'>{Project.git}</div>
                             </div>
                         </div>
-                        <div className='github'>
-                            <FiGithub />
-                            <div className='github-url'>{Project.git}</div>
-                        </div>
                     </div>
                 </div>
-                {/* <div className='notify'></div> */}
+                <div className='notify'>Click Me</div>
             </div>
         </div>
     )
