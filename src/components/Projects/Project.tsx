@@ -47,42 +47,10 @@ const Project = () => {
     }
 
     return (
-        // <div className='project'>
-        //     <h1 className='title'> {Project.title} </h1>
-        //     <br />
-        //     <div className='prev'>
-        //         {Project.thumbnail ? Project.thumbnail.url : 'None'}
-        //     </div>
-
-        //     <br />
-        //     description:{' '}
-        //     {Project.description ? Project.description.markdown : 'None'}
-        //     <br />
-        //     startDate: {Project.startDate}
-        //     <br />
-        //     projectUrl: {Project.projectUrl}
-        //     <br />
-        //     git: {Project.git}
-        //     <br />
-        //     demos:
-        //     {Project.demos.map((i, ndx) => (
-        //         <div key={ndx}>
-        //             <span>{i.url}</span>
-        //             <br />
-        //         </div>
-        //     ))}
-        //     <br />
-        // </div>
         <div className='project'>
             <Head
                 title={Project.title}
-                description={
-                    Project.description &&
-                    Project.description.text &&
-                    typeof Project.description.text.replaceAll === 'function'
-                        ? Project.description.text.replaceAll('\\n', '')
-                        : 'Project of 00 Team'
-                }
+                description='Project of 00 Team'
                 url={`https://web-00-team.web.app/project/${Project.projectSlug}`}
                 keywords={`00 Team Project,${Project.title}`}
                 image={
