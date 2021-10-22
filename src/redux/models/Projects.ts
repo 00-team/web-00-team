@@ -10,6 +10,7 @@ export interface ProjectModel {
     projectSlug: string
     thumbnail: {
         url: string
+        handle: string
     } | null
 
     demos: {

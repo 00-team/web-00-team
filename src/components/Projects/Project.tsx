@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
-// helmet
-import { Helmet } from 'react-helmet'
+import Head from '../common/Head'
 
 // router
 import { useParams } from 'react-router-dom'
@@ -75,41 +74,27 @@ const Project = () => {
         //     <br />
         // </div>
         <div className='project'>
-            <Helmet>
-                <meta property='og:title' content={Project.title} />
-
-                <meta
-                    property='og:url'
-                    content={`https://web-00-team.web.app/project/${Project.projectSlug}`}
-                />
-                <meta
-                    property='og:description '
-                    content={
-                        Project.description
-                            ? Project.description.text
-                            : 'Project of 00 Team'
-                    }
-                />
-
-                <meta
-                    name='keywords'
-                    content={`00 Team Project,${Project.title}`}
-                />
-
-                <title>{Project.title}</title>
-            </Helmet>
-
-            {Project.thumbnail && (
-                <Helmet>
-                    <meta property='og:image' content={Project.thumbnail.url} />
-                    <meta property='og:image:width' content='1280' />
-                    <meta property='og:image:height' content='720' />
-                    <meta
-                        property='og:image:alt'
-                        content={`${Project.title} thumbnail`}
-                    />
-                </Helmet>
-            )}
+            <Head
+                title={Project.title}
+                description={
+                    Project.description
+                        ? Project.description.text.replaceAll('\n', '')
+                        : 'Project of 00 Team'
+                }
+                url={`https://web-00-team.web.app/project/${Project.projectSlug}`}
+                keywords={`00 Team Project,${Project.title}`}
+                image={
+                    Project.thumbnail
+                        ? {
+                              url: `https://media.graphcms.com/resize=fit:crop,height:540,width:960/${Project.thumbnail.handle}`,
+                              alt: `${Project.title} thumbnail`,
+                              width: '960',
+                              height: '540',
+                          }
+                        : undefined
+                }
+                twitter_card='summary_large_image'
+            />
 
             <div className='card'>
                 <div className='side left'>

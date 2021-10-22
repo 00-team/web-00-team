@@ -1,9 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-// helmet
-import { Helmet } from 'react-helmet'
-
 // loadable
 import Loadable from '@loadable/component'
 
@@ -39,6 +36,7 @@ const Business = Loadable(() => import('./components/Business'))
 // commons
 import Loading from './components/common/Loading'
 import { LittleDream } from './components/common/Button'
+import Head from './components/common/Head'
 
 // projects
 const Projects = Loadable(() => import('./components/Projects'))
@@ -61,7 +59,7 @@ const LoadingStatus = (): boolean[] => {
     return [ProjectsState, BaseState, CreatorsState].map(state => state.loading)
 }
 
-const App = () => {
+const App: FC = () => {
     const loadings = LoadingStatus()
 
     const dispatch = useDispatch()
@@ -139,61 +137,13 @@ const App = () => {
     )
 }
 
-const Root = () => {
+const Root: FC = () => {
     return (
         <ReduxProvider store={store}>
             <Router>
                 <App />
             </Router>
         </ReduxProvider>
-    )
-}
-
-const Head: FC = () => {
-    return (
-        <Helmet>
-            <meta charSet='utf-8' />
-            <meta
-                name='viewport'
-                content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
-            />
-            <meta name='theme-color' content='#040404' />
-
-            {/* open graph protocol */}
-            <meta property='og:title' content='00 Team' />
-            <meta property='og:type' content='website' />
-
-            {/* image */}
-            <meta
-                property='og:image'
-                content='https://media.graphcms.com/output=format:jpg/resize=,width:500,height:500/UjmjWRNcTpC65k1cR9Zb'
-            />
-            <meta property='og:image:type' content='image/jpeg' />
-            <meta property='og:image:width' content='500' />
-            <meta property='og:image:height' content='500' />
-            <meta property='og:image:alt' content='00 Team Logo' />
-
-            <meta property='og:url' content='https://web-00-team.web.app/' />
-            <meta
-                property='og:description '
-                content='a Team of Best Creators in The World ...'
-            />
-            <meta property='og:site_name' content='00 Team' />
-
-            <meta
-                name='keywords'
-                content='00 Team,github 00 Team,00 Team Page'
-            />
-
-            <meta name='copyright' content='00 Team' />
-
-            <meta
-                name='google-site-verification'
-                content='K7RyLbYQ05aoqzSC3oaMMJuWtb0n6S-t4WKDZOtlAdU'
-            />
-
-            <title>00 Team</title>
-        </Helmet>
     )
 }
 
