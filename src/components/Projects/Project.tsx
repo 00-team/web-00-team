@@ -13,9 +13,9 @@ import { RootState } from '../../redux'
 // elements
 import Loading from '../common/Loading'
 
-// icons
-import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
-import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
+// // icons
+// import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+// import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
 // styling
 import './sass/project.scss'
@@ -66,42 +66,32 @@ const Project = () => {
                 twitter_card='summary_large_image'
             />
 
-            <div className='card-container'>
-                <div className='card'>
-                    <div className='side left'>
-                        <div
-                            className='img'
-                            style={{
-                                backgroundImage: `url(${
-                                    Project.thumbnail
-                                        ? Project.thumbnail.url
-                                        : 'None'
-                                })`,
-                            }}
-                        ></div>
+            <div className='project-container'>
+                <div className='project-gallery'>
+                    <div className='project-img-preview'></div>
+                    <div className='space'></div>
+                    <div className='project-imgs'>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
                     </div>
-                    <div className='side right'>
-                        <h2 className='title'>{Project.title}</h2>
-                        <div className='description'>
-                            {Project.description
-                                ? Project.description.markdown
-                                : 'None'}
-                        </div>
-                        <div className='data'>
-                            <div className='start-date'>
-                                <AiOutlineClockCircle />
-                                <div className='start-date-url'>
-                                    {Project.startDate}
-                                </div>
-                            </div>
-                            <div className='github'>
-                                <FiGithub />
-                                <div className='github-url'>{Project.git}</div>
-                            </div>
+                </div>
+                <div className='space'></div>
+                <div className='project-details'>
+                    <div className='details-container'>
+                        <div className='title'>title</div>
+                        <div className='description'>description</div>
+                        <div className='tag'>tag</div>
+                        <div className='start-time'>start-time</div>
+                        <div className='project-status'>project-status</div>
+                        <div className='github'>
+                            <button>github</button>
                         </div>
                     </div>
                 </div>
-                <div className='notify'>Click Me</div>
             </div>
         </div>
     )
