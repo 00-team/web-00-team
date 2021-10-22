@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+import Head from '../common/Head'
+
 // router
 import { useParams } from 'react-router-dom'
 
@@ -45,33 +47,25 @@ const Project = () => {
     }
 
     return (
-        // <div className='project'>
-        //     <h1 className='title'> {Project.title} </h1>
-        //     <br />
-        //     <div className='prev'>
-        //         {Project.thumbnail ? Project.thumbnail.url : 'None'}
-        //     </div>
-
-        //     <br />
-        //     description:{' '}
-        //     {Project.description ? Project.description.markdown : 'None'}
-        //     <br />
-        //     startDate: {Project.startDate}
-        //     <br />
-        //     projectUrl: {Project.projectUrl}
-        //     <br />
-        //     git: {Project.git}
-        //     <br />
-        //     demos:
-        //     {Project.demos.map((i, ndx) => (
-        //         <div key={ndx}>
-        //             <span>{i.url}</span>
-        //             <br />
-        //         </div>
-        //     ))}
-        //     <br />
-        // </div>
         <div className='project'>
+            <Head
+                title={Project.title}
+                description='Project of 00 Team'
+                url={`https://web-00-team.web.app/project/${Project.projectSlug}`}
+                keywords={`00 Team Project,${Project.title}`}
+                image={
+                    Project.thumbnail
+                        ? {
+                              url: `https://media.graphcms.com/resize=fit:crop,height:540,width:960/${Project.thumbnail.handle}`,
+                              alt: `${Project.title} thumbnail`,
+                              width: '960',
+                              height: '540',
+                          }
+                        : undefined
+                }
+                twitter_card='summary_large_image'
+            />
+
             <div className='card-container'>
                 <div className='card'>
                     <div className='side left'>

@@ -13,7 +13,7 @@
     padding: 4vh 4vw;
     @include MainFont(g.$SMALL_TEXT_FONTSIZE);
     .title {
-        @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+        @include DisplayFont(g.$MEDIUM_TITLE_FONTSIZE);
     }
 
     .body {
@@ -69,7 +69,7 @@
         width: 70vw;
 
         .title {
-            @include MainFont(clamp(1rem, 0.4rem + 5vw, 2rem));
+            @include MainFont(g.$SMALL_TITLE_FONTSIZE);
             text-transform: capitalize;
         }
         .socials {

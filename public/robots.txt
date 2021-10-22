@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://web-00-team.web.app/sitemap.txt
+Sitemap: https://web-00-team.web.app/sitemap.xml

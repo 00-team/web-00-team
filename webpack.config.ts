@@ -66,7 +66,7 @@ const BaseConfig: Configs = {
         new CopyWP({
             patterns: [
                 { from: './public/robots.txt' },
-                { from: './public/sitemap.txt' },
+                { from: './public/sitemap.xml' },
             ],
         }),
     ],

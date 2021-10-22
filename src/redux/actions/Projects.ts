@@ -37,6 +37,7 @@ export const GetProject =
                         title
                         thumbnail {
                             url(transformation: { image: {} })
+                            handle
                         }
                         startDate
                         projectSlug
@@ -47,6 +48,7 @@ export const GetProject =
                         }
                         description {
                             markdown
+                            text
                         }
                     }
                 }

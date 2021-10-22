@@ -1,18 +1,22 @@
 export interface ProjectModel {
     title: string
-    thumbnail: {
-        url: string
-    }
+    description: {
+        markdown: string
+        text: string
+    } | null
+
+    projectUrl: string | null
     startDate: string
     projectSlug: string
-    projectUrl: string
-    git: string
+    thumbnail: {
+        url: string
+        handle: string
+    } | null
+
     demos: {
         url: string
     }[]
-    description: {
-        markdown: string
-    }
+    git: string | null
 }
 
 export interface ProjectsModel {

@@ -19,7 +19,7 @@
         flex-direction: column;
 
         .title {
-            @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+            @include DisplayFont(g.$MEDIUM_TITLE_FONTSIZE);
             color: $fg;
             text-align: center;
         }
