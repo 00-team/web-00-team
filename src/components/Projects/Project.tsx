@@ -77,8 +77,10 @@ const Project = () => {
             <Head
                 title={Project.title}
                 description={
-                    Project.description
-                        ? Project.description.text.replaceAll('\n', '')
+                    Project.description &&
+                    Project.description.text &&
+                    typeof Project.description.text.replaceAll === 'function'
+                        ? Project.description.text.replaceAll('\\n', '')
                         : 'Project of 00 Team'
                 }
                 url={`https://web-00-team.web.app/project/${Project.projectSlug}`}
