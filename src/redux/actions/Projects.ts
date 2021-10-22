@@ -35,21 +35,16 @@ export const GetProject =
                         stage: ${stage ? stage : 'PUBLISHED'}
                     ) {
                         title
-                        thumbnail {
-                            url(transformation: { image: {} })
-                            handle
-                        }
+                        description { text markdown }
+                        projectUrl
                         startDate
                         projectSlug
-                        projectUrl
+                        thumbnail { handle id mimeType size url }
+                        demos { handle id mimeType size url }
                         git
-                        demos {
-                            url
-                        }
-                        description {
-                            markdown
-                            text
-                        }
+                        projectStatus
+                        projectTags
+                        version
                     }
                 }
                 `
