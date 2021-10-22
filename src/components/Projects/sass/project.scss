@@ -10,132 +10,95 @@
     align-items: center;
     padding: 3rem;
 
-    .card-container {
+    .project-container {
         position: relative;
 
-        .card {
-            border-radius: 20px;
-            min-width: 30vw;
-            min-height: 30vh;
-            width: 50vw;
-            height: 50vh;
-            background: #121212;
+        display: flex;
+
+        @include box(90%, 80%);
+
+
+        .project-gallery {
+            width: 70%;
+            height: 100%;
+
             display: flex;
-            flex-direction: row;
-            box-shadow: -2px 2px 10px 1px #1a1a1a;
-            overflow: hidden;
-            .side {
-                height: 100%;
-                &.right {
-                    width: 50%;
-                    padding: 3rem 4rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    align-items: center;
+            flex-direction: column;
 
-                    .data {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        gap: 5vw;
-                        cursor: pointer;
+            .space {
+                height: 5%;
+            }
 
-                        .github {
-                            position: relative;
+            .project-img-preview {
+                border-radius: 8px;
+                height: 75%;
 
-                            width: calc(1vw + 1rem);
-                            aspect-ratio: 1/1;
-                            transition: all 200ms ease;
-                            filter: drop-shadow(2px 4px 5px black);
+                background-color: black;
+            }
 
-                            svg {
-                                color: #fff;
-                                @include box(100%);
-                            }
+            .project-imgs {
+                height: 20%;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
 
-                            .github-url {
-                                display: none;
-                                
-                            }
-
-                            
-                            
-                        }
-
-                        .start-date {
-                            position: relative;
-
-                            width: calc(1vw + 1rem);
-                            aspect-ratio: 1/1;
-                            transition: all 200ms ease;
-                            filter: drop-shadow(2px 4px 5px black);
-
-                            svg {
-                                color: #fff;
-                                @include box(100%);
-                            }
-
-                            .start-date-url {
-                                opacity: 0; //for now
-                                position: absolute;
-                                inset: 0 0 0 0;
-                                padding: 10px 2rem;
-                                background-color: #666;
-
-                                transition: all 200ms linear;
-                            }
-
-                            &:hover  .start-date-url{
-                                opacity: 1;
-                                transform: translateY(-30%);
-                            }
-                        }
-                    }
-                }
-                &.left {
-                    z-index: 2;
-                    width: 50%;
-
-                    .img {
-                        width: 100%;
-                        height: 100%;
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                    }
+                .img {
+                    border-radius: 8px;
+                    width: 16.6%;
+                    height: 100%;
+                    background-color: aquamarine;
                 }
             }
         }
-        .notify {
-            position: absolute;
 
-            top: 10%;
-            left: calc(-10% + 30px);
-
-            transform: rotate(-90deg);
-
-            cursor: pointer;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 1rem;
-            color: #fca311;
-            background-color: #121212;
-            text-shadow: 1px 2px 3px #666;
-
-            border-radius: 5px;
-
-            z-index: 1;
-
-            user-select: none;
-
-            transition: all 200ms linear;
+        .space {
+            width: 5%;
         }
 
-        .card:hover + .notify {
-            left: 0%;
+        .project-details {
+            width: 25%;
+            // padding: 2rem 0;
+
+            .details-container {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                background-color: aqua;
+
+                height: 100%;
+
+                border-radius: 8px;
+
+                .title {
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                }
+                .description {
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                }
+                .tag{
+                    height: 10%;
+                }
+                .start-time {
+                    height: 10%;
+                    display: flex;
+                    align-items: center;
+                }
+                .project-status {
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                }
+                .github {
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                }
+            }
         }
     }
 }
