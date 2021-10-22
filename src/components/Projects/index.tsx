@@ -5,15 +5,18 @@ import Head from '../common/Head'
 // icons
 import { FiSearch } from '@react-icons/all-files/fi/FiSearch'
 import { BsFilter } from '@react-icons/all-files/bs/BsFilter'
+import { GoRepo } from '@react-icons/all-files/go/GoRepo'
 
 import { HexCloseIcon } from '../common/HexIcon'
+
 // router
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // redux stuff
 import { useDispatch, useSelector } from 'react-redux'
 import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
+import { AcceptedThumbnails, ProjectModel } from '../../redux/models/Projects'
 
 // commons
 import Loading from '../common/Loading'
@@ -24,7 +27,7 @@ import './sass/projects.scss'
 const Projects: FC = () => {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
-    const [showFilters, setshowFilters] = useState(true)
+    const [showFilters, setshowFilters] = useState(false)
 
     useEffect(() => {
         dispatch(GetProject())
@@ -67,15 +70,11 @@ const Projects: FC = () => {
                     isActive={showFilters}
                 />
 
-                {ProjectsState.projects.map((item, index) => (
-                    <a
-                        key={index}
-                        href={`/project/${item.projectSlug}`}
-                        style={{ display: 'block' }}
-                    >
-                        {item.title}
-                    </a>
-                ))}
+                <div className='cards'>
+                    {ProjectsState.projects.map((item, index) => (
+                        <ProjectCard {...item} key={index} />
+                    ))}
+                </div>
             </div>
         </div>
     )
@@ -96,6 +95,60 @@ const Filters: FC<FiltersProps> = ({ close, isActive }) => {
                 <HexCloseIcon></HexCloseIcon>
             </div>
         </div>
+    )
+}
+
+interface ProjectCardProps extends ProjectModel {}
+
+const ProjectCard: FC<ProjectCardProps> = props => {
+    const { title, version, startDate, git } = props
+    const { thumbnail, projectSlug, projectStatus } = props
+    const tags = Array.from(new Set(props.projectTags))
+
+    if (!AcceptedThumbnails.includes(thumbnail.mimeType)) return <></>
+
+    return (
+        <Link to={`/project/${projectSlug}/`} title={title}>
+            <div className='project-card'>
+                <div className='tumbnail'>
+                    <img src={thumbnail.url} alt={`${title} thumbnail`} />
+                    <ul className='tags'>
+                        {tags.map((tag, index) => (
+                            <li
+                                key={index}
+                                onClick={() => console.log(tag)}
+                                title={tag}
+                                style={{ transitionDelay: `${index * 150}ms` }}
+                            >
+                                {tag}
+                            </li>
+                        ))}
+                    </ul>
+                    <span className='version' title={version}>
+                        {version}
+                    </span>
+                </div>
+                <div className='info'>
+                    <div className='top'>
+                        <span className='title' title={title}>
+                            {title}
+                        </span>
+                        {git && (
+                            <div
+                                className='icon'
+                                title='This project is public'
+                            >
+                                <GoRepo />
+                            </div>
+                        )}
+                    </div>
+                    <div className='bottom'>
+                        <span>{projectStatus}</span>
+                        <span>{startDate}</span>
+                    </div>
+                </div>
+            </div>
+        </Link>
     )
 }
 

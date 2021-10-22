@@ -5,10 +5,13 @@
 
 .projects-container {
     color: g.$MAIN_FG;
-    @include box(100vw, 100vh);
-    padding: 2vh 2vw;
+    @include box(100%);
+    padding: 2vh 2vw 10vh;
 
     .projects {
+        display: flex;
+        flex-direction: column;
+        gap: 7vh;
         .top {
             display: grid;
             grid-template-areas: 'title search filter_btn';
@@ -129,6 +132,125 @@
 
                 path {
                     fill: #121212;
+                }
+            }
+        }
+
+        .cards {
+            --card-width: clamp(200px, 200px + 10vw, 400px);
+            display: grid;
+            // flex-wrap: wrap;
+            gap: 3vh 2vw;
+            place-items: center;
+            grid-auto-rows: auto;
+            grid-auto-columns: max-content;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(var(--card-width), 1fr)
+            );
+
+            .project-card {
+                @include war(var(--card-width), #{16 / 12});
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                border-radius: 5px;
+                overflow: hidden;
+                border: 2px solid #121212;
+                cursor: pointer;
+
+                &:hover {
+                    .tumbnail .tags li {
+                        transform: translateY(0);
+                    }
+                }
+
+                .tumbnail {
+                    @include no-user-select;
+                    @include war(100%, #{16 / 9});
+                    position: relative;
+                    flex-shrink: 0;
+
+                    img {
+                        @include box(100%);
+                        object-fit: cover;
+                        object-position: center;
+                    }
+
+                    .tags {
+                        position: absolute;
+                        inset: 0 0 auto 0;
+
+                        padding: 1vh 1vw;
+                        overflow: hidden;
+
+                        li {
+                            transform: translateY(-200%);
+                            transition: transform 400ms;
+
+                            cursor: pointer;
+                            background-color: g.$MAIN_BG;
+                            font-weight: 900;
+                            color: g.$MAIN_FG;
+                            letter-spacing: 0.15rem;
+                            text-transform: capitalize;
+                            display: inline-block;
+                            margin: 0 1vw 1vw 0;
+                            padding: 0.4rem 0.5rem;
+                            border-radius: 5px;
+                            @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+                        }
+                    }
+
+                    .version {
+                        position: absolute;
+                        background-color: g.$MAIN_FG;
+                        color: g.$MAIN_BG;
+                        inset: auto 0 0 auto;
+                        border-radius: 5px 0 0 0;
+                        padding: 0.05rem 0.2rem 0.05rem 0.3rem;
+                    }
+                }
+
+                .info {
+                    color: g.$MAIN_FG;
+                    @include box(100%);
+                    padding: 0.7rem 1rem;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+
+                    .top {
+                        @include box(100%);
+                        display: flex;
+                        justify-content: space-between;
+                        overflow: hidden;
+
+                        .title {
+                            display: block;
+                            @include DisplayFont(g.$SMALL_TEXT_FONTSIZE);
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .icon {
+                            @include har(100%);
+                            flex-shrink: 0;
+                            display: grid;
+                            place-items: center;
+
+                            svg {
+                                @include box(100%);
+                            }
+                        }
+                    }
+
+                    .bottom {
+                        @include box(100%, 30%);
+                        display: flex;
+                        justify-content: space-between;
+                    }
                 }
             }
         }
