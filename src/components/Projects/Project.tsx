@@ -12,10 +12,14 @@ import { RootState } from '../../redux'
 
 // elements
 import Loading from '../common/Loading'
+import { ButtonWithArrow } from '../common/Button'
+
+// utils 
+// import { go } from "../utils/Base"
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
-import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
+// import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
 // styling
 import './sass/project.scss'
@@ -66,40 +70,75 @@ const Project = () => {
                 twitter_card='summary_large_image'
             />
 
-            <div className='card'>
-                <div className='side left'>
-                    <div
-                        className='img'
-                        style={{
-                            backgroundImage: `url(${
-                                Project.thumbnail
-                                    ? Project.thumbnail.url
-                                    : 'None'
-                            })`,
-                        }}
-                    ></div>
-                </div>
-                <div className='side right'>
-                    <h2 className='title'>{Project.title}</h2>
-                    <div className='description'>
-                        {Project.description
-                            ? Project.description.markdown
-                            : 'None'}
+            <div className='project-container'>
+                <div className='project-gallery'>
+                    <div className='project-img-preview'></div>
+                    <div className='space'></div>
+                    <div className='project-imgs'>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                        <div className='img'></div>
                     </div>
-                    <div className='data'>
-                        <div className='start-date'>
-                            <AiOutlineClockCircle />
-                            <div className='start-date-url'>
+                </div>
+                <div className='space'></div>
+                <div className='project-details'>
+                    <div className='details-container'>
+                        <div className='project title'>
+                            <div className='title-line'>
+                                <span className='title-header'>
+                                    Project Title
+                                </span>
+                            </div>
+                            <div className='title-project'>{Project.title}</div>
+                        </div>
+                        <div className='project description'>
+                            <div className='title-line'>
+                                <span className='title-header'>
+                                    Project description
+                                </span>
+                            </div>
+                            <div className='description-head'>
+                                {Project.description
+                                    ? Project.description.markdown
+                                    : 'None'}
+                            </div>
+                        </div>
+                        <div className='project tag'>
+                            <div className='title-line'>
+                                <span className='tag-header'>
+                                    Project Category
+                                </span>
+                            </div>
+                            <div className='tag-head'>tag</div>
+                        </div>
+                        <div className='project start-time'>
+                            <div className='title-line'>
+                                <span className='start-time-header'>
+                                    Project Start Time
+                                </span>
+                            </div>
+                            <div className='start-time-head'>
                                 {Project.startDate}
                             </div>
                         </div>
-                        <div className='github'>
-                            <FiGithub />
-                            <div className='github-url'>{Project.git}</div>
+                        <div className='project project-status'>
+                            <div className='title-line'>
+                                <span className='project-status-header'>
+                                    Project Status
+                                </span>
+                            </div>
+                            <div className='project-status-head'>status</div>
+                        </div>
+                        <div className='project github'>
+                            <ButtonWithArrow>
+                                GitHub <FiGithub />
+                            </ButtonWithArrow>
                         </div>
                     </div>
                 </div>
-                {/* <div className='notify'></div> */}
             </div>
         </div>
     )
