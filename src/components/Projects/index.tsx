@@ -23,11 +23,16 @@ import Loading from '../common/Loading'
 
 // style
 import './sass/projects.scss'
+import Button from '../common/Button'
 
 const Projects: FC = () => {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
+    const ProjectsData = useSelector(
+        (state: RootState) => state.Projects.projects
+    )
     const [showFilters, setshowFilters] = useState(false)
+    const [isFilterd, setIsFilterd] = useState(false)
 
     useEffect(() => {
         dispatch(GetProject())
@@ -36,8 +41,6 @@ const Projects: FC = () => {
     if (ProjectsState.loading) {
         return <Loading />
     }
-
-    if (!ProjectsState.projects) return <></>
 
     return (
         <div className='projects-container'>
@@ -50,14 +53,8 @@ const Projects: FC = () => {
             <div className='projects'>
                 <div className='top'>
                     <h1 className='title'>00 Team Projects</h1>
-                    <div className='search'>
-                        <div className='input'>
-                            <input type='text' defaultValue='test' />
-                            <div className='icon'>
-                                <FiSearch />
-                            </div>
-                        </div>
-                    </div>
+
+                    <Search onSearch={() => setIsFilterd(true)} />
                     <div className='filter'>
                         <button onClick={() => setshowFilters(true)}>
                             <BsFilter /> Filter
@@ -70,11 +67,23 @@ const Projects: FC = () => {
                     isActive={showFilters}
                 />
 
-                <div className='cards'>
-                    {ProjectsState.projects.map((item, index) => (
-                        <ProjectCard {...item} key={index} />
-                    ))}
-                </div>
+                {ProjectsData.length <= 0 ? (
+                    <div className='no-result'>
+                        <h2 className='title'>No Result Found</h2>
+                        {isFilterd && (
+                            <Button
+                                children='Back'
+                                onClick={() => dispatch(GetProject())}
+                            />
+                        )}
+                    </div>
+                ) : (
+                    <div className='cards'>
+                        {ProjectsData.map((item, index) => (
+                            <ProjectCard {...item} key={index} />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     )
@@ -83,6 +92,34 @@ const Projects: FC = () => {
 interface FiltersProps {
     close: () => void
     isActive: boolean
+}
+
+const Search: FC<{ onSearch: () => void }> = ({ onSearch }) => {
+    const [inputValue, setInputValue] = useState('')
+    const dispatch = useDispatch()
+
+    return (
+        <div className='search'>
+            <div className='input'>
+                <input
+                    type='text'
+                    placeholder='Search For Porjects'
+                    onChange={e => setInputValue(e.target.value)}
+                />
+                <div
+                    className='icon'
+                    onClick={() => {
+                        dispatch(
+                            GetProject({ where: `{_search: "${inputValue}"}` })
+                        )
+                        onSearch()
+                    }}
+                >
+                    <FiSearch />
+                </div>
+            </div>
+        </div>
+    )
 }
 
 const Filters: FC<FiltersProps> = ({ close, isActive }) => {
