@@ -1,147 +1,261 @@
 @use '../../../sass/mixins.sass' as *;
+@use '../../../sass/media.scss' as *;
 @use '../../../sass/variables' as g;
 @use '../../../sass/fonts/' as *;
 
-.project {
-    width: 100%;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 3rem;
+// .project {
+//     width: 100%;
+//     display: flex;
+//     height: 100vh;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 3rem;
 
-    .project-container {
-        position: relative;
+//     .project-container {
+//         position: relative;
+
+//         display: flex;
+
+//         @include box(90%, 80%);
+
+//         .project-gallery {
+//             width: 70%;
+//             height: 100%;
+
+//             display: flex;
+//             flex-direction: column;
+
+//             .space {
+//                 height: 5%;
+//             }
+
+//             .project-img-preview {
+//                 border-radius: 8px;
+//                 height: 75%;
+
+//                 .project-img {
+//                     width: 100%;
+//                     height: 100%;
+//                     background-size: cover;
+//                     background-repeat: no-repeat;
+
+//                 }
+//             }
+
+//             .project-imgs {
+//                 height: 20%;
+//                 width: 100%;
+//                 display: flex;
+//                 flex-direction: row;
+//                 gap: 1rem;
+
+//                 .img {
+//                     border-radius: 8px;
+//                     width: 100%;
+//                     height: 100%;
+//                     background-size: cover;
+//                     background-repeat: no-repeat;
+
+//                 }
+//             }
+//         }
+
+//         .space {
+//             width: 5%;
+//         }
+
+//         .project-details {
+//             width: 25%;
+//             // padding: 2rem 0;
+
+//             color: snow;
+
+//             .details-container {
+//                 display: flex;
+//                 align-items: center;
+//                 flex-direction: column;
+//                 background-color: #1a1a1a;
+
+//                 padding: 2rem;
+
+//                 height: 100%;
+
+//                 border-radius: 8px;
+
+//                 .project {
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+
+//                     position: relative;
+
+//                     width: 100%;
+//                     height: 16.6%;
+//                 }
+
+//                 .title {
+//                     font-size: large;
+
+//                     .title-project {
+//                         font-family: monospace;
+//                     }
+//                 }
+//                 .description {
+//                     font-size: medium;
+//                 }
+//                 .tag {
+//                     font-size: medium;
+//                 }
+//                 .start-time {
+//                     font-size: medium;
+//                 }
+//                 .project-status {
+//                     font-size: medium;
+//                 }
+//                 .github {
+//                     font-size: medium;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .title-line {
+//     @include MainFont(22px);
+//     position: absolute;
+//     top: 0;
+//     width: 100%;
+//     text-align: center;
+//     z-index: 2;
+
+//     &:before {
+//         border-top: 2px solid #dfdfdf;
+//         content: '';
+//         margin: 0 auto;
+//         position: absolute;
+//         top: 50%;
+//         left: 0;
+//         right: 0;
+//         bottom: 0;
+//         width: 95%;
+//         z-index: -1;
+//     }
+//     span {
+//         /* to hide the lines from behind the text, you have to set the background color the same as the container */ :||
+//         background: #1a1a1a;
+//         padding: 0 15px;
+//     }
+// }
+
+.project-container {
+    @include box(100%, max-content);
+    display: grid;
+    grid-template-areas: 'demos details';
+
+    grid-template-columns: 1fr 0.35fr;
+    padding: 7vh 7vw;
+    gap: 3vw;
+    place-items: center;
+
+    @include media('<=1300px') {
+        padding: 5vh 1vw;
+        gap: 1vw;
+    }
+
+    @include media('<=1000px') {
+        grid-template-areas: 'demos' 'details';
+        grid-template-columns: auto;
+    }
+
+    .demos {
+        @include box(100%);
+        // background-color: #333;
+        grid-area: demos;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        overflow: hidden;
+        gap: 3rem;
+
+        .main {
+            @include war(100%, #{16/9});
+            flex-shrink: 0;
+            @include bg(
+                'https://cdn.discordapp.com/attachments/731174051170746500/836494236941680650/cock.png',
+                cover,
+                center
+            );
+            border-radius: 5px;
+            border: 3px solid #272727;
+            overflow: hidden;
+        }
+
+        .demo-previews {
+            --height: calc(4vh + 4vw + 1rem);
+            @include box(100%, var(--height));
+            display: grid;
+            gap: calc(1vw + 1rem);
+            padding: 0 0.5rem 0.5rem;
+            place-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            &::-webkit-scrollbar {
+                height: 10px;
+            }
+
+            .img {
+                max-height: calc(4vh + 4vw);
+                cursor: pointer;
+                grid-row: 1;
+                @include har(100%, #{16/9});
+                @include bg(
+                    'data:image/png;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+                );
+                display: grid;
+                place-items: center;
+                font-size: 3rem;
+                color: g.$MAIN_FG;
+            }
+        }
+    }
+
+    .details {
+        @include box(100%);
+        background-color: #121212;
+        grid-area: details;
+        border: 3px solid #272727;
 
         display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        border-radius: 5px;
+        padding: 2vh 1vw;
 
-        @include box(90%, 80%);
+        section {
+            @include box(100%, auto);
 
-        .project-gallery {
-            width: 70%;
-            height: 100%;
-
-            display: flex;
-            flex-direction: column;
-
-            .space {
-                height: 5%;
-            }
-
-            .project-img-preview {
-                border-radius: 8px;
-                height: 75%;
-
-                .project-img {
-                    width: 100%;
-                    height: 100%;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    
-                }
-            }
-
-            .project-imgs {
-                height: 20%;
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-
-                .img {
-                    border-radius: 8px;
-                    width: 100%;
-                    height: 100%;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    
-                }
-            }
-        }
-
-        .space {
-            width: 5%;
-        }
-
-        .project-details {
-            width: 25%;
-            // padding: 2rem 0;
-
-            color: snow;
-
-            .details-container {
+            .title {
+                @include MainFont(g.$MEDIUM_TEXT_FONTSIZE);
+                color: g.$MAIN_FG;
                 display: flex;
                 align-items: center;
-                flex-direction: column;
-                background-color: #1a1a1a;
-
-                padding: 2rem;
-
-                height: 100%;
-
-                border-radius: 8px;
-
-                .project {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    position: relative;
-
+                font-weight: 400;
+                span {
+                    flex-shrink: 0;
+                    margin: 0 0.5rem;
+                }
+                &::before,
+                &::after {
+                    content: '';
                     width: 100%;
-                    height: 16.6%;
-                }
-
-                .title {
-                    font-size: large;
-
-                    .title-project {
-                        font-family: monospace;
-                    }
-                }
-                .description {
-                    font-size: medium;
-                }
-                .tag {
-                    font-size: medium;
-                }
-                .start-time {
-                    font-size: medium;
-                }
-                .project-status {
-                    font-size: medium;
-                }
-                .github {
-                    font-size: medium;
+                    height: 2px;
+                    background-color: g.$MAIN_FG;
                 }
             }
+
+            .detail-content {
+                color: g.$MAIN_FG;
+            }
         }
-    }
-}
-
-.title-line {
-    @include MainFont(22px);
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-
-    &:before {
-        border-top: 2px solid #dfdfdf;
-        content: '';
-        margin: 0 auto;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 95%;
-        z-index: -1;
-    }
-    span {
-        /* to hide the lines from behind the text, you have to set the background color the same as the container */
-        background: #1a1a1a;
-        padding: 0 15px;
     }
 }

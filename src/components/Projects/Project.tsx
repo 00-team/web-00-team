@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import Head from '../common/Head'
 
@@ -9,32 +9,39 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
+import { IMAGE_MIMETYPE } from '../../redux/models/Projects'
 
 // elements
 import Loading from '../common/Loading'
-import { ButtonWithArrow } from '../common/Button'
+// import { ButtonWithArrow } from '../common/Button'
 
-// utils 
+// utils
 // import { go } from "../utils/Base"
 
 // icons
-import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+// import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 // import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
 // styling
 import './sass/project.scss'
+import Markdown from 'markdown-to-jsx'
 
 interface ProjectParams {
     slug: string
 }
 
-const Project = () => {
+const Project: FC = () => {
     const { slug } = useParams<ProjectParams>()
     const dispatch = useDispatch()
     const ProjectState = useSelector((state: RootState) => state.Projects)
     const Project = useSelector((state: RootState) =>
         state.Projects.projects.length > 0 ? state.Projects.projects[0] : null
     )
+    const [currentDemo, setCurrentDemo] = useState('')
+
+    useEffect(() => {
+        if (Project) setCurrentDemo(Project.thumbnail.url)
+    }, [setCurrentDemo, Project])
 
     useEffect(() => {
         dispatch(GetProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
@@ -49,9 +56,9 @@ const Project = () => {
             return <span style={{ color: '#fff' }}>Error to get Project</span>
         return <span style={{ color: '#fff' }}>No Project to show</span>
     }
-    
+
     return (
-        <div className='project'>
+        <div className='project-container'>
             <Head
                 title={Project.title}
                 description='Project of 00 Team'
@@ -70,10 +77,112 @@ const Project = () => {
                 twitter_card='summary_large_image'
             />
 
-            <div className='project-container'>
+            <div className='demos'>
+                <div
+                    className='main'
+                    style={{ backgroundImage: `url(${currentDemo})` }}
+                ></div>
+                {Project.demos.length > 0 && (
+                    <div className='demo-previews'>
+                        {Project.demos.map((demo, index) => {
+                            if (IMAGE_MIMETYPE.includes(demo.mimeType))
+                                return (
+                                    <div
+                                        key={index}
+                                        className='img'
+                                        style={{
+                                            backgroundImage: `url(${demo.url})`,
+                                        }}
+                                        onClick={() => setCurrentDemo(demo.url)}
+                                    ></div>
+                                )
+                            else
+                                return (
+                                    <video
+                                        src={demo.url}
+                                        className='img'
+                                        key={index}
+                                    ></video>
+                                )
+                        })}
+                    </div>
+                )}
+            </div>
+            <div className='details'>
+                <section className='project-title'>
+                    <h2 className='title'>
+                        <span>Title</span>
+                    </h2>
+                    <div className='detail-content'>
+                        <span>{Project.title}</span>
+                    </div>
+                </section>
+
+                <section className='description'>
+                    <h2 className='title'>
+                        <span>Description</span>
+                    </h2>
+                    <div className='detail-content'>
+                        {Project.description && (
+                            <Markdown children={Project.description.markdown} />
+                        )}
+                    </div>
+                </section>
+                {Project.projectTags.length > 0 && (
+                    <section className='tags'>
+                        <h2 className='title'>
+                            <span>Category</span>
+                        </h2>
+                        <div className='detail-content'>
+                            <ul className='tags'>
+                                {Project.projectTags.map((tag, index) => (
+                                    <li key={index}>{tag}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
+                )}
+                <section className='start-date'>
+                    <h2 className='title'>
+                        <span>Start Date</span>
+                    </h2>
+                    <div className='detail-content'>
+                        <span>{Project.startDate}</span>
+                    </div>
+                </section>
+                <section className='status'>
+                    <h2 className='title'>
+                        <span>Status</span>
+                    </h2>
+                    <div className='detail-content'>
+                        <span>{Project.projectStatus}</span>
+                    </div>
+                </section>
+                <section className='version'>
+                    <h2 className='title'>
+                        <span>Version</span>
+                    </h2>
+                    <div className='detail-content'>
+                        <span>{Project.version}</span>
+                    </div>
+                </section>
+                <section className='links'>
+                    <h2 className='title'>
+                        <span>Links</span>
+                    </h2>
+                    <div className='detail-content'>
+                        {Project.git && <a href={Project.git}>Github</a>}
+                        {Project.projectUrl && (
+                            <a href={Project.projectUrl}>Project url</a>
+                        )}
+                    </div>
+                </section>
+            </div>
+
+            {/* <div className='project-container'>
                 <div className='project-gallery'>
                     <div className='project-img-preview'>
-                        <div className="project-img" style={{backgroundImage:`url(${Project.thumbnail.url})`}}></div>
+                        <div className="project-img" ></div>
                     </div>
                     <div className='space'></div>
                     <div className='project-imgs'>
@@ -90,6 +199,11 @@ const Project = () => {
                         })}
                     </div>
                 </div>
+
+
+
+
+
                 <div className='space'></div>
                 <div className='project-details'>
                     <div className='details-container'>
@@ -146,7 +260,7 @@ const Project = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
