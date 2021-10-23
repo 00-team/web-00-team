@@ -1,4 +1,10 @@
-export const AcceptedThumbnails = ['image/png', 'image/jpeg', 'image/gif']
+export const IMAGE_MIMETYPE = [
+    'image/png',
+    'image/jpeg',
+    'image/gif',
+    'image/webm',
+]
+export const VIDEO_MIMETYPE = ['video/mp4', 'video/webm']
 
 export interface Assest {
     handle: string
