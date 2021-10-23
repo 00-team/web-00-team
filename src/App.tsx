@@ -147,14 +147,6 @@ const Root: FC = () => {
     )
 }
 
-const RootElement = document.getElementById('root')
-
-if (RootElement) {
-    if (RootElement.hasChildNodes()) {
-        ReactDOM.hydrate(<Root />, RootElement)
-    } else {
-        ReactDOM.render(<Root />, RootElement)
-    }
-}
+ReactDOM.render(<Root />, document.getElementById('root'))
 
 export default App
