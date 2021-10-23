@@ -49,7 +49,7 @@ const Project = () => {
             return <span style={{ color: '#fff' }}>Error to get Project</span>
         return <span style={{ color: '#fff' }}>No Project to show</span>
     }
-
+    
     return (
         <div className='project'>
             <Head
@@ -72,15 +72,22 @@ const Project = () => {
 
             <div className='project-container'>
                 <div className='project-gallery'>
-                    <div className='project-img-preview'></div>
+                    <div className='project-img-preview'>
+                        <div className="project-img" style={{backgroundImage:`url(${Project.thumbnail.url})`}}></div>
+                    </div>
                     <div className='space'></div>
                     <div className='project-imgs'>
-                        <div className='img'></div>
-                        <div className='img'></div>
-                        <div className='img'></div>
-                        <div className='img'></div>
-                        <div className='img'></div>
-                        <div className='img'></div>
+                        {[1,2,3,4,5,6].map((index) =>{
+                            return (
+                                <div
+                                    key={index}
+                                    className='img'
+                                    style={{
+                                        backgroundImage: `url(${Project.thumbnail.url})`,
+                                    }}
+                                ></div>
+                            )
+                        })}
                     </div>
                 </div>
                 <div className='space'></div>
@@ -97,7 +104,7 @@ const Project = () => {
                         <div className='project description'>
                             <div className='title-line'>
                                 <span className='title-header'>
-                                    Project description
+                                    Project Description
                                 </span>
                             </div>
                             <div className='description-head'>
@@ -112,7 +119,7 @@ const Project = () => {
                                     Project Category
                                 </span>
                             </div>
-                            <div className='tag-head'>tag</div>
+                            <div className='tag-head'>{Project.projectTags}</div>
                         </div>
                         <div className='project start-time'>
                             <div className='title-line'>
@@ -130,7 +137,7 @@ const Project = () => {
                                     Project Status
                                 </span>
                             </div>
-                            <div className='project-status-head'>status</div>
+                            <div className='project-status-head'>{Project.projectStatus ? Project.projectStatus : "Not Set"}</div>
                         </div>
                         <div className='project github'>
                             <ButtonWithArrow>
