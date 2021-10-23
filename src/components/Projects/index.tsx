@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
-import { AcceptedThumbnails, ProjectModel } from '../../redux/models/Projects'
+import { IMAGE_MIMETYPE, ProjectModel } from '../../redux/models/Projects'
 
 // commons
 import Loading from '../common/Loading'
@@ -105,7 +105,7 @@ const ProjectCard: FC<ProjectCardProps> = props => {
     const { thumbnail, projectSlug, projectStatus } = props
     const tags = Array.from(new Set(props.projectTags))
 
-    if (!AcceptedThumbnails.includes(thumbnail.mimeType)) return <></>
+    if (!IMAGE_MIMETYPE.includes(thumbnail.mimeType)) return <></>
 
     return (
         <Link to={`/project/${projectSlug}/`} title={title}>

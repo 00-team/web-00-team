@@ -158,8 +158,10 @@
                 overflow: hidden;
                 border: 2px solid #121212;
                 cursor: pointer;
+                transition: transform 200ms;
 
                 &:hover {
+                    transform: scale(1.11);
                     .tumbnail .tags li {
                         transform: translateY(0);
                     }
@@ -185,8 +187,8 @@
                         overflow: hidden;
 
                         li {
-                            transform: translateY(-200%);
-                            transition: transform 400ms;
+                            transform: translateY(-500%);
+                            transition: transform 300ms;
 
                             cursor: pointer;
                             background-color: g.$MAIN_BG;
@@ -235,7 +237,7 @@
                         }
 
                         .icon {
-                            @include har(100%);
+                            @include har(80%);
                             flex-shrink: 0;
                             display: grid;
                             place-items: center;
