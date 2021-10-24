@@ -2,15 +2,9 @@ import React, { FC, useEffect, useState } from 'react'
 
 import Head from '../common/Head'
 
-// import Select, { SelectInstance } from 'react-select'
-// import { SelectTheme, SelectStyle } from '../utils'
-
 // icons
 import { FiSearch } from '@react-icons/all-files/fi/FiSearch'
-import { BsFilter } from '@react-icons/all-files/bs/BsFilter'
 import { GoRepo } from '@react-icons/all-files/go/GoRepo'
-
-// import { HexCloseIcon } from '../common/HexIcon'
 
 // router
 import { Link } from 'react-router-dom'
@@ -28,18 +22,13 @@ import Button from '../common/Button'
 // style
 import './sass/projects.scss'
 
-import Filters from './Filters'
-
 const Projects: FC = () => {
     const dispatch = useDispatch()
     const ProjectsState = useSelector((state: RootState) => state.Projects)
     const ProjectsData = useSelector(
         (state: RootState) => state.Projects.projects
     )
-    const [ShowFilters, setShowFilters] = useState(false)
     const [isFilterd, setIsFilterd] = useState(false)
-    // const [applayedfilters, setApplayedFilters] =
-    //     useState<SelectedFiltersState>({})
 
     useEffect(() => {
         dispatch(GetProject())
@@ -62,24 +51,8 @@ const Projects: FC = () => {
                     <h1 className='title'>00 Team Projects</h1>
 
                     <Search onSearch={() => setIsFilterd(true)} />
-                    <div className='filter'>
-                        <button onClick={() => setShowFilters(true)}>
-                            <BsFilter /> Filter
-                        </button>
-                    </div>
+                    <div className='filter'></div>
                 </div>
-                {/* 
-                <Filters
-                    close={() => setshowFilters(false)}
-                    isActive={showFilters}
-                    applayedFilters={applayedfilters}
-                    setApplayedFilters={filters => setApplayedFilters(filters)}
-                /> */}
-
-                <Filters
-                    show={ShowFilters}
-                    close={() => setShowFilters(false)}
-                />
 
                 {ProjectsData.length <= 0 ? (
                     <div className='no-result'>
@@ -131,43 +104,6 @@ const Search: FC<{ onSearch: () => void }> = ({ onSearch }) => {
     )
 }
 
-/*
-interface FiltersProps {
-    close: () => void
-    isActive: boolean
-    applayedFilters: SelectedFiltersState
-    setApplayedFilters: (filters: SelectedFiltersState) => void
-}
-
-
-
-
-
-const Filters: FC<FiltersProps> = ({
-    close,
-    isActive,
-    applayedFilters,
-    setApplayedFilters,
-}) => {
-    const dispatch = useDispatch()
-
-
-    
-    
-    // setSelectNodes
-    console.log(SelectNodes.version)
-
-    useEffect(() => {
-        setFilters(applayedFilters)
-    }, [applayedFilters, setFilters])
-
-    
-
-    return (
-        
-    )
-}
- */
 interface ProjectCardProps extends ProjectModel {}
 
 const ProjectCard: FC<ProjectCardProps> = props => {
