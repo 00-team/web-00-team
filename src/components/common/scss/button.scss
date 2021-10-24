@@ -1,8 +1,7 @@
 @use '../../../sass/mixins.sass' as *;
 @use '../../../sass/fonts' as *;
+@use '../../../sass/variables/' as g;
 
-$fg: #fff;
-$bg: #000000;
 $border: #272727;
 $active: #696969;
 
@@ -21,7 +20,7 @@ $active: #696969;
     align-items: center;
     justify-content: space-evenly;
     // padding: 10px 30px;
-    color: $fg;
+    color: g.$MAIN_FG;
     border: 2px solid;
     background: none;
     contain: layout;
@@ -46,7 +45,7 @@ $active: #696969;
         transition: all 300ms;
         z-index: -1;
         position: absolute;
-        background-color: $bg;
+        background-color: g.$MAIN_BG;
         inset: 0;
     }
 }
@@ -55,12 +54,12 @@ $active: #696969;
     position: relative;
     display: inline-block;
     .little-dream {
-        color: $fg;
-        border: $fg solid 2px;
+        color: g.$MAIN_FG;
+        border: g.$MAIN_FG solid 2px;
         padding: 1rem;
         @include MainFont(22px);
         position: relative;
-        background-color: #040404;
+        background-color: g.$MAIN_BG;
     }
     .dream {
         position: absolute;
@@ -91,7 +90,7 @@ $active: #696969;
     // min-width: 11vw;
     // min-height: 6vh;
     padding: 1vh 1vw;
-    color: $fg;
+    color: g.$MAIN_FG;
     border: 2px solid;
     background: none;
     border-color: $border;
