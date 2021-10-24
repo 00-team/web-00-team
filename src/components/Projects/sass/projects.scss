@@ -113,15 +113,28 @@
         }
 
         .filters-container {
-            @include box(30vw, 100vh);
+            @include no-user-select;
+            @include box(500px, 100vh);
             position: fixed;
             inset: 0 0 0 auto;
+            @include media('<=620px') {
+                inset: 0;
+                @include box(100vw, 100vh);
+            }
             background-color: #272727;
             // background-color: g.$MAIN_BG;
             z-index: g.$ZINDEX__PROJECTS__FILTERS;
 
             transform: translateX(150%);
             transition: transform 500ms ease-in-out;
+
+            display: flex;
+            flex-direction: column;
+            gap: 5vh;
+            padding: 2.5vh 3vw;
+
+            overflow-x: hidden;
+            overflow-y: auto;
 
             .close-btn {
                 cursor: pointer;
@@ -133,6 +146,61 @@
 
                 path {
                     fill: #121212;
+                }
+            }
+
+            .title {
+                @include DisplayFont(g.$SMALL_TITLE_FONTSIZE);
+                color: g.$MAIN_FG;
+            }
+
+            .current-filters {
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+                @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+
+                .tags {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+
+                    ul li {
+                        display: inline-block;
+                        padding: 0.2rem 0.4rem;
+                        margin: 0.4rem;
+                        border-radius: 5px;
+                        text-transform: capitalize;
+                        border: 3px solid #040404;
+                        @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+                    }
+                }
+            }
+
+            .filter {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2vw;
+
+                .type {
+                    @include MainFont(g.$MEDIUM_TEXT_FONTSIZE);
+                    color: g.$MAIN_FG;
+                }
+
+                .option {
+                    @include box(100%);
+                }
+            }
+
+            .applay-btn {
+                border-color: g.$MAIN_BG;
+            }
+
+            .clear-btn {
+                border-color: red;
+                &::before {
+                    background-color: red;
                 }
             }
         }
@@ -150,8 +218,14 @@
                 minmax(var(--card-width), 1fr)
             );
 
+            a {
+                width: 90%;
+                @include no-user-select;
+            }
+
             .project-card {
-                @include war(var(--card-width), #{16 / 12});
+                // @include war(100%, #{16 / 13});
+                width: 100%;
                 flex-shrink: 0;
                 display: flex;
                 flex-direction: column;
@@ -173,9 +247,10 @@
                     @include war(100%, #{16 / 9});
                     position: relative;
                     flex-shrink: 0;
+                    overflow: hidden;
 
                     img {
-                        @include box(100%);
+                        @include war(100%, #{16 / 9});
                         object-fit: cover;
                         object-position: center;
                     }
@@ -201,7 +276,7 @@
                             margin: 0 1vw 1vw 0;
                             padding: 0.4rem 0.5rem;
                             border-radius: 5px;
-                            @include MainFont(g.$SMALL_TEXT_FONTSIZE);
+                            @include MainFont(1rem);
                         }
                     }
 
@@ -222,6 +297,7 @@
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
+                    gap: 1vh;
 
                     .top {
                         @include box(100%);
@@ -231,14 +307,14 @@
 
                         .title {
                             display: block;
-                            @include DisplayFont(g.$SMALL_TEXT_FONTSIZE);
+                            @include DisplayFont(g.$MEDIUM_TEXT_FONTSIZE);
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
                         }
 
                         .icon {
-                            @include har(80%);
+                            @include har(1.5rem);
                             flex-shrink: 0;
                             display: grid;
                             place-items: center;
