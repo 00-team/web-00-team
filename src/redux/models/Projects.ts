@@ -60,3 +60,14 @@ export enum ProjectTags {
     demo = 'demo',
     business = 'business',
 }
+
+export const ProjectTagsList = [
+    'website',
+    'desktop',
+    'mobile',
+    'fun',
+    'demo',
+    'business',
+]
+
+export const ProjectStatusList = ['finished', 'inProgress', 'preparation']
