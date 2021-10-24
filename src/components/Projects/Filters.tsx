@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 
 // comons
 import Button from '../common/Button'
@@ -50,12 +50,32 @@ const Filters: FC<FiltersProps> = ({ show, close }) => {
     const dispatch = useDispatch()
     const FiltersState = useSelector((state: RootState) => state.Filters)
 
-    useEffect(() => {
-        console.log(FiltersState)
-    }, [FiltersState])
-
     const ApplayFilters = () => {
-        dispatch(GetProject())
+        const version_filter = FiltersState.version
+            ? `${
+                  FiltersState.version === 'beta'
+                      ? 'version_starts_with'
+                      : 'version_not_starts_with'
+              }: "beta"`
+            : ''
+
+        const status_filter = FiltersState.status
+            ? `projectStatus: ${FiltersState.status},`
+            : ''
+
+        const tags_filter = FiltersState.tags
+            ? `projectTags_contains_all: [${FiltersState.tags.map(
+                  tag => `${tag}`
+              )}],`
+            : ''
+
+        const where: string = `{${version_filter} ${status_filter} ${tags_filter}}`
+
+        dispatch(
+            GetProject({
+                where: where,
+            })
+        )
     }
 
     const ClearFilters = () => {
