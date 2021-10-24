@@ -51,7 +51,6 @@ const Projects: FC = () => {
                     <h1 className='title'>00 Team Projects</h1>
 
                     <Search onSearch={() => setIsFilterd(true)} />
-                    <div className='filter'></div>
                 </div>
 
                 {ProjectsData.length <= 0 ? (
@@ -135,7 +134,7 @@ const ProjectCard: FC<ProjectCardProps> = props => {
                     </span>
                 </div>
                 <div className='info'>
-                    <div className='top'>
+                    <div className='top-info'>
                         <span className='title' title={title}>
                             {title}
                         </span>
