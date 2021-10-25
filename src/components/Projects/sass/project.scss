@@ -234,6 +234,10 @@
         section {
             @include box(100%, auto);
 
+            div {
+                text-align: center;
+            }
+
             .title {
                 @include MainFont(g.$MEDIUM_TEXT_FONTSIZE);
                 color: g.$MAIN_FG;
@@ -254,7 +258,14 @@
             }
 
             .detail-content {
+                margin-top: 1rem;
                 color: g.$MAIN_FG;
+
+                &.github{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
     }
