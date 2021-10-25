@@ -13,13 +13,13 @@ import { IMAGE_MIMETYPE } from '../../redux/models/Projects'
 
 // elements
 import Loading from '../common/Loading'
-// import { ButtonWithArrow } from '../common/Button'
+import { ButtonWithArrow } from '../common/Button'
 
 // utils
 // import { go } from "../utils/Base"
 
 // icons
-// import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 // import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
 
 // styling
@@ -171,10 +171,21 @@ const Project: FC = () => {
                         <span>Links</span>
                     </h2>
                     <div className='detail-content'>
-                        {Project.git && <a href={Project.git}>Github</a>}
+                        {Project.git && <a href={Project.git + '2'}>Github</a>}
                         {Project.projectUrl && (
-                            <a href={Project.projectUrl}>Project url</a>
+                            <a href={Project.projectUrl + '1'}>Project url</a>
                         )}
+                    </div>
+                    <div className='detail-content github'>
+                        <ButtonWithArrow
+                            onClick={() =>
+                                window.open(
+                                    `${Project.projectUrl || Project.git}`
+                                )
+                            }
+                        >
+                            GitHub <FiGithub />
+                        </ButtonWithArrow>
                     </div>
                 </section>
             </div>
