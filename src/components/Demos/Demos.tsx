@@ -16,7 +16,8 @@ const LazyMotion = Loadable(() => import('../common/LazyMotion'))
 
 const CardSlider = Loadable(() => import('../common/slider/CardSlider'))
 
-
+// btn 
+import { ButtonWithArrow } from '../common/Button'
 
 // import style
 import './demos.scss'
@@ -71,6 +72,13 @@ export const Demos: FC<DemosProps> = ({ LoadingRender }) => {
                             />
                         ))}
                     </CardSlider>
+                </div>
+                <div
+                    className='project'
+                    onClick={() => window.open('/projects', '_self')}
+                >
+                    {' '}
+                    <ButtonWithArrow> See All Projects </ButtonWithArrow>{' '}
                 </div>
             </div>
         </div>
