@@ -54,7 +54,7 @@ const DemoCard: FC<DemoCardProps> = ({
                           }
                         : {}
                 }
-                className='thumbnail'
+                className={`thumbnail ${showDetail ? "active" : ""}`}
             ></div>
             <div
                 onMouseUp={() => setshowDetail(showDetail ? '' : `${index}`)}
