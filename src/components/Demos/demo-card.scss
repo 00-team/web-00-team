@@ -20,6 +20,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         flex-shrink: 0;
+
+        &.active{
+            filter: blur(5px);
+        }
     }
 
     .details {
