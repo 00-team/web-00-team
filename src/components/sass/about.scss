@@ -6,7 +6,8 @@
     $fg: #fff;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20vh;
+
+    background: linear-gradient(to bottom, #121212, #121212,#121212, #121212, #1A1A1A);
 
     .about {
         @include box(100%, auto);
@@ -32,7 +33,7 @@
             word-break: keep-all;
             margin-top: 50px;
             line-height: 2;
-            background-color: #121212;
+            background-color: #161616;
             padding: 3vw;
             border-radius: 2.5vw;
 

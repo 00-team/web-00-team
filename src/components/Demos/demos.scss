@@ -5,6 +5,16 @@
 
 .demos {
     // @include box(100%, 100vh);
+    padding: 2rem 3rem 0;
+
+    background: linear-gradient(
+        to bottom,
+        #1a1a1a,
+        #1a1a1a,
+        #1a1a1a,
+        #1a1a1a,
+        #272727
+    );
     @include no-user-select;
 
     .container {
@@ -24,7 +34,6 @@
         }
 
         .demo-slider {
-            padding: 2rem 3rem 0;
             @include media('<=1080px') {
                 padding: 2rem 0;
             }
