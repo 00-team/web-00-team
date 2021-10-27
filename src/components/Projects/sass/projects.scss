@@ -8,6 +8,8 @@
     color: g.$MAIN_FG;
     padding: 3.3vh 2vw 10vh;
 
+    background: linear-gradient( to bottom, #272727, #272727, #272727, #272727, #1a1a1a);
+
     .projects {
         display: flex;
         flex-direction: column;

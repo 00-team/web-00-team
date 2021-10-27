@@ -5,7 +5,7 @@
 .hero-section {
     @include box(100%, 100vh);
 
-    background: linear-gradient(to bottom, #040404, #040404,#040404, #040404, #121212);
+    background: linear-gradient(to bottom, #000, #040404,#040404, #040404, #121212);
     
     .main {
         height: 100%;
