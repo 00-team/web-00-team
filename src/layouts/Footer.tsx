@@ -25,7 +25,7 @@ const Footer = () => {
                     </a>
                 </div>
             </section>
-            <div className='line'></div>
+            {/* <div className='line'></div> */}
             <div className='footer-links'>
                 <div className='footer-link-wrapper'>
                     <div className='footer-link-items'>
