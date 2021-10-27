@@ -105,7 +105,7 @@ const App: FC = () => {
                 <Route path='/team'>
                     <Team />
                     <About />
-                    <Creators />
+                    <Creators ExtraClass={"team"} />
                     <JoinTeam />
                 </Route>
 
