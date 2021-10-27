@@ -42,9 +42,6 @@ const Footer = () => {
                         <Link className='links' to='/'>
                             Investors
                         </Link>
-                        <Link className='links' to='/'>
-                            Terms of Service
-                        </Link>
                     </div>
                     <div className='footer-link-items'>
                         <h2>Contact Us</h2>

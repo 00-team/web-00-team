@@ -2,7 +2,7 @@
 @use '../../../sass/fonts' as *;
 @use '../../../sass/variables/' as g;
 
-$border: #CED4DA;
+$border: #272727;
 $active: #696969;
 
 .basic-button {
@@ -29,8 +29,6 @@ $active: #696969;
     @include MainFont(22px);
     position: relative;
 
-    
-
     &:hover::before {
         height: 100%;
         width: 100%;
@@ -47,15 +45,8 @@ $active: #696969;
         transition: all 300ms;
         z-index: -1;
         position: absolute;
-        background-color: g.$MAIN_FG;
+        background-color: #272727;
         inset: 0;
-    }
-
-    &:hover{
-        color: g.$MAIN_BG_HOVER;
-    }
-    &::before:hover{
-        background-color: g.$MAIN_FG_HOVER;
     }
 }
 
