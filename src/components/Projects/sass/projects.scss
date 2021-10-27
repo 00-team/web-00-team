@@ -8,7 +8,14 @@
     color: g.$MAIN_FG;
     padding: 3.3vh 2vw 10vh;
 
-    background: linear-gradient( to bottom, #272727, #272727, #272727, #272727, #1a1a1a);
+    background: linear-gradient(
+        to bottom,
+        #272727,
+        #272727,
+        #272727,
+        #272727,
+        #1a1a1a
+    );
 
     .projects {
         display: flex;
@@ -40,7 +47,7 @@
 
                     display: flex;
                     align-items: center;
-                    border: 2px solid #272727;
+                    border: 2px solid g.$MAIN_BG;
                     justify-content: space-between;
                     border-radius: 5px;
                     overflow: hidden;
@@ -60,7 +67,7 @@
                         cursor: pointer;
                         display: grid;
                         place-items: center;
-                        background-color: #272727;
+                        background-color: g.$MAIN_BG;
 
                         svg {
                             @include box(60%);
@@ -161,6 +168,7 @@
                     display: flex;
                     flex-direction: column;
                     gap: 1vh;
+                    background-color: g.$MAIN_BG;
 
                     .top-info {
                         @include box(100%);
