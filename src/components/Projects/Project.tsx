@@ -77,7 +77,7 @@ const Project: FC = () => {
                 twitter_card='summary_large_image'
             />
 
-            <div className='demos'>
+            <div className='demos-container'>
                 <div
                     className='main'
                     style={{ backgroundImage: `url(${currentDemo})` }}
