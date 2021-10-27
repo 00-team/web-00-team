@@ -14,7 +14,7 @@ const Team: FC = () => {
                 keywords='00 Team Creators,00 Team'
             />
             <h1 className='title'>00 Team</h1>
-            <span className='text'>believe your dreams</span>
+            <span className='text'>believe in your dreams</span>
         </div>
     )
 }
