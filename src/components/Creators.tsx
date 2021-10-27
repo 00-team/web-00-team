@@ -98,14 +98,17 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
     )
 }
 
-const Creators: FC<{ ExtraClass?: String }> = ExtraClass => {
+interface CreatorsProps{
+    ExtraClass? : String
+}
+
+const Creators: FC<CreatorsProps> = ({ ExtraClass }) => {
     const CreatorsState = useSelector((state: RootState) => state.Creators)
 
     if (CreatorsState.creators.length < 1) return <></>
 
-
     return (
-        <div className={`creators-container ${ExtraClass.ExtraClass}`}>
+        <div className={`creators-container ${ExtraClass}`}>
             <LazyMotion>
                 <h2 className='title'>Creators</h2>
             </LazyMotion>
