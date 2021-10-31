@@ -6,6 +6,12 @@
 .demos {
     // @include box(100%, 100vh);
     padding: 2rem 3rem 0;
+    @include media('<=650px') {
+        padding: 2rem 0.5rem 0;
+    }
+    @include media('<=400px') {
+        padding: 2rem 0 0;
+    }
 
     background: linear-gradient(
         to bottom,
@@ -15,7 +21,6 @@
         #1a1a1a,
         #272727
     );
-    @include no-user-select;
 
     .container {
         height: 100%;
@@ -25,17 +30,16 @@
         align-items: center;
 
         .header h1 {
-            font-size: $heading1;
-            @media (max-width: 500px) {
-                font-size: $heading1_mobile;
-            }
-            font-family: 'Graduate', 'Roboto', sans-serif;
-            text-transform: uppercase;
+            @include DisplayFont($MEDIUM_TITLE_FONTSIZE);
         }
 
         .demo-slider {
+            @include no-user-select;
             @include media('<=1080px') {
                 padding: 2rem 0;
+            }
+            @include media('<=850px') {
+                width: 100%;
             }
             width: 80%;
         }

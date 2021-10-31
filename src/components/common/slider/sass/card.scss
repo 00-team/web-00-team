@@ -8,8 +8,6 @@
     // justify-content: space-between;
     position: relative;
 
-    margin-top: 10%;
-
     padding: 0 10px;
 
     display: grid;
@@ -79,8 +77,8 @@
             transition: all 450ms ease 0s;
 
             // @include box(840px, 335px);
-            min-width: 50%;
-            height: 35vh;
+            // min-width: 50%;
+            // height: 35vh;
 
             @include box(82%);
             visibility: hidden;

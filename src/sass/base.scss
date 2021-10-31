@@ -12,9 +12,10 @@
 }
 
 body {
-    overflow-x: hidden;
-    // background-color: #040404;
+    // overflow-x: overlay;
+    background-color: #040404;
     position: relative;
+    overflow: overlay;
 }
 // links
 a {
@@ -36,18 +37,12 @@ ol {
 // scroll bar
 ::-webkit-scrollbar {
     width: 10px;
-    background: linear-gradient(
-        to bottom,
-        #040404,
-        #121212,
-        #1A1A1A,
-        #121212,
-        #040404,
-    );
+    background: #040404;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #242424;
+    background-color: #272727;
+    border: 2px solid #040404;
     border-radius: 20px;
 }
 
