@@ -1,0 +1,48 @@
+.main-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: grid;
+    place-items: center;
+
+    // A2
+    svg {
+        .bg-square {
+            animation: sopacity linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes sopacity {
+            0% {
+                stroke-opacity: 0;
+            }
+            1% {
+                stroke-opacity: 1;
+            }
+            50% {
+                stroke-opacity: 1;
+            }
+            51% {
+                stroke-opacity: 0;
+            }
+            100% {
+                stroke-opacity: 0;
+            }
+        }
+    }
+
+    // A1
+    // svg {
+    //     .bg-square {
+    //         animation: sopacity linear;
+    //         animation-iteration-count: infinite;
+    //     }
+    //     @keyframes sopacity {
+    //         0% {
+    //             stroke-opacity: 1;
+    //         }
+    //         20% {
+    //             stroke-opacity: 0;
+    //         }
+    //     }
+    // }
+}

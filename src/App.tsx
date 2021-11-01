@@ -22,6 +22,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import Team from './components/Team'
 import Error from './layouts/Error'
+import MainBg from './components/MainBg'
 
 const About = Loadable(() => import('./components/About'))
 
@@ -61,7 +62,6 @@ const LoadingStatus = (): boolean[] => {
 
 const App: FC = () => {
     const loadings = LoadingStatus()
-
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -76,6 +76,7 @@ const App: FC = () => {
 
     return (
         <>
+            <MainBg />
             <Head />
             <Switch>
                 <Route path='/' exact>
@@ -105,7 +106,7 @@ const App: FC = () => {
                 <Route path='/team'>
                     <Team />
                     <About />
-                    <Creators ExtraClass={"team"} />
+                    <Creators ExtraClass={'team'} />
                     <JoinTeam />
                 </Route>
 
