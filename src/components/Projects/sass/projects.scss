@@ -8,14 +8,14 @@
     color: g.$MAIN_FG;
     padding: 3.3vh 2vw 10vh;
 
-    background: linear-gradient(
-        to bottom,
-        #272727,
-        #272727,
-        #272727,
-        #272727,
-        #1a1a1a
-    );
+    // background: linear-gradient(
+    //     to bottom,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #1a1a1a
+    // );
 
     .projects {
         display: flex;
@@ -47,7 +47,7 @@
 
                     display: flex;
                     align-items: center;
-                    border: 2px solid g.$MAIN_BG;
+                    border: 2px solid #272727;
                     justify-content: space-between;
                     border-radius: 5px;
                     overflow: hidden;
@@ -67,7 +67,7 @@
                         cursor: pointer;
                         display: grid;
                         place-items: center;
-                        background-color: g.$MAIN_BG;
+                        background-color: #272727;
 
                         svg {
                             @include box(60%);
@@ -103,7 +103,7 @@
                 overflow: hidden;
                 border: 2px solid #121212;
 
-                box-shadow: -2px 2px 10px 1px #121212;
+                // box-shadow: -2px 2px 10px 1px #121212;
 
                 cursor: pointer;
                 transition: transform 200ms;

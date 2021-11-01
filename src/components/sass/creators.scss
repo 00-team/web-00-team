@@ -12,18 +12,14 @@
     gap: 3rem;
     @include box(100%, auto);
 
-    background: linear-gradient(
-        to bottom,
-        #272727,
-        #272727,
-        #272727,
-        #272727,
-        #1a1a1a
-    );
-
-    &.team{
-        background: linear-gradient(to bottom, #1A1A1A, #1A1A1A,#1A1A1A, #1A1A1A, #272727);
-    }
+    // background: linear-gradient(
+    //     to bottom,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #1a1a1a
+    // );
 
     .title {
         color: $fg;

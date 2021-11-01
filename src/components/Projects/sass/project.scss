@@ -157,14 +157,14 @@
     gap: 3vw;
     place-items: center;
 
-    background: linear-gradient(
-        to bottom,
-        #272727,
-        #272727,
-        #272727,
-        #272727,
-        #1a1a1a
-    );
+    // background: linear-gradient(
+    //     to bottom,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #272727,
+    //     #1a1a1a
+    // );
 
     @include media('<=1300px') {
         padding: 5vh 1vw;
@@ -272,7 +272,7 @@
                 margin-top: 1rem;
                 color: g.$MAIN_FG;
 
-                &.github{
+                &.github {
                     display: flex;
                     align-items: center;
                     justify-content: center;
