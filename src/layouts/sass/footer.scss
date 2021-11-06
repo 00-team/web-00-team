@@ -7,12 +7,20 @@
     //     #040404,
     //     #000
     // );
-    // background-color: #1a1a1a;
+    background-color: #1a1a1a;
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .button {
+        border-color: #040404;
+
+        &::before {
+            background-color: #040404;
+        }
+    }
 
     .footer-subscription {
         display: flex;

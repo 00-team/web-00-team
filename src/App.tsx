@@ -22,7 +22,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HeroSection from './components/HeroSection'
 import Team from './components/Team'
 import Error from './layouts/Error'
-import MainBg from './components/MainBg'
+// import MainBg from './components/MainBg'
 
 const About = Loadable(() => import('./components/About'))
 
@@ -76,7 +76,7 @@ const App: FC = () => {
 
     return (
         <>
-            <MainBg />
+            {/* <MainBg /> */}
             <Head />
             <Switch>
                 <Route path='/' exact>
