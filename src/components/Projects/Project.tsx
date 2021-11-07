@@ -2,6 +2,9 @@ import React, { FC, useEffect, useState } from 'react'
 
 import Head from '../common/Head'
 
+// video player
+import MasterVideo, { Options } from 'master-video'
+
 // router
 import { useParams } from 'react-router-dom'
 
@@ -30,6 +33,15 @@ interface ProjectParams {
     slug: string
 }
 
+interface CurrentDemo {
+    type: 'img' | 'video'
+    src: string
+}
+
+const MasterVideoOptions: Options = {
+    masterClass: 'demo-video',
+}
+
 const Project: FC = () => {
     const { slug } = useParams<ProjectParams>()
     const dispatch = useDispatch()
@@ -37,10 +49,10 @@ const Project: FC = () => {
     const Project = useSelector((state: RootState) =>
         state.Projects.projects.length > 0 ? state.Projects.projects[0] : null
     )
-    const [currentDemo, setCurrentDemo] = useState('')
-
+    const [currentDemo, setCurrentDemo] = useState<CurrentDemo | null>(null)
+    currentDemo
     useEffect(() => {
-        if (Project) setCurrentDemo(Project.thumbnail.url)
+        if (Project) setCurrentDemo({ src: Project.thumbnail.url, type: 'img' })
     }, [setCurrentDemo, Project])
 
     useEffect(() => {
@@ -78,10 +90,23 @@ const Project: FC = () => {
             />
 
             <div className='demos-container'>
-                <div
-                    className='main'
-                    style={{ backgroundImage: `url(${currentDemo})` }}
-                ></div>
+                <div className='main'>
+                    {currentDemo &&
+                        (currentDemo.type === 'img' ? (
+                            <div
+                                className='demo-img'
+                                style={{
+                                    backgroundImage: `url(${currentDemo.src})`,
+                                }}
+                            ></div>
+                        ) : (
+                            <MasterVideo
+                                source={currentDemo.src}
+                                options={MasterVideoOptions}
+                            />
+                        ))}
+                </div>
+
                 {Project.demos.length > 0 && (
                     <div className='demo-previews'>
                         {Project.demos.map((demo, index) => {
@@ -89,19 +114,30 @@ const Project: FC = () => {
                                 return (
                                     <div
                                         key={index}
-                                        className='img'
+                                        className='demo-thumbnail'
                                         style={{
                                             backgroundImage: `url(${demo.url})`,
                                         }}
-                                        onClick={() => setCurrentDemo(demo.url)}
+                                        onClick={() =>
+                                            setCurrentDemo({
+                                                src: demo.url,
+                                                type: 'img',
+                                            })
+                                        }
                                     ></div>
                                 )
                             else
                                 return (
                                     <video
                                         src={demo.url}
-                                        className='img'
+                                        className='demo-thumbnail'
                                         key={index}
+                                        onClick={() =>
+                                            setCurrentDemo({
+                                                src: demo.url,
+                                                type: 'video',
+                                            })
+                                        }
                                     ></video>
                                 )
                         })}
@@ -189,89 +225,6 @@ const Project: FC = () => {
                     </div>
                 </section>
             </div>
-
-            {/* <div className='project-container'>
-                <div className='project-gallery'>
-                    <div className='project-img-preview'>
-                        <div className="project-img" ></div>
-                    </div>
-                    <div className='space'></div>
-                    <div className='project-imgs'>
-                        {[1,2,3,4,5,6].map((index) =>{
-                            return (
-                                <div
-                                    key={index}
-                                    className='img'
-                                    style={{
-                                        backgroundImage: `url(${Project.thumbnail.url})`,
-                                    }}
-                                ></div>
-                            )
-                        })}
-                    </div>
-                </div>
-
-
-
-
-
-                <div className='space'></div>
-                <div className='project-details'>
-                    <div className='details-container'>
-                        <div className='project title'>
-                            <div className='title-line'>
-                                <span className='title-header'>
-                                    Project Title
-                                </span>
-                            </div>
-                            <div className='title-project'>{Project.title}</div>
-                        </div>
-                        <div className='project description'>
-                            <div className='title-line'>
-                                <span className='title-header'>
-                                    Project Description
-                                </span>
-                            </div>
-                            <div className='description-head'>
-                                {Project.description
-                                    ? Project.description.markdown
-                                    : 'None'}
-                            </div>
-                        </div>
-                        <div className='project tag'>
-                            <div className='title-line'>
-                                <span className='tag-header'>
-                                    Project Category
-                                </span>
-                            </div>
-                            <div className='tag-head'>{Project.projectTags}</div>
-                        </div>
-                        <div className='project start-time'>
-                            <div className='title-line'>
-                                <span className='start-time-header'>
-                                    Project Start Time
-                                </span>
-                            </div>
-                            <div className='start-time-head'>
-                                {Project.startDate}
-                            </div>
-                        </div>
-                        <div className='project project-status'>
-                            <div className='title-line'>
-                                <span className='project-status-header'>
-                                    Project Status
-                                </span>
-                            </div>
-                            <div className='project-status-head'>{Project.projectStatus ? Project.projectStatus : "Not Set"}</div>
-                        </div>
-                        <div className='project github'>
-                            <ButtonWithArrow>
-                                GitHub <FiGithub />
-                            </ButtonWithArrow>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </div>
     )
 }
