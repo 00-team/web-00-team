@@ -50,7 +50,6 @@ const Project: FC = () => {
         state.Projects.projects.length > 0 ? state.Projects.projects[0] : null
     )
     const [currentDemo, setCurrentDemo] = useState<CurrentDemo | null>(null)
-    currentDemo
     useEffect(() => {
         if (Project) setCurrentDemo({ src: Project.thumbnail.url, type: 'img' })
     }, [setCurrentDemo, Project])
