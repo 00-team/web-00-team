@@ -54,7 +54,7 @@ const DemoCard: FC<DemoCardProps> = ({
                           }
                         : {}
                 }
-                className={`thumbnail ${showDetail ? "active" : ""}`}
+                className={`thumbnail ${showDetail ? 'active' : ''}`}
             ></div>
             <div
                 onMouseUp={() => setshowDetail(showDetail ? '' : `${index}`)}
@@ -69,7 +69,7 @@ const DemoCard: FC<DemoCardProps> = ({
                 >
                     <ImArrowUp2 size={24} className='arrow-up-icon' />
                 </div>
-                <h2 className='title'>{demo.title}</h2>
+                <h3 className='title'>{demo.title}</h3>
 
                 {/* description  */}
                 {(demo.description && (

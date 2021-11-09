@@ -9,9 +9,9 @@ import { SiDiscord } from '@react-icons/all-files/si/SiDiscord'
 
 function HeroSection() {
     return (
-        <div className='hero-section'>
+        <section className='hero-section'>
             <div className='main'>
-                <span>00 Team</span>
+                <h1>00 Team</h1>
                 <div className='social'>
                     <SiDiscord
                         onClick={() =>
@@ -25,7 +25,7 @@ function HeroSection() {
                     />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

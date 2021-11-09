@@ -119,7 +119,7 @@
             z-index: $ZINDEX__NAVBAR__MENU;
 
             .close-btn,
-            h1,
+            h2,
             .links {
                 transform: translate(0, 0);
             }
@@ -142,9 +142,9 @@
             }
         }
 
-        h1 {
+        h2 {
             color: #fff;
-            @include DisplayFont(clamp(1rem, 3rem + 3vw, 10rem));
+            @include DisplayFont($TITLE_FONTSIZE);
             transition: 500ms;
             transition-property: transform;
 

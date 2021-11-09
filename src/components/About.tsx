@@ -19,7 +19,7 @@ const About: FC = () => {
 
     // return <div style={{ color: 'red' }}>{BaseState.about.markdown}</div>
     return (
-        <div className='about-container'>
+        <section className='about-container'>
             <div className='part about'>
                 <LazyMotion>
                     <h2 className='title'>What is 00 Team?</h2>
@@ -28,7 +28,7 @@ const About: FC = () => {
                     <Markdown>{BaseState.about.markdown}</Markdown>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

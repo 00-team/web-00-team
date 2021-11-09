@@ -46,7 +46,7 @@ const DesktopNavbar: FC = () => {
     }, [location])
 
     return (
-        <div className='navbar__desktop'>
+        <nav className='navbar__desktop'>
             <div
                 className={`btn ${Active ? 'active' : ''}`}
                 onClick={() => setActive(true)}
@@ -88,7 +88,7 @@ const DesktopNavbar: FC = () => {
                 </div>
             </div>
 
-            <div
+            <section
                 className={`menu ${Active ? 'active' : ''}`}
                 style={
                     Active
@@ -116,7 +116,7 @@ const DesktopNavbar: FC = () => {
                     <HexCloseIcon />
                 </div>
 
-                <h1
+                <h2
                     style={
                         Active
                             ? {
@@ -128,7 +128,7 @@ const DesktopNavbar: FC = () => {
                     }
                 >
                     00 Team
-                </h1>
+                </h2>
                 <div
                     className='links'
                     style={
@@ -190,7 +190,7 @@ const DesktopNavbar: FC = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div
                 className={`overlay ${Active ? 'active' : ''}`}
@@ -198,13 +198,13 @@ const DesktopNavbar: FC = () => {
                     Active ? {} : { transitionDelay: '1000ms' } // closing
                 }
             ></div>
-        </div>
+        </nav>
     )
 }
 
 const MobileNavbar: FC = () => {
     return (
-        <div className='navbar__mobile-container'>
+        <nav className='navbar__mobile-container'>
             <div className='navbar__mobile'>
                 <Link to='/team'>
                     <AiOutlineTeam />
@@ -222,7 +222,7 @@ const MobileNavbar: FC = () => {
                     <GiClown />
                 </Link>
             </div>
-        </div>
+        </nav>
     )
 }
 

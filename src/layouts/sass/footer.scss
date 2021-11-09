@@ -1,3 +1,6 @@
+@use '../../sass/fonts/' as *;
+@use '../../sass/variables/' as *;
+
 .footer-container {
     // background: linear-gradient(
     //     to bottom,
@@ -176,6 +179,7 @@
         .website-rights {
             color: #fff;
             margin-bottom: 16px;
+            @include MainFont($SMALL_TEXT_FONTSIZE);
         }
     }
 

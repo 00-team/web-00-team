@@ -53,12 +53,12 @@ export const Demos: FC<DemosProps> = ({ LoadingRender }) => {
     if (DemosData.length === 0) return <></>
 
     return (
-        <div className='demos'>
+        <section className='demos'>
             <div className='container'>
                 <LazyMotion>
-                    <div className='header'>
-                        <h1>Demos</h1>
-                    </div>
+                    {/* <div className='header'> */}
+                    <h2 className='main-title'>Demos</h2>
+                    {/* </div> */}
                 </LazyMotion>
                 <div className='demo-slider'>
                     <CardSlider onChange={() => setshowDetail('')}>
@@ -77,11 +77,10 @@ export const Demos: FC<DemosProps> = ({ LoadingRender }) => {
                     className='project'
                     onClick={() => window.open('/projects', '_self')}
                 >
-                    {' '}
-                    <ButtonWithArrow> See All Projects </ButtonWithArrow>{' '}
+                    <ButtonWithArrow>See All Projects</ButtonWithArrow>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

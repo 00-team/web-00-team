@@ -78,59 +78,61 @@ const App: FC = () => {
         <>
             {/* <MainBg /> */}
             <Head />
-            <Switch>
-                <Route path='/' exact>
-                    {loadings && (
-                        <Loading
-                            loading={loadings.some(i => i)}
-                            total={loadings.length}
-                            loaded={loadings.filter(i => !i).length}
-                            fixed={true}
-                        />
-                    )}
+            <main>
+                <Switch>
+                    <Route path='/' exact>
+                        {loadings && (
+                            <Loading
+                                loading={loadings.some(i => i)}
+                                total={loadings.length}
+                                loaded={loadings.filter(i => !i).length}
+                                fixed={true}
+                            />
+                        )}
 
-                    <HeroSection />
-                    <About />
-                    <Demos LoadingRender={false} />
-                    <Creators />
-                </Route>
+                        <HeroSection />
+                        <About />
+                        <Demos LoadingRender={false} />
+                        <Creators />
+                    </Route>
 
-                <Route path='/projects'>
-                    <Projects />
-                </Route>
+                    <Route path='/projects'>
+                        <Projects />
+                    </Route>
 
-                <Route path='/project/:slug'>
-                    <Project />
-                </Route>
+                    <Route path='/project/:slug'>
+                        <Project />
+                    </Route>
 
-                <Route path='/team'>
-                    <Team />
-                    <About />
-                    <Creators ExtraClass={'team'} />
-                    <JoinTeam />
-                </Route>
+                    <Route path='/team'>
+                        <Team />
+                        <About />
+                        <Creators ExtraClass={'team'} />
+                        <JoinTeam />
+                    </Route>
 
-                <Route path='/team#join-team'>
-                    <JoinTeam />
-                </Route>
+                    <Route path='/team#join-team'>
+                        <JoinTeam />
+                    </Route>
 
-                <Route path='/business'>
-                    <Business />
-                </Route>
-                <Route path='/test'>
-                    <JoinTeam />
-                </Route>
+                    <Route path='/business'>
+                        <Business />
+                    </Route>
+                    <Route path='/test'>
+                        <JoinTeam />
+                    </Route>
 
-                <Route path='/fun'>
-                    <div style={{ padding: 50, color: 'snow' }}>
-                        <LittleDream>a Little Dream</LittleDream>
-                    </div>
-                </Route>
+                    <Route path='/fun'>
+                        <div style={{ padding: 50, color: 'snow' }}>
+                            <LittleDream>a Little Dream</LittleDream>
+                        </div>
+                    </Route>
 
-                <Route path='*'>
-                    <Error code='404' />
-                </Route>
-            </Switch>
+                    <Route path='*'>
+                        <Error code='404' />
+                    </Route>
+                </Switch>
+            </main>
 
             <Footer />
             <Navbar />

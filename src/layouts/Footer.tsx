@@ -10,11 +10,11 @@ import './sass/footer.scss'
 
 const Footer = () => {
     return (
-        <div className='footer-container'>
+        <footer className='footer-container'>
             <section className='footer-subscription'>
-                <p className='footer-subscription-heading'>
+                <h2 className='footer-subscription-heading'>
                     Wana Work With Us?
-                </p>
+                </h2>
                 <p className='footer-subscription-text'>
                     Provided You Think You Are Good Enough To Work With 00 Team,
                     You Can Apply From The Button Below.
@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
             </section>
             {/* <div className='line'></div> */}
-            <div className='footer-links'>
+            <section className='footer-links'>
                 <div className='footer-link-wrapper'>
                     <div className='footer-link-items'>
                         <h2>About Us</h2>
@@ -65,7 +65,7 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </section>
             <section className='social-media'>
                 <div className='social-media-wrap'>
                     <small className='website-rights'>
@@ -73,7 +73,7 @@ const Footer = () => {
                     </small>
                 </div>
             </section>
-        </div>
+        </footer>
     )
 }
 

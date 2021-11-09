@@ -29,7 +29,7 @@
         flex-direction: column;
         align-items: center;
 
-        .header h1 {
+        .main-title {
             @include DisplayFont($MEDIUM_TITLE_FONTSIZE);
         }
 
