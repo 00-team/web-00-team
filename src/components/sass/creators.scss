@@ -134,7 +134,8 @@
                 }
             }
 
-            &:hover {
+            &:hover,
+            &:focus {
                 .socials .social {
                     transform: translateX(0);
                 }
@@ -167,6 +168,12 @@
 
                     &:hover {
                         color: var(--hover-color);
+                    }
+                    &:focus + .social {
+                        transform: translateX(0);
+                    }
+                    &:focus {
+                        transform: translateX(0);
                     }
                 }
             }

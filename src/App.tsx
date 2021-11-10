@@ -119,7 +119,7 @@ const App: FC = () => {
                         <Business />
                     </Route>
                     <Route path='/test'>
-                        <JoinTeam />
+                        <Creators />
                     </Route>
 
                     <Route path='/fun'>
