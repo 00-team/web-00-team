@@ -21,7 +21,10 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
     const [ProfileZoom, setProfileZoom] = useState(false)
     const [showDetails, setshowDetails] = useState(false)
     return (
-        <div className='creator' onClick={() => setshowDetails(!showDetails)}>
+        <section
+            className='creator'
+            onClick={() => setshowDetails(!showDetails)}
+        >
             <div
                 className='banner'
                 style={
@@ -62,7 +65,7 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
                     style={{ backgroundImage: `url(${C.profile.url})` }}
                 ></div>
                 <div className='meta'>
-                    <span className='name'>{C.name}</span>
+                    <h3 className='name'>{C.name}</h3>
                     <span className='date'>
                         {C.joinDate.slice(0, C.joinDate.search('-'))}
                     </span>
@@ -94,12 +97,12 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
                     </a>
                 )}
             </div>
-        </div>
+        </section>
     )
 }
 
-interface CreatorsProps{
-    ExtraClass? : String
+interface CreatorsProps {
+    ExtraClass?: String
 }
 
 const Creators: FC<CreatorsProps> = ({ ExtraClass }) => {
@@ -108,7 +111,7 @@ const Creators: FC<CreatorsProps> = ({ ExtraClass }) => {
     if (CreatorsState.creators.length < 1) return <></>
 
     return (
-        <div className={`creators-container ${ExtraClass}`}>
+        <section className={`creators-container ${ExtraClass}`}>
             <LazyMotion>
                 <h2 className='title'>Creators</h2>
             </LazyMotion>
@@ -117,7 +120,7 @@ const Creators: FC<CreatorsProps> = ({ ExtraClass }) => {
                     <Creator C={item} key={index} />
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 

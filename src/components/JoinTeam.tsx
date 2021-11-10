@@ -54,7 +54,7 @@ const JoinTeam: FC = () => {
     }
 
     return (
-        <div className='join-team' id='join-team'>
+        <section className='join-team' id='join-team'>
             <LazyMotion>
                 <h2 className='title'>{state.title}</h2>
             </LazyMotion>
@@ -62,8 +62,9 @@ const JoinTeam: FC = () => {
                 <div className='description'>
                     <Markdown children={state.description} />
                 </div>
+                <h3 className='u-hide-visually'>conditions</h3>
                 <div className='condition'>
-                    <span className='name'>Skills:</span>
+                    <h4 className='name'>Skills:</h4>
                     <ul className='list'>
                         {state.skills.map((item, index) => (
                             <li key={index} className='item'>
@@ -73,7 +74,7 @@ const JoinTeam: FC = () => {
                     </ul>
                 </div>
                 <div className='condition'>
-                    <span className='name'>Good To Have:</span>
+                    <h4 className='name'>Good To Have:</h4>
                     <ul className='list'>
                         {state.needlessToSay.map((item, index) => (
                             <li key={index} className='item'>
@@ -83,9 +84,9 @@ const JoinTeam: FC = () => {
                     </ul>
                 </div>
                 <div className='condition'>
-                    <span className='name'>
+                    <h4 className='name'>
                         Needless To Say, You Should Be Familiar With:
-                    </span>
+                    </h4>
                     <ul className='list'>
                         {state.goodToHave.map((item, index) => (
                             <li key={index} className='item'>
@@ -120,7 +121,7 @@ const JoinTeam: FC = () => {
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

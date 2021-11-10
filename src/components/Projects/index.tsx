@@ -39,7 +39,7 @@ const Projects: FC = () => {
     }
 
     return (
-        <div className='projects-container'>
+        <section className='projects-container'>
             <Head
                 title='00 Team Projects'
                 description='00 Team Awesome Projects'
@@ -54,7 +54,7 @@ const Projects: FC = () => {
                 </div>
 
                 {ProjectsData.length <= 0 ? (
-                    <div className='no-result'>
+                    <section className='no-result'>
                         <h2 className='title'>No Result Found</h2>
                         {isFilterd && (
                             <Button
@@ -62,16 +62,16 @@ const Projects: FC = () => {
                                 onClick={() => dispatch(GetProject())}
                             />
                         )}
-                    </div>
+                    </section>
                 ) : (
-                    <div className='cards'>
+                    <section className='cards'>
                         {ProjectsData.map((item, index) => (
                             <ProjectCard {...item} key={index} />
                         ))}
-                    </div>
+                    </section>
                 )}
             </div>
-        </div>
+        </section>
     )
 }
 
@@ -135,9 +135,9 @@ const ProjectCard: FC<ProjectCardProps> = props => {
                 </div>
                 <div className='info'>
                     <div className='top-info'>
-                        <span className='title' title={title}>
+                        <h2 className='title' title={title}>
                             {title}
-                        </span>
+                        </h2>
                         {git && (
                             <div
                                 className='icon'

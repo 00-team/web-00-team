@@ -69,7 +69,7 @@ const Project: FC = () => {
     }
 
     return (
-        <div className='project-container'>
+        <section className='project-container'>
             <Head
                 title={Project.title}
                 description='Project of 00 Team'
@@ -144,6 +144,7 @@ const Project: FC = () => {
                 )}
             </div>
             <div className='details'>
+                <h1 className='u-hide-visually'>{Project.title}</h1>
                 <section className='project-title'>
                     <h2 className='title'>
                         <span>Title</span>
@@ -224,7 +225,7 @@ const Project: FC = () => {
                     </div>
                 </section>
             </div>
-        </div>
+        </section>
     )
 }
 
