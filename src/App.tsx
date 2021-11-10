@@ -78,7 +78,7 @@ const App: FC = () => {
         <>
             {/* <MainBg /> */}
             <Head />
-            <main>
+            <main aria-label='main content'>
                 <Switch>
                     <Route path='/' exact>
                         {loadings && (

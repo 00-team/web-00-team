@@ -7,7 +7,9 @@
     scrollbar-width: thin;
 
     &:focus {
-        outline: none;
+        outline: 0;
+        // outline: 2px solid #fff;
+        // outline-offset: 5px;
     }
 }
 

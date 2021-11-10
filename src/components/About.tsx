@@ -17,16 +17,15 @@ const About: FC = () => {
 
     if (!BaseState || !BaseState.about) return <></>
 
-    // return <div style={{ color: 'red' }}>{BaseState.about.markdown}</div>
     return (
-        <section className='about-container'>
+        <section className='about-container' aria-label='about 00 team'>
             <div className='part about'>
                 <LazyMotion>
                     <h2 className='title'>What is 00 Team?</h2>
                 </LazyMotion>
-                <div className='text'>
+                <section className='text' aria-label='about 00 Team'>
                     <Markdown>{BaseState.about.markdown}</Markdown>
-                </div>
+                </section>
             </div>
         </section>
     )
