@@ -66,7 +66,7 @@
         .demo-previews {
             --height: calc(4vh + 4vw + 1rem);
             @include box(100%, var(--height));
-            display: grid;
+            display: flex;
             gap: calc(1vw + 1rem);
             padding: 0 0.5rem 0.5rem;
             place-items: center;
@@ -79,7 +79,7 @@
             .demo-thumbnail {
                 max-height: calc(4vh + 4vw);
                 cursor: pointer;
-                grid-row: 1;
+                // grid-row: 1;
                 @include har(100%, #{16/9});
                 @include bg(
                     'data:image/png;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
