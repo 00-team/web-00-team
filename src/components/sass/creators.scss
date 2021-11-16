@@ -84,6 +84,7 @@
 
                     .name {
                         @include DisplayFont(g.$TEXT_FONTSIZE);
+                        font-weight: normal;
                     }
                     .date {
                         @include MainFont(clamp(0.6rem, 0.2rem + 1vw, 1.8rem));

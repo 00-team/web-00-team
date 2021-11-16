@@ -24,9 +24,6 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
         <section
             className='creator'
             onClick={() => setshowDetails(!showDetails)}
-            onFocus={() => setshowDetails(true)}
-            onBlur={() => setshowDetails(false)}
-            tabIndex={0}
         >
             <div
                 className='banner'
