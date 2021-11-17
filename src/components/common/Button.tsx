@@ -9,7 +9,7 @@ import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineAr
 interface ButtonProps {
     children?: ReactNode
     onClick?: (e: React.MouseEvent) => void
-    classname?: String
+    classname?: string
 }
 
 const defaultProps: ButtonProps = {
