@@ -68,6 +68,18 @@ const Project: FC = () => {
         return <span style={{ color: '#fff' }}>No Project to show</span>
     }
 
+    const go_fullscreen = (selector: string) => {
+        const element = document.querySelector(selector)
+
+        if (!element || !document.fullscreenEnabled) return
+
+        if (document.fullscreenElement === element) {
+            document.exitFullscreen()
+        } else {
+            element.requestFullscreen()
+        }
+    }
+
     return (
         <section className='project-container'>
             <Head
@@ -94,6 +106,7 @@ const Project: FC = () => {
                         (currentDemo.type === 'img' ? (
                             <div
                                 className='demo-img'
+                                onClick={() => go_fullscreen('div.demo-img')}
                                 style={{
                                     backgroundImage: `url(${currentDemo.src})`,
                                 }}
