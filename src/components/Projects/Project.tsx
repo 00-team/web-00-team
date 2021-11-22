@@ -1,9 +1,14 @@
 import React, { FC, useEffect, useState } from 'react'
 
+import Markdown from 'markdown-to-jsx'
+
 import Head from '../common/Head'
 
 // video player
 import MasterVideo, { Options } from 'master-video'
+
+// utils
+import { GoFullScreen } from '../utils'
 
 // router
 import { useParams } from 'react-router-dom'
@@ -26,7 +31,6 @@ import { FiMinimize } from '@react-icons/all-files/fi/FiMinimize'
 
 // styling
 import './sass/project.scss'
-import Markdown from 'markdown-to-jsx'
 
 interface ProjectParams {
     slug: string
@@ -65,7 +69,7 @@ const ProjectComponent: FC = () => {
         dispatch(GetProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
     }, [dispatch, slug])
 
-    const div_wheel = (e: WheelEvent) => {
+    const ScrollWheel = (e: WheelEvent) => {
         const element = document.querySelector(
             'div.demo-previews'
         ) as HTMLDivElement
@@ -83,17 +87,14 @@ const ProjectComponent: FC = () => {
         ) as HTMLDivElement
         if (!element) return
 
-        element.addEventListener('wheel', div_wheel)
+        element.addEventListener('wheel', ScrollWheel)
     }, [ProjectState])
 
     useEffect(() => {
         document.addEventListener('fullscreenchange', e => {
             const element = document.querySelector('div.demo-img')
-            if (e.target === element) {
-                setisDemoFullScreen(true)
-            } else {
-                setisDemoFullScreen(false)
-            }
+            if (e.target === element) setisDemoFullScreen(true)
+            else setisDemoFullScreen(false)
         })
     }, [])
 
@@ -107,33 +108,19 @@ const ProjectComponent: FC = () => {
         return <span style={{ color: '#fff' }}>No Project to show</span>
     }
 
-    const GOFS = (selector: string) => {
-        const element = document.querySelector(selector)
-
-        if (!element || !document.fullscreenEnabled) return
-
-        if (document.fullscreenElement === element) {
-            document.exitFullscreen()
-        } else {
-            element.requestFullscreen()
-        }
-    }
-
-    const ChangingDemoByTouch = (m: number) => {
+    const ChangingDemoByTouch = (movement: number) => {
         if (!currentDemo) return
 
-        let newCurrentDemoIndex = currentDemo.index
+        let demoIndex = currentDemo.index
 
-        if (m > 100) newCurrentDemoIndex += 1
-        else if (m < -100) newCurrentDemoIndex -= 1
+        if (movement > 100) demoIndex += 1
+        else if (movement < -100) demoIndex -= 1
         else return
 
-        if (newCurrentDemoIndex > Project.demos.length - 1)
-            newCurrentDemoIndex = 0
-        else if (newCurrentDemoIndex < 0)
-            newCurrentDemoIndex = Project.demos.length - 1
+        if (demoIndex > Project.demos.length - 1) demoIndex = 0
+        else if (demoIndex < 0) demoIndex = Project.demos.length - 1
 
-        const newCurrentDemo = Project.demos.at(newCurrentDemoIndex)
+        const newCurrentDemo = Project.demos.at(demoIndex)
 
         if (!newCurrentDemo) return
 
@@ -167,20 +154,27 @@ const ProjectComponent: FC = () => {
             />
 
             <div className='demos-container'>
-                <Toucher onToucher={m => ChangingDemoByTouch(m)} ToucherDir='X'>
+                <Toucher
+                    onToucher={movement => ChangingDemoByTouch(movement)}
+                    ToucherDir='X'
+                >
                     <div className='main'>
                         {currentDemo &&
                             (currentDemo.type === 'img' ? (
                                 <div
                                     className='demo-img'
-                                    onDoubleClick={() => GOFS('div.demo-img')}
+                                    onDoubleClick={() =>
+                                        GoFullScreen('div.demo-img')
+                                    }
                                     style={{
                                         backgroundImage: `url(${currentDemo.src})`,
                                     }}
                                 >
                                     <div
                                         className='fullscreen'
-                                        onClick={() => GOFS('div.demo-img')}
+                                        onClick={() =>
+                                            GoFullScreen('div.demo-img')
+                                        }
                                     >
                                         {isDemoFullScreen ? (
                                             <FiMinimize />
