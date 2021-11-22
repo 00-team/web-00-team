@@ -67,7 +67,7 @@
 
                 .fullscreen {
                     position: absolute;
-                    @include box(2.5rem);
+                    @include box(clamp(1.8rem, 5vw, 2.5rem));
                     display: grid;
                     place-items: center;
                     right: 0.3rem;
