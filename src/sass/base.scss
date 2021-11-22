@@ -14,10 +14,13 @@
 }
 
 body {
-    // overflow-x: overlay;
+    overflow-x: overlay;
     background-color: #040404;
     position: relative;
-    overflow: overlay;
+
+    .root {
+        overflow-x: hidden;
+    }
 }
 // links
 a {
