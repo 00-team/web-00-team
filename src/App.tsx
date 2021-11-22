@@ -11,8 +11,7 @@ import {
     useDispatch,
 } from 'react-redux'
 import { LoadBase, LoadCreators, LoadJoinTeam } from './redux/actions/'
-import { store } from './redux'
-import { RootState } from './redux'
+import { store, RootState } from './redux'
 import { AppTypes } from './redux/models/App'
 
 // router
