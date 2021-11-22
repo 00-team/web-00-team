@@ -108,7 +108,7 @@ const JoinTeam: FC = () => {
                         </Hex>
                     </a>
 
-                    <a href='mailto:00.team.mail@gmail.com '>
+                    <a href='mailto:00.team.mail@gmail.com'>
                         <Hex>
                             <SiGmail />
                         </Hex>
