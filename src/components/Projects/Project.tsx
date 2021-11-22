@@ -58,6 +58,27 @@ const Project: FC = () => {
         dispatch(GetProject({ first: 1, where: `{ projectSlug: "${slug}" }` }))
     }, [dispatch, slug])
 
+    const div_wheel = (e: WheelEvent) => {
+        const element = document.querySelector(
+            'div.demo-previews'
+        ) as HTMLDivElement
+        if (!element) return
+
+        e.preventDefault()
+        element.scroll({
+            left: element.scrollLeft + e.deltaY,
+        })
+    }
+
+    useEffect(() => {
+        const element = document.querySelector(
+            'div.demo-previews'
+        ) as HTMLDivElement
+        if (!element) return
+
+        element.addEventListener('wheel', div_wheel)
+    }, [ProjectState])
+
     if (ProjectState.loading) {
         return <Loading fixed={true} />
     }
