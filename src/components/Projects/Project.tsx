@@ -206,12 +206,7 @@ const Project: FC = () => {
                     <h2 className='title'>
                         <span>Links</span>
                     </h2>
-                    {/* <div className='detail-content'>
-                        {Project.git && <a href={Project.git + '2'}>Github</a>}
-                        {Project.projectUrl && (
-                            <a href={Project.projectUrl + '1'}>Project url</a>
-                        )}
-                    </div> */}
+
                     <div className='detail-content github'>
                         <ButtonWithArrow
                             onClick={() =>

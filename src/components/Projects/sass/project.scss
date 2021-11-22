@@ -8,7 +8,7 @@
     display: grid;
     grid-template-areas: 'demos-container details';
 
-    grid-template-columns: 1fr 0.35fr;
+    grid-template-columns: 70% 30%;
     padding: 7vh 7vw;
     gap: 3vw;
     place-items: center;
@@ -129,6 +129,14 @@
                     width: 100%;
                     height: 2px;
                     background-color: g.$MAIN_FG;
+                }
+            }
+
+            &.description {
+                .detail-content {
+                    word-break: break-word;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
 
