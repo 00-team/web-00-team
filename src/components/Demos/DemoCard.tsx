@@ -3,18 +3,18 @@ import React, { FC } from 'react'
 // packages
 import Markdown from 'markdown-to-jsx'
 
-// utils
-import { go } from '../utils'
+// router
+import { Link } from 'react-router-dom'
 
 // redux
 import { ProjectModel } from 'src/redux/models/Projects'
 
 // icons
-import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
+// import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
 import { ImArrowUp2 } from '@react-icons/all-files/im/ImArrowUp2'
 
 // commons
-import Button, { ButtonWithArrow } from '../common/Button'
+import { ButtonWithArrow } from '../common/Button'
 import Toucher from '../common/Toucher'
 
 import './demo-card.scss'
@@ -78,20 +78,9 @@ const DemoCard: FC<DemoCardProps> = ({
                     </Markdown>
                 )) || <div className='description'>No Desc</div>}
                 <div className='see-more'>
-                    {demo.git && (
-                        <Button
-                            classname='giticon'
-                            onClick={() => go(demo.git ? demo.git : '')}
-                        >
-                            GitHub <FiGithub />
-                        </Button>
-                    )}
-
-                    <ButtonWithArrow
-                        onClick={() => go(`/project/${demo.projectSlug}`)}
-                    >
-                        See More
-                    </ButtonWithArrow>
+                    <Link to={`/project/${demo.projectSlug}`}>
+                        <ButtonWithArrow>See More</ButtonWithArrow>
+                    </Link>
                 </div>
             </div>
         </Toucher>

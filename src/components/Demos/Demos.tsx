@@ -36,7 +36,7 @@ export const Demos: FC<DemosProps> = ({ LoadingRender }) => {
     const Projects = useSelector((state: RootState) => state.Projects)
     const DemosData = useSelector((state: RootState) => state.Projects.projects)
 
-    const [showDetail, setshowDetail] = useState('')
+    const [showDetail, setshowDetail] = useState('1')
 
     useEffect(() => {
         dispatch(GetProject())

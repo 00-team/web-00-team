@@ -5,12 +5,12 @@
 
 .demos {
     // @include box(100%, 100vh);
-    padding: 2rem 3rem 0;
+    padding: 3rem;
     @include media('<=650px') {
-        padding: 2rem 0.5rem 0;
+        padding: 3rem 0.5rem;
     }
     @include media('<=400px') {
-        padding: 2rem 0 0;
+        padding: 3rem 0;
     }
 
     // background: linear-gradient(

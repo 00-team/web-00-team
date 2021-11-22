@@ -1,6 +1,7 @@
 @use '/src/sass/mixins.sass' as *;
 @use '/src/sass/media.scss' as *;
 @use '/src/sass/fonts' as *;
+@use '/src/sass/variables/' as g;
 
 .demos .demo-card {
     @include box(100%);
@@ -23,22 +24,27 @@
     }
 
     .details {
+        $borderRadius: clamp(1.3rem, 5vw, 2rem);
         cursor: pointer;
-        @include box(calc(100% + 4px), 90%);
+        @include box(calc(100% + 4px), 80%);
         position: absolute;
-        // margin: 0.5rem 0.5rem 0 0.5rem;
-        padding: 0.5rem 0.5rem 0 0.5rem;
+        padding: 0.5rem;
+        padding-bottom: 1rem;
         border: 2px solid grey;
-        border-radius: 20px;
+        border-radius: $borderRadius $borderRadius 0 0;
 
-        transform: translateY(100%);
+        transform: translateY(105%);
         transition: 0.3s all ease-in-out;
 
+        backdrop-filter: blur(5px);
+        background-color: rgb(26, 26, 26, 0.6);
+
         display: flex;
-        justify-content: space-around;
+
+        justify-content: space-between;
         align-items: center;
         flex-direction: column;
-        gap: 20px;
+        gap: 7%;
 
         .title {
             display: block;
@@ -47,6 +53,15 @@
             white-space: nowrap;
             overflow: hidden;
             flex-shrink: 0;
+
+            transform: translateX(-100vw);
+            transition: transform 900ms cubic-bezier(0.2, 0.3, 0.3, 1.3);
+        }
+
+        .description {
+            align-self: baseline;
+            word-break: break-word;
+            overflow: hidden;
         }
 
         .arrow-up {
@@ -80,46 +95,22 @@
         }
 
         .see-more {
-            width: 50%;
+            width: 100%;
             display: flex;
             flex-direction: row;
             align-items: stretch;
-            justify-content: space-between;
-            font-size: clamp(16px, -1.2rem + 4vw, 20px);
+            justify-content: center;
 
-            @include media('<=850px') {
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
-                gap: 5px;
-                height: 100%;
+            button {
+                border-color: g.$MAIN_BG;
+                font-size: g.$SMALL_TEXT_FONTSIZE;
             }
         }
 
         &.focus {
-            backdrop-filter: blur(5px);;
-
-            background-color: rgb(26, 26, 26, 0.7);
-
-            transform: translateY(10%);
-        }
-
-        @include media('<=850px') {
-            gap: 5px;
-            align-items: center;
-            .description {
-                display: none;
-            }
-            .button {
-                padding: 5px 15px;
-                font-size: clamp(12px, -1.75rem + 4vw, 20px);
-            }
-        }
-
-        @include media('<=450px') {
-            justify-content: space-between;
-            .date-git {
-                display: none;
+            transform: translateY(15%);
+            .title {
+                transform: translateX(0);
             }
         }
     }
