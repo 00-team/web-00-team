@@ -50,7 +50,21 @@ export const GetProject =
                 `
             )
 
-            dispatch({ type: ProjectsTypes.PROJECTS_LOADED, payload: projects })
+            const projects_modified = projects.map((project: { demos: [] }) => {
+                return {
+                    ...project,
+                    demos: project.demos.map(
+                        (demo: { index: number }, Dindex: number) => {
+                            return { ...demo, index: Dindex }
+                        }
+                    ),
+                }
+            })
+
+            dispatch({
+                type: ProjectsTypes.PROJECTS_LOADED,
+                payload: projects_modified,
+            })
         } catch (error) {
             dispatch({
                 type: ProjectsTypes.PROJECTS_ERROR,

@@ -6,12 +6,16 @@ export const IMAGE_MIMETYPE = [
 ]
 export const VIDEO_MIMETYPE = ['video/mp4', 'video/webm']
 
-export interface Assest {
+interface Assest {
     handle: string
     id: string
     mimeType: string
     size: number
     url: string
+}
+
+interface Demo extends Assest {
+    index: number
 }
 
 interface ProjectDescription {
@@ -26,7 +30,7 @@ export interface ProjectModel {
     startDate: string
     projectSlug: string
     thumbnail: Assest
-    demos: Assest[]
+    demos: Demo[]
     git: string | null
     projectStatus: ProjectStatus
     projectTags: ProjectTags[]

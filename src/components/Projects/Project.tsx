@@ -14,16 +14,15 @@ import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
 import { IMAGE_MIMETYPE } from '../../redux/models/Projects'
 
-// elements
+// common
 import Loading from '../common/Loading'
 import { ButtonWithArrow } from '../common/Button'
-
-// utils
-// import { go } from "../utils/Base"
+import Toucher from '../common/Toucher'
 
 // icons
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
-// import { AiOutlineClockCircle } from '@react-icons/all-files/ai/AiOutlineClockCircle'
+import { FiMaximize } from '@react-icons/all-files/fi/FiMaximize'
+import { FiMinimize } from '@react-icons/all-files/fi/FiMinimize'
 
 // styling
 import './sass/project.scss'
@@ -36,13 +35,14 @@ interface ProjectParams {
 interface CurrentDemo {
     type: 'img' | 'video'
     src: string
+    index: number
 }
 
 const MasterVideoOptions: Options = {
     masterClass: 'demo-video',
 }
 
-const Project: FC = () => {
+const ProjectComponent: FC = () => {
     const { slug } = useParams<ProjectParams>()
     const dispatch = useDispatch()
     const ProjectState = useSelector((state: RootState) => state.Projects)
@@ -50,8 +50,15 @@ const Project: FC = () => {
         state.Projects.projects.length > 0 ? state.Projects.projects[0] : null
     )
     const [currentDemo, setCurrentDemo] = useState<CurrentDemo | null>(null)
+    const [isDemoFullScreen, setisDemoFullScreen] = useState(false)
+
     useEffect(() => {
-        if (Project) setCurrentDemo({ src: Project.thumbnail.url, type: 'img' })
+        if (Project)
+            setCurrentDemo({
+                src: Project.thumbnail.url,
+                type: 'img',
+                index: -1,
+            })
     }, [setCurrentDemo, Project])
 
     useEffect(() => {
@@ -79,6 +86,17 @@ const Project: FC = () => {
         element.addEventListener('wheel', div_wheel)
     }, [ProjectState])
 
+    useEffect(() => {
+        document.addEventListener('fullscreenchange', e => {
+            const element = document.querySelector('div.demo-img')
+            if (e.target === element) {
+                setisDemoFullScreen(true)
+            } else {
+                setisDemoFullScreen(false)
+            }
+        })
+    }, [])
+
     if (ProjectState.loading) {
         return <Loading fixed={true} />
     }
@@ -89,7 +107,7 @@ const Project: FC = () => {
         return <span style={{ color: '#fff' }}>No Project to show</span>
     }
 
-    const go_fullscreen = (selector: string) => {
+    const GOFS = (selector: string) => {
         const element = document.querySelector(selector)
 
         if (!element || !document.fullscreenEnabled) return
@@ -99,6 +117,33 @@ const Project: FC = () => {
         } else {
             element.requestFullscreen()
         }
+    }
+
+    const ChangingDemoByTouch = (m: number) => {
+        if (!currentDemo) return
+
+        let newCurrentDemoIndex = currentDemo.index
+
+        if (m > 100) newCurrentDemoIndex += 1
+        else if (m < -100) newCurrentDemoIndex -= 1
+        else return
+
+        if (newCurrentDemoIndex > Project.demos.length - 1)
+            newCurrentDemoIndex = 0
+        else if (newCurrentDemoIndex < 0)
+            newCurrentDemoIndex = Project.demos.length - 1
+
+        const newCurrentDemo = Project.demos.at(newCurrentDemoIndex)
+
+        if (!newCurrentDemo) return
+
+        setCurrentDemo({
+            index: newCurrentDemo.index,
+            src: newCurrentDemo.url,
+            type: IMAGE_MIMETYPE.includes(newCurrentDemo.mimeType)
+                ? 'img'
+                : 'video',
+        })
     }
 
     return (
@@ -122,31 +167,44 @@ const Project: FC = () => {
             />
 
             <div className='demos-container'>
-                <div className='main'>
-                    {currentDemo &&
-                        (currentDemo.type === 'img' ? (
-                            <div
-                                className='demo-img'
-                                onClick={() => go_fullscreen('div.demo-img')}
-                                style={{
-                                    backgroundImage: `url(${currentDemo.src})`,
-                                }}
-                            ></div>
-                        ) : (
-                            <MasterVideo
-                                source={currentDemo.src}
-                                options={MasterVideoOptions}
-                            />
-                        ))}
-                </div>
+                <Toucher onToucher={m => ChangingDemoByTouch(m)} ToucherDir='X'>
+                    <div className='main'>
+                        {currentDemo &&
+                            (currentDemo.type === 'img' ? (
+                                <div
+                                    className='demo-img'
+                                    onDoubleClick={() => GOFS('div.demo-img')}
+                                    style={{
+                                        backgroundImage: `url(${currentDemo.src})`,
+                                    }}
+                                >
+                                    <div
+                                        className='fullscreen'
+                                        onClick={() => GOFS('div.demo-img')}
+                                    >
+                                        {isDemoFullScreen ? (
+                                            <FiMinimize />
+                                        ) : (
+                                            <FiMaximize />
+                                        )}
+                                    </div>
+                                </div>
+                            ) : (
+                                <MasterVideo
+                                    source={currentDemo.src}
+                                    options={MasterVideoOptions}
+                                />
+                            ))}
+                    </div>
+                </Toucher>
 
                 {Project.demos.length > 0 && (
                     <div className='demo-previews'>
-                        {Project.demos.map((demo, index) => {
+                        {Project.demos.map(demo => {
                             if (IMAGE_MIMETYPE.includes(demo.mimeType))
                                 return (
                                     <div
-                                        key={index}
+                                        key={demo.index}
                                         className='demo-thumbnail'
                                         style={{
                                             backgroundImage: `url(${demo.url})`,
@@ -155,6 +213,7 @@ const Project: FC = () => {
                                             setCurrentDemo({
                                                 src: demo.url,
                                                 type: 'img',
+                                                index: demo.index,
                                             })
                                         }
                                     ></div>
@@ -164,11 +223,12 @@ const Project: FC = () => {
                                     <video
                                         src={demo.url}
                                         className='demo-thumbnail'
-                                        key={index}
+                                        key={demo.index}
                                         onClick={() =>
                                             setCurrentDemo({
                                                 src: demo.url,
                                                 type: 'video',
+                                                index: demo.index,
                                             })
                                         }
                                     ></video>
@@ -258,4 +318,4 @@ const Project: FC = () => {
     )
 }
 
-export default Project
+export default ProjectComponent
