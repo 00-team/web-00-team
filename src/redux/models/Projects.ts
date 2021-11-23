@@ -32,7 +32,7 @@ export interface ProjectModel {
     thumbnail: Assest
     demos: Demo[]
     git: string | null
-    projectStatus: ProjectStatus
+    projectStatus: 'finished' | 'inProgress' | 'preparation'
     projectTags: ProjectTags[]
     version: string
 }
@@ -50,10 +50,10 @@ export enum ProjectsTypes {
     PROJECTS_LOADED = 'PROJECTS_LOADED',
 }
 
-export enum ProjectStatus {
-    FINISHED = 'finished',
-    IN_PROGRESS = 'inProgress',
-    PREPARATION = 'preparation',
+export const ProjectStatus = {
+    finished: 'Finished',
+    inProgress: 'in Progress',
+    preparation: 'Preparation',
 }
 
 export enum ProjectTags {

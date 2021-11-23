@@ -206,6 +206,12 @@
                         @include box(100%, 30%);
                         display: flex;
                         justify-content: space-between;
+
+                        .status {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        }
                     }
                 }
             }

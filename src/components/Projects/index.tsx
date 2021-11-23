@@ -13,7 +13,12 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetProject } from '../../redux/actions/'
 import { RootState } from '../../redux'
-import { IMAGE_MIMETYPE, ProjectModel } from '../../redux/models/Projects'
+import {
+    IMAGE_MIMETYPE,
+    ProjectModel,
+    ProjectStatus,
+} from '../../redux/models/Projects'
+import { ProjectStatusIcons } from './ProjectStatusIcons'
 
 // commons
 import Loading from '../common/Loading'
@@ -148,7 +153,10 @@ const ProjectCard: FC<ProjectCardProps> = props => {
                         )}
                     </div>
                     <div className='bottom'>
-                        <span>{projectStatus}</span>
+                        <span className='status'>
+                            {ProjectStatus[projectStatus]}
+                            {ProjectStatusIcons[projectStatus]}
+                        </span>
                         <span>{startDate}</span>
                     </div>
                 </div>
