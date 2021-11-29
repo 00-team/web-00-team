@@ -55,7 +55,7 @@ const ProjectComponent: FC = () => {
     )
     const [currentDemo, setCurrentDemo] = useState<CurrentDemo | null>(null)
     const [isDemoFullScreen, setisDemoFullScreen] = useState(false)
-
+    setisDemoFullScreen
     useEffect(() => {
         if (Project)
             setCurrentDemo({
@@ -91,9 +91,11 @@ const ProjectComponent: FC = () => {
     }, [ProjectState])
 
     useEffect(() => {
-        document.addEventListener('fullscreenchange', e => {
+        document.addEventListener('fullscreenchange', () => {
             const element = document.querySelector('div.demo-img')
-            if (e.target === element) setisDemoFullScreen(true)
+
+            if (document.fullscreenElement === element && element)
+                setisDemoFullScreen(true)
             else setisDemoFullScreen(false)
         })
     }, [])
