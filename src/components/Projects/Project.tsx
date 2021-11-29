@@ -55,14 +55,15 @@ const ProjectComponent: FC = () => {
     )
     const [currentDemo, setCurrentDemo] = useState<CurrentDemo | null>(null)
     const [isDemoFullScreen, setisDemoFullScreen] = useState(false)
-    setisDemoFullScreen
+
     useEffect(() => {
-        if (Project)
+        if (Project) {
             setCurrentDemo({
                 src: Project.thumbnail.url,
                 type: 'img',
                 index: -1,
             })
+        }
     }, [setCurrentDemo, Project])
 
     useEffect(() => {
@@ -90,6 +91,14 @@ const ProjectComponent: FC = () => {
         element.addEventListener('wheel', ScrollWheel)
     }, [ProjectState])
 
+    const KeyBind = (e: KeyboardEvent) => {
+        switch (e.code) {
+            case 'KeyF':
+                e.preventDefault()
+                return GoFullScreen('div.demo-img')
+        }
+    }
+
     useEffect(() => {
         document.addEventListener('fullscreenchange', () => {
             const element = document.querySelector('div.demo-img')
@@ -98,26 +107,15 @@ const ProjectComponent: FC = () => {
                 setisDemoFullScreen(true)
             else setisDemoFullScreen(false)
         })
+        document.addEventListener('keydown', e => KeyBind(e))
     }, [])
 
-    if (ProjectState.loading) {
-        return <Loading fixed={true} />
-    }
-
-    if (!Project) {
-        if (ProjectState.error)
-            return <span style={{ color: '#fff' }}>Error to get Project</span>
-        return <span style={{ color: '#fff' }}>No Project to show</span>
-    }
-
-    const ChangingDemoByTouch = (movement: number) => {
-        if (!currentDemo) return
-
+    const ChangeDemoByIndex = (i: 1 | -1) => {
+        console.log(currentDemo)
+        if (!currentDemo || !Project) return
         let demoIndex = currentDemo.index
 
-        if (movement > 100) demoIndex += 1
-        else if (movement < -100) demoIndex -= 1
-        else return
+        demoIndex += i
 
         if (demoIndex > Project.demos.length - 1) demoIndex = 0
         else if (demoIndex < 0) demoIndex = Project.demos.length - 1
@@ -133,6 +131,22 @@ const ProjectComponent: FC = () => {
                 ? 'img'
                 : 'video',
         })
+    }
+
+    const ChangingDemoByTouch = (movement: number) => {
+        if (movement > 100) ChangeDemoByIndex(1)
+        else if (movement < -100) ChangeDemoByIndex(-1)
+        else return
+    }
+
+    if (ProjectState.loading) {
+        return <Loading fixed={true} />
+    }
+
+    if (!Project) {
+        if (ProjectState.error)
+            return <span style={{ color: '#fff' }}>Error to get Project</span>
+        return <span style={{ color: '#fff' }}>No Project to show</span>
     }
 
     return (
