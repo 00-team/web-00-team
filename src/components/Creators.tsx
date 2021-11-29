@@ -65,7 +65,9 @@ const Creator: FC<{ C: CreatorModel }> = ({ C }) => {
                     style={{ backgroundImage: `url(${C.profile.url})` }}
                 ></div>
                 <div className='meta'>
-                    <h3 className='name'>{C.name}</h3>
+                    <h3 className='name' title={C.name}>
+                        {C.name}
+                    </h3>
                     <span className='date'>
                         {C.joinDate.slice(0, C.joinDate.search('-'))}
                     </span>

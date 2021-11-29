@@ -83,8 +83,12 @@
                     text-overflow: ellipsis;
 
                     .name {
-                        @include DisplayFont(g.$TEXT_FONTSIZE);
+                        --name-FontSize: clamp(1rem, 0.6rem + 1vw, 1.6rem);
+                        @include DisplayFont(var(--name-FontSize));
                         font-weight: normal;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     .date {
                         @include MainFont(clamp(0.6rem, 0.2rem + 1vw, 1.8rem));
