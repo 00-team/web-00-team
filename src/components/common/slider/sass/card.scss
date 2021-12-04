@@ -52,12 +52,10 @@
         }
 
         &.next {
-            right: 0;
             grid-area: next;
         }
 
         &.previous {
-            left: 0;
             grid-area: previous;
         }
     }

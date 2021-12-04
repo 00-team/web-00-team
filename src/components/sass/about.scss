@@ -30,6 +30,7 @@
             @include DisplayFont(g.$MEDIUM_TITLE_FONTSIZE);
             color: $fg;
             text-align: center;
+            background-color: g.$MAIN_BG;
         }
 
         .text {

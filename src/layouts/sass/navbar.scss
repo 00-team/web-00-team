@@ -144,6 +144,7 @@
 
         h2 {
             color: #fff;
+            background-color: #1e1e1e;
             @include DisplayFont($TITLE_FONTSIZE);
             transition: 500ms;
             transition-property: transform;

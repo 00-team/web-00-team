@@ -47,6 +47,14 @@
         gap: 7%;
 
         .title {
+            // color
+            color: g.$MAIN_FG;
+            background-color: #121212;
+
+            padding: 0.2rem 1.2rem;
+            border-radius: 10px;
+            border: 0.2rem solid #040404;
+
             display: block;
             @include MainFont(clamp(16px, -0.45rem + 4vw, 2.4rem));
             text-transform: capitalize;
