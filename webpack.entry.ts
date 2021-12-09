@@ -2,17 +2,25 @@
 import type { Entry } from 'webpack'
 
 const EntryConfig: Entry = {
-    // main module
-    main: {
+    // main modules
+    root: {
+        import: './src/index.tsx',
+        dependOn: ['react', 'redux', 'app'],
+    },
+    app: {
         import: './src/App.tsx',
         dependOn: [
             'react',
             'redux',
             'navbar',
+            'footer',
+            'projects',
+            'project',
             'about',
             'demos',
-            'creators',
             'joinTeam',
+            'business',
+            'creators',
         ],
     },
     // projects
@@ -29,6 +37,10 @@ const EntryConfig: Entry = {
         import: './src/layouts/Navbar.tsx',
         dependOn: ['react', 'redux'],
     },
+    footer: {
+        import: './src/layouts/Footer.tsx',
+        dependOn: ['react'],
+    },
     // commons
     LazyMotion: {
         import: './src/components/common/LazyMotion.tsx',
@@ -41,11 +53,11 @@ const EntryConfig: Entry = {
     // other components
     about: {
         import: './src/components/About.tsx',
-        dependOn: ['react', 'redux'],
+        dependOn: ['react', 'redux', 'LazyMotion'],
     },
     demos: {
         import: './src/components/Demos/Demos.tsx',
-        dependOn: ['react', 'redux', 'CardSlider', 'LazyMotion'],
+        dependOn: ['react', 'redux', 'LazyMotion', 'CardSlider'],
     },
     creators: {
         import: './src/components/Creators.tsx',

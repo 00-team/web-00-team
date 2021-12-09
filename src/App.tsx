@@ -1,21 +1,16 @@
 import React, { FC, useEffect } from 'react'
-import ReactDOM from 'react-dom'
 
 // loadable
 import Loadable from '@loadable/component'
 
 // redux stuff
-import {
-    Provider as ReduxProvider,
-    useSelector,
-    useDispatch,
-} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { LoadBase, LoadCreators, LoadJoinTeam } from './redux/actions/'
-import { store, RootState } from './redux'
+import { RootState } from './redux'
 import { AppTypes } from './redux/models/App'
 
 // router
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 // components
 import HeroSection from './components/HeroSection'
@@ -40,7 +35,6 @@ import Head from './components/common/Head'
 
 // projects
 const Projects = Loadable(() => import('./components/Projects'))
-
 const Project = Loadable(() => import('./components/Projects/Project'))
 
 // layouts
@@ -138,17 +132,5 @@ const App: FC = () => {
         </>
     )
 }
-
-const Root: FC = () => {
-    return (
-        <ReduxProvider store={store}>
-            <Router>
-                <App />
-            </Router>
-        </ReduxProvider>
-    )
-}
-
-ReactDOM.render(<Root />, document.getElementById('root'))
 
 export default App
