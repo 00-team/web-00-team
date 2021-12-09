@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import ReactDOM from 'react-dom'
+import { hydrate, render } from 'react-dom'
 
 // redux
 import { Provider as ReduxProvider } from 'react-redux'
@@ -24,4 +24,7 @@ const Root: FC = () => {
     )
 }
 
-ReactDOM.render(<Root />, document.getElementById('root'))
+const RootElement = document.getElementById('root')!
+
+if (RootElement.hasChildNodes()) hydrate(<Root />, RootElement)
+else render(<Root />, RootElement)
