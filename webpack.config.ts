@@ -1,14 +1,15 @@
 import * as path from 'path'
-import { Configuration as webpack } from 'webpack'
+import { Configuration as MainConfig } from 'webpack'
 import { Configuration as devServer } from 'webpack-dev-server'
 
 // plugins
 import HtmlWP from 'html-webpack-plugin'
 import CopyWP from 'copy-webpack-plugin'
+import MCEWP from 'mini-css-extract-plugin'
 // entry
 import EntryConfig from './webpack.entry'
 
-interface Configs extends webpack {
+interface Configs extends MainConfig {
     devServer?: devServer
 }
 
@@ -56,6 +57,7 @@ const BaseConfig: Configs = {
         extensions: ['.mjs', '.tsx', '.ts', '.js'],
     },
     plugins: [
+        new MCEWP(),
         new HtmlWP({
             filename: 'index.html',
             template: './public/template.html',
@@ -87,7 +89,7 @@ const DevConfig: Configs = {
             ...(BaseConfig.module?.rules || []),
             {
                 test: /\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [MCEWP.loader, 'css-loader', 'sass-loader'],
             },
         ],
     },
@@ -110,7 +112,7 @@ const BuildConfig: Configs = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    'style-loader',
+                    MCEWP.loader,
                     'css-loader',
                     'postcss-loader',
                     'sass-loader',
