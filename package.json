@@ -24,7 +24,6 @@
     "dependencies": {
         "@loadable/component": "^5.15.0",
         "@react-icons/all-files": "^4.1.0",
-        "framer-motion": "^4.1.17",
         "graphql": "^15.6.0",
         "graphql-request": "^3.5.0",
         "markdown-to-jsx": "^7.1.3",

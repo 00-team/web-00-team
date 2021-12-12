@@ -1,63 +1,74 @@
-import React, { useEffect, useRef, useState, RefObject } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import React, { FC, useEffect, useRef, useState, CSSProperties } from 'react'
 
-const useOnScreen = (
-    ref: RefObject<HTMLDivElement>,
-    rootMargin: string = '0px'
-) => {
-    const [isIntersecting, setIntersecting] = useState(false)
-
-    useEffect(() => {
-        let currentRef: HTMLDivElement | null = null
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry) setIntersecting(entry.isIntersecting)
-            },
-            {
-                rootMargin,
-            }
-        )
-        if (ref.current) {
-            currentRef = ref.current
-            observer.observe(currentRef)
-        }
-        return () => {
-            if (currentRef) observer.unobserve(currentRef)
-        }
-    }, [ref, rootMargin])
-
-    return isIntersecting
+interface LazyStyleProps {
+    init: CSSProperties
+    end: CSSProperties
 }
 
 interface LazyMotionProps {
-    children: React.ReactElement
+    MotionDir?: 'X' | 'Y'
+    MotionLength?: number
 }
 
-const LazyMotion = ({ children }: LazyMotionProps) => {
-    const controls = useAnimation()
-    const rootRef = useRef<HTMLDivElement>(null)
-    const onScreen = useOnScreen(rootRef)
+const LazyMotion: FC<LazyMotionProps> = ({
+    children,
+    MotionDir = 'X',
+    MotionLength = -200,
+}) => {
+    const LazyRef = useRef<HTMLDivElement>(null)
+    const [isIntersecting, setIntersecting] = useState(false)
+    const [LazyStyle, setLazyStyle] = useState<LazyStyleProps>({
+        init: { transition: 'all 700ms ease-out', opacity: 0 },
+        end: { transition: 'all 700ms ease-out', opacity: 1 },
+    })
+
     useEffect(() => {
-        if (onScreen) {
-            controls.start({
-                x: 0,
-                opacity: 1,
-                transition: {
-                    duration: 1,
-                    ease: 'easeOut',
+        if (LazyRef.current && !isIntersecting) {
+            var observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry && entry.isIntersecting) {
+                        setIntersecting(entry.isIntersecting)
+                        observer.disconnect()
+                    }
                 },
+                { threshold: 1 }
+            )
+
+            observer.observe(LazyRef.current)
+        }
+        return () => {
+            if (observer) observer.disconnect()
+        }
+    }, [LazyRef])
+
+    useEffect(() => {
+        if (MotionDir === 'X') {
+            setLazyStyle({
+                init: {
+                    ...LazyStyle.init,
+                    transform: `translateX(${MotionLength}px)`,
+                },
+                end: { ...LazyStyle.end, transform: `translateX(0px)` },
+            })
+        } else {
+            setLazyStyle({
+                init: {
+                    ...LazyStyle.init,
+                    transform: `translateY(${MotionLength}px)`,
+                },
+                end: { ...LazyStyle.end, transform: `translateY(0px)` },
             })
         }
-    }, [onScreen, controls])
+    }, [MotionDir, MotionLength, setLazyStyle])
+
     return (
-        <motion.div
+        <div
+            ref={LazyRef}
             className='lazy-div'
-            ref={rootRef}
-            initial={{ opacity: 0, x: -80 }}
-            animate={controls}
+            style={isIntersecting ? LazyStyle.end : LazyStyle.init}
         >
             {children}
-        </motion.div>
+        </div>
     )
 }
 
