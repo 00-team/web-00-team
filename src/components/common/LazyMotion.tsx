@@ -24,15 +24,12 @@ const LazyMotion: FC<LazyMotionProps> = ({
 
     useEffect(() => {
         if (LazyRef.current && !isIntersecting) {
-            var observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry && entry.isIntersecting) {
-                        setIntersecting(entry.isIntersecting)
-                        observer.disconnect()
-                    }
-                },
-                { threshold: 1 }
-            )
+            var observer = new IntersectionObserver(([entry]) => {
+                if (entry && entry.isIntersecting) {
+                    setIntersecting(entry.isIntersecting)
+                    observer.disconnect()
+                }
+            })
 
             observer.observe(LazyRef.current)
         }
