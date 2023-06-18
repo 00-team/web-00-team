@@ -6,5 +6,26 @@
     "jsxSingleQuote": true,
     "useTabs": false,
     "jsxBracketSameLine": false,
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": ["*.jsonc", "*.yml"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ],
+
+    "importOrderSeparation": true,
+    "importOrder": [
+        "(^react$|^react-dom)",
+        "^@00-team/utils",
+        "^icon",
+        "<THIRD_PARTY_MODULES>",
+        "^(state|jotai)",
+        "(/?comps/?|/?components/?)",
+        "\\./(?!style)",
+        "/style/",
+        "(/static/|^static)"
+    ]
 }

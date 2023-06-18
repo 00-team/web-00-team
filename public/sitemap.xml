@@ -1,1 +1,23 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://web-00-team.web.app/</loc></url><url><loc>https://web-00-team.web.app/business/</loc></url><url><loc>https://web-00-team.web.app/fun/</loc></url><url><loc>https://web-00-team.web.app/project/</loc></url><url><loc>https://web-00-team.web.app/projects/</loc></url><url><loc>https://web-00-team.web.app/team/</loc></url></urlset>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+    <url>
+        <loc>https://web-00-team.web.app/</loc>
+    </url>
+    <url>
+        <loc>https://web-00-team.web.app/business/</loc>
+    </url>
+    <url>
+        <loc>https://web-00-team.web.app/fun/</loc>
+    </url>
+    <url>
+        <loc>https://web-00-team.web.app/project/</loc>
+    </url>
+    <url>
+        <loc>https://web-00-team.web.app/projects/</loc>
+    </url>
+    <url>
+        <loc>https://web-00-team.web.app/team/</loc>
+    </url>
+</urlset>
