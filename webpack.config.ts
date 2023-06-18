@@ -114,7 +114,14 @@ const BuildConfig: Configs = {
                 use: [
                     MCEWP.loader,
                     'css-loader',
-                    'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: ['autoprefixer'],
+                            },
+                        },
+                    },
                     'sass-loader',
                 ],
             },
