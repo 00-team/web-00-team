@@ -21,7 +21,7 @@ import { IMAGE_MIMETYPE } from '../../redux/models/Projects'
 
 // common
 import Loading from '../common/Loading'
-import { ButtonWithArrow } from '../common/Button'
+// import { ButtonWithArrow } from '../common/Button'
 import Toucher from '../common/Toucher'
 
 // icons
@@ -312,15 +312,15 @@ const ProjectComponent: FC = () => {
                     </h2>
 
                     <div className='detail-content github'>
-                        <ButtonWithArrow
-                            onClick={() =>
-                                window.open(
-                                    `${Project.projectUrl || Project.git}`
-                                )
-                            }
-                        >
-                            GitHub <FiGithub />
-                        </ButtonWithArrow>
+                        <a className='arrow-button basic-button' href={`${Project.projectUrl || Project.git}`}>
+                            {Project.projectUrl ? (
+                                'Website'
+                            ) : (
+                                <>
+                                    GitHub <FiGithub />
+                                </>
+                            )}
+                        </a>
                     </div>
                 </section>
             </div>
